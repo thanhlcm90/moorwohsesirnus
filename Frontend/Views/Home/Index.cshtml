@@ -1,0 +1,110 @@
+﻿\@{
+    ViewBag.Title = "Index";
+}
+
+<div class="boderB">
+    <!-- SLIDE -->
+    @Html.Partial("~/Views/Shared/_Slide.cshtml")
+    <!-- END SLIDE -->
+
+    <!-- NỘI DUNG TRANG CHỦ-->
+    <section>
+        <div class="container">
+            
+            <!-----------------------MENU LEFT--------------------------------->
+            <div class="colLeft span3 fleft">
+                <div class="shadow-wrapper searchtitle" id="searchbox">
+                    <div class="titleSearchBox">
+                        <span>TÌM KIẾM XE GIÁ TỐT</span>
+                    </div>
+                    <ul class="searchtool hide" id="searchtool">
+                        <li>
+                            @Html.DropDownList("listCatalogue",(IList<SelectListItem>)ViewBag.CatalogueListDrop)
+                        </li>
+                        <li>
+                            <select>
+                                <option>-Model-</option>
+                                <option>A4  </option>
+                                <option>A5</option>
+                                <option>A6</option>
+                            </select>
+                        </li>
+                        <li>
+                            <input type="text" value="Giá từ" /></li>
+                        <li>
+                            <input type="text" value="Giá đến" /></li>
+                        <li><a class="button-green btn fright" href="#">Tìm kiếm</a>
+                            <div class="clearfix"></div>
+                        </li>
+                    </ul>
+                </div>
+                <div class="shadow-wrapper">
+                    <div class="titleBox">
+                        <span>SIÊU THỊ XE</span>
+                    </div>
+                    <ul class="leftnav bullets-style blue  arrow-list">
+                        @foreach (var c in (List<Showroom.Models.Catalogue>)ViewBag.CataloguesList)
+                        {
+                        <li><a href="/Product/Product?id=@c.Id&page=1">@c.Name</a></li>
+                        }
+                    </ul>
+                </div>
+            </div>
+            <!-----------------------END MENU LEFT----------------------------->
+
+            <!-----------------------XE MỚI CẬP NHẬT--------------------------->
+            <div class="row" id="boxNewProduct">
+                @foreach (var m in (List<Showroom.Models.Product>)ViewBag.ProductList) {
+                    <div class="span3">
+                        <div class="shadow-wrapper">
+                            <div class="mosaic-block faded">
+                                <div class="mosaic-overlay" style="display: block; opacity: 0;">
+                                    <div class="zoom-icons">
+                                        <a class="zoom-img" href="images/portfolio/kia.jpg" data-gal="prettyPhoto[portfolio]"><i class="icon-search"></i></a>
+                                        <a class="link-img" href="/Product/Details/@m.Id"><i class="icon-link"></i></a>
+                                    </div>
+                                </div>
+                                <div class="mosaic-backdrop">
+                                    <img class="max-image" src="images/portfolio/kia.jpg" alt="">
+                                </div>
+                            </div>
+                            <div class="port3-head">
+                                <h3><a href="/Product/Details/@m.Id">@m.Name</a></h3>
+                                <p>Giá:@Convert.ToDouble(m.Price).ToString("N0").Replace(",", ".")</p>
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+            <!-----------------------END XE MỚI CẬP NHẬT----------------------->
+
+            <!-----------------------------PARTNER----------------------------->
+            <div id="Partner">
+                <div class="image_carousel">
+                    <div id="foo2">
+                        <img src="images/partner/basketball.jpg" alt="basketball" width="140" height="140" />
+                        <img src="images/partner/beachtree.jpg" alt="beachtree" width="140" height="140" />
+                        <img src="images/partner/cupcackes.jpg" alt="cupcackes" width="140" height="140" />
+                        <img src="images/partner/hangmat.jpg" alt="hangmat" width="140" height="140" />
+                        <img src="images/partner/new_york.jpg" alt="new york" width="140" height="140" />
+                        <img src="images/partner/laundry.jpg" alt="laundry" width="140" height="140" />
+                        <img src="images/partner/mom_son.jpg" alt="mom son" width="140" height="140" />
+                        <img src="images/partner/picknick.jpg" alt="picknick" width="140" height="140" />
+                        <img src="images/partner/shoes.jpg" alt="shoes" width="140" height="140" />
+                        <img src="images/partner/paris.jpg" alt="paris" width="140" height="140" />
+                        <img src="images/partner/sunbading.jpg" alt="sunbading" width="140" height="140" />
+                        <img src="images/partner/yellow_couple.jpg" alt="yellow couple" width="140" height="140" />
+                    </div>
+                    <div class="clearfix"></div>
+                    <a class="prev" id="foo2_prev" href="#"><span>prev</span></a>
+                    <a class="next" id="foo2_next" href="#"><span>next</span></a>
+                    <div class="pagination" id="foo2_pag"></div>
+                </div>
+            </div>
+            <!----------------------------- END PARTNER----------------------------->
+
+        </div>
+    </section>
+    <!-- END NỘI DUNG TRANG CHỦ-->
+
+</div>

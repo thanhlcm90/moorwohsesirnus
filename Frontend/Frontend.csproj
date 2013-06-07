@@ -1,0 +1,490 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{4A0CAC92-60FD-47BA-B6AA-F7901E47DC61}</ProjectGuid>
+    <ProjectTypeGuids>{E53F8FEA-EAE0-44A6-8774-FFD645390401};{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Frontend</RootNamespace>
+    <AssemblyName>Frontend</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <MvcBuildViews>false</MvcBuildViews>
+    <UseIISExpress>true</UseIISExpress>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Data.Entity" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Abstractions" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Routing" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="EntityFramework">
+      <HintPath>..\packages\EntityFramework.5.0.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Helpers, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.1.0.20105.408\lib\net40\System.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.3.0.20105.1\lib\net40\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Providers">
+      <HintPath>..\packages\Microsoft.AspNet.Providers.Core.1.1\lib\net40\System.Web.Providers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Razor, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Razor.1.0.20105.408\lib\net40\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.1.0.20105.408\lib\net40\System.Web.WebPages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.1.0.20105.408\lib\net40\System.Web.WebPages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.1.0.20105.408\lib\net40\System.Web.WebPages.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml.Linq" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Controllers\ContactController.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\ProductController.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Contact.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Content\themes\base\images\ui-bg_flat_0_aaaaaa_40x100.png" />
+    <Content Include="Content\themes\base\images\ui-bg_flat_75_ffffff_40x100.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_55_fbf9ee_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_65_ffffff_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_75_dadada_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_75_e6e6e6_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_95_fef1ec_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_highlight-soft_75_cccccc_1x100.png" />
+    <Content Include="Content\themes\base\images\ui-icons_222222_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_2e83ff_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_454545_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_888888_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_cd0a0a_256x240.png" />
+    <Content Include="Content\themes\base\jquery-ui.css" />
+    <Content Include="Content\themes\base\jquery.ui.accordion.css" />
+    <Content Include="Content\themes\base\jquery.ui.all.css" />
+    <Content Include="Content\themes\base\jquery.ui.autocomplete.css" />
+    <Content Include="Content\themes\base\jquery.ui.base.css" />
+    <Content Include="Content\themes\base\jquery.ui.button.css" />
+    <Content Include="Content\themes\base\jquery.ui.core.css" />
+    <Content Include="Content\themes\base\jquery.ui.datepicker.css" />
+    <Content Include="Content\themes\base\jquery.ui.dialog.css" />
+    <Content Include="Content\themes\base\jquery.ui.progressbar.css" />
+    <Content Include="Content\themes\base\jquery.ui.resizable.css" />
+    <Content Include="Content\themes\base\jquery.ui.selectable.css" />
+    <Content Include="Content\themes\base\jquery.ui.slider.css" />
+    <Content Include="Content\themes\base\jquery.ui.tabs.css" />
+    <Content Include="Content\themes\base\jquery.ui.theme.css" />
+    <Content Include="Content\themes\base\minified\images\ui-bg_flat_0_aaaaaa_40x100.png" />
+    <Content Include="Content\themes\base\minified\images\ui-bg_flat_75_ffffff_40x100.png" />
+    <Content Include="Content\themes\base\minified\images\ui-bg_glass_55_fbf9ee_1x400.png" />
+    <Content Include="Content\themes\base\minified\images\ui-bg_glass_65_ffffff_1x400.png" />
+    <Content Include="Content\themes\base\minified\images\ui-bg_glass_75_dadada_1x400.png" />
+    <Content Include="Content\themes\base\minified\images\ui-bg_glass_75_e6e6e6_1x400.png" />
+    <Content Include="Content\themes\base\minified\images\ui-bg_glass_95_fef1ec_1x400.png" />
+    <Content Include="Content\themes\base\minified\images\ui-bg_highlight-soft_75_cccccc_1x100.png" />
+    <Content Include="Content\themes\base\minified\images\ui-icons_222222_256x240.png" />
+    <Content Include="Content\themes\base\minified\images\ui-icons_2e83ff_256x240.png" />
+    <Content Include="Content\themes\base\minified\images\ui-icons_454545_256x240.png" />
+    <Content Include="Content\themes\base\minified\images\ui-icons_888888_256x240.png" />
+    <Content Include="Content\themes\base\minified\images\ui-icons_cd0a0a_256x240.png" />
+    <Content Include="Content\themes\base\minified\jquery-ui.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.accordion.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.autocomplete.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.button.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.core.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.datepicker.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.dialog.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.progressbar.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.resizable.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.selectable.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.slider.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.tabs.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.theme.min.css" />
+    <Content Include="css\bootstrap.css" />
+    <Content Include="css\camera.css" />
+    <Content Include="css\flexslider.css" />
+    <Content Include="css\font-awesome.css" />
+    <Content Include="css\iview.css" />
+    <Content Include="css\layout.css" />
+    <Content Include="css\main.css" />
+    <Content Include="css\mediaqueries.css" />
+    <Content Include="css\mosaic.css" />
+    <Content Include="css\normalize.css" />
+    <Content Include="css\prettyPhoto.css" />
+    <Content Include="css\shortcodes.css" />
+    <Content Include="css\superfish.css" />
+    <Content Include="Global.asax" />
+    <Content Include="css\font\Descr.WD3" />
+    <Content Include="css\font\fontawesome-webfont.eot" />
+    <Content Include="css\font\fontawesome-webfont.eot%40" />
+    <Content Include="css\font\fontawesome-webfont.ttf" />
+    <Content Include="css\font\fontawesome-webfont.woff" />
+    <Content Include="images\camera\Descr.WD3" />
+    <Content Include="images\clients\Descr.WD3" />
+    <Content Include="images\Descr.WD3" />
+    <Content Include="images\dividers\Descr.WD3" />
+    <Content Include="images\icons\Descr.WD3" />
+    <Content Include="images\iview\Descr.WD3" />
+    <Content Include="images\mosaic\Descr.WD3" />
+    <Content Include="images\nivo-slider\bar\Descr.WD3" />
+    <Content Include="images\nivo-slider\dark\Descr.WD3" />
+    <Content Include="images\nivo-slider\default\Descr.WD3" />
+    <Content Include="images\nivo-slider\Descr.WD3" />
+    <Content Include="images\nivo-slider\light\Descr.WD3" />
+    <Content Include="images\portfolio\Descr.WD3" />
+    <Content Include="images\prettyPhoto\dark_rounded\Descr.WD3" />
+    <Content Include="images\prettyPhoto\dark_square\Descr.WD3" />
+    <Content Include="images\prettyPhoto\default\Descr.WD3" />
+    <Content Include="images\prettyPhoto\facebook\Descr.WD3" />
+    <Content Include="images\prettyPhoto\light_rounded\Descr.WD3" />
+    <Content Include="images\prettyPhoto\light_square\Descr.WD3" />
+    <Content Include="images\sliders\Descr.WD3" />
+    <None Include="Scripts\jquery-1.7.1.intellisense.js" />
+    <Content Include="images\about-us.jpg" />
+    <Content Include="images\arrow_right.png" />
+    <Content Include="images\body-bg.png" />
+    <Content Include="images\btn_glow.png" />
+    <Content Include="images\btn_glow_hover.png" />
+    <Content Include="images\camera\camera-loader.gif" />
+    <Content Include="images\camera\camera_skins.png" />
+    <Content Include="images\camera\overlay1.png" />
+    <Content Include="images\camera\overlay10.png" />
+    <Content Include="images\camera\overlay2.png" />
+    <Content Include="images\camera\overlay3.png" />
+    <Content Include="images\camera\overlay4.png" />
+    <Content Include="images\camera\overlay5.png" />
+    <Content Include="images\camera\overlay6.png" />
+    <Content Include="images\camera\overlay7.png" />
+    <Content Include="images\camera\overlay8.png" />
+    <Content Include="images\camera\overlay9.png" />
+    <Content Include="images\carousel_nav.png" />
+    <Content Include="images\clients\client_3d.png" />
+    <Content Include="images\clients\client_ad.png" />
+    <Content Include="images\clients\client_aj.png" />
+    <Content Include="images\clients\client_cd.png" />
+    <Content Include="images\clients\client_gr.png" />
+    <Content Include="images\clients\client_tf.png" />
+    <Content Include="images\daiwo.jpg" />
+    <Content Include="images\dividers\bar_seperator_1.png" />
+    <Content Include="images\dividers\bar_seperator_2.png" />
+    <Content Include="images\dividers\bar_seperator_3.png" />
+    <Content Include="images\dividers\bar_seperator_4.png" />
+    <Content Include="images\dividers\sep_small.png" />
+    <Content Include="images\hyundai.jpg" />
+    <Content Include="images\icons\apple-touch-icon-114x114.png" />
+    <Content Include="images\icons\apple-touch-icon-72x72.png" />
+    <Content Include="images\icons\apple-touch-icon.png" />
+    <Content Include="images\icons\arrow_icons.png" />
+    <Content Include="images\icons\favicon.ico" />
+    <Content Include="images\icons\hex_icon_blue.png" />
+    <Content Include="images\icons\hex_icon_green.png" />
+    <Content Include="images\icons\icon_brush.png" />
+    <Content Include="images\icons\icon_lab.png" />
+    <Content Include="images\icons\icon_monitor.png" />
+    <Content Include="images\icons\icon_pen.png" />
+    <Content Include="images\icons\icon_portfolio.png" />
+    <Content Include="images\icons\search-icon.png" />
+    <Content Include="images\icons\social_icons_blue.png" />
+    <Content Include="images\icons\social_icons_green.png" />
+    <Content Include="images\icons\twitter_icon.png" />
+    <Content Include="images\iview\bg_direction_nav.png" />
+    <Content Include="images\iview\caption-bg.png" />
+    <Content Include="images\kia.jpg" />
+    <Content Include="images\kiathainguyentruonghai.jpg" />
+    <Content Include="images\kiathainguyentruonghai2.jpg" />
+    <Content Include="images\leftnav\Acura44-24.png" />
+    <Content Include="images\leftnav\Audi44-24.png" />
+    <Content Include="images\leftnav\BentleyLogo44x24.jpg" />
+    <Content Include="images\leftnav\bmw-logo-44-24.jpg" />
+    <Content Include="images\leftnav\daewoo44-24.png" />
+    <Content Include="images\leftnav\Ferrari44-24.png" />
+    <Content Include="images\leftnav\hyundai-44x24.png" />
+    <Content Include="images\leftnav\jaguar-logo-44-24.PNG" />
+    <Content Include="images\leftnav\jeep44-24.png" />
+    <Content Include="images\leftnav\kia-44x24.png" />
+    <Content Include="images\leftnav\Land-Rover-logo-44-24.jpg" />
+    <Content Include="images\leftnav\lexus-44x24.png" />
+    <Content Include="images\leftnav\mercedes-44-24.png" />
+    <Content Include="images\leftnav\nissan-44x24.jpg" />
+    <Content Include="images\leftnav\Porsche44-24.png" />
+    <Content Include="images\leftnav\samsung44-24.png" />
+    <Content Include="images\leftnav\ssangyong44-24.png" />
+    <Content Include="images\leftnav\toyota-44x24.png" />
+    <Content Include="images\logo.png" />
+    <Content Include="images\mazda.png" />
+    <Content Include="images\miscellaneous_sprite.png" />
+    <Content Include="images\mosaic\bg-black.png" />
+    <Content Include="images\mosaic\hover-magnify.png" />
+    <Content Include="images\mosaic\progress.gif" />
+    <Content Include="images\nivo-slider\bar\bar.css" />
+    <Content Include="images\nivo-slider\bar\bullets.png" />
+    <Content Include="images\nivo-slider\bar\loading.gif" />
+    <Content Include="images\nivo-slider\dark\arrows.png" />
+    <Content Include="images\nivo-slider\dark\bullets.png" />
+    <Content Include="images\nivo-slider\dark\dark.css" />
+    <Content Include="images\nivo-slider\dark\loading.gif" />
+    <Content Include="images\nivo-slider\default\arrows.png" />
+    <Content Include="images\nivo-slider\default\bullets.png" />
+    <Content Include="images\nivo-slider\default\default.css" />
+    <Content Include="images\nivo-slider\default\loading.gif" />
+    <Content Include="images\nivo-slider\light\arrows.png" />
+    <Content Include="images\nivo-slider\light\bullets.png" />
+    <Content Include="images\nivo-slider\light\light.css" />
+    <Content Include="images\nivo-slider\light\loading.gif" />
+    <Content Include="images\nivo-slider\nivo-slider.css" />
+    <Content Include="images\partner\basketball.jpg" />
+    <Content Include="images\partner\beachtree.jpg" />
+    <Content Include="images\partner\cupcackes.jpg" />
+    <Content Include="images\partner\hangmat.jpg" />
+    <Content Include="images\partner\laundry.jpg" />
+    <Content Include="images\partner\miscellaneous_sprite.png" />
+    <Content Include="images\partner\mom_son.jpg" />
+    <Content Include="images\partner\new_york.jpg" />
+    <Content Include="images\partner\paris.jpg" />
+    <Content Include="images\partner\picknick.jpg" />
+    <Content Include="images\partner\shoes.jpg" />
+    <Content Include="images\partner\sunbading.jpg" />
+    <Content Include="images\partner\yellow_couple.jpg" />
+    <Content Include="images\portfolio\daiwo.jpg" />
+    <Content Include="images\portfolio\hyundai.jpg" />
+    <Content Include="images\portfolio\image_1.jpg" />
+    <Content Include="images\portfolio\image_10.jpg" />
+    <Content Include="images\portfolio\image_11.jpg" />
+    <Content Include="images\portfolio\image_12.jpg" />
+    <Content Include="images\portfolio\image_13.jpg" />
+    <Content Include="images\portfolio\image_14.jpg" />
+    <Content Include="images\portfolio\image_15.jpg" />
+    <Content Include="images\portfolio\image_16.jpg" />
+    <Content Include="images\portfolio\image_2.jpg" />
+    <Content Include="images\portfolio\image_3.jpg" />
+    <Content Include="images\portfolio\image_4.jpg" />
+    <Content Include="images\portfolio\image_5.jpg" />
+    <Content Include="images\portfolio\image_6.jpg" />
+    <Content Include="images\portfolio\image_7.jpg" />
+    <Content Include="images\portfolio\image_8.jpg" />
+    <Content Include="images\portfolio\image_9.jpg" />
+    <Content Include="images\portfolio\kia.jpg" />
+    <Content Include="images\portfolio\mazda.png" />
+    <Content Include="images\prettyPhoto\dark_rounded\btnNext.png" />
+    <Content Include="images\prettyPhoto\dark_rounded\btnPrevious.png" />
+    <Content Include="images\prettyPhoto\dark_rounded\contentPattern.png" />
+    <Content Include="images\prettyPhoto\dark_rounded\loader.gif" />
+    <Content Include="images\prettyPhoto\dark_rounded\sprite.png" />
+    <Content Include="images\prettyPhoto\dark_square\btnNext.png" />
+    <Content Include="images\prettyPhoto\dark_square\btnPrevious.png" />
+    <Content Include="images\prettyPhoto\dark_square\loader.gif" />
+    <Content Include="images\prettyPhoto\dark_square\sprite.png" />
+    <Content Include="images\prettyPhoto\default\default_thumb.png" />
+    <Content Include="images\prettyPhoto\default\loader.gif" />
+    <Content Include="images\prettyPhoto\default\sprite.png" />
+    <Content Include="images\prettyPhoto\default\sprite_next.png" />
+    <Content Include="images\prettyPhoto\default\sprite_prev.png" />
+    <Content Include="images\prettyPhoto\default\sprite_x.png" />
+    <Content Include="images\prettyPhoto\default\sprite_y.png" />
+    <Content Include="images\prettyPhoto\facebook\btnNext.png" />
+    <Content Include="images\prettyPhoto\facebook\btnPrevious.png" />
+    <Content Include="images\prettyPhoto\facebook\contentPatternBottom.png" />
+    <Content Include="images\prettyPhoto\facebook\contentPatternLeft.png" />
+    <Content Include="images\prettyPhoto\facebook\contentPatternRight.png" />
+    <Content Include="images\prettyPhoto\facebook\contentPatternTop.png" />
+    <Content Include="images\prettyPhoto\facebook\default_thumbnail.gif" />
+    <Content Include="images\prettyPhoto\facebook\loader.gif" />
+    <Content Include="images\prettyPhoto\facebook\sprite.png" />
+    <Content Include="images\prettyPhoto\light_rounded\btnNext.png" />
+    <Content Include="images\prettyPhoto\light_rounded\btnPrevious.png" />
+    <Content Include="images\prettyPhoto\light_rounded\loader.gif" />
+    <Content Include="images\prettyPhoto\light_rounded\sprite.png" />
+    <Content Include="images\prettyPhoto\light_square\btnNext.png" />
+    <Content Include="images\prettyPhoto\light_square\btnPrevious.png" />
+    <Content Include="images\prettyPhoto\light_square\sprite.png" />
+    <Content Include="images\recent-post.png" />
+    <Content Include="images\reply_bg.png" />
+    <Content Include="images\shadow_bg.png" />
+    <Content Include="images\side-bg.png" />
+    <Content Include="images\sliders\123.jpg" />
+    <Content Include="images\sliders\flexslider_arrow.png" />
+    <Content Include="images\sliders\hyundai.jpg" />
+    <Content Include="images\sliders\kia.jpg" />
+    <Content Include="images\sliders\mazda.png" />
+    <Content Include="images\sliders\slider_dots.png" />
+    <Content Include="images\sliders\slider_img.png" />
+    <Content Include="images\sliders\slider_img2.png" />
+    <Content Include="images\sliders\slider_img3.png" />
+    <Content Include="images\sliders\slider_img4.png" />
+    <Content Include="images\sliders\slider_img5.png" />
+    <Content Include="images\sliders\testimonials_dots.png" />
+    <Content Include="images\team.png" />
+    <Content Include="images\testimonials_img2.png" />
+    <Content Include="images\tipsy.gif" />
+    <Content Include="images\why_chooseus.png" />
+    <Content Include="img\bg-body.png" />
+    <Content Include="img\False.png" />
+    <Content Include="img\glyphicons-halflings-white.html" />
+    <Content Include="img\True.png" />
+    <Content Include="Scripts\jquery-1.7.1.js" />
+    <Content Include="Scripts\jquery-1.7.1.min.js" />
+    <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery-ui-1.8.20.js" />
+    <Content Include="Scripts\jquery-ui-1.8.20.min.js" />
+    <Content Include="Scripts\jquery.validate.js" />
+    <Content Include="Scripts\jquery.validate.min.js" />
+    <Content Include="Scripts\js\camera.min.js" />
+    <Content Include="Scripts\js\contact_validation.js" />
+    <Content Include="Scripts\js\isotope.js" />
+    <Content Include="Scripts\js\iview.js" />
+    <Content Include="Scripts\js\jcarousel.js" />
+    <Content Include="Scripts\js\jquery.carouFredSel-6.2.1-packed.js" />
+    <Content Include="Scripts\js\jquery.carouFredSel.js" />
+    <Content Include="Scripts\js\jquery.easing.1.3.js" />
+    <Content Include="Scripts\js\jquery.flexslider.js" />
+    <Content Include="Scripts\js\jquery.iosslider.min.js" />
+    <Content Include="Scripts\js\jquery.min.js" />
+    <Content Include="Scripts\js\jquery.mobile.customized.min.js" />
+    <Content Include="Scripts\js\jquery.nivo.slider.js" />
+    <Content Include="Scripts\js\jquery.prettyPhoto.js" />
+    <Content Include="Scripts\js\jquery.quicksand.js" />
+    <Content Include="Scripts\js\jquery.tipsy.js" />
+    <Content Include="Scripts\js\jquery.tweet.js" />
+    <Content Include="Scripts\js\jquery.validate.js" />
+    <Content Include="Scripts\js\modernizr.js" />
+    <Content Include="Scripts\js\mosaic-min.js" />
+    <Content Include="Scripts\js\script.js" />
+    <Content Include="Scripts\js\superfish.js" />
+    <Content Include="Scripts\modernizr-2.5.3.js" />
+    <Content Include="Web.config" />
+    <Content Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Content\Site.css" />
+    <Content Include="Scripts\jquery.unobtrusive-ajax.js" />
+    <Content Include="Scripts\jquery.unobtrusive-ajax.min.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\MicrosoftAjax.js" />
+    <Content Include="Scripts\MicrosoftAjax.debug.js" />
+    <Content Include="Scripts\MicrosoftMvcAjax.js" />
+    <Content Include="Scripts\MicrosoftMvcAjax.debug.js" />
+    <Content Include="Scripts\MicrosoftMvcValidation.js" />
+    <Content Include="Scripts\MicrosoftMvcValidation.debug.js" />
+    <Content Include="Views\_ViewStart.cshtml" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\Web.config" />
+    <Content Include="Scripts\js\Descr.WD3" />
+    <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Shared\_Header.cshtml" />
+    <Content Include="Views\Shared\_Footer.cshtml" />
+    <Content Include="Views\Shared\_MenuTop.cshtml" />
+    <Content Include="Views\Shared\_Slide.cshtml" />
+    <Content Include="Views\Product\Details.cshtml" />
+    <Content Include="Views\Contact\Send.cshtml" />
+    <Content Include="Views\Home\Search.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\DataAccess\DataAccess.csproj">
+      <Project>{fbdd8852-7ad9-4e58-bef6-40d44b5b3db9}</Project>
+      <Name>DataAccess</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <Target Name="MvcBuildViews" AfterTargets="AfterBuild" Condition="'$(MvcBuildViews)'=='true'">
+    <AspNetCompiler VirtualPath="temp" PhysicalPath="$(WebProjectOutputDir)" />
+  </Target>
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>0</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:59812/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target> -->
+</Project>
