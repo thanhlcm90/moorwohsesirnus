@@ -1,0 +1,54 @@
+﻿@model List<Showroom.Models.Contact>
+
+@{
+    ViewBag.Title = "Danh sách liên hệ của khách hàng";
+}
+
+<!-- dataTables -->
+<script src="@Url.Content("~/Scripts/plugins/datatable/jquery.dataTables.min.js")"></script>
+<script src="@Url.Content("~/Scripts/plugins/datatable/TableTools.min.js")"></script>
+<script src="@Url.Content("~/Scripts/plugins/datatable/ColReorder.min.js")"></script>
+<script src="@Url.Content("~/Scripts/plugins/datatable/ColVis.min.js")"></script>
+<!-- Chosen -->
+<script src="@Url.Content("~/Scripts/plugins/chosen/chosen.jquery.min.js")"></script>
+<!--Style-->
+<!-- dataTables -->
+<link rel="stylesheet" href="@Url.Content("~/Content/css/plugins/datatable/TableTools.css")">
+<!-- chosen -->
+<link rel="stylesheet" href="@Url.Content("~/Content/css/plugins/chosen/chosen.css")">
+<!-- End Style-->
+<div class="box box-bordered">
+    <div class="box-content nopadding">
+        <table class="table table-nomargin dataTable table-bordered">
+            <thead>
+                <tr>
+                    <th>@Html.DisplayNameFor(Model,p => p.Email)</th>
+                    <th>@Html.DisplayNameFor(Model,p => p.Mobile)</th>
+                    <th>@Html.DisplayNameFor(Model,p => p.PostDate)</th>
+                    <th>@Html.DisplayNameFor(Model,p => p.Actflg)</th>
+                    <th>Công cụ</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                <tr>
+                    <td>@item.Email</td>
+                    <td>@item.Mobile</td> 
+                    <td>@item.PostDate</td>
+                    <td>@((item.Actflg =='A')? "Đã xem": "Chưa xem")</td>
+                    <td>@Html.ActionLink("Xem","View", new {Id=item.Id} )  - <a href="javascript:void(0);" onclick="Delete(@item.Id)" >Xóa</a></td>
+                </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+<script type="text/javascript">
+    function Delete(id) {
+        if (confirm('Bạn có chắc chắn muốn xóa bản ghi này ?')) {
+            window.location = '/Contact/Delete?id=' + id;
+        }
+    };
+
+</script>

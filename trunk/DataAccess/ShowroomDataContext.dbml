@@ -1,0 +1,106 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="DataSource" Class="ShowroomDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="AppSettings" ConnectionString="Data Source=diencokhi.vn;Persist Security Info=True;User ID=sunrise_admin" SettingsObjectName="Showroom.Models.Properties.Settings" SettingsPropertyName="DataSourceConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="sunrise_admin.Catalogue" Member="Catalogues">
+    <Type Name="Catalogue">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="NameEn" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Image" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="Priority" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Actflg" Type="System.Char" DbType="NChar(1) NOT NULL" CanBeNull="false" />
+      <Association Name="Catalogue_Product" Member="Products" ThisKey="Id" OtherKey="CatelogueId" Type="Product" />
+    </Type>
+  </Table>
+  <Table Name="sunrise_admin.PropertySubCatalogue" Member="PropertySubCatalogues">
+    <Type Name="PropertySubCatalogue">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="NameEn" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Actflg" Type="System.Char" DbType="NChar(1) NOT NULL" CanBeNull="false" />
+      <Association Name="PropertySubCatalogue_Property" Member="Properties" ThisKey="Id" OtherKey="SubCatelogueId" Type="Property" />
+    </Type>
+  </Table>
+  <Table Name="sunrise_admin.Contact" Member="Contacts">
+    <Type Name="Contact">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Email" Type="System.String" DbType="NVarChar(255) NOT NULL" CanBeNull="false" />
+      <Column Name="Mobile" Type="System.String" DbType="NChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Detail" Type="System.String" DbType="NVarChar(MAX) NOT NULL" CanBeNull="false" />
+      <Column Name="PostDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="Actflg" Type="System.Char" DbType="NChar(1) NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="sunrise_admin.News" Member="News">
+    <Type Name="New">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Title" Type="System.String" DbType="NVarChar(255) NOT NULL" CanBeNull="false" />
+      <Column Name="TitleEn" Type="System.String" DbType="NVarChar(255) NOT NULL" CanBeNull="false" />
+      <Column Name="Image" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="Detail" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="Views" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="PostDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="Actflg" Type="System.Char" DbType="NChar(1) NOT NULL" CanBeNull="false" />
+      <Column Name="ShowSlide" Type="System.Char" DbType="NChar(1) NOT NULL" CanBeNull="false" />
+      <Column Name="CatelogueId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="NewsCatalogue_New" Member="NewsCatalogue" Storage="_NewsCatelogue" ThisKey="CatelogueId" OtherKey="Id" Type="NewsCatalogue" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="sunrise_admin.NewsCatalogue" Member="NewsCatalogues">
+    <Type Name="NewsCatalogue">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="NameEn" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Atcflg" Type="System.String" DbType="NChar(10) NOT NULL" CanBeNull="false" />
+      <Column Name="Image" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Association Name="NewsCatalogue_New" Member="News" ThisKey="Id" OtherKey="CatelogueId" Type="New" />
+    </Type>
+  </Table>
+  <Table Name="sunrise_admin.Product" Member="Products">
+    <Type Name="Product">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Code" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(255) NOT NULL" CanBeNull="false" />
+      <Column Name="NameEn" Type="System.String" DbType="NVarChar(255) NOT NULL" CanBeNull="false" />
+      <Column Name="CatelogueId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Description" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="Price" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Amount" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Actflg" Type="System.Char" DbType="NChar(1) NOT NULL" CanBeNull="false" />
+      <Association Name="Product_ProductProperty" Member="ProductProperties" ThisKey="Id" OtherKey="ProductId" Type="ProductProperty" />
+      <Association Name="Catalogue_Product" Member="Catalogue" Storage="_Catelogue" ThisKey="CatelogueId" OtherKey="Id" Type="Catalogue" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="sunrise_admin.ProductProperty" Member="ProductProperties">
+    <Type Name="ProductProperty">
+      <Column Name="ProductId" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="PropertyId" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Value" Type="System.String" DbType="NVarChar(MAX) NOT NULL" CanBeNull="false" />
+      <Association Name="Product_ProductProperty" Member="Product" ThisKey="ProductId" OtherKey="Id" Type="Product" IsForeignKey="true" />
+      <Association Name="Property_ProductProperty" Member="Property" ThisKey="PropertyId" OtherKey="Id" Type="Property" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="sunrise_admin.Property" Member="Properties">
+    <Type Name="Property">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(255) NOT NULL" CanBeNull="false" />
+      <Column Name="NameEn" Type="System.String" DbType="NVarChar(255) NOT NULL" CanBeNull="false" />
+      <Column Name="CatelogueId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="SubCatelogueId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ShowMain" Type="System.Char" DbType="NChar(1) NOT NULL" CanBeNull="false" />
+      <Column Name="PropertyType" Type="System.String" DbType="NChar(10) NOT NULL" CanBeNull="false" />
+      <Column Name="Actflg" Type="System.Char" DbType="NChar(1) NOT NULL" CanBeNull="false" />
+      <Association Name="Property_ProductProperty" Member="ProductProperties" ThisKey="Id" OtherKey="PropertyId" Type="ProductProperty" />
+      <Association Name="PropertySubCatalogue_Property" Member="PropertySubCatalogue" Storage="_PropertySubCatelogue" ThisKey="SubCatelogueId" OtherKey="Id" Type="PropertySubCatalogue" IsForeignKey="true" />
+      <Association Name="PropertyCatalogue_Property" Member="PropertyCatalogue" Storage="_PropertyCatelogue" ThisKey="CatelogueId" OtherKey="Id" Type="PropertyCatalogue" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="sunrise_admin.PropertyCatalogue" Member="PropertyCatalogues">
+    <Type Name="PropertyCatalogue">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="NameEn" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Actflg" Type="System.Char" DbType="NChar(1) NOT NULL" CanBeNull="false" />
+      <Association Name="PropertyCatalogue_Property" Member="Properties" ThisKey="Id" OtherKey="CatelogueId" Type="Property" />
+    </Type>
+  </Table>
+</Database>

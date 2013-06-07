@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<!--[if lt IE 7 ]><html class="ie ie6" lang="en"> <![endif]-->
+<!--[if IE 7 ]><html class="ie ie7" lang="en"> <![endif]-->
+<!--[if IE 8 ]><html class="ie ie8" lang="en"> <![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!-->
+<html lang="en">
+<!--<![endif]-->
+<head>
+    <!-- Basic Page Needs
+  ================================================== -->
+    <meta charset="utf-8">
+    <title>Infinitus Responsive Theme</title>
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <!-- Mobile Specific Metas
+  ================================================== -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <!-- CSS
+  ================================================== -->
+    <link rel="stylesheet" href="css/main.css">
+    <link href='http://fonts.googleapis.com/css?family=Dosis:400,600,700,500,300' rel='stylesheet'
+        type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:400,400italic,600,600italic,700'
+        rel='stylesheet' type='text/css'>
+    <!--[if lt IE 9]>
+		<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+	<![endif]-->
+    <!-- Favicons
+	================================================== -->
+    <link rel="shortcut icon" href="images/icons/favicon.ico">
+    <link rel="apple-touch-icon" href="images/icons/apple-touch-icon.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="images/icons/apple-touch-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="images/icons/apple-touch-icon-114x114.png">
+
+    <style type="text/css">
+        .clMargin {
+            margin-left: 0px;
+        }
+
+        .boderB {
+            background: url(images/body-bg.png) repeat;
+            border-left: 1px solid #fff;
+            border-right: 1px solid #fff;
+            box-shadow: 0 0 5px #DFDFDF;
+            width: 970px;
+            padding-top:7px;
+            margin: 0 auto;
+        }
+
+        .warp-content{padding-top:10px; padding-bottom:10px;}
+    </style>
+
+</head>
+<body>
+    <!-- Primary Page Layout
+================================================== -->
+    <!--Header Start-->
+    <header>
+        <div class="boderB">
+            <div class="container">
+                <div class="row">
+                    <div class="span3 logo">
+                        <div class="shadow-wrapper">
+                            <a href="#">
+                                <img src="images/logo.png" alt="Infinitus"></a>
+                        </div>
+                    </div>
+                    <div class="span9">
+                        <div class="row show-grid">
+                            <div class="span6">
+                                <div class="top-contact">
+                                    <a href="#"><i class="icon-envelope-alt"></i>contact@sunriseauto.com</a> <i class="icon-phone"></i>+ 04 836 2335
+                           
+                                </div>
+                            </div>
+                            <div class="span3">
+                                <div class="row show-grid">
+                                    <div class="search-box">
+                                        <input class="search-text span3" type="text" name="s" value="Search this site" onfocus="if (this.value == this.defaultValue) this.value = '';" onblur="if (this.value == '') this.value = this.defaultValue;">
+                                        <input class="search-submit" type="submit" name="submit" value="">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="span9">
+                        <nav>
+                            <ul class="sf-menu">
+                                <li class="current"><a href="index.html"><i class="icon-home"></i>Trang chủ</a>
+                                </li>
+                                <li><a href="#"><i class="icon-bolt"></i>Siêu thị xe</a>
+                                    <ul>
+                                        <li class="arrow-top"><i class="icon-caret-down"></i></li>
+                                        <li><a href="#">Kia </a></li>
+                                        <li><a href="#">Hyundai </a></li>
+                                        <li><a href="#">Nissan</a></li>
+                                        <li><a href="#">Mazda</a></li>
+                                        <li><a href="#">Toyota </a></li>
+                                    </ul>
+                                </li>
+                                <li><a href="about.html"><i class="icon-user"></i>Tin tức</a></li>
+                                <li><a href="services.html"><i class="icon-user"></i>Dịch vụ</a></li>
+                                <li><a href="contact.html"><i class="icon-envelope-alt"></i>Liên hệ</a></li>
+                            </ul>
+                            <div class="clearfix"></div>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    <!--Header End-->
+    <!--Bodycontent Start-->
+    <div id="body-content clPadingBody">
+        <div class="boderB">
+            <div class="container warp-content">
+                <div class="row">
+  
+                    <div class="span9 fleft">
+                        <div class="contact-map">
+                            <div class="shadow-wrapper large">
+                                <!--<iframe scrolling="no" height="310" frameborder="0" src="http://maps.google.com/maps?f=q&amp;source=s_q&amp;hl=en&amp;geocode=&amp;q=Manhattan,+New+York,+NY&amp;sll=37.0625,-95.677068&amp;sspn=71.810722,137.724609&amp;ie=UTF8&amp;hq=&amp;hnear=Manhattan,+New+York&amp;ll=40.783401,-73.966141&amp;spn=0.06421,0.102654&amp;z=12&amp;iwloc=A&amp;"></iframe>-->
+                                <script src="http://maps.googleapis.com/maps/api/js?sensor=false"></script>
+                                <script>
+                                    function initialize() {
+                                        var mapProp = {
+                                            center: new google.maps.LatLng(21.026828137124262, 105.77836275100708),
+                                            zoom: 15,
+                                            mapTypeId: google.maps.MapTypeId.ROADMAP
+                                        };
+                                        var map = new google.maps.Map(document.getElementById("googleMap"), mapProp);
+                                    }
+
+                                    google.maps.event.addDomListener(window, 'load', initialize);
+                            </script>
+                                <div id="googleMap">
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- FORM LIỆN HỆ-->
+                        <div class="span9 clMargin">
+                            <div class="contact-map">
+                                <h2>Gửi thông tin liên hệ</h2>
+                                <div class="divider1">
+                                    &nbsp;
+                                </div>
+                                <form action="#" method="post" id="contact_form">
+                                    <div class="show-grid row">
+                                        <div class="span4">
+                                            <input type="text" class="span4" id="name" name="name" placeholder="First Name...">
+                                        </div>
+                                        <div class="span5">
+                                            <input type="text" class="span5" id="lastname" name="lastname" placeholder="Last Name...">
+                                        </div>
+                                        <div class="span4">
+                                            <input type="text" class="span4" id="email" placeholder="Email..." name="email">
+                                        </div>
+                                        <div class="span5">
+                                            <input type="text" class="span5" id="phone" placeholder="Phone Number..." name="phone">
+                                        </div>
+                                        <div class="span9">
+                                            <textarea class="span9" id="comment" placeholder="Your comments..." name="comment"></textarea>
+                                        </div>
+                                        <div class="span12">
+                                            <input type="submit" value=" Gửi " class="btn">
+                                        </div>
+                                        <div class="clearfix">
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                        <!--KÊT THÚC FORM LIÊN HỆ-->
+
+                    </div>
+
+                    <div class="span3">
+                        <iframe width="100%" height="200" src="http://www.youtube.com/embed/raGVvGDNqaY" frameborder="0" allowfullscreen></iframe>
+                    </div>
+
+                    <!-- FORM THÔNG TIN CỦA CỬA HÀNG-->
+                    <div class="span3">
+                        <h2>Thông tin liên hệ</h2>
+                        <div class="divider1">
+                            &nbsp;
+                        </div>
+                        <p class="foot-address">
+                            <strong>Show room Sunrise</strong><br />
+                            Số 38 - Phạm Hùng - Từ Liêm
+                        <br />
+                            Hà Nội
+                        <br />
+                        </p>
+                        <div class="contact-icon">
+                            <i class="icon-envelope-alt"></i><strong>Email: </strong>
+                            <p>
+                                <a href="#">contact@sunriseauto.com</a>
+                            </p>
+                        </div>
+                        <div class="contact-icon">
+                            <i class="icon-phone"></i><strong>Phone: A Tùng </strong>
+                            <p>
+                                +84 0983.748.168
+                            </p>
+                        </div>
+                        <div class="contact-icon">
+                            <i class="icon-twitter"></i><strong>Follow Us on Twitter: </strong>
+                            <p>
+                                <a href="https://twitter.com/mannatstudio">sunriseauto</a>
+                            </p>
+                        </div>
+                        <div class="contact-icon">
+                            <i class="icon-facebook"></i><strong>Like Us on Facebook: </strong>
+                            <p>
+                                <a href="#">sunriseauto</a>
+                            </p>
+                        </div>
+                    </div>
+                    <!-- KÊT THỨC THÔNG TIN CỬA HÀNG-->
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <!--Bodycontent End-->
+    <!--Footer Start-->
+    <footer>
+        <div class="copyright">
+            <div class="container">
+                <div class="row">
+                    <div class="span6">
+                        Copyright © 2013 SunRise Auto. All rights reserved. 
+                   
+                    </div>
+                    <div class="span6" style="text-align: right;">
+                        Design By <a target="_blank" href="http://xomtrosv.com">Phu Hai Gia</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!--Footer End-->
+    <p id="back-top">
+        <a href="#top"><i class="icon-arrow-up"></i></a>
+    </p>
+    <!-- container -->
+    <!-- End Document
+================================================== -->
+    <!--Javascript Library Start-->
+    <script type='text/javascript' src='js/jquery.min.js'></script>
+    <script type='text/javascript' src='js/jquery.easing.1.3.js'></script>
+    <script type="text/javascript" src="js/superfish.js"></script>
+    <script type="text/javascript" src="js/jquery.tweet.js"></script>
+    <script type="text/javascript" src="js/jquery.tipsy.js"></script>
+    <script type="text/javascript" src="js/jquery.prettyPhoto.js"></script>
+    <script type="text/javascript" src="js/mosaic-min.js"></script>
+    <script type="text/javascript" src="js/jquery.flexslider.js"></script>
+    <script type="text/javascript" src="js/modernizr.js"></script>
+    <script type='text/javascript' src="js/iview.js"></script>
+    <script type='text/javascript' src='js/jquery.mobile.customized.min.js'></script>
+    <script type='text/javascript' src='js/camera.min.js'></script>
+    <script type="text/javascript" src="js/jquery.nivo.slider.js"></script>
+    <script type="text/javascript" src="js/jquery.iosslider.min.js"></script>
+    <script type="text/javascript" src="js/jcarousel.js"></script>
+    <script type="text/javascript" src="js/jquery.carouFredSel.js"></script>
+    <script type="text/javascript" src="js/jquery.validate.js"></script>
+    <script type="text/javascript" src="js/contact_validation.js"></script>
+    <script type="text/javascript" src="js/script.js"></script>
+</body>
+</html>

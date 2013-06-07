@@ -1,0 +1,102 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <!-- Apple devices fullscreen -->
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <!-- Apple devices fullscreen -->
+    <meta names="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="@Url.Content("~/Content/css/bootstrap.min.css")">
+    <!-- Bootstrap responsive -->
+    <link rel="stylesheet" href="@Url.Content("~/Content/css/bootstrap-responsive.min.css")">
+    <!-- jQuery UI -->
+    <link rel="stylesheet" href="@Url.Content("~/Content/css/plugins/jquery-ui/smoothness/jquery-ui.css")">
+    <link rel="stylesheet" href="@Url.Content("~/Content/css/plugins/jquery-ui/smoothness/jquery.ui.theme.css")">
+    <!-- Theme CSS -->
+    <link rel="stylesheet" href="@Url.Content("~/Content/css/style.css")">
+    <!-- Color CSS -->
+    <link rel="stylesheet" href="@Url.Content("~/Content/css/themes.css")">
+
+    <!-- jQuery -->
+    <script src="@Url.Content("~/Scripts/jquery-1.9.1.min.js")"></script>
+    <!-- jQuery UI -->
+    <script src="@Url.Content("~/Scripts/plugins/jquery-ui/jquery.ui.core.min.js")"></script>
+    <script src="@Url.Content("~/Scripts/plugins/jquery-ui/jquery.ui.widget.min.js")"></script>
+    <script src="@Url.Content("~/Scripts/plugins/jquery-ui/jquery.ui.mouse.min.js")"></script>
+    <script src="@Url.Content("~/Scripts/plugins/jquery-ui/jquery.ui.draggable.min.js")"></script>
+    <script src="@Url.Content("~/Scripts/plugins/jquery-ui/jquery.ui.resizable.min.js")"></script>
+    <!-- Touch enable for jquery UI -->
+    <script src="@Url.Content("~/Scripts/plugins/touch-punch/jquery.touch-punch.min.js")"></script>
+    <!-- slimScroll -->
+    <script src="@Url.Content("~/Scripts/plugins/slimscroll/jquery.slimscroll.min.js")"></script>
+    <!-- Bootstrap -->
+    <script src="@Url.Content("~/Scripts/bootstrap.min.js")"></script>
+    <!-- Bootbox -->
+    <script src="@Url.Content("~/Scripts/plugins/bootbox/jquery.bootbox.js")"></script>
+
+    <!-- Theme framework -->
+    <script src="@Url.Content("~/Scripts/eakroko.min.js")"></script>
+    <!-- Theme scripts -->
+    <script src="@Url.Content("~/Scripts/application.min.js")"></script>
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="@Url.Content("~/Content/img/favicon.ico")" />
+    <!-- Apple devices Homescreen icon -->
+    <link rel="apple-touch-icon-precomposed" href="@Url.Content("~/Content/img/apple-touch-icon-precomposed.png")" />
+
+    <title>@ViewBag.Title</title>
+</head>
+<body>
+    @Html.Partial("_TopMenuPartial")
+    <div class="container-fluid" id="content">
+        @Html.Partial("_NavigationPartial")
+        <div id="main">
+            <div class="container-fluid">
+                <div class="page-header">
+                    <div class="pull-left">
+                        <h1>@ViewBag.Title</h1>
+                    </div>
+                    <div class="pull-right">
+                        <ul class="stats">
+                            <li class='blue'>
+                                <i class="icon-shopping-cart"></i>
+                                <div class="details">
+                                    <span class="big">175</span>
+                                    <span>Số lượng xe</span>
+                                </div>
+                            </li>
+                            <li class='green'>
+                                <i class="icon-comments-alt"></i>
+                                <div class="details">
+                                    <span class="big">10</span>
+                                    <span>Số lượng liên hệ</span>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="row-fluid">
+                    <div class="span12">
+                        @RenderBody()
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript">
+
+        var _gaq = _gaq || [];
+        _gaq.push(['_setAccount', 'UA-38620714-4']);
+        _gaq.push(['_trackPageview']);
+
+        (function () {
+            var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+            var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+        })();
+
+</script>
+</body>
+</html>

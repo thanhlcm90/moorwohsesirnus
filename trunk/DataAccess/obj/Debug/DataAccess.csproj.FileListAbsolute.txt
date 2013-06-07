@@ -1,0 +1,6 @@
+E:\Visual Basic .NET\SunriseShowroom\DataAccess\bin\Debug\DataAccess.dll
+E:\Visual Basic .NET\SunriseShowroom\DataAccess\bin\Debug\DataAccess.pdb
+E:\Visual Basic .NET\SunriseShowroom\DataAccess\obj\Debug\DataAccess.dll
+E:\Visual Basic .NET\SunriseShowroom\DataAccess\obj\Debug\DataAccess.pdb
+E:\Visual Basic .NET\SunriseShowroom\DataAccess\bin\Debug\DataAccess.dll.config
+E:\Visual Basic .NET\SunriseShowroom\DataAccess\obj\Debug\DataAccess.csprojResolveAssemblyReference.cache

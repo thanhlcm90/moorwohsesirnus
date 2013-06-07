@@ -1,0 +1,537 @@
+<!DOCTYPE html>
+<!--[if lt IE 7 ]><html class="ie ie6" lang="en"> <![endif]-->
+<!--[if IE 7 ]><html class="ie ie7" lang="en"> <![endif]-->
+<!--[if IE 8 ]><html class="ie ie8" lang="en"> <![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!-->
+<html lang="en">
+<!--<![endif]-->
+<head>
+    <!-- Basic Page Needs
+  ================================================== -->
+    <meta charset="utf-8">
+    <title>Infinitus Responsive Theme</title>
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <!-- Mobile Specific Metas
+  ================================================== -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <!-- CSS
+  ================================================== -->
+    <link rel="stylesheet" href="css/main.css">
+    <link href='http://fonts.googleapis.com/css?family=Dosis:400,600,700,500,300' rel='stylesheet'
+        type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:400,400italic,600,600italic,700'
+        rel='stylesheet' type='text/css'>
+    <!--[if lt IE 9]>
+		<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+	<![endif]-->
+    <!-- Favicons
+	================================================== -->
+    <link rel="shortcut icon" href="images/icons/favicon.ico">
+    <link rel="apple-touch-icon" href="images/icons/apple-touch-icon.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="images/icons/apple-touch-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="images/icons/apple-touch-icon-114x114.png">
+
+    <style type="text/css">
+        .image_carousel {
+            padding: 0px 0 15px 40px;
+            position: relative;
+        }
+
+        .image_carousel {
+            padding: 15px 40px;
+            position: relative;
+            width: 870px;
+        }
+
+            .image_carousel img {
+                border: 1px solid #ccc;
+                background-color: white;
+                padding: 9px;
+                margin: 7px;
+                display: block;
+                float: left;
+            }
+
+        a.prev, a.next {
+            background: url(images/miscellaneous_sprite.png) no-repeat transparent;
+            width: 45px;
+            height: 50px;
+            display: block;
+            position: absolute;
+            top: 45px;
+        }
+
+        a.prev {
+            left: -5px;
+            background-position: 0 0;
+        }
+
+            a.prev:hover {
+                background-position: 0 -50px;
+            }
+
+            a.prev.disabled {
+                background-position: 0 -100px !important;
+            }
+
+        a.next {
+            right: -5px;
+            background-position: -50px 0;
+        }
+
+            a.next:hover {
+                background-position: -50px -50px;
+            }
+
+            a.next.disabled {
+                background-position: -50px -100px !important;
+            }
+
+            a.prev.disabled, a.next.disabled {
+                cursor: default;
+            }
+
+            a.prev span, a.next span {
+                display: none;
+            }
+
+        .pagination {
+            text-align: center;
+        }
+
+            .pagination a {
+                background: url(images/miscellaneous_sprite.png) 0 -300px no-repeat transparent;
+                width: 15px;
+                height: 15px;
+                margin: 0 5px 0 0;
+                display: inline-block;
+                padding: 0px;
+            }
+
+                .pagination a:hover {
+                    background-position: -25px -300px;
+                }
+
+                .pagination a.selected {
+                    background-position: -25px -300px;
+                    cursor: default;
+                }
+
+                .pagination a span {
+                    display: none;
+                }
+
+        .clearfix {
+            float: none;
+            clear: both;
+        }
+
+        #foo2 img {
+            height: 80px;
+        }
+
+        .slideTop {margin-bottom:20px; margin-top:-10px;}
+            
+        .boderB {
+            background:url(images/body-bg.png) repeat;
+            border-left: 1px solid #fff;
+            border-right: 1px solid #fff;
+            box-shadow: 0 0 5px #DFDFDF;
+            width:970px;
+            padding-top:7px;
+            margin:0 auto;
+        }
+
+        .clPadingBody{padding:0px;}
+    </style>
+</head>
+<body>
+    <!-- Primary Page Layout
+================================================== -->
+    <!--Header Start-->
+    <header>
+        <div class="boderB">
+            <div class="container">
+            <div class="row">
+                <div class="span3 logo">
+                    <div class="shadow-wrapper">
+                        <a href="#">
+                            <img src="images/logo.png" alt="Infinitus"></a>
+                    </div>
+                </div>
+                <div class="span9">
+                    <div class="row show-grid">
+                        <div class="span6">
+                            <div class="top-contact">
+                                <a href="#"><i class="icon-envelope-alt"></i>contact@sunriseauto.com</a> <i class="icon-phone"></i>+ 04 836 2335
+                           
+                            </div>
+                        </div>
+                        <div class="span3">
+                            <div class="row show-grid">
+                                <div class="search-box">
+                                    <input class="search-text span3" type="text" name="s" value="Search this site" onfocus="if (this.value == this.defaultValue) this.value = '';" onblur="if (this.value == '') this.value = this.defaultValue;">
+                                    <input class="search-submit" type="submit" name="submit" value="">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="span9">
+                    <nav>
+                        <ul class="sf-menu">
+                            <li class="current"><a href="index.html"><i class="icon-home"></i>Trang chủ</a>
+                            </li>
+                            <li><a href="#"><i class="icon-bolt"></i>Siêu thị xe</a>
+                                <ul>
+                                    <li class="arrow-top"><i class="icon-caret-down"></i></li>
+                                    <li><a href="#">Kia </a></li>
+                                    <li><a href="#">Hyundai </a></li>
+                                    <li><a href="#">Nissan</a></li>
+                                    <li><a href="#">Mazda</a></li>
+                                    <li><a href="#">Toyota </a></li>
+                                </ul>
+                            </li>
+                            <li><a href="blog1-col1.html"><i class="icon-comments"></i>Tin tức</a></li>
+                            <li><a href="services.html"><i class="icon-user"></i>Dịch vụ</a></li>
+                            <li><a href="contact.html"><i class="icon-envelope-alt"></i>Liên hệ</a></li>
+                        </ul>
+                        <div class="clearfix"></div>
+                    </nav>
+                </div>
+            </div>
+        </div>
+        </div>
+    </header>
+    <!--Header End-->
+    <!--Bodycontent Start-->
+    <div id="body-content clPadingBody">
+        <div class="boderB">
+        <!-- SLIDE -->
+        <div class="container slideTop">
+                <div class="row">
+                    <div class="span12">
+                        <div class="home-slider">
+                            <div class="flexslider">
+                                <ul class="slides">
+                                    <li>
+                                        <img src="images/sliders/hyundai.jpg" alt="" />
+                                        <!--<div class="flex-caption">
+                                        <h2>
+                                            Responsive Mutltipurpose Template</h2>
+                                        <div class="slide-txt">
+                                            <p>
+                                                Mauris cursus eros quis velit euismod euismod. Pellentesque urna massa, varius ac
+                                                egestas sed, tristique vitae erat. Vestibulum vel elit ac est rhoncus tristique
+                                                vel eget orci. Integer laoreet ornare dolor, at tempus nisi tempor nec.
+                                            </p>
+                                            <a href="#" class="btn button-blue">Read More</a>
+                                        </div>
+                                    </div>-->
+                                    </li>
+                                    <li>
+                                        <img src="images/sliders/mazda.png" alt="" />
+                                        <!--<div class="flex-caption">
+                                        <h2>
+                                            Responsive Mutltipurpose Template</h2>
+                                        <div class="slide-txt">
+                                            <p>
+                                                Mauris cursus eros quis velit euismod euismod. Pellentesque urna massa, varius ac
+                                                egestas sed, tristique vitae erat. Vestibulum vel elit ac est rhoncus tristique
+                                                vel eget orci. Integer laoreet ornare dolor, at tempus nisi tempor nec.
+                                            </p>
+                                            <a href="#" class="btn button-blue">Read More</a>
+                                        </div>
+                                    </div>-->
+                                    </li>
+                                    <li>
+                                        <img src="images/sliders/kia.jpg" alt="" />
+                                        <!-- <div class="flex-caption">
+                                        <h2>
+                                            Responsive Mutltipurpose Template</h2>
+                                        <div class="slide-txt">
+                                            <p>
+                                                Mauris cursus eros quis velit euismod euismod. Pellentesque urna massa, varius ac
+                                                egestas sed, tristique vitae erat. Vestibulum vel elit ac est rhoncus tristique
+                                                vel eget orci. Integer laoreet ornare dolor, at tempus nisi tempor nec.
+                                            </p>
+                                            <a href="#" class="btn button-blue">Read More</a>
+                                        </div>
+                                    </div>-->
+                                    </li>
+                                    <li>
+                                        <img src="images/sliders/mazda.png" alt="" />
+                                        <!-- <div class="flex-caption">
+                                        <h2>
+                                            Responsive Mutltipurpose Template</h2>
+                                        <div class="slide-txt">
+                                            <p>
+                                                Mauris cursus eros quis velit euismod euismod. Pellentesque urna massa, varius ac
+                                                egestas sed, tristique vitae erat. Vestibulum vel elit ac est rhoncus tristique
+                                                vel eget orci. Integer laoreet ornare dolor, at tempus nisi tempor nec.
+                                            </p>
+                                            <a href="#" class="btn button-blue">Read More</a>
+                                        </div>
+                                    </div>-->
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+        </div>
+        <!-- END SLIDE -->
+        <section>
+            <div class="container">
+                 <!--Portfolio Wrap-->
+                <div class="colLeft span3 fleft">
+                    <div class="shadow-wrapper searchtitle" id="searchbox">
+                        <div class="titleSearchBox">
+                            <span>TÌM KIẾM XE GIÁ TỐT</span>
+                        </div>
+                        <ul class="searchtool hide" id="searchtool">
+                            <li>
+                                <select>
+                                    <option>-Hãng xe-</option>
+                                    <option>Kia  </option>
+                                    <option>Audi</option>
+                                    <option>Lexus</option>
+                                </select>
+                            </li>
+                            <li>
+                                <select>
+                                    <option>-Model-</option>
+                                    <option>A4  </option>
+                                    <option>A5</option>
+                                    <option>A6</option>
+                                </select>
+                            </li>
+                            <li>
+                                <input type="text" value="Giá từ" /></li>
+                            <li>
+                                <input type="text" value="Giá đến" /></li>
+                            <li><a class="button-green btn fright" href="#">Tìm kiếm</a>
+                                <div class="clearfix"></div>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="shadow-wrapper">
+                        <div class="titleBox">
+                            <span>SIÊU THỊ XE</span>
+                        </div>
+                        <ul class="leftnav bullets-style blue  arrow-list">
+                            <li>Kia morning</li>
+                            <li>Kia morning</li>
+                            <li>Kia morning</li>
+                            <li>Kia morning</li>
+                            <li>Kia morning</li>
+                            <li>Kia morning</li>
+                            <li>Kia morning</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="row" id="boxNewProduct">
+                    <div class="span3">
+                        <div class="shadow-wrapper">
+                            <div class="mosaic-block faded">
+                                <div class="mosaic-overlay" style="display: block; opacity: 0;">
+                                    <div class="zoom-icons">
+                                        <a class="zoom-img" href="images/portfolio/kia.jpg" data-gal="prettyPhoto[portfolio]"><i class="icon-search"></i></a>
+                                        <a class="link-img" href="product-details.html"><i class="icon-link"></i></a>
+                                    </div>
+                                </div>
+                                <div class="mosaic-backdrop">
+                                    <img class="max-image" src="images/portfolio/kia.jpg" alt=""></div>
+                            </div>
+                            <div class="port3-head">
+                                <h3><a href="#">Xe Kia -FLS</a></h3>
+                                <p>Giá:10.000 $</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="span3">
+                        <div class="shadow-wrapper">
+                            <div class="mosaic-block faded">
+                                <div class="mosaic-overlay" style="display: block; opacity: 0;">
+                                    <div class="zoom-icons">
+                                        <a class="zoom-img" href="images/portfolio/mazda.png" data-gal="prettyPhoto[portfolio]"><i class="icon-search"></i></a>
+                                        <a class="link-img" href="product-details.html"><i class="icon-link"></i></a>
+                                    </div>
+                                </div>
+                                <div class="mosaic-backdrop">
+                                    <img class="max-image" src="images/portfolio/mazda.png" alt=""></div>
+                            </div>
+                            <div class="port3-head">
+                                <h3><a href="#">Xe Mazda</a></h3>
+                                <p>Giá:15.000 $</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="span3">
+                        <div class="shadow-wrapper">
+                            <div class="mosaic-block faded">
+                                <div class="mosaic-overlay" style="display: block; opacity: 0;">
+                                    <div class="zoom-icons">
+                                        <a class="zoom-img" href="images/portfolio/hyundai.jpg" data-gal="prettyPhoto[portfolio]"><i class="icon-search"></i></a>
+                                        <a class="link-img" href="product-details.html"><i class="icon-link"></i></a>
+                                    </div>
+                                </div>
+                                <div class="mosaic-backdrop">
+                                    <img class="max-image" src="images/portfolio/hyundai.jpg" alt=""></div>
+                            </div>
+                            <div class="port3-head">
+                                <h3><a href="#">Hyndai Tubo</a></h3>
+                                <p>Giá:25.000 $</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="span3">
+                        <div class="shadow-wrapper">
+                            <div class="mosaic-block faded">
+                                <div class="mosaic-overlay" style="display: block; opacity: 0;">
+                                    <div class="zoom-icons">
+                                        <a class="zoom-img" href="images/portfolio/daiwo.jpg" data-gal="prettyPhoto[portfolio]"><i class="icon-search"></i></a>
+                                        <a class="link-img" href="product-details.html"><i class="icon-link"></i></a>
+                                    </div>
+                                </div>
+                                <div class="mosaic-backdrop">
+                                    <img class="max-image" src="images/portfolio/daiwo.jpg" alt=""></div>
+                            </div>
+                            <div class="port3-head">
+                                <h3><a href="#">Daewoo KS</a></h3>
+                                <p>Giá:25.000 $</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="span3">
+                        <div class="shadow-wrapper">
+                            <div class="mosaic-block faded">
+                                <div class="mosaic-overlay" style="display: block; opacity: 0;">
+                                    <div class="zoom-icons">
+                                        <a class="zoom-img" href="images/portfolio/hyundai.jpg" data-gal="prettyPhoto[portfolio]"><i class="icon-search"></i></a>
+                                        <a class="link-img" href="product-details.html"><i class="icon-link"></i></a>
+                                    </div>
+                                </div>
+                                <div class="mosaic-backdrop">
+                                    <img class="max-image" src="images/portfolio/hyundai.jpg" alt=""></div>
+                            </div>
+                            <div class="port3-head">
+                                <h3><a href="#">Hyundai F1</a></h3>
+                                <p>Giá:25.000 $</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="span3">
+                        <div class="shadow-wrapper">
+                            <div class="mosaic-block faded">
+                                <div class="mosaic-overlay" style="display: block; opacity: 0;">
+                                    <div class="zoom-icons">
+                                        <a class="zoom-img" href="images/portfolio/mazda.png" data-gal="prettyPhoto[portfolio]"><i class="icon-search"></i></a>
+                                        <a class="link-img" href="product-details.html"><i class="icon-link"></i></a>
+                                    </div>
+                                </div>
+                                <div class="mosaic-backdrop">
+                                    <img class="max-image" src="images/portfolio/mazda.png" alt=""></div>
+                            </div>
+                            <div class="port3-head">
+                                <h3><a href="#">Hyundai F1</a></h3>
+                                <p>Giá:25.000 $</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="Partner">
+                    <div class="image_carousel">
+                        <div id="foo2">
+                            <img src="images/partner/basketball.jpg" alt="basketball" width="140" height="140" />
+                            <img src="images/partner/beachtree.jpg" alt="beachtree" width="140" height="140" />
+                            <img src="images/partner/cupcackes.jpg" alt="cupcackes" width="140" height="140" />
+                            <img src="images/partner/hangmat.jpg" alt="hangmat" width="140" height="140" />
+                            <img src="images/partner/new_york.jpg" alt="new york" width="140" height="140" />
+                            <img src="images/partner/laundry.jpg" alt="laundry" width="140" height="140" />
+                            <img src="images/partner/mom_son.jpg" alt="mom son" width="140" height="140" />
+                            <img src="images/partner/picknick.jpg" alt="picknick" width="140" height="140" />
+                            <img src="images/partner/shoes.jpg" alt="shoes" width="140" height="140" />
+                            <img src="images/partner/paris.jpg" alt="paris" width="140" height="140" />
+                            <img src="images/partner/sunbading.jpg" alt="sunbading" width="140" height="140" />
+                            <img src="images/partner/yellow_couple.jpg" alt="yellow couple" width="140" height="140" />
+                        </div>
+                        <div class="clearfix"></div>
+                        <a class="prev" id="foo2_prev" href="#"><span>prev</span></a>
+                        <a class="next" id="foo2_next" href="#"><span>next</span></a>
+                        <div class="pagination" id="foo2_pag"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!--Portfolio Wrap-->
+        </div>    
+    </div>
+    <!--Bodycontent End-->
+    <!--Footer Start-->
+    <footer>
+        <div class="copyright">
+            <div class="container">
+                <div class="row">
+                    <div class="span6">
+                        Copyright © 2013 SunRise Auto. All rights reserved. 
+                   
+                    </div>
+                    <div class="span6" style="text-align: right;">
+                        Design By <a target="_blank" href="http://xomtrosv.com">Phu Hai Gia</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!--Footer End-->
+    <p id="back-top">
+        <a href="#top"><i class="icon-arrow-up"></i></a>
+    </p>
+    <!-- container -->
+    <!-- End Document
+================================================== -->
+    <!--Javascript Library Start-->
+    <script type='text/javascript' src='js/jquery.min.js'></script>
+    <script type='text/javascript' src='js/jquery.easing.1.3.js'></script>
+    <script type="text/javascript" src="js/superfish.js"></script>
+    <script type="text/javascript" src="js/jquery.tweet.js"></script>
+    <script type="text/javascript" src="js/jquery.tipsy.js"></script>
+    <script type="text/javascript" src="js/jquery.prettyPhoto.js"></script>
+    <script type="text/javascript" src="js/mosaic-min.js"></script>
+    <script type="text/javascript" src="js/jquery.flexslider.js"></script>
+    <script type="text/javascript" src="js/modernizr.js"></script>
+    <script type='text/javascript' src="js/iview.js"></script>
+    <script type='text/javascript' src='js/jquery.mobile.customized.min.js'></script>
+    <script type='text/javascript' src='js/camera.min.js'></script>
+    <script type="text/javascript" src="js/jquery.nivo.slider.js"></script>
+    <script type="text/javascript" src="js/jquery.iosslider.min.js"></script>
+    <script type="text/javascript" src="js/jcarousel.js"></script>
+    <script type="text/javascript" src="js/jquery.carouFredSel.js"></script>
+    <script type="text/javascript" src="js/script.js"></script>
+    <script type="text/javascript" src="js/jquery.carouFredSel-6.2.1-packed.js"></script>
+    <script type="text/javascript">
+        $('.titleSearchBox').click(function () {
+            $('#searchtool').toggle('slow');
+            return false;
+        });
+        $(function () {
+            $("#foo2").carouFredSel({
+                circular: false,
+                infinite: true,
+                auto: true,
+                prev: {
+                    button: "#foo2_prev",
+                    key: "left"
+                },
+                next: {
+                    button: "#foo2_next",
+                    key: "right"
+                },
+                pagination: "#foo2_pag"
+            });
+        });
+    </script>
+</body>
+</html>
