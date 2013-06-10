@@ -38,16 +38,6 @@ namespace Frontend.Controllers
 
         public ActionResult Product(int id, int page)
         {
-            var list = rep.GetProductCatalogueList();
-            ViewBag.CatalogueListDrop = (from p in list
-                                         select new SelectListItem
-                                         {
-                                             Value = p.Id.ToString(),
-                                             Text = p.Name,
-                                         }).ToList();
-
-            // Danh sách dữ liệu danh mục
-            ViewBag.CataloguesList = rep.GetProductCatalogueList();
             var ProductByCatalogue = rep.GetListProductSame(id);
             ViewBag.MaxPage = ProductByCatalogue.Count()/3;
             ViewBag.Id = id;
