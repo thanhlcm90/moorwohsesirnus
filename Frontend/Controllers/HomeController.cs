@@ -54,6 +54,12 @@ namespace Frontend.Controllers
             return View();
         }
 
+        [HttpPost]
+        public ActionResult Contact()
+        {
+            return View();
+        }
+
         //public ActionResult List()
         //{
         //    var list = rep.GetProductCatelogueList();
