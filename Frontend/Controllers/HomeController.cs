@@ -39,15 +39,24 @@ namespace Frontend.Controllers
             return View();
         }
 
-        //public ActionResult About()
-        //{
-        //    return View();
-        //}
+        public ActionResult Contact()
+        {
+            return View();
+        }
 
-        //public ActionResult List()
-        //{
-        //    var list = rep.GetProductCatelogueList();
-        //    return View(list);
-        //}
+        /// <summary>
+        /// Insert New Contact
+        /// Author: ThuanNH
+        /// </summary>
+        /// <param name="models"></param>
+        /// <returns></returns>
+        [HttpPost]
+        public ActionResult Contact(Contact models)
+        {
+            models.PostDate = DateTime.Now;
+            models.Actflg = '1';
+            rep.InsertContacts(models);
+            return View();
+        }
     }
 }
