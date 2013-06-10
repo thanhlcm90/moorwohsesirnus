@@ -13,7 +13,7 @@ html { font-size: 100%; -webkit-text-size-adjust: 100%; -ms-text-size-adjust: 10
 	
 body {
     /*background:url(../images/body-bg.png) repeat;*/
-    font-family: Tahoma,Arial,Verdana;
+    font-family: Arial,Verdana;
     font-size: 14px;
     color: #555;
     background: #000;
@@ -30,7 +30,7 @@ a, a:visited { color: #73af4e; text-decoration: none; outline: 0; }
 	/* #Typography
 ================================================== */
 	h1, h2, h3, h4, h5, h6 {
-		font-family: Tahoma,Arial,Verdana;
+		font-family: Arial,Verdana;
 		font-weight: normal; }
 	h1 a, h2 a, h3 a, h4 a, h5 a, h6 a { font-weight: inherit; }
 	h1 { font-size: 26px; line-height: 28px; margin-bottom: 14px;}
@@ -117,7 +117,7 @@ footer h3 {
     position: relative;
 }
 footer h3:after{
-	font-family: Tahoma,Arial,Verdana;
+	font-family: Arial,Verdana;
 	margin-right:8px;
 	content:"\f0d7";
 	position:absolute;
@@ -140,7 +140,7 @@ footer a:hover{
 	font-size:11px;
 	margin-right:5px;
 	content: "\f054";
-	font-family: Tahoma,Arial,Verdana;
+	font-family: Arial,Verdana;
 	color:#0083B7;
 }
 .foot-cat a span{
@@ -677,7 +677,7 @@ ul.sidebar-category{
 	color:#78858f;
 	margin-top:5px;
 	margin-bottom:8px;
-	font-family: Tahoma,Arial,Verdana;
+	font-family: Arial,Verdana;
 	font-size:12px;
 	box-shadow:0 1px 1px rgba(0, 0, 0, 0.1);
 }
@@ -691,7 +691,7 @@ label.error{
 	color:#FFF;
 	font-weight:bold;
 	text-shadow:none;
-	font-family: Tahoma,Arial,Verdana;
+	font-family: Arial,Verdana;
 	margin-top:10px;
 }
 h4.form_thanks {
