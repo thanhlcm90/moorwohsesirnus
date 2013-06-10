@@ -100,6 +100,8 @@
     <Compile Include="Controllers\CatalogueController.cs" />
     <Compile Include="Controllers\ContactController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\ProductController.cs" />
+    <Compile Include="Controllers\PropertyCatalogueController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -401,6 +403,11 @@
     <Content Include="Views\Catalogue\Index.cshtml" />
     <Content Include="Views\Catalogue\Edit.cshtml" />
     <Content Include="Views\Contact\View.cshtml" />
+    <Content Include="Views\Product\Edit.cshtml" />
+    <Content Include="Views\Product\Index.cshtml" />
+    <Content Include="Views\Product\EditProductProperties.cshtml" />
+    <Content Include="Views\PropertyCatalogue\Edit.cshtml" />
+    <Content Include="Views\PropertyCatalogue\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

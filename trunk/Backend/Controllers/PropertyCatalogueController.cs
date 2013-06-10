@@ -1,53 +1,52 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 using Showroom.Models.DataAccess;
 using Showroom.Models;
 namespace SunriseShowroom.Controllers
 {
-    public class CatalogueController : Controller
+    public class PropertyCatalogueController : Controller
     {
         private ShowroomRepository rep = new ShowroomRepository();
         //
-        // GET: /Catalogue/
-       
+        // GET: /PropertyCatalogue/
+
         public ActionResult Index()
         {
             // Action GetList, dùng cho Grid load danh sách dữ liệu
-            var CatalogueList = rep.GetProductCatalogueList();
-            return View(CatalogueList);
+            var propertyCatalogueList = rep.GetPropertyCatalogueList();
+            return View(propertyCatalogueList);
         }
 
         public ActionResult Edit(int id)
         {
-            Catalogue catalogue = rep.GetProductCatalogueInfo(id);
-            return View(catalogue);
+            PropertyCatalogue propertyCatalogueInfo = rep.GetPropertyCatalogueInfo(id);
+            return View(propertyCatalogueInfo);
         }
 
         [HttpPost]
-        public ActionResult Edit(Catalogue catalogue)
+        public ActionResult Edit(PropertyCatalogue propertyCatalogue)
         {
             if (ModelState.IsValid)
             {
-                catalogue.NameEn = "Nay thi name en";
-                rep.UpdateProductCatalogue(catalogue);
+                rep.UpdatePropertyCatalogue(propertyCatalogue);
                 return RedirectToAction("Index");
             }
-            return View(catalogue);
+            return View(propertyCatalogue);
         }
 
         public ActionResult Delete(int id)
         {
             try
             {
-                rep.DeleteProductCatalogue(id);
+                rep.DeletePropertyCatalogue(id);
                 return RedirectToAction("Index");
             }
-            catch {
+            catch
+            {
                 return RedirectToAction("Index");
-            }            
+            }
         }
+
     }
 }

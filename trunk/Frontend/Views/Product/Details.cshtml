@@ -122,7 +122,7 @@
                         </ul>
                         <div class="shadow-wrapper">
                             <div class="tab-container">
-                                @for(int x = 0; x < PropertyCatalogueList.Count;x++)
+@*                                @for(int x = 0; x < PropertyCatalogueList.Count;x++)
                                 {
                                     var tabId = "#tab" + PropertyCatalogueList[x].Id;
                                     var ID = PropertyCatalogueList[x].Id;
@@ -169,8 +169,8 @@
                                             </div>
                                         }
                                     </div>
-                                }
-                                @*                                <div style="display: none;" class="tab-content-1 span11" id="tab2">
+                                }*@
+                                                                <div style="display: none;" class="tab-content-1 span11" id="tab2">
                                     <div class="span5">
                                         <h3>Túi khí an toàn</h3>
                                         <ul class="sidebar-post">
@@ -449,7 +449,7 @@
                                             <li></li>
                                         </ul>
                                     </div>
-                                </div>*@
+                                </div>
                             </div>
                             <div class="clearfix"></div>
                         </div>
@@ -462,7 +462,7 @@
                         <span>SẢN PHẨN CÙNG LOẠI</span>
                     </div>
                     <div class="row" id="boxNewProduct">
-                        @foreach (var productS in rep.GetListProductSame(@Model.CatelogueId))
+                        @foreach (var productS in rep.GetListProductSame(@Model.CatalogueId))
                         {
                         <div class="span3">
                             <div class="shadow-wrapper">

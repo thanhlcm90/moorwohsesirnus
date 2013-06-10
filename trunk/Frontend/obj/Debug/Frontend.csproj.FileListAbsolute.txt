@@ -21,3 +21,26 @@ E:\Visual Basic .NET\SunriseShowroom\Frontend\obj\Debug\Frontend.pdb
 E:\Visual Basic .NET\SunriseShowroom\Frontend\bin\DataAccess.dll
 E:\Visual Basic .NET\SunriseShowroom\Frontend\bin\DataAccess.pdb
 E:\Visual Basic .NET\SunriseShowroom\Frontend\obj\Debug\Frontend.csprojResolveAssemblyReference.cache
+D:\PHUHAIGIA\2013\SunRiseShowRoom\moorwohsesirnus\Frontend\bin\Frontend.dll
+D:\PHUHAIGIA\2013\SunRiseShowRoom\moorwohsesirnus\Frontend\bin\Frontend.pdb
+D:\PHUHAIGIA\2013\SunRiseShowRoom\moorwohsesirnus\Frontend\bin\DataAccess.dll
+D:\PHUHAIGIA\2013\SunRiseShowRoom\moorwohsesirnus\Frontend\bin\EntityFramework.dll
+D:\PHUHAIGIA\2013\SunRiseShowRoom\moorwohsesirnus\Frontend\bin\Microsoft.Web.Infrastructure.dll
+D:\PHUHAIGIA\2013\SunRiseShowRoom\moorwohsesirnus\Frontend\bin\System.Web.Helpers.dll
+D:\PHUHAIGIA\2013\SunRiseShowRoom\moorwohsesirnus\Frontend\bin\System.Web.Mvc.dll
+D:\PHUHAIGIA\2013\SunRiseShowRoom\moorwohsesirnus\Frontend\bin\System.Web.Providers.dll
+D:\PHUHAIGIA\2013\SunRiseShowRoom\moorwohsesirnus\Frontend\bin\System.Web.Razor.dll
+D:\PHUHAIGIA\2013\SunRiseShowRoom\moorwohsesirnus\Frontend\bin\System.Web.WebPages.Deployment.dll
+D:\PHUHAIGIA\2013\SunRiseShowRoom\moorwohsesirnus\Frontend\bin\System.Web.WebPages.dll
+D:\PHUHAIGIA\2013\SunRiseShowRoom\moorwohsesirnus\Frontend\bin\System.Web.WebPages.Razor.dll
+D:\PHUHAIGIA\2013\SunRiseShowRoom\moorwohsesirnus\Frontend\bin\DataAccess.pdb
+D:\PHUHAIGIA\2013\SunRiseShowRoom\moorwohsesirnus\Frontend\bin\EntityFramework.xml
+D:\PHUHAIGIA\2013\SunRiseShowRoom\moorwohsesirnus\Frontend\bin\System.Web.Helpers.xml
+D:\PHUHAIGIA\2013\SunRiseShowRoom\moorwohsesirnus\Frontend\bin\System.Web.Mvc.xml
+D:\PHUHAIGIA\2013\SunRiseShowRoom\moorwohsesirnus\Frontend\bin\System.Web.Razor.xml
+D:\PHUHAIGIA\2013\SunRiseShowRoom\moorwohsesirnus\Frontend\bin\System.Web.WebPages.xml
+D:\PHUHAIGIA\2013\SunRiseShowRoom\moorwohsesirnus\Frontend\bin\System.Web.WebPages.Deployment.xml
+D:\PHUHAIGIA\2013\SunRiseShowRoom\moorwohsesirnus\Frontend\bin\System.Web.WebPages.Razor.xml
+D:\PHUHAIGIA\2013\SunRiseShowRoom\moorwohsesirnus\Frontend\obj\Debug\Frontend.csprojResolveAssemblyReference.cache
+D:\PHUHAIGIA\2013\SunRiseShowRoom\moorwohsesirnus\Frontend\obj\Debug\Frontend.dll
+D:\PHUHAIGIA\2013\SunRiseShowRoom\moorwohsesirnus\Frontend\obj\Debug\Frontend.pdb
