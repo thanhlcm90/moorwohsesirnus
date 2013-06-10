@@ -2,7 +2,7 @@
     ViewBag.Title = "Index";
 }
 
-<div class="boderB">
+<div class="boderB min-hieght-lg">
     <!-- SLIDE -->
     @Html.Partial("~/Views/Shared/_Slide.cshtml")
     <!-- END SLIDE -->
@@ -10,53 +10,24 @@
     <!-- NỘI DUNG TRANG CHỦ-->
     <section>
         <div class="container">
-
+            
             <!-----------------------MENU LEFT--------------------------------->
             <div class="colLeft span3 fleft">
-                <div class="shadow-wrapper searchtitle" id="searchbox">
-                    <div class="titleSearchBox">
-                        <span>TÌM KIẾM XE GIÁ TỐT</span>
-                    </div>
-                    <ul class="searchtool hide" id="searchtool">
-                        <li>
-                            @Html.DropDownList("listCatalogue", (IList<SelectListItem>)ViewBag.CatalogueListDrop)
-                        </li>
-                        <li>
-                            <select>
-                                <option>-Model-</option>
-                                <option>A4  </option>
-                                <option>A5</option>
-                                <option>A6</option>
-                            </select>
-                        </li>
-                        <li>
-                            <input type="text" value="Giá từ" /></li>
-                        <li>
-                            <input type="text" value="Giá đến" /></li>
-                        <li><a class="button-green btn fright" href="#">Tìm kiếm</a>
-                            <div class="clearfix"></div>
-                        </li>
-                    </ul>
-                </div>
-                <div class="shadow-wrapper">
-                    <div class="titleBox">
-                        <span>SIÊU THỊ XE</span>
-                    </div>
-                    <ul class="leftnav bullets-style blue  arrow-list">
-                        @foreach (var c in (List<Showroom.Models.Catalogue>)ViewBag.CataloguesList)
-                        {
-                            <li><a href="/Product/Product?id=@c.Id&page=1">@c.Name</a></li>
-                        }
-                    </ul>
-                </div>
+                    @Html.Partial("~/Views/Shared/_Left_Control.cshtml")
             </div>
             <!-----------------------END MENU LEFT----------------------------->
 
             <!-----------------------XE MỚI CẬP NHẬT--------------------------->
-            <div class="row" id="boxNewProduct">
-                @foreach (var m in (List<Showroom.Models.Product>)ViewBag.ProductList)
-                {
-                    <div class="span3">
+            <div class="span9" id="boxNewProduct" style="margin-left:10px;">
+
+                <div class="shadow-wrapper searchtitle">
+                    <div class="titleSearchBox">
+                        <span>Sản phẩm mới cập nhật</span>
+                    </div>
+                </div>
+
+                @foreach (var m in (List<Showroom.Models.Product>)ViewBag.ProductList) {
+                    <div class="span3 magrinproduct">
                         <div class="shadow-wrapper">
                             <div class="mosaic-block faded">
                                 <div class="mosaic-overlay" style="display: block; opacity: 0;">
@@ -80,7 +51,7 @@
             <!-----------------------END XE MỚI CẬP NHẬT----------------------->
 
             <!-----------------------------PARTNER----------------------------->
-            <div id="Partner">
+            <div id="Partner" class="span12" style="margin-left:0px;">
                 <div class="image_carousel">
                     <div id="foo2">
                         <img src="images/partner/basketball.jpg" alt="basketball" width="140" height="140" />
@@ -99,7 +70,7 @@
                     <div class="clearfix"></div>
                     <a class="prev" id="foo2_prev" href="#"><span>prev</span></a>
                     <a class="next" id="foo2_next" href="#"><span>next</span></a>
-                    <div class="pagination" id="foo2_pag"></div>
+                    <div class="paginationCl" id="foo2_pag"></div>
                 </div>
             </div>
             <!----------------------------- END PARTNER----------------------------->
@@ -108,27 +79,4 @@
     </section>
     <!-- END NỘI DUNG TRANG CHỦ-->
 
-    <script type='text/javascript' src='/Scripts/js/jquery.min.js'></script>
-    <script type="text/javascript" src="/Scripts/js/jquery.flexslider.js"></script>
-    <script type="text/javascript" src="/Scripts/js/jcarousel.js"></script>
-    <script type="text/javascript" src="/Scripts/js/jquery.carouFredSel.js"></script>
-    <script type="text/javascript" src="/Scripts/js/jquery.carouFredSel-6.2.1-packed.js"></script>
-    <script type="text/javascript">
-        $(function () {
-            $("#foo2").carouFredSel({
-                circular: false,
-                infinite: true,
-                auto: true,
-                prev: {
-                    button: "#foo2_prev",
-                    key: "left"
-                },
-                next: {
-                    button: "#foo2_next",
-                    key: "right"
-                },
-                pagination: "#foo2_pag"
-            });
-        });
-    </script>
 </div>
