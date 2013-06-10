@@ -4,17 +4,10 @@
     int maxPage = ViewBag.MaxPage;
     int CatalogueId = ViewBag.Id;
     int CurrenPage = ViewBag.Curenpage;
-    
-    <style type="text/css">
-        .wrapTitle {
-            background: #fff;
-            line-height: 40px;
-        }
-    </style>
-    
+ 
 }
 
-<div class="boderB">
+<div class="boderB min-hieght-lg">
 
     <!-- NỘI DUNG TRANG CHỦ-->
     <section>
@@ -22,55 +15,23 @@
 
             <!-----------------------MENU LEFT--------------------------------->
             <div class="colLeft span3 fleft">
-                <div class="shadow-wrapper searchtitle" id="searchbox">
-                    <div class="titleSearchBox">
-                        <span>TÌM KIẾM XE GIÁ TỐT</span>
-                    </div>
-                    <ul class="searchtool hide" id="searchtool">
-                        <li>
-                            @Html.DropDownList("listCatalogue", (IList<SelectListItem>)ViewBag.CatalogueListDrop)
-                        </li>
-                        <li>
-                            <select>
-                                <option>-Model-</option>
-                                <option>A4  </option>
-                                <option>A5</option>
-                                <option>A6</option>
-                            </select>
-                        </li>
-                        <li>
-                            <input type="text" value="Giá từ" /></li>
-                        <li>
-                            <input type="text" value="Giá đến" /></li>
-                        <li><a class="button-green btn fright" href="#">Tìm kiếm</a>
-                            <div class="clearfix"></div>
-                        </li>
-                    </ul>
-                </div>
-                <div class="shadow-wrapper">
-                    <div class="titleBox">
-                        <span>SIÊU THỊ XE</span>
-                    </div>
-                    <ul class="leftnav bullets-style blue  arrow-list">
-                        @foreach (var c in (List<Showroom.Models.Catalogue>)ViewBag.CataloguesList)
-                        {
-                            <li><a href="/Product/Product/@c.Id">@c.Name</a></li>
-                        }
-                    </ul>
-                </div>
+                    @Html.Partial("~/Views/Shared/_Left_Control.cshtml")
             </div>
             <!-----------------------END MENU LEFT----------------------------->
 
             <!-----------------------XE THEO CATEGORIES--------------------------->
-            <div class="wrapTitle">
-                <div class="span9" style="background: #0083B7; line-height: 20px;">
-                    <span>Sản phẩm</span>
+            <div class="span9" id="boxNewProduct" style="margin-left: 10px;">
+
+                <div class="shadow-wrapper searchtitle">
+                    <div class="titleSearchBox">
+                        <span>Sản phẩm</span>
+                    </div>
                 </div>
-            </div>
-            <div class="row" id="boxNewProduct">
+
+
                 @foreach (var m in (List<Showroom.Models.Product>)ViewBag.ProductByCatalogue)
                 {
-                    <div class="span3">
+                    <div class="span3 magrinproduct">
                         <div class="shadow-wrapper">
                             <div class="mosaic-block faded">
                                 <div class="mosaic-overlay" style="display: block; opacity: 0;">
@@ -90,22 +51,22 @@
                         </div>
                     </div>
                 }
+
             </div>
             <!-----------------------END XE MỚI CẬP NHẬT----------------------->
-                @*@RenderPage("~/macroScripts/Shared/_Page.cshtml", new { PageIdx = pageIndex, ListCount = maxPage, PostPerPage = maxProductInPage })*@
-            <div class="pagination">
-                
-                @for (int i = CurrenPage-1;( i >0 && i>=CurrenPage-2); i--)
+            <div class="pagination warpPaging">
+
+                @for (int i = CurrenPage - 1; (i > 0 && i >= CurrenPage - 2); i--)
                 {
                     var query = "/Product/Product?id=" + CatalogueId + "&page=" + i;
                     <a href="@query">@i</a>
                 }
-                @for (int i = CurrenPage;( i <= maxPage && i <= CurrenPage+2); i++)
+                @for (int i = CurrenPage; (i <= maxPage && i <= CurrenPage + 2); i++)
                 {
                     var query = "/Product/Product?id=" + CatalogueId + "&page=" + i;
                     <a href="@query">@i</a>
                 }
-                </div>   
+            </div>
         </div>
     </section>
     <!-- END NỘI DUNG TRANG CHỦ-->
