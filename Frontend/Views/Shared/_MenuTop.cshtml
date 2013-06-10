@@ -1,18 +1,33 @@
-﻿<nav>
+﻿@using Showroom.Models.DataAccess;
+@{
+    ShowroomRepository rep = new ShowroomRepository();
+
+    var lstCatalogue = rep.GetProductCatalogueList();
+    var lstNewsCatalogue = rep.GetNewsCatalogueList();
+}
+
+<nav>
     <ul class="sf-menu">
         <li class="current"><a href="/"><i class="icon-home"></i>Trang chủ</a>
         </li>
         <li><a href="#"><i class="icon-bolt"></i>Siêu thị xe</a>
             <ul>
                 <li class="arrow-top"><i class="icon-caret-down"></i></li>
-                <li><a href="#">Kia </a></li>
-                <li><a href="#">Hyundai </a></li>
-                <li><a href="#">Nissan</a></li>
-                <li><a href="#">Mazda</a></li>
-                <li><a href="#">Toyota </a></li>
+                @foreach(var item in lstCatalogue)
+                {
+                <li><a href="/Product/Product?id=@item.Id&page=1">@item.Name</a></li>
+                }
             </ul>
         </li>
-        <li><a href="blog1-col1.html"><i class="icon-comments"></i>Tin tức</a></li>
+        <li><a href="/News/NewsAll?page=1"><i class="icon-comments"></i>Tin tức</a>
+                        <ul>
+                <li class="arrow-top"><i class="icon-caret-down"></i></li>
+                @foreach (var CNews in lstNewsCatalogue)
+                {
+                <li><a href="/Product/Product?id=@CNews.Id&page=1">@CNews.Name</a></li>
+                }
+            </ul>
+        </li>
         <li><a href="services.html"><i class="icon-user"></i>Dịch vụ</a></li>
         <li><a href="/Home/Contact"><i class="icon-envelope-alt"></i>Liên hệ</a></li>
     </ul>
