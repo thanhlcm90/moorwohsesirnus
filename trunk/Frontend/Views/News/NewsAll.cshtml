@@ -44,12 +44,12 @@
                         <a href="#"><i class="icon-chevron-left"></i></a>
                         @for (int i = CurrenPage - 1; (i > 0 && i >= CurrenPage - 2); i--)
                         {
-                            var query = "/Product/Product?page=" + i;
+                            var query = "/News/NewsAll?page=" + i;
                             <a href="@query">@i</a>
                         }
                         @for (int i = CurrenPage; (i <= maxPage && i <= CurrenPage + 2); i++)
                         {
-                            var query = "/Product/Product?page=" + i;
+                            var query = "/News/NewsAll?page=" + i;
                             <a href="@query">@i</a>
                         }
                         <a href="#"><i class="icon-chevron-right"></i></a>
