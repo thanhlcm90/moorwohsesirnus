@@ -14,16 +14,6 @@ namespace Frontend.Controllers
 
         public ActionResult Index()
         {
-            ViewBag.Message = "Home Showroom car";
-            var list = rep.GetProductCatalogueList();
-            ViewBag.CatalogueListDrop = (from p in list
-                                     select new SelectListItem
-                                     {
-                                         Value=p.Id.ToString(),
-                                         Text=p.Name,
-                                     }).ToList();
-            // Danh sách dữ liệu danh mục
-            ViewBag.CataloguesList = rep.GetProductCatalogueList();
             // Danh sách dữ liệu sản phẩm
             ViewBag.ProductList = rep.GetProductsList();
             return View();
@@ -49,16 +39,10 @@ namespace Frontend.Controllers
             return View();
         }
 
-        public ActionResult Contact()
-        {
-            return View();
-        }
-
-        [HttpPost]
-        public ActionResult Contact()
-        {
-            return View();
-        }
+        //public ActionResult About()
+        //{
+        //    return View();
+        //}
 
         //public ActionResult List()
         //{
