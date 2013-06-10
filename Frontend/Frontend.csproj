@@ -410,6 +410,7 @@
     <Content Include="Scripts\js\script.js" />
     <Content Include="Scripts\js\superfish.js" />
     <Content Include="Scripts\modernizr-2.5.3.js" />
+    <Content Include="Scripts\PageIndex.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>

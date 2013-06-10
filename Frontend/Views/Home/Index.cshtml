@@ -10,7 +10,7 @@
     <!-- NỘI DUNG TRANG CHỦ-->
     <section>
         <div class="container">
-            
+
             <!-----------------------MENU LEFT--------------------------------->
             <div class="colLeft span3 fleft">
                 <div class="shadow-wrapper searchtitle" id="searchbox">
@@ -19,7 +19,7 @@
                     </div>
                     <ul class="searchtool hide" id="searchtool">
                         <li>
-                            @Html.DropDownList("listCatalogue",(IList<SelectListItem>)ViewBag.CatalogueListDrop)
+                            @Html.DropDownList("listCatalogue", (IList<SelectListItem>)ViewBag.CatalogueListDrop)
                         </li>
                         <li>
                             <select>
@@ -45,7 +45,7 @@
                     <ul class="leftnav bullets-style blue  arrow-list">
                         @foreach (var c in (List<Showroom.Models.Catalogue>)ViewBag.CataloguesList)
                         {
-                        <li><a href="/Product/Product?id=@c.Id&page=1">@c.Name</a></li>
+                            <li><a href="/Product/Product?id=@c.Id&page=1">@c.Name</a></li>
                         }
                     </ul>
                 </div>
@@ -54,7 +54,8 @@
 
             <!-----------------------XE MỚI CẬP NHẬT--------------------------->
             <div class="row" id="boxNewProduct">
-                @foreach (var m in (List<Showroom.Models.Product>)ViewBag.ProductList) {
+                @foreach (var m in (List<Showroom.Models.Product>)ViewBag.ProductList)
+                {
                     <div class="span3">
                         <div class="shadow-wrapper">
                             <div class="mosaic-block faded">
@@ -107,4 +108,27 @@
     </section>
     <!-- END NỘI DUNG TRANG CHỦ-->
 
+    <script type='text/javascript' src='/Scripts/js/jquery.min.js'></script>
+    <script type="text/javascript" src="/Scripts/js/jquery.flexslider.js"></script>
+    <script type="text/javascript" src="/Scripts/js/jcarousel.js"></script>
+    <script type="text/javascript" src="/Scripts/js/jquery.carouFredSel.js"></script>
+    <script type="text/javascript" src="/Scripts/js/jquery.carouFredSel-6.2.1-packed.js"></script>
+    <script type="text/javascript">
+        $(function () {
+            $("#foo2").carouFredSel({
+                circular: false,
+                infinite: true,
+                auto: true,
+                prev: {
+                    button: "#foo2_prev",
+                    key: "left"
+                },
+                next: {
+                    button: "#foo2_next",
+                    key: "right"
+                },
+                pagination: "#foo2_pag"
+            });
+        });
+    </script>
 </div>

@@ -8,7 +8,7 @@
       <Column Name="Image" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
       <Column Name="Priority" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="Actflg" Type="System.Char" DbType="NChar(1) NOT NULL" CanBeNull="false" />
-      <Association Name="Catalogue_Product" Member="Products" ThisKey="Id" OtherKey="CatelogueId" Type="Product" />
+      <Association Name="Catalogue_Product" Member="Products" ThisKey="Id" OtherKey="CatalogueId" Type="Product" />
     </Type>
   </Table>
   <Table Name="sunrise_admin.PropertySubCatalogue" Member="PropertySubCatalogues">
@@ -61,13 +61,13 @@
       <Column Name="Code" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
       <Column Name="Name" Type="System.String" DbType="NVarChar(255) NOT NULL" CanBeNull="false" />
       <Column Name="NameEn" Type="System.String" DbType="NVarChar(255) NOT NULL" CanBeNull="false" />
-      <Column Name="CatelogueId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="CatalogueId" Storage="_CatelogueId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Column Name="Description" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
       <Column Name="Price" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Column Name="Amount" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Column Name="Actflg" Type="System.Char" DbType="NChar(1) NOT NULL" CanBeNull="false" />
       <Association Name="Product_ProductProperty" Member="ProductProperties" ThisKey="Id" OtherKey="ProductId" Type="ProductProperty" />
-      <Association Name="Catalogue_Product" Member="Catalogue" Storage="_Catelogue" ThisKey="CatelogueId" OtherKey="Id" Type="Catalogue" IsForeignKey="true" />
+      <Association Name="Catalogue_Product" Member="Catalogue" Storage="_Catelogue" ThisKey="CatalogueId" OtherKey="Id" Type="Catalogue" IsForeignKey="true" />
     </Type>
   </Table>
   <Table Name="sunrise_admin.ProductProperty" Member="ProductProperties">
