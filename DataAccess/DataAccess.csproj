@@ -52,7 +52,6 @@
     <Compile Include="DataAccess\PropertyCatalogue.cs" />
     <Compile Include="DataAccess\PropertySubCatalogue.cs" />
     <Compile Include="DataAccess\ShowroomRepository.cs" />
-    <Compile Include="DataBusiness\IShowroomRepository.cs" />
     <Compile Include="ExtensionMethod.cs" />
     <Compile Include="Models\CatalogueModel.cs" />
     <Compile Include="Models\ContactModel.cs" />

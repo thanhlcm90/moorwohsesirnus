@@ -43,7 +43,7 @@ namespace SunriseShowroom.Controllers
             {
                // product.CatalogueId = 1;
                 product.NameEn = "Nay thi name en";
-                rep.UpdateProducts(product);
+                //rep.UpdateProducts(product);
                 return RedirectToAction("EditProductProperties", new { product.Id });
             }
             return View(product);
