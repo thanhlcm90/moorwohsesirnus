@@ -1,5 +1,5 @@
-﻿<?xml version="1.0" encoding="utf-8"?><Database Name="DataSource" Class="ShowroomDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
-  <Connection Mode="AppSettings" ConnectionString="Data Source=diencokhi.vn;Persist Security Info=True;User ID=sunrise_admin" SettingsObjectName="Showroom.Models.Properties.Settings" SettingsPropertyName="DataSourceConnectionString" Provider="System.Data.SqlClient" />
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="sunrise_auto" Class="ShowroomDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="AppSettings" ConnectionString="Data Source=diencokhi.vn;Initial Catalog=sunrise_auto;Persist Security Info=True;User ID=sunrise_admin" SettingsObjectName="Showroom.Models.Properties.Settings" SettingsPropertyName="sunrise_autoConnectionString" Provider="System.Data.SqlClient" />
   <Table Name="sunrise_admin.Catalogue" Member="Catalogues">
     <Type Name="Catalogue">
       <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
@@ -31,7 +31,7 @@
     </Type>
   </Table>
   <Table Name="sunrise_admin.News" Member="News">
-    <Type Name="New">
+    <Type Name="News">
       <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
       <Column Name="Title" Type="System.String" DbType="NVarChar(255) NOT NULL" CanBeNull="false" />
       <Column Name="TitleEn" Type="System.String" DbType="NVarChar(255) NOT NULL" CanBeNull="false" />
@@ -52,7 +52,7 @@
       <Column Name="NameEn" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
       <Column Name="Atcflg" Type="System.String" DbType="NChar(10) NOT NULL" CanBeNull="false" />
       <Column Name="Image" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
-      <Association Name="NewsCatalogue_New" Member="News" ThisKey="Id" OtherKey="CatelogueId" Type="New" />
+      <Association Name="NewsCatalogue_New" Member="News" ThisKey="Id" OtherKey="CatelogueId" Type="News" />
     </Type>
   </Table>
   <Table Name="sunrise_admin.Product" Member="Products">
@@ -101,6 +101,13 @@
       <Column Name="NameEn" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
       <Column Name="Actflg" Type="System.Char" DbType="NChar(1) NOT NULL" CanBeNull="false" />
       <Association Name="PropertyCatalogue_Property" Member="Properties" ThisKey="Id" OtherKey="CatelogueId" Type="Property" />
+    </Type>
+  </Table>
+  <Table Name="sunrise_admin.SystemInfo" Member="SystemInfos">
+    <Type Name="SystemInfo">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Code" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Value" Type="System.String" DbType="NVarChar(MAX) NOT NULL" CanBeNull="false" />
     </Type>
   </Table>
 </Database>
