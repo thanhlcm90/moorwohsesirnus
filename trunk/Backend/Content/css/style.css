@@ -3619,6 +3619,8 @@ ul > li.satgreen {
     -webkit-border-radius: 0 0 0 0;
     -moz-border-radius: 0 0 0 0;
     border-radius: 0 0 0 0;
+    margin-left:2px;
+    margin-right:5px;
 }
 
 .thumbnail-borderless .thumbnail {
