@@ -1,4 +1,4 @@
-﻿<div id="navigation">
+﻿<div id="navigation" class="navbar-fixed-top">
 		<div class="container-fluid">
 			<a href="#" id="brand">Sunrise</a>
 			<a href="#" class="toggle-nav" rel="tooltip" data-placement="bottom" title="Toggle navigation"><i class="icon-reorder"></i></a>
@@ -65,22 +65,13 @@
 					</a>
 					<ul class="dropdown-menu">
 						<li>
-							<a href="forms-basic.html">Thay đổi logo</a>
+							<a href="/SystemInfo">Thông tin hệ thống</a>
 						</li>
 						<li>
-							<a href="forms-extended.html">Thay đổi banner</a>
+							<a href="forms-extended.html">Thay đổi Top Slide</a>
 						</li>
 						<li>
-							<a href="forms-validation.html">Thay đổi thông tin liên hệ</a>
-						</li>
-                        <li>
-							<a href="forms-validation.html">Thay đổi video</a>
-						</li>
-                        <li>
-							<a href="forms-validation.html">Thay đổi footer</a>
-						</li>
-                        <li>
-							<a href="forms-validation.html">Thay đổi online supporter</a>
+							<a href="forms-validation.html">Thay đổi Bottom Slide</a>
 						</li>
 					</ul>
 				</li>
@@ -100,8 +91,8 @@
 							<li>
 								<span>Topbar</span>
 								<div class="topbar-toggle">
-									<a href="#" class='set-topbar-fixed'>Fixed</a>
-									<a href="#" class="active set-topbar-default">Default</a>
+									<a href="#" class='active set-topbar-fixed'>Fixed</a>
+									<a href="#" class="set-topbar-default">Default</a>
 								</div>
 							</li>
 							<li>
@@ -150,7 +141,7 @@
 							<a href="more-userprofile.html">Edit profile</a>
 						</li>
 						<li>
-							<a href="more-login.html">Sign out</a>
+							@Html.ActionLink("Log Off", "LogOff", "Account")
 						</li>
 					</ul>
 				</div>
