@@ -67,6 +67,27 @@ namespace Showroom.Models.DataAccess
             }
         }
 
+        public bool UpdateProducts(Product item)
+        {
+            try
+            {
+                // Tìm kiếm đối tượng có Id cần sửa đổi
+                Product itemUpdate = (from p in _dataContext.Products where p.Id == item.Id select p).SingleOrDefault();
+
+                // Nếu không tìm thấy thì trả về False
+                if (itemUpdate == null) return false;
+
+                // Copy toàn bộ giá trị từ item sang itemUpdate. Submit thay đổi
+                item.CopyProperties(itemUpdate);
+                _dataContext.SubmitChanges();
+                return true;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
 
     }
 }
