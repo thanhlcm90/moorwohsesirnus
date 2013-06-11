@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 11.75, 13.875" name="SunriseShowroom">
+<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 11.75, 13.125" name="SunriseShowroom">
   <DataContextMoniker Name="/ShowroomDataContext" />
   <nestedChildShapes>
     <classShape Id="07f75a85-b452-4dea-9717-478ff7c3da12" absoluteBounds="0.75, 8.125, 2, 1.9631982421874987">
@@ -70,13 +70,6 @@
         <classShapeMoniker Id="bd37a939-0651-4758-8dfc-7063e8f4757d" />
       </nodes>
     </associationConnector>
-    <associationConnector edgePoints="[(8.75 : 5.38544840494792); (9.5 : 5.38544840494792)]" fixedFrom="NotFixed" fixedTo="NotFixed">
-      <AssociationMoniker Name="/ShowroomDataContext/NewsCatalogue/NewsCatalogue_New" />
-      <nodes>
-        <classShapeMoniker Id="852ed131-7e34-4a77-b067-2555acbd934d" />
-        <classShapeMoniker Id="439c5579-781f-4b74-8460-8c7c1716f423" />
-      </nodes>
-    </associationConnector>
     <associationConnector edgePoints="[(2.75 : 9.10659912109375); (3.5 : 9.10659912109375)]" fixedFrom="NotFixed" fixedTo="NotFixed">
       <AssociationMoniker Name="/ShowroomDataContext/Catalogue/Catalogue_Product" />
       <nodes>
@@ -84,7 +77,7 @@
         <classShapeMoniker Id="83b5b22f-d640-4b1a-8585-81b46ca9a122" />
       </nodes>
     </associationConnector>
-    <associationConnector edgePoints="[(2.75 : 2.16429768880208); (3.5 : 2.16429768880208)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+    <associationConnector edgePoints="[(2.75 : 2.16429768880208); (3.5 : 2.16429768880208)]" fixedFrom="Algorithm" fixedTo="Algorithm">
       <AssociationMoniker Name="/ShowroomDataContext/PropertySubCatalogue/PropertySubCatalogue_Property" />
       <nodes>
         <classShapeMoniker Id="fa42483c-e6f2-4e10-ab98-165ef246b463" />
@@ -98,10 +91,17 @@
         <classShapeMoniker Id="5ae654f8-8b39-483e-a4d3-c29f841ba5da" />
       </nodes>
     </associationConnector>
-    <classShape Id="f0db5e1e-5d81-4234-886a-fc1996c6c119" absoluteBounds="3.5, 12.25, 2, 1.3862939453125">
+    <associationConnector edgePoints="[(8.75 : 5.38544840494792); (9.5 : 5.38544840494792)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/ShowroomDataContext/NewsCatalogue/NewsCatalogue_News" />
+      <nodes>
+        <classShapeMoniker Id="852ed131-7e34-4a77-b067-2555acbd934d" />
+        <classShapeMoniker Id="439c5579-781f-4b74-8460-8c7c1716f423" />
+      </nodes>
+    </associationConnector>
+    <classShape Id="866a55a7-b841-47ee-953c-ce522ab41bec" absoluteBounds="3, 11.625, 2, 1.1939925130208333">
       <DataClassMoniker Name="/ShowroomDataContext/SystemInfo" />
       <nestedChildShapes>
-        <elementListCompartment Id="e1acab58-7b25-46fc-a1dd-a649f6fff7aa" absoluteBounds="3.515, 12.71, 1.9700000000000002, 0.8262939453125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+        <elementListCompartment Id="6cb2324b-b0fd-4336-ad97-8950ae89ebca" absoluteBounds="3.0149999999999997, 12.085, 1.9700000000000002, 0.63399251302083326" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
   </nestedChildShapes>

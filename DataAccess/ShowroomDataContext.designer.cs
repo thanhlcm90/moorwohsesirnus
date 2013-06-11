@@ -991,7 +991,7 @@ namespace Showroom.Models
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="NewsCatalogue_New", Storage="_NewsCatelogue", ThisKey="CatelogueId", OtherKey="Id", IsForeignKey=true)]
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="NewsCatalogue_News", Storage="_NewsCatelogue", ThisKey="CatelogueId", OtherKey="Id", IsForeignKey=true)]
 		public NewsCatalogue NewsCatalogue
 		{
 			get
@@ -1186,7 +1186,7 @@ namespace Showroom.Models
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="NewsCatalogue_New", Storage="_News", ThisKey="Id", OtherKey="CatelogueId")]
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="NewsCatalogue_News", Storage="_News", ThisKey="Id", OtherKey="CatelogueId")]
 		public EntitySet<News> News
 		{
 			get
@@ -2255,8 +2255,6 @@ namespace Showroom.Models
 		
 		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
 		
-		private int _Id;
-		
 		private string _Code;
 		
 		private string _Value;
@@ -2265,8 +2263,6 @@ namespace Showroom.Models
     partial void OnLoaded();
     partial void OnValidate(System.Data.Linq.ChangeAction action);
     partial void OnCreated();
-    partial void OnIdChanging(int value);
-    partial void OnIdChanged();
     partial void OnCodeChanging(string value);
     partial void OnCodeChanged();
     partial void OnValueChanging(string value);
@@ -2278,27 +2274,7 @@ namespace Showroom.Models
 			OnCreated();
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Id", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
-		public int Id
-		{
-			get
-			{
-				return this._Id;
-			}
-			set
-			{
-				if ((this._Id != value))
-				{
-					this.OnIdChanging(value);
-					this.SendPropertyChanging();
-					this._Id = value;
-					this.SendPropertyChanged("Id");
-					this.OnIdChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Code", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Code", DbType="NVarChar(50) NOT NULL", CanBeNull=false, IsPrimaryKey=true)]
 		public string Code
 		{
 			get

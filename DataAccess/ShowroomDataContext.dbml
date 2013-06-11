@@ -42,7 +42,7 @@
       <Column Name="Actflg" Type="System.Char" DbType="NChar(1) NOT NULL" CanBeNull="false" />
       <Column Name="ShowSlide" Type="System.Char" DbType="NChar(1) NOT NULL" CanBeNull="false" />
       <Column Name="CatelogueId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Association Name="NewsCatalogue_New" Member="NewsCatalogue" Storage="_NewsCatelogue" ThisKey="CatelogueId" OtherKey="Id" Type="NewsCatalogue" IsForeignKey="true" />
+      <Association Name="NewsCatalogue_News" Member="NewsCatalogue" Storage="_NewsCatelogue" ThisKey="CatelogueId" OtherKey="Id" Type="NewsCatalogue" IsForeignKey="true" />
     </Type>
   </Table>
   <Table Name="sunrise_admin.NewsCatalogue" Member="NewsCatalogues">
@@ -52,7 +52,7 @@
       <Column Name="NameEn" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
       <Column Name="Atcflg" Type="System.String" DbType="NChar(10) NOT NULL" CanBeNull="false" />
       <Column Name="Image" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
-      <Association Name="NewsCatalogue_New" Member="News" ThisKey="Id" OtherKey="CatelogueId" Type="News" />
+      <Association Name="NewsCatalogue_News" Member="News" ThisKey="Id" OtherKey="CatelogueId" Type="News" />
     </Type>
   </Table>
   <Table Name="sunrise_admin.Product" Member="Products">
@@ -105,8 +105,7 @@
   </Table>
   <Table Name="sunrise_admin.SystemInfo" Member="SystemInfos">
     <Type Name="SystemInfo">
-      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="Code" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Code" Type="System.String" DbType="NVarChar(50) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
       <Column Name="Value" Type="System.String" DbType="NVarChar(MAX) NOT NULL" CanBeNull="false" />
     </Type>
   </Table>

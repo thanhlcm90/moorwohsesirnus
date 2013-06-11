@@ -42,10 +42,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DataAccess\SystemInfo.cs" />
     <Compile Include="DataAccess\Product.cs" />
     <Compile Include="DataAccess\Catalogue.cs" />
     <Compile Include="DataAccess\Contact.cs" />
-    <Compile Include="DataAccess\News.cs" />
     <Compile Include="DataAccess\NewsCatalogue.cs" />
     <Compile Include="DataAccess\ProductProperty.cs" />
     <Compile Include="DataAccess\Property.cs" />
@@ -55,6 +55,7 @@
     <Compile Include="ExtensionMethod.cs" />
     <Compile Include="Models\CatalogueModel.cs" />
     <Compile Include="Models\ContactModel.cs" />
+    <Compile Include="Models\SystemInfoModel.cs" />
     <Compile Include="obj\Debug\TemporaryGeneratedFile_036C0B5B-1481-4323-8D20-8F5ADCB23D92.cs" />
     <Compile Include="obj\Debug\TemporaryGeneratedFile_5937a670-0e60-4077-877b-f7221da3dda1.cs" />
     <Compile Include="obj\Debug\TemporaryGeneratedFile_E7A71F73-0F8D-4B9B-B56E-8E70B10BC5D3.cs" />
