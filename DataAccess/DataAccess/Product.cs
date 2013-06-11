@@ -47,6 +47,11 @@ namespace Showroom.Models.DataAccess
             }
         }
 
+        /// <summary>
+        /// Lấy List Product by Catalogue ID
+        /// </summary>
+        /// <param name="IdCatalogue"></param>
+        /// <returns></returns>
         public List<Product> GetListProductSame(int IdCatalogue)
         {
             try
