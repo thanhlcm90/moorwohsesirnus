@@ -10,7 +10,7 @@ namespace SunriseShowroom.Controllers
         private ShowroomRepository rep = new ShowroomRepository();
         //
         // GET: /PropertyCatalogue/
-
+        [Authorize]
         public ActionResult Index()
         {
             // Action GetList, dùng cho Grid load danh sách dữ liệu
@@ -18,12 +18,14 @@ namespace SunriseShowroom.Controllers
             return View(propertyCatalogueList);
         }
 
+        [Authorize]
         public ActionResult Edit(int id)
         {
             PropertyCatalogue propertyCatalogueInfo = rep.GetPropertyCatalogueInfo(id);
             return View(propertyCatalogueInfo);
         }
 
+        [Authorize]
         [HttpPost]
         public ActionResult Edit(PropertyCatalogue propertyCatalogue)
         {
@@ -35,6 +37,7 @@ namespace SunriseShowroom.Controllers
             return View(propertyCatalogue);
         }
 
+        [Authorize]
         public ActionResult Delete(int id)
         {
             try
