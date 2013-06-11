@@ -44,15 +44,14 @@
             <img src="/Content/img/logo-big.png" alt="" class='retina-ready' width="59" height="49">ADMIN</a></h1>
         <div class="login-body">
             <h2>Đăng nhập</h2>
+            @Html.ValidationSummary()
             @using (Html.BeginForm())
             {
                 <div class="email">
                     @Html.TextBoxFor(m => m.UserName, new { placeholder = "Tên tài khoản", @class = "input-block-level" })
-                    @Html.ValidationMessageFor(m => m.UserName)
                 </div>
                 <div class="pw">
                     @Html.PasswordFor(m => m.Password, new { placeholder = "Mật khẩu", @class = "input-block-level" })
-                    @Html.ValidationMessageFor(m => m.Password)
                 </div>
                 <div class="remember">
                     <label class="checkbox">

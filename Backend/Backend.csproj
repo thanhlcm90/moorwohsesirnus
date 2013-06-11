@@ -99,6 +99,7 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\CatalogueController.cs" />
     <Compile Include="Controllers\ContactController.cs" />
+    <Compile Include="Controllers\SystemInfoController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ProductController.cs" />
     <Compile Include="Controllers\PropertyCatalogueController.cs" />
@@ -408,6 +409,7 @@
     <Content Include="Views\Product\EditProductProperties.cshtml" />
     <Content Include="Views\PropertyCatalogue\Edit.cshtml" />
     <Content Include="Views\PropertyCatalogue\Index.cshtml" />
+    <Content Include="Views\SystemInfo\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
