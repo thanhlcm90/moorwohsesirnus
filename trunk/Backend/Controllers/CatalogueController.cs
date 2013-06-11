@@ -12,7 +12,7 @@ namespace SunriseShowroom.Controllers
         private ShowroomRepository rep = new ShowroomRepository();
         //
         // GET: /Catalogue/
-       
+        [Authorize]
         public ActionResult Index()
         {
             // Action GetList, dùng cho Grid load danh sách dữ liệu
@@ -20,12 +20,25 @@ namespace SunriseShowroom.Controllers
             return View(CatalogueList);
         }
 
+        /// <summary>
+        /// Lấy thông tin bind lên view để edit
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        [Authorize]
         public ActionResult Edit(int id)
         {
             Catalogue catalogue = rep.GetProductCatalogueInfo(id);
             return View(catalogue);
         }
 
+
+        /// <summary>
+        /// Lưu thông tin vừa edit
+        /// </summary>
+        /// <param name="catalogue"></param>
+        /// <returns></returns>
+        [Authorize]
         [HttpPost]
         public ActionResult Edit(Catalogue catalogue)
         {
@@ -38,6 +51,13 @@ namespace SunriseShowroom.Controllers
             return View(catalogue);
         }
 
+
+        /// <summary>
+        /// Xóa catalogue
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        [Authorize]
         public ActionResult Delete(int id)
         {
             try
@@ -45,9 +65,10 @@ namespace SunriseShowroom.Controllers
                 rep.DeleteProductCatalogue(id);
                 return RedirectToAction("Index");
             }
-            catch {
+            catch
+            {
                 return RedirectToAction("Index");
-            }            
+            }
         }
     }
 }
