@@ -33,5 +33,16 @@ namespace Showroom.Models.Properties {
                 return ((string)(this["DataSourceConnectionString"]));
             }
         }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=diencokhi.vn;Initial Catalog=sunrise_auto;Persist Security Info=True;" +
+            "User ID=sunrise_admin;Password=abc@123")]
+        public string sunrise_autoConnectionString {
+            get {
+                return ((string)(this["sunrise_autoConnectionString"]));
+            }
+        }
     }
 }
