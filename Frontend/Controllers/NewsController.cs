@@ -18,7 +18,7 @@ namespace Frontend.Controllers
         {
             //Lấy danh sách tất cả tin tức trên hệ thống
             var lstNews = rep.GetNewsList();
-            ViewBag.MaxPage = lstNews.Count() / 1;
+            ViewBag.MaxPage = lstNews.Count() / 2;
             ViewBag.Curenpage = page;
             lstNews = lstNews.Skip(maxProductInPage * (page - 1)).Take(maxProductInPage).ToList();
             ViewBag.lstNews = lstNews;
