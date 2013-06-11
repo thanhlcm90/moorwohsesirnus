@@ -21,12 +21,24 @@ namespace SunriseShowroom.Controllers
             return View(ContactList);
         }
 
+        /// <summary>
+        /// Xem thông tin liên hệ
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        [Authorize]
         public ActionResult View(int id)
         {
             Contact contact = rep.GetContactsInfo(id);
             return View(contact);
         }
 
+        /// <summary>
+        /// Xóa thông tin liên hệ
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        [Authorize]
         public ActionResult Delete(int id)
         {
             try
