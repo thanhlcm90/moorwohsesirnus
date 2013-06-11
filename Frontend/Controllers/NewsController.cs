@@ -10,7 +10,7 @@ namespace Frontend.Controllers
     public class NewsController : Controller
     {
         ShowroomRepository rep = new ShowroomRepository();
-        int maxProductInPage = 2;
+        int maxNewInPage = 2;
         //
         // GET: /News/
 
@@ -18,12 +18,24 @@ namespace Frontend.Controllers
         {
             //Lấy danh sách tất cả tin tức trên hệ thống
             var lstNews = rep.GetNewsList();
-            ViewBag.MaxPage = lstNews.Count() / 2;
+            ViewBag.MaxPage = lstNews.Count() / maxNewInPage +1;
             ViewBag.Curenpage = page;
-            lstNews = lstNews.Skip(maxProductInPage * (page - 1)).Take(maxProductInPage).ToList();
+            lstNews = lstNews.Skip(maxNewInPage * (page - 1)).Take(maxNewInPage).ToList();
             ViewBag.lstNews = lstNews;
             return View();
         }
+
+        public ActionResult NewsbyCatalogue(int id, int page)
+        {
+            var lstNews = rep.GetListNewsByCATAID(id);
+            ViewBag.MaxPage = lstNews.Count() / maxNewInPage + 1;
+            ViewBag.Id = id;
+            ViewBag.Curenpage = page;
+            lstNews = lstNews.Skip(maxNewInPage * (page - 1)).Take(maxNewInPage).ToList();
+            ViewBag.lstNews = lstNews;
+            return View();
+        }
+
 
     }
 }

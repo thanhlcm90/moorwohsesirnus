@@ -39,7 +39,7 @@ namespace Frontend.Controllers
         public ActionResult Product(int id, int page)
         {
             var ProductByCatalogue = rep.GetListProductSame(id);
-            ViewBag.MaxPage = ProductByCatalogue.Count() / maxProductInPage;
+            ViewBag.MaxPage = ProductByCatalogue.Count() / maxProductInPage +1;
             ViewBag.Id = id;
             ViewBag.Curenpage = page;
             ProductByCatalogue = ProductByCatalogue.Skip(maxProductInPage * (page-1)).Take(maxProductInPage).ToList();
