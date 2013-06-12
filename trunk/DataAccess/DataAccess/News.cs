@@ -12,7 +12,7 @@ namespace Showroom.Models.DataAccess
         /// Lấy toàn bộ danh sách nhóm sản phẩm
         /// </summary>
         /// <returns>List of New</returns>
-        public List<New> GetNewsList()
+        public List<News> GetNewsList()
         {
             try
             {
@@ -30,7 +30,7 @@ namespace Showroom.Models.DataAccess
         /// </summary>
         /// <param name="id">Mã nhóm sản phẩm</param>
         /// <returns></returns>
-        public New GetNewsInfo(int id)
+        public News GetNewsInfo(int id)
         {
             try
             {
@@ -51,7 +51,7 @@ namespace Showroom.Models.DataAccess
         /// </summary>
         /// <param name="item">Đối tượng cần thêm</param>
         /// <returns>True: Thành công; False: Thất bại</returns>
-        public bool InsertNews(New item)
+        public bool InsertNews(News item)
         {
             try
             {
@@ -70,12 +70,12 @@ namespace Showroom.Models.DataAccess
         /// </summary>
         /// <param name="item"></param>
         /// <returns></returns>
-        public bool UpdateNews(New item)
+        public bool UpdateNews(News item)
         {
             try
             {
                 // Tìm kiếm đối tượng có Id cần sửa đổi
-                New itemUpdate = (from p in _dataContext.News where p.Id == item.Id select p).SingleOrDefault();
+                News itemUpdate = (from p in _dataContext.News where p.Id == item.Id select p).SingleOrDefault();
 
                 // Nếu không tìm thấy thì trả về False
                 if (itemUpdate == null) return false;
@@ -96,7 +96,7 @@ namespace Showroom.Models.DataAccess
             try
             {
                 // Tìm kiếm đối tượng có Id cần sửa đổi
-                New itemDelete = (from p in _dataContext.News where p.Id == Id select p).SingleOrDefault();
+                News itemDelete = (from p in _dataContext.News where p.Id == Id select p).SingleOrDefault();
 
                 // Nếu không tìm thấy thì trả về False
                 if (itemDelete == null) return false;
@@ -109,6 +109,40 @@ namespace Showroom.Models.DataAccess
             catch (Exception ex)
             {
                 throw ex;
+            }
+        }
+
+        /// <summary>
+        /// Lấy danh sách News theo Catalogue ID
+        /// </summary>
+        /// <param name="IdNewsCatalogue"></param>
+        /// <returns></returns>
+        public List<News> GetListNewsByCATAID(int IdNewsCatalogue)
+        {
+            try
+            {
+                var list = from p in _dataContext.News
+                           where p.CatelogueId == IdNewsCatalogue
+                           select p;
+                           //select new News
+                           //{
+                           //    Id = p.Id,
+                           //    Actflg = p.Actflg,
+                           //    CatelogueId = p.CatelogueId,
+                           //    Detail = p.Detail,
+                           //    PostDate = p.PostDate,
+                           //    Title = p.Title,
+                           //    TitleEn = p.TitleEn,
+                           //    Views = p.Views,
+                           //    ShowSlide = p.ShowSlide,
+                           //    Image = p.Image
+                           //};
+                return list.ToList();
+            }
+            catch (Exception)
+            {
+
+                throw;
             }
         }
     }
