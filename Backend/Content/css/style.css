@@ -10237,3 +10237,6 @@ body.error {
                 body.error .wrapper .input-append .btn:hover {
                     background: #1b67af;
                 }
+.no-padding {
+    padding:0px !important;
+}
