@@ -132,7 +132,7 @@ namespace SunriseShowroom.Controllers
             {
                 HttpPostedFileBase file = Request.Files[i];
                 string path = System.IO.Path.Combine(ProductFolder, System.IO.Path.GetFileName(file.FileName));
-                if (!System.IO.File.Exists(path))
+                if (!System.IO.File.Exists(path) && file.ContentLength >0)
                 {
                     file.SaveAs(path);
                 }
