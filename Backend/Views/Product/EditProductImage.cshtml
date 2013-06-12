@@ -1,5 +1,5 @@
 ﻿@{
-    ViewBag.Title = "Cập nhật sản phẩm";
+    ViewBag.Title = "Cập nhật ảnh của sản phẩm";
 }
 @model Showroom.Models.Product
 @{
@@ -8,77 +8,28 @@
 }
 <link rel="stylesheet" href="@Url.Content("~/Content/css/plugins/colorbox/colorbox.css")">
 <div class="box box-color box-bordered">
-    <div class="box-title">
-        <h3><i class="icon-edit"></i>Cập nhật thông tin sản phẩm</h3>
-    </div>
-    <div class="box-content nopadding">
-        <div class="form-wizard">
-            <div class="span12">
-                <div class="step" id="firstStep">
-                    <ul class="wizard-steps steps-3">
-                        <li>
-                            <div class="single-step">
-                                <span class="title">1</span>
-                                <span class="circle">
-                                    <span class="active"></span>
-                                </span>
-                                <span class="description">Thông tin cơ bản của sản phẩm
-                                </span>
+    @using (Html.BeginForm("EditProductImage", "Product", FormMethod.Post, new { enctype = "multipart/form-data", @class = "form-horizontal" }))
+    {
+        <div class="box box-color box-bordered">
+            <div class="box-title">
+                <h3><i class="icon-edit"></i>Cập nhật ảnh của sản phẩm</h3>
+            </div>
+            <div class="box-content">
+                <div class="span12">
+                    <div class="control-group">
+                        <label for="textfield" class="control-label">Chọn ảnh</label>
+                        <div class="controls">
+                            <input type="file" name="file" multiple="multiple" value="" />
+                            <div class="form-actions no-padding">
+                                <button type="submit" class="btn btn-primary">Lưu và Next </button>
                             </div>
-                        </li>
-                        <li>
-                            <div class="single-step">
-                                <span class="title">2</span>
-                                <span class="circle"></span>
-                                <span class="description">Các thông số của sản phẩm
-                                </span>
-                            </div>
-                        </li>
-                        <li class='active'>
-                            <div class="single-step">
-                                <span class="title">3</span>
-                                <span class="circle"></span>
-                                <span class="description">Galary ảnh của sản phẩm
-                                </span>
-                            </div>
-                        </li>
-                    </ul>
+                        </div>
+
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-    <div>
-        @using (Html.BeginForm("EditProductImage", "Product", FormMethod.Post, new { enctype = "multipart/form-data", @class = "form-horizontal" }))
-        {
-            <div class="box box-color box-bordered">
-                <div class="box-title">
-                    <h3><i class="icon-edit"></i>Cập nhật thông tin sản phẩm</h3>
-                </div>
-                <div class="box-content">
-                    <div class="span12">
-                        <div class="control-group">
-                            <a class="btn btn-primary" id="addFileUpload">
-                                <i class=" icon-plus"></i>
-                                Thêm ảnh
-                            </a>
-                        </div>
-                        <div class="control-group">
-                            <label for="textfield" class="control-label">Chọn ảnh</label>
-                            <div class="controls">
-                                <input type="file" name="file" multiple="multiple" value="" />
-                            </div>
-                        </div>
-                    </div>
-                    <div class="span12">
-                        <div class="form-actions">
-                            <button type="submit" class="btn btn-primary">Lưu và Next </button>
-                            <button type="button" class="btn">Hủy </button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        }
-    </div>
+    }
     <div class="box-content">
         <ul class="gallery">
             @for (int i = 0; i < list.Count - 1; i++)
@@ -99,33 +50,3 @@
 </div>
 
 <script src="@Url.Content("~/Scripts/plugins/colorbox/jquery.colorbox-min.js")"></script>
-<script type="text/javascript">
-    var currentId = 1;
-
-    //$('#addFileUpload').click(function () {
-    //    var $this = $(this);
-    //    currentId++;
-    //    var strBuildControl = '<div class="control-group">';
-    //    strBuildControl += '<label for="textfield" class="control-label">Chọn ảnh</label>';
-    //    strBuildControl += '<div class="controls">';
-    //    strBuildControl += '<div class="fileupload fileupload-new" data-provides="fileupload">';
-    //    strBuildControl += '<div class="input-append">';
-    //    strBuildControl += '<div class="uneditable-input span3"><i class="icon-file fileupload-exists"></i><span class="fileupload-preview"></span></div>';
-    //    strBuildControl += '<span class="btn btn-file"><span class="fileupload-new">Select file</span><span class="fileupload-exists">Change</span><input type="file" id="file' + currentId + '" /></span><a href="#" class="btn fileupload-exists" data-dismiss="fileupload">Remove</a>';
-    //    strBuildControl += '<a class="btn btn-primary removeFileUpload">';
-    //    strBuildControl += '<i class="icon-remove"></i> Xóa </a>';
-    //    strBuildControl += '</div></div></div></div>';
-    //    $this.parents().eq(1).append(strBuildControl);
-    //});
-    $('#addFileUpload').click(function () {
-        var $this = $(this);
-        currentId++;
-        var strBuildControl = '<input type="file" name="file' + currentId + '" id="file' + currentId + '" multiple="multiple" value="" />';
-        $this.parents().eq(1).append(strBuildControl);
-    });
-    $(document).on('click', '.removeFileUpload', function () {
-        var $this = $(this);
-        $this.parents().eq(3).remove();
-    });
-
-</script>
