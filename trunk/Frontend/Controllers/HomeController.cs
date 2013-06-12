@@ -19,23 +19,10 @@ namespace Frontend.Controllers
             return View();
         }
 
-        public ActionResult Search()
-        {
-            return View();
-        }
-
-        /// <summary>
-        /// Insert New Contact
-        /// Author: ThuanNH
-        /// </summary>
-        /// <param name="models"></param>
-        /// <returns></returns>
         [HttpPost]
-        public ActionResult Search(Contact models)
+        public ActionResult Index(string strOlala)
         {
-            models.PostDate = DateTime.Now;
-            models.Actflg = '1';
-            rep.InsertContacts(models);
+            HttpContext.Response.Write("Olala");
             return View();
         }
 
