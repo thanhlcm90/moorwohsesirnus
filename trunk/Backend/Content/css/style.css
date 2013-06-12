@@ -218,13 +218,16 @@ ul.icons {
 }
 
 @-o-keyframes spin {
-    0% {
-        -o-transform: rotate(0deg);
-    }
+    0%;
 
-    100% {
-        -o-transform: rotate(359deg);
-    }
+{
+    -o-transform: rotate(0deg);
+}
+
+100% {
+    -o-transform: rotate(359deg);
+}
+
 }
 
 @-ms-keyframes spin {
@@ -3619,8 +3622,8 @@ ul > li.satgreen {
     -webkit-border-radius: 0 0 0 0;
     -moz-border-radius: 0 0 0 0;
     border-radius: 0 0 0 0;
-    margin-left:2px;
-    margin-right:5px;
+    margin-left: 2px;
+    margin-right: 5px;
 }
 
 .thumbnail-borderless .thumbnail {
@@ -4142,6 +4145,12 @@ ul > li.satgreen {
         .gallery > li > a {
             display: block;
         }
+
+            .gallery > li > a img {
+                float:left;
+                width: 148px;
+                height: 150px;
+            }
 
         .gallery > li:hover .extras {
             display: block;
@@ -4992,7 +5001,7 @@ div.DTS div.dataTables_scrollBody {
                 padding: 20px 30px 5px 30px;
             }
 
-            .login .wrapper .login-body .email input, .login .wrapper .login-body .pw input, .login .wrapper .login-body .remember{
+            .login .wrapper .login-body .email input, .login .wrapper .login-body .pw input, .login .wrapper .login-body .remember {
                 padding: 8px 12px;
                 height: 35px;
             }
@@ -5322,13 +5331,16 @@ ul.icons {
 }
 
 @-o-keyframes spin {
-    0% {
-        -o-transform: rotate(0deg);
-    }
+    0%;
 
-    100% {
-        -o-transform: rotate(359deg);
-    }
+{
+    -o-transform: rotate(0deg);
+}
+
+100% {
+    -o-transform: rotate(359deg);
+}
+
 }
 
 @-ms-keyframes spin {
