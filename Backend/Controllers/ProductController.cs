@@ -5,7 +5,8 @@ using System.Web;
 using System.Web.Mvc;
 using Showroom.Models.DataAccess;
 using Showroom.Models;
-
+using System.IO;
+using System.Collections;
 namespace SunriseShowroom.Controllers
 {
     public class ProductController : Controller
@@ -43,9 +44,9 @@ namespace SunriseShowroom.Controllers
         {
             if (ModelState.IsValid)
             {
-               // product.CatalogueId = 1;
+                // product.CatalogueId = 1;
                 product.NameEn = "Nay thi name en";
-               // rep.UpdateProducts(product);
+                // rep.UpdateProducts(product);
                 return RedirectToAction("EditProductProperties", new { product.Id });
             }
             return View(product);
@@ -60,7 +61,7 @@ namespace SunriseShowroom.Controllers
         public ActionResult EditProductProperties(int id)
         {
             //var model = rep.GetProductInfo(id);
-           
+
             //Get các thuộc tính
             var PropertyList = rep.GetPropertyList();
             ViewBag.PropertyList = PropertyList;
@@ -98,8 +99,45 @@ namespace SunriseShowroom.Controllers
         [Authorize]
         public ActionResult EditProductImage(int id)
         {
+            var ProductFolder = AppDomain.CurrentDomain.BaseDirectory + "Images\\Product\\" +id;
+            var ProducImagePath = "/Images/Product/" + id;
+            DirectoryInfo dir = new DirectoryInfo(ProductFolder);
+            FileInfo[] files = dir.GetFiles();
+            ArrayList list = new ArrayList();
+            foreach (FileInfo file in files)
+            {
+                if (file.Extension == ".jpg" || file.Extension == ".jpeg" || file.Extension == ".gif" || file.Extension == ".png")
+                {
+                    list.Add(ProducImagePath + "/" +file.Name);
+                }
+            }
+            ViewBag.ImageList = list;
             return View();
         }
 
+
+        [Authorize]
+        [HttpPost]
+        public ActionResult EditProductImage(Product product)
+        {
+            string ProductFolder = AppDomain.CurrentDomain.BaseDirectory + "Images\\Product\\"+ product.Id;    
+           
+            // If directory does not exist, don't even try 
+            if (!Directory.Exists(ProductFolder))
+            {
+                Directory.CreateDirectory(ProductFolder);
+            }
+
+            for (int i = 0; i < Request.Files.Count; i++)
+            {
+                HttpPostedFileBase file = Request.Files[i];
+                string path = System.IO.Path.Combine(ProductFolder, System.IO.Path.GetFileName(file.FileName));
+                if (!System.IO.File.Exists(path))
+                {
+                    file.SaveAs(path);
+                }
+            }
+            return RedirectToAction("EditProductImage", new { product.Id });
+        }
     }
 }

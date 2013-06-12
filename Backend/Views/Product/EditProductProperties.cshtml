@@ -2,6 +2,12 @@
     ViewBag.Title = "Cập nhật sản phẩm";
 }
 @model Showroom.Models.Product
+@{
+    List<Showroom.Models.PropertyCatalogue> PropertyCatalogueList = ViewBag.PropertyCatalogueList;
+    List<Showroom.Models.PropertySubCatalogue> PropertySubCatalogueList = ViewBag.PropertySubCatalogueList;
+    List<Showroom.Models.ProductProperty> ProductProperty = ViewBag.ProductPropertyList;
+    List<Showroom.Models.Property> PropertyList = ViewBag.PropertyList;
+}
 <!-- chosen -->
 <link rel="stylesheet" href="@Url.Content("~/Content/css/plugins/chosen/chosen.css")">
 <!-- Chosen -->
@@ -11,7 +17,7 @@
         <h3><i class="icon-edit"></i>Cập nhật thông tin sản phẩm</h3>
     </div>
     <div class="box-content nopadding">
-       <div class="form-wizard">
+        <div class="form-wizard">
             <div class="span12">
                 <div class="step" id="firstStep">
                     <ul class="wizard-steps steps-3">
@@ -45,57 +51,69 @@
                 </div>
             </div>
         </div>
+    </div>
+    <div>
         @using (Html.BeginForm("EditProductProperties", "Product", FormMethod.Post, new { @class = "form-horizontal form-column form-horizontal" }))
         {
-            <div class="span6">
-                @Html.HiddenFor(item => item.Id)
-                <div class="control-group">
-                    <label for="" class="control-label">@Html.LabelFor(item => item.Catalogue.Name)</label>
-                    <div class="controls">
-                        <div class="input-xlarge">
-                            @Html.DropDownList("listCatalogue", (IList<SelectListItem>)ViewBag.CatalogueList, new { @class = "chosen-select" })
+            <div class="span12">
+                @for (int i = 0; i < PropertyCatalogueList.Count; i++)
+                {
+                    string StrName = PropertyCatalogueList[i].Name.ToString();
+                    var ID = PropertyCatalogueList[i].Id;
+                    var GroupPropertyList = (from n in PropertySubCatalogueList
+                                             from p in PropertyList
+
+                                             where p.CatelogueId == ID && p.SubCatelogueId == n.Id
+                                             select new
+                                             {
+                                                 Id = n.Id,
+                                                 Name = n.Name
+                                             }
+                                                 ).Distinct().ToList();
+                    <div class="box ">
+                        <div class="box-title">
+                            <h3><i class="icon-tag"></i>@StrName</h3>
+                        </div>
+                        <div class="box-content">
+                            @foreach (var subitem in GroupPropertyList)
+                            {
+                                var lst = (from p in PropertyList
+                                           where p.SubCatelogueId == subitem.Id && p.CatelogueId == ID
+                                           select new
+                                           {
+                                               Id = p.Id,
+                                               PropertyType = p.PropertyType,
+                                               Name = p.Name,
+                                           }).Distinct().ToList();
+                                <div class="span5">
+                                    <h3>@subitem.Name</h3>
+                                    <ul>
+                                        @foreach (var s in lst)
+                                        {
+                                            <div class="control-group">
+                                                <label class="control-label" for="@s.Name">@s.Name</label>
+                                                @if (s.PropertyType.Trim().Equals("1"))
+                                                {
+                                                    <div class="controls">
+                                                        <input type="text"  id="@s.Id"/>
+                                                    </div>
+                                                }
+                                                else
+                                                {
+                                                    <div class="controls">
+                                                        <input type="checkbox"  id="@s.Id"/>
+                                                    </div>
+                                                }
+                                            </div>
+                                        }
+                                    </ul>
+                                </div>
+                            }
                         </div>
                     </div>
-                </div>
-                <div class="control-group">
-                    <label for="" class="control-label">@Html.LabelFor(item => item.Code)</label>
-                    <div class="controls">
-                        @Html.TextBoxFor(item => item.Code, new { @class = "input-xlarge" })
-                        @Html.ValidationMessageFor(item => item.Code)
-                    </div>
-                </div>
-                <div class="control-group">
-                    <label for="" class="control-label">@Html.LabelFor(item => item.Name)</label>
-                    <div class="controls">
-                        @Html.TextBoxFor(item => item.Name, new { @class = "input-xlarge" })
-                        @Html.ValidationMessageFor(item => item.Name)
-                    </div>
-                </div>
-            </div>
-            <div class="span6">
-                <div class="control-group">
-                    <label for="" class="control-label">@Html.LabelFor(item => item.Price)</label>
-                    <div class="controls">
-                        @Html.TextBoxFor(item => item.Price, new { @class = "input-xlarge" })
-                        @Html.ValidationMessageFor(item => item.Price)
-                    </div>
-                </div>
-                <div class="control-group">
-                    <label for="" class="control-label">@Html.LabelFor(item => item.Amount)</label>
-                    <div class="controls">
-                        @Html.TextBoxFor(item => item.Amount, new { @class = "input-xlarge" })
-                        @Html.ValidationMessageFor(item => item.Amount)
-                    </div>
-                </div>
+                }
             </div>
             <div class="span12">
-                <div class="control-group">
-                    <label for="" class="control-label">@Html.LabelFor(item => item.Description)</label>
-                    <div class="controls">
-                        @Html.TextAreaFor(item => item.Description, new { @class = "input-block-level", @rows = "15" })
-                        @Html.ValidationMessageFor(item => item.Description)
-                    </div>
-                </div>
                 <div class="form-actions">
                     <button type="submit" class="btn btn-primary">Lưu và Next </button>
                     <button type="button" class="btn">Hủy </button>
