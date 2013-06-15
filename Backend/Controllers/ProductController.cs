@@ -39,7 +39,7 @@ namespace SunriseShowroom.Controllers
         }
 
         [Authorize]
-        [HttpPost]
+        [HttpPost, ValidateInput(false)]
         public ActionResult Edit(Product product)
         {
             if (ModelState.IsValid)
