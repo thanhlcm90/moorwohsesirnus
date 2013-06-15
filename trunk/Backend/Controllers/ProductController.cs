@@ -7,6 +7,7 @@ using Showroom.Models.DataAccess;
 using Showroom.Models;
 using System.IO;
 using System.Collections;
+using System.Web.Script.Serialization;
 namespace SunriseShowroom.Controllers
 {
     public class ProductController : Controller
@@ -74,7 +75,7 @@ namespace SunriseShowroom.Controllers
             //Get các thuộc tính của sản phẩm
             var ProductProperty = rep.GetPropertyProductList(id);
             ViewBag.ProductPropertyList = ProductProperty;
-
+            ViewBag.ProductId = id;
             return View();
         }
 
@@ -88,6 +89,9 @@ namespace SunriseShowroom.Controllers
         [HttpPost]
         public ActionResult EditProductProperties(Product product)
         {
+            var json_serializer = new JavaScriptSerializer();
+            var json = (IDictionary<String, Object>)json_serializer.DeserializeObject(product.jsondata);
+            rep.updatePropertyProductList(product.Id, json);
             return RedirectToAction("EditProductImage", new { product.Id });
         }
 

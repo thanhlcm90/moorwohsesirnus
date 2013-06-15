@@ -1,0 +1,75 @@
+﻿@model List<Showroom.Models.SystemInfo>
+@{
+    ViewBag.Title = "Thông tin hệ thống";
+    String CONTACT_INFO = (from p in Model where p.Code == Showroom.Models.SystemInfo.CONTACT_INFO select p.Value).SingleOrDefault();
+    String EMAIL_INFO = (from p in Model where p.Code == Showroom.Models.SystemInfo.EMAIL_INFO select p.Value).SingleOrDefault();
+    String PHONE_INFO = (from p in Model where p.Code == Showroom.Models.SystemInfo.PHONE_INFO select p.Value).SingleOrDefault();
+    String FACEBOOK_INFO = (from p in Model where p.Code == Showroom.Models.SystemInfo.FACEBOOK_INFO select p.Value).SingleOrDefault();
+    String TWITTER_INFO = (from p in Model where p.Code == Showroom.Models.SystemInfo.TWITTER_INFO select p.Value).SingleOrDefault();
+    String SKYPE_INFO = (from p in Model where p.Code == Showroom.Models.SystemInfo.SKYPE_INFO select p.Value).SingleOrDefault();
+    String YAHOO_INFO = (from p in Model where p.Code == Showroom.Models.SystemInfo.YAHOO_INFO select p.Value).SingleOrDefault();
+}
+
+<div class="box box-color box-bordered">
+    <div class="box-title">
+        <h3><i class="icon-edit"></i>Cập nhật thông tin hệ thống</h3>
+    </div>
+    <div class="box-content nopadding">
+        @using (Html.BeginForm("Info", "Configuration", FormMethod.Post, new { @class = "form-horizontal form-column" }))
+        {
+            <div class="span6">
+                <div class="control-group">
+                    <label for="EMAIL_INFO" class="control-label">Email: </label>
+                    <div class="controls">
+                        @Html.TextBox("EMAIL_INFO", EMAIL_INFO, new { @class = "input-xlarge" })
+                    </div>
+                </div>
+                <div class="control-group">
+                    <label for="PHONE_INFO" class="control-label">Phone: </label>
+                    <div class="controls">
+                        @Html.TextBox("PHONE_INFO", PHONE_INFO, new { @class = "input-xlarge" })
+                    </div>
+                </div>
+                <div class="control-group">
+                    <label for="FACEBOOK_INFO" class="control-label">Facebook: </label>
+                    <div class="controls">
+                        @Html.TextBox("FACEBOOK_INFO", FACEBOOK_INFO, new { @class = "input-xlarge" })
+                    </div>
+                </div>
+            </div>
+            <div class="span6">
+                <div class="control-group">
+                    <label for="TWITTER_INFO" class="control-label">Twitter: </label>
+                    <div class="controls">
+                        @Html.TextBox("TWITTER_INFO", TWITTER_INFO, new { @class = "input-xlarge" })
+                    </div>
+                </div>
+                <div class="control-group">
+                    <label for="SKYPE_INFO" class="control-label">Skype: </label>
+                    <div class="controls">
+                        @Html.TextBox("SKYPE_INFO", SKYPE_INFO, new { @class = "input-xlarge" })
+                    </div>
+                </div>
+                <div class="control-group">
+                    <label for="YAHOO_INFO" class="control-label">Yahoo: </label>
+                    <div class="controls">
+                        @Html.TextBox("YAHOO_INFO", YAHOO_INFO, new { @class = "input-xlarge" })
+                    </div>
+                </div>
+            </div>
+            <div class="span12">
+                <div class="control-group">
+                    <label for="CONTACT_INFO" class="control-label">Thông tin liên hệ: </label>
+                    <div class="controls">
+                        @Html.TextArea("CONTACT_INFO", CONTACT_INFO, new { @class = "input-block-level", @rows = "15" })
+                    </div>
+                </div>
+                <div class="form-actions">
+                    @Html.AntiForgeryToken()
+                    <button type="submit" class="btn btn-primary">Lưu </button>
+                    <button type="button" class="btn">Hủy </button>
+                </div>
+            </div>
+        }
+    </div>
+</div>

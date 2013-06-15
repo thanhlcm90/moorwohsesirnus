@@ -7,6 +7,7 @@
     List<Showroom.Models.PropertySubCatalogue> PropertySubCatalogueList = ViewBag.PropertySubCatalogueList;
     List<Showroom.Models.ProductProperty> ProductProperty = ViewBag.ProductPropertyList;
     List<Showroom.Models.Property> PropertyList = ViewBag.PropertyList;
+    int ProductId = ViewBag.ProductId;
 }
 <!-- chosen -->
 <link rel="stylesheet" href="@Url.Content("~/Content/css/plugins/chosen/chosen.css")">
@@ -53,8 +54,7 @@
         </div>
     </div>
     <div>
-        @using (Html.BeginForm("EditProductProperties", "Product", FormMethod.Post, new { @class = "form-horizontal form-column form-horizontal" }))
-        {
+        <form id="form_property" class="form-horizontal form-column">
             <div class="span12">
                 @for (int i = 0; i < PropertyCatalogueList.Count; i++)
                 {
@@ -87,31 +87,37 @@
                                            }).Distinct().ToList();
                                 <div class="span5">
                                     <h3>@subitem.Name</h3>
-                                        @foreach (var s in lst)
-                                        {
-                                            <div class="control-group">
-                                                <label class="control-label" for="@s.Name">@s.Name</label>
-                                                @if (s.PropertyType.Trim().Equals("1"))
-                                                {
-                                                    <div class="controls">
-                                                        <input type="text"  id="@s.Id"/>
-                                                    </div>
-                                                }
-                                                else
-                                                {
-                                                    <div class="controls">
-                                                        <input type="checkbox"  id="@s.Id"/>
-                                                    </div>
-                                                }
-                                            </div>
-                                        }
+                                    @foreach (var s in lst)
+                                    {
+                                        var sId = "p" + s.Id;
+                                        var sValue = (from p in ProductProperty where p.ProductId == ProductId && p.PropertyId == s.Id select p.Value).SingleOrDefault();
+                                        <div class="control-group">
+                                            <label class="control-label" for="@sId">@s.Name</label>
+                                            @if (s.PropertyType.Trim().Equals(Showroom.Models.Property.TYPE_TEXTBOX))
+                                            {
+                                                <div class="controls">
+                                                    @Html.TextBox(sId, sValue, new { @class = "input-xlarge" })
+                                                </div>
+                                            }
+                                            else
+                                            {
+                                                <div class="controls">
+                                                    @Html.CheckBox(sId, sValue)
+                                                </div>
+                                            }
+                                        </div>
+                                    }
                                 </div>
                             }
                         </div>
                     </div>
                 }
             </div>
+        </form>
+        @using (Html.BeginForm("EditProductProperties", "Product", FormMethod.Post, new { @id = "form_submit" }))
+        {
             <div class="span12">
+                @Html.Hidden("jsondata");
                 <div class="form-actions">
                     <button type="submit" class="btn btn-primary">Lưu và Next </button>
                     <button type="button" class="btn">Hủy </button>
@@ -120,3 +126,28 @@
         }
     </div>
 </div>
+
+<script>
+    $.fn.serializeObject = function () {
+        var o = {};
+        var a = this.serializeArray();
+        $.each(a, function () {
+            if (o[this.name] !== undefined) {
+                if (!o[this.name].push) {
+                    o[this.name] = [o[this.name]];
+                }
+                o[this.name].push(this.value || '');
+            } else {
+                o[this.name] = this.value || '';
+            }
+        });
+        return o;
+    };
+
+    $("#form_submit").submit(function (event) {
+        debugger;
+        var jsondata = JSON.stringify($("#form_property").serializeObject());
+        console.log(jsondata);
+        $("#jsondata").val(jsondata);
+    });
+</script>
