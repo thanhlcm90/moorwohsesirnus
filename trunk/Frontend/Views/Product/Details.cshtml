@@ -182,9 +182,11 @@
                         <span>SẢN PHẨN CÙNG LOẠI</span>
                     </div>
                     <div class="row" id="boxNewProduct">
-                        @foreach (var productS in rep.GetListProductSame(@Model.CatalogueId))
+                        @foreach (var productS in rep.GetListProductSame(@Model.CatalogueId).Take(9))
                         {
-                        <div class="span3">
+                            if (productS.Id != Model.Id)
+                            {
+                                <div class="span3">
                             <div class="shadow-wrapper">
                                 <div class="mosaic-block faded">
                                     <div class="mosaic-overlay" style="display: block; opacity: 0;">
@@ -203,6 +205,7 @@
                                 </div>
                             </div>
                         </div>
+                            }
                         }
                     </div>
                 </div>
