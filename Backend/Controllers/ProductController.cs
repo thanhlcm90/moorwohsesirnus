@@ -217,10 +217,25 @@ namespace SunriseShowroom.Controllers
         /// <param name="id"></param>
         /// <returns></returns>
          [Authorize]
-        public ActionResult DeleteImage(string id)
+        public ActionResult DeleteImage(string image, string producId)
         {
-            var ID = id;
-            return RedirectToAction("EditProductImage", new { id });
+            var imagePath = image.Replace("/", "\\");
+            var productImageFolder = AppDomain.CurrentDomain.BaseDirectory + imagePath;
+             if(System.IO.File.Exists(productImageFolder))
+             {
+                 try
+                 {
+                     System.IO.File.Delete(productImageFolder);
+                 }
+                 catch (System.IO.IOException e)
+                 {
+                 }
+             }
+             if (!String.IsNullOrEmpty(producId))
+             {
+                 return RedirectToAction("EditProductImage", new { producId });
+             }
+             return RedirectToAction("Index");
         }
         
     }

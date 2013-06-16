@@ -44,7 +44,7 @@
                         <div class="extras">
                             <div class="extras-inner">
                                 <a href="@list[i]" class='colorbox-image' rel="group-1"><i class="icon-search"></i></a>
-                                <a href="/Product/DeleteImage/@list[i]" class='del-gallery-pic'><i class="icon-trash"></i></a>
+                                <a href="#" class='del-gallery-pic' id="@list[i]"><i class="icon-trash"></i></a>
                                 
                             </div>
                         </div>
@@ -56,3 +56,17 @@
 </div>
 
 <script src="@Url.Content("~/Scripts/plugins/colorbox/jquery.colorbox-min.js")"></script>
+<script type="text/javascript">
+    $('.del-gallery-pic').click(function () {
+        var myData = "{'image':'" + $(this).attr('id') + "','producId':'"+ @id +"'}";
+        $.ajax({
+            url: '/Product/DeleteImage',
+            type: 'POST',
+            data: myData,
+            dataType: 'json',
+            contentType: 'application/json; charset=utf-8',
+            success: function(data) {
+            }
+        });
+    });
+</script>
