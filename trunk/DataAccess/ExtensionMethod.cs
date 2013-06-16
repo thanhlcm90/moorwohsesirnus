@@ -20,9 +20,13 @@ namespace Showroom.Models
             foreach (PropertyInfo destinationPi in destinationProperties)
             {
                 int check = (from p in source.GetType().GetProperties() where p.Name == destinationPi.Name select p).Count();
-                if (check > 0)
+                PropertyInfo sourcePi = source.GetType().GetProperty(destinationPi.Name);
+                if (check > 0 && 
+                    (sourcePi.PropertyType == typeof(string) || 
+                    sourcePi.PropertyType == typeof(int) || 
+                    sourcePi.PropertyType == typeof(char) || 
+                    sourcePi == typeof(System.DateTime)))
                 {
-                    PropertyInfo sourcePi = source.GetType().GetProperty(destinationPi.Name);
                     destinationPi.SetValue(destination, sourcePi.GetValue(source, null), null);
                 }
             }
