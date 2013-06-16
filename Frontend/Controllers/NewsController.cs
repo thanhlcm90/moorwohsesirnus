@@ -45,6 +45,7 @@ namespace Frontend.Controllers
             var model = rep.GetNewsInfo(id);
             ViewBag.lstTopNews = rep.GetNewsList();
             ViewBag.lstCatalogueNews = rep.GetNewsCatalogueList();
+            ViewBag.lstNewsSame = rep.GetListNewsByCATAID(model.CatelogueId);
             return View(model);
         }
 
