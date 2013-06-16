@@ -18,6 +18,8 @@ namespace Frontend.Controllers
         {
             //Lấy danh sách tất cả tin tức trên hệ thống
             var lstNews = rep.GetNewsList();
+            ViewBag.lstTopNews = rep.GetNewsList();
+            ViewBag.lstCatalogueNews = rep.GetNewsCatalogueList();
             ViewBag.MaxPage = lstNews.Count() / maxNewInPage +1;
             ViewBag.Curenpage = page;
             lstNews = lstNews.Skip(maxNewInPage * (page - 1)).Take(maxNewInPage).ToList();
@@ -28,12 +30,22 @@ namespace Frontend.Controllers
         public ActionResult NewsbyCatalogue(int id, int page)
         {
             var lstNews = rep.GetListNewsByCATAID(id);
+            ViewBag.lstTopNews = rep.GetNewsList();
+            ViewBag.lstCatalogueNews = rep.GetNewsCatalogueList();
             ViewBag.MaxPage = lstNews.Count() / maxNewInPage + 1;
             ViewBag.Id = id;
             ViewBag.Curenpage = page;
             lstNews = lstNews.Skip(maxNewInPage * (page - 1)).Take(maxNewInPage).ToList();
             ViewBag.lstNews = lstNews;
             return View();
+        }
+
+        public ActionResult NewsDetails(int id)
+        {
+            var model = rep.GetNewsInfo(id);
+            ViewBag.lstTopNews = rep.GetNewsList();
+            ViewBag.lstCatalogueNews = rep.GetNewsCatalogueList();
+            return View(model);
         }
 
 
