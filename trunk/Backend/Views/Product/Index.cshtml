@@ -19,6 +19,7 @@
 <!-- End Style-->
 <div class="box box-bordered">
     <div class="box-content nopadding">
+        @Html.ActionLink("Thêm mới","Edit",new {Id=0},new {@class="btn btn-primary"})
         <table class="table table-nomargin dataTable table-bordered">
             <thead>
                 <tr>
@@ -35,16 +36,16 @@
             <tbody>
                 @foreach (var item in Model)
                 {
-                <tr>
-                    <td>@item.Id</td>
-                    <td>@item.Code</td> 
-                    <td>@item.Name</td>
-                    <td>@item.Price</td>
-                    <td>@item.Catalogue.Name</td> 
-                    <td>@item.Amount</td>
-                    <td>@((item.Actflg =='A')? "Đang bán": "Đã khóa")</td>
-                    <td>@Html.ActionLink("Sửa","Edit", new {Id=item.Id} )  - <a href="javascript:void(0);" onclick="Delete(@item.Id)" >Xóa</a></td>
-                </tr>
+                    <tr>
+                        <td>@item.Id</td>
+                        <td>@item.Code</td> 
+                        <td>@item.Name</td>
+                        <td>@item.Price</td>
+                        <td>@item.Catalogue.Name</td> 
+                        <td>@item.Amount</td>
+                        <td>@((item.Actflg =='A')? "Đang bán": "Đã khóa")</td>
+                        <td>@Html.ActionLink("Sửa","Edit", new {Id=item.Id} )  - <a href="javascript:void(0);" onclick="Delete(@item.Id)" >Xóa</a></td>
+                    </tr>
                 }
             </tbody>
         </table>
