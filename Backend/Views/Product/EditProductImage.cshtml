@@ -4,6 +4,7 @@
 @model Showroom.Models.Product
 @{
     System.Collections.ArrayList list = ViewBag.ImageList;
+    var id = Model.Id;
     
 }
 <link rel="stylesheet" href="@Url.Content("~/Content/css/plugins/colorbox/colorbox.css")">
@@ -22,31 +23,36 @@
                             <input type="file" name="file" multiple="multiple" value="" />
                             <div class="form-actions no-padding">
                                 <button type="submit" class="btn btn-primary">Lưu và Next </button>
+                                @Html.ActionLink("PublishImage", "PublishImage", new { Id = id }, new { @class = "btn btn-success" })
                             </div>
                         </div>
-
                     </div>
                 </div>
             </div>
         </div>
     }
-    <div class="box-content">
-        <ul class="gallery">
-            @for (int i = 0; i < list.Count; i++)
-            {
-                <li>
-                    <a href="#">
-                        <img src="@list[i]" alt="" class="ProductThumb">
-                    </a>
-                    <div class="extras">
-                        <div class="extras-inner">
-                            <a href="@list[i]" class='colorbox-image' rel="group-1"><i class="icon-search"></i></a>
+    @if (list.Count > 0)
+    {
+        <div class="box-content">
+            <ul class="gallery">
+                @for (int i = 0; i < list.Count; i++)
+                {
+                    <li>
+                        <a href="#">
+                            <img src="@list[i]" alt="" class="ProductThumb">
+                        </a>
+                        <div class="extras">
+                            <div class="extras-inner">
+                                <a href="@list[i]" class='colorbox-image' rel="group-1"><i class="icon-search"></i></a>
+                                <a href="/Product/DeleteImage/@list[i]" class='del-gallery-pic'><i class="icon-trash"></i></a>
+                                
+                            </div>
                         </div>
-                    </div>
-                </li>
-            }
-        </ul>
-    </div>
+                    </li>
+                }
+            </ul>
+        </div>
+    }
 </div>
 
 <script src="@Url.Content("~/Scripts/plugins/colorbox/jquery.colorbox-min.js")"></script>

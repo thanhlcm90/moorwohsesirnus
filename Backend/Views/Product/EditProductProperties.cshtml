@@ -117,7 +117,7 @@
         @using (Html.BeginForm("EditProductProperties", "Product", FormMethod.Post, new { @id = "form_submit" }))
         {
             <div class="span12">
-                @Html.Hidden("jsondata");
+                @Html.Hidden("jsondata")
                 <div class="form-actions">
                     <button type="submit" class="btn btn-primary">Lưu và Next </button>
                     <button type="button" class="btn">Hủy </button>
@@ -145,9 +145,7 @@
     };
 
     $("#form_submit").submit(function (event) {
-        debugger;
         var jsondata = JSON.stringify($("#form_property").serializeObject());
-        console.log(jsondata);
         $("#jsondata").val(jsondata);
     });
 </script>

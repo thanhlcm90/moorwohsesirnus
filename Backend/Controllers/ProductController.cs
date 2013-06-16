@@ -23,22 +23,43 @@ namespace SunriseShowroom.Controllers
             return View(ProductList);
         }
 
+        /// <summary>
+        /// Thêm mới/ Sửa sản phẩm (Load data)
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         [Authorize]
         public ActionResult Edit(int id)
         {
-            Product product = rep.GetProductInfo(id);
+            Product product;
+            //Lấy danh mục nhóm sản phẩm
             var list = rep.GetProductCatalogueList();
             ViewBag.CatalogueList = (from p in list
+                                     where p.Actflg == 'A'
                                      select new SelectListItem
                                      {
                                          Value = p.Id.ToString(),
                                          Text = p.Name,
                                      }).ToList();
-            //model.listCatalogue = rep
-            ViewBag.ProductList = rep.GetProductsList();
-            return View(product);
+            //sửa product
+            if (id != 0)
+            {
+                product = rep.GetProductInfo(id);
+                return View(product);
+            }
+            else //id =0 là thêm mới product
+            {
+                product = new Product();
+                return View(product);
+            }
         }
 
+
+        /// <summary>
+        /// Thêm mới/ Sửa sản phẩm (Save data)
+        /// </summary>
+        /// <param name="product"></param>
+        /// <returns></returns>
         [Authorize]
         [HttpPost, ValidateInput(false)]
         public ActionResult Edit(Product product)
@@ -46,8 +67,8 @@ namespace SunriseShowroom.Controllers
             if (ModelState.IsValid)
             {
                 // product.CatalogueId = 1;
-                product.NameEn = "Nay thi name en";
-                // rep.UpdateProducts(product);
+                product.NameEn = Code.Utilities.ConvertToUnSign(product.Name);
+                rep.UpdateProducts(product);
                 return RedirectToAction("EditProductProperties", new { product.Id });
             }
             return View(product);
@@ -103,45 +124,104 @@ namespace SunriseShowroom.Controllers
         [Authorize]
         public ActionResult EditProductImage(int id)
         {
-            var ProductFolder = AppDomain.CurrentDomain.BaseDirectory + "Images\\Product\\" +id;
-            var ProducImagePath = "/Images/Product/" + id;
-            DirectoryInfo dir = new DirectoryInfo(ProductFolder);
-            FileInfo[] files = dir.GetFiles();
-            ArrayList list = new ArrayList();
-            foreach (FileInfo file in files)
+            var list = new ArrayList();
+            var product = new Product();
+            product.Id = id;
+            var productFolder = AppDomain.CurrentDomain.BaseDirectory + "Images\\Product\\" + id;
+            var producImagePath = "/Images/Product/" + id;
+            var dir = new DirectoryInfo(productFolder);
+            if(Directory.Exists(productFolder))
             {
-                if (file.Extension == ".jpg" || file.Extension == ".jpeg" || file.Extension == ".gif" || file.Extension == ".png")
+                FileInfo[] files = dir.GetFiles();
+                foreach (FileInfo file in files)
                 {
-                    list.Add(ProducImagePath + "/" +file.Name);
+                    if (file.Extension == ".jpg" || file.Extension == ".jpeg" || file.Extension == ".gif" || file.Extension == ".png")
+                    {
+                        list.Add(producImagePath + "/" + file.Name);
+                    }
                 }
             }
             ViewBag.ImageList = list;
-            return View();
+            return View(product);
         }
 
-
+        /// <summary>
+        /// Sửa ảnh của sản phẩm
+        /// </summary>
+        /// <param name="product"></param>
+        /// <returns></returns>
         [Authorize]
         [HttpPost]
         public ActionResult EditProductImage(Product product)
         {
-            string ProductFolder = AppDomain.CurrentDomain.BaseDirectory + "Images\\Product\\"+ product.Id;    
-           
-            // If directory does not exist, don't even try 
-            if (!Directory.Exists(ProductFolder))
-            {
-                Directory.CreateDirectory(ProductFolder);
-            }
+            var productFolder = AppDomain.CurrentDomain.BaseDirectory + "Images\\Product\\" + product.Id;
 
+            // If directory does not exist, don't even try 
+            if (!Directory.Exists(productFolder))
+            {
+                Directory.CreateDirectory(productFolder);
+            }
+            //Save ảnh vào thư mục
             for (int i = 0; i < Request.Files.Count; i++)
             {
                 HttpPostedFileBase file = Request.Files[i];
-                string path = System.IO.Path.Combine(ProductFolder, System.IO.Path.GetFileName(file.FileName));
-                if (!System.IO.File.Exists(path) && file.ContentLength >0)
+                string path = System.IO.Path.Combine(productFolder, System.IO.Path.GetFileName(file.FileName));
+                if (!System.IO.File.Exists(path) && file.ContentLength > 0)
                 {
                     file.SaveAs(path);
                 }
             }
             return RedirectToAction("EditProductImage", new { product.Id });
         }
+
+        /// <summary>
+        /// Copy ảnh của product và write sang frontend
+        /// </summary>
+        /// <param name="id">ProductId</param>
+        /// <returns></returns>
+        [Authorize]
+        public ActionResult PublishImage(string id)
+        {
+            //Clone ảnh qua Front End
+            var productFolder = AppDomain.CurrentDomain.BaseDirectory + "Images\\Product\\" + id;
+            var productFrontendFolder  = productFolder.Replace("Backend", "Frontend");
+            var dir = new DirectoryInfo(productFolder);
+            if (Directory.Exists(productFolder))
+            {
+                FileInfo[] files = dir.GetFiles();
+                foreach (FileInfo file in files)
+                {
+                    if (file.Extension == ".jpg" || file.Extension == ".jpeg" || file.Extension == ".gif" || file.Extension == ".png")
+                    {
+                        //Kiểm tra có thư mục Images/Product ở frontend chưa.
+                        if (!Directory.Exists(productFrontendFolder))
+                            Directory.CreateDirectory(productFrontendFolder);
+
+                        //Save ảnh từ backend qua frontend.
+                        try
+                        {
+                            file.CopyTo(Path.Combine(productFrontendFolder, file.Name), true);
+                        }
+                        catch (Exception)
+                        {
+                        }
+                    }
+                }
+            }
+            return RedirectToAction("EditProductImage", new { id });
+        }
+
+        /// <summary>
+        /// Xóa image của sản phẩm
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+         [Authorize]
+        public ActionResult DeleteImage(string id)
+        {
+            var ID = id;
+            return RedirectToAction("EditProductImage", new { id });
+        }
+        
     }
 }
