@@ -1,8 +1,11 @@
-﻿@using Showroom.Models.DataAccess;
+﻿@using Common
+@using Showroom.Models.DataAccess;
 @{
     ShowroomRepository rep = new ShowroomRepository();
     ViewBag.Title = "NewsAll";
     List<Showroom.Models.News> lstNews = ViewBag.lstNews;
+    List<Showroom.Models.News> lstTopNews = ViewBag.lstTopNews;
+    List<Showroom.Models.NewsCatalogue> lstCatalogueNews = ViewBag.lstCatalogueNews;
     int maxPage = ViewBag.MaxPage;
     int CurrenPage = ViewBag.Curenpage;
 }
@@ -14,7 +17,7 @@
             	<!--Blog Wrap-->
                 <div class="span8">
 
-                    @foreach(var item in lstNews)
+                    @foreach(var item in lstNews.OrderByDescending(item => item.PostDate))
                     {
                 	<section class="blog-wrap">
                         <div class="shadow-wrapper">
@@ -25,18 +28,17 @@
                                         <a class="link-img" href="blog-single.html"><i class="icon-link"></i></a>
                                     </div>
                                 </div>
-                                <div class="mosaic-backdrop" style="display: block;"><img class="max-image" src="images/sliders/slider_img.png" alt="" /></div>    
+                                <div class="mosaic-backdrop" style="display: block;"><img class="max-image" src="/images/sliders/slider_img.png" alt="" /></div>    
                             </div>
                             <div class="blog-head">                	
-                                <h3 class="top-mar"><a href="blog-single.html">@item.Title</a></h3>
+                                <h3 class="top-mar"><a href="blog-single.html">@clsHelper.CatChuoi(item.Title, 70)</a></h3>
                             </div>
                             <div class="blog-txt">
-                                <div class="date-txt">03 <span>Nov</span></div>
-                                <a href="#">Fashion</a> 
+                                <div style="float:left;">@item.PostDate.ToString("dd/MM/yyyy")</div>
                                 <span><i class="icon-comment"></i> <a>@item.Views</a></span>
                             </div>
-                            <p>@item.Detail</p>
-                            <p><a href="blog-single.html" class="button-dark btn">Chi tiết</a></p>
+                            <p>@clsHelper.CatChuoi(item.Detail, 120)</p>
+                            <p><a href="/News/NewsDetails?id=@item.Id" class="button-dark btn">Chi tiết</a></p>
                         </div>	
                     </section>
                     }
@@ -64,39 +66,20 @@
                     </h2>
                     <div class="service-wrap">
                         <ul class="sidebar-post">
+                            @foreach (var topN in lstTopNews.OrderByDescending(topN => topN.PostDate).Take(3))
+                            {
                             <li>
                                 <div class="imgborder">
-                                    <a href="#"><img src="images/recent-post.png" alt=""></a>
+                                    <a href="#"><img src="/images/recent-post.png" alt=""></a>
                                 </div>
                                 <div class="recent_txt">
-                                    <a href="#">The Long Bridge</a>
-                                    <p>Maecenas metus nulla, facili a, pretium ut lacus.</p>
-                                    <p class="date"><i class="icon-calendar"></i> November 30, 2011</p>
+                                    <a href="#">@clsHelper.CatChuoi(topN.Title,50)</a>
+                                    <p>@clsHelper.CatChuoi(topN.Detail, 80)</p>
+                                    <p class="date"><i class="icon-calendar"></i>@topN.PostDate.ToString("dd/MM/yyyy")</p>
                                 </div>
                                 <div class="clearfix"></div>
                             </li>
-                            <li>
-                                <div class="imgborder">
-                                    <a href="#"><img src="images/recent-post.png" alt=""></a>
-                                </div>
-                                <div class="recent_txt">
-                                    <a href="#">The Long Bridge</a>
-                                    <p>Maecenas metus nulla, facili a, pretium ut lacus.</p>
-                                    <p class="date"><i class="icon-calendar"></i> November 30, 2011</p>
-                                </div>
-                                <div class="clearfix"></div>
-                            </li>
-                            <li>
-                                <div class="imgborder">
-                                    <a href="#"><img src="images/recent-post.png" alt=""></a>
-                                </div>
-                                <div class="recent_txt">
-                                    <a href="#">The Long Bridge</a>
-                                    <p>Maecenas metus nulla, facili a, pretium ut lacus.</p>
-                                    <p class="date"><i class="icon-calendar"></i> November 30, 2011</p>
-                                </div>
-                                <div class="clearfix"></div>
-                            </li>
+                            }
                         </ul>
                     </div>
                     <div class="divider3">&nbsp;</div>
@@ -107,12 +90,10 @@
                     </h2>
                     <div class="service-wrap">
                         <ul class="sidebar-category">
-                            <li><a href="#"><i class="icon-chevron-right"></i> Web Design</a></li>
-                            <li><a href="#"><i class="icon-chevron-right"></i> Web Development</a></li>
-                            <li><a href="#"><i class="icon-chevron-right"></i> Illustrations</a></li>
-                            <li><a href="#"><i class="icon-chevron-right"></i> Photography</a></li>
-                            <li><a href="#"><i class="icon-chevron-right"></i> Logo Design</a></li>
-                            <li><a href="#"> <i class="icon-chevron-right"></i> Tricks &amp; Tips</a></li>
+                            @foreach(var cn in lstCatalogueNews)
+                            {
+                                <li><a href="/News/NewsbyCatalogue?id=@cn.Id&page=1"><i class="icon-chevron-right"></i>@cn.Name</a></li>
+                            }
                         </ul>
                     </div>
                     <div class="divider3">&nbsp;</div>
