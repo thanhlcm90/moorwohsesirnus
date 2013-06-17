@@ -18,6 +18,7 @@
 <link rel="stylesheet" href="@Url.Content("~/Content/css/plugins/chosen/chosen.css")">
 <!-- End Style-->
 <div class="box box-bordered">
+    @Html.ActionLink("Thêm mới","Edit",new {Id=0},new {@class="btn btn-primary"})
     <div class="box-content nopadding">
         <table class="table table-nomargin dataTable table-bordered">
             <thead>
@@ -33,14 +34,14 @@
             <tbody>
                 @foreach (var item in Model)
                 {
-                <tr>
-                    <td>@item.Id</td>
-                    <td>@item.Name</td> 
-                    <td>@item.NameEn</td>
-                    <td>@item.Image</td>
-                    <td>@item.Actflg</td>
-                    <td>@Html.ActionLink("Sửa","Edit", new {Id=item.Id} )  - <a href="javascript:void(0);" onclick="DeleteCatalogue(@item.Id)" >Xóa</a></td>
-                </tr>
+                    <tr>
+                        <td>@item.Id</td>
+                        <td>@item.Name</td> 
+                        <td>@item.NameEn</td>
+                        <td>@item.Image</td>
+                        <td>@item.Actflg</td>
+                        <td>@Html.ActionLink("Sửa","Edit", new {Id=item.Id} )  - <a href="javascript:void(0);" onclick="DeleteCatalogue(@item.Id)" >Xóa</a></td>
+                    </tr>
                 }
             </tbody>
         </table>

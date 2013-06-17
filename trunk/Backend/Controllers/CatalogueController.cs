@@ -28,7 +28,16 @@ namespace SunriseShowroom.Controllers
         [Authorize]
         public ActionResult Edit(int id)
         {
-            Catalogue catalogue = rep.GetProductCatalogueInfo(id);
+            Catalogue catalogue;
+            //sửa product
+            if (id != 0)
+            {
+                catalogue = rep.GetProductCatalogueInfo(id);
+            }
+            else //id =0 là thêm mới product
+            {
+                catalogue = new Catalogue();
+            }
             return View(catalogue);
         }
 
@@ -39,20 +48,33 @@ namespace SunriseShowroom.Controllers
         /// <param name="catalogue"></param>
         /// <returns></returns>
         [Authorize]
-        [HttpPost]
+        [HttpPost, ValidateInput(false)]
         public ActionResult Edit(Catalogue catalogue)
         {
-            if (ModelState.IsValid)
+            if (catalogue.Id == 0) //Trường hợp thêm mới product
             {
-                catalogue.NameEn = "Nay thi name en";
-                rep.UpdateProductCatalogue(catalogue);
-                return RedirectToAction("Index");
+                if (ModelState.IsValid)
+                {
+                    // product.CatalogueId = 1;
+                    catalogue.NameEn = Code.Utilities.ConvertToUnSign(catalogue.Name);
+                    var id = rep.InsertProductCatalogue(catalogue); // Insert và trả về id vừa mới insert xong.
+                    return RedirectToAction("Edit", new { id });
+                }
             }
-            return View(catalogue);
+            else
+            {
+                if (ModelState.IsValid)
+                {
+                    catalogue.NameEn = Code.Utilities.ConvertToUnSign(catalogue.Name);
+                    rep.UpdateProductCatalogue(catalogue);
+                    return RedirectToAction("Index");
+                }
+            }
+            return View(catalogue); 
         }
 
 
-        /// <summary>
+    /// <summary>
         /// Xóa catalogue
         /// </summary>
         /// <param name="id"></param>
