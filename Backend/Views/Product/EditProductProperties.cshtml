@@ -85,7 +85,7 @@
                                                PropertyType = p.PropertyType,
                                                Name = p.Name,
                                            }).Distinct().ToList();
-                                <div class="span5">
+                                <div class="span6">
                                     <h3>@subitem.Name</h3>
                                     @foreach (var s in lst)
                                     {
@@ -102,7 +102,7 @@
                                             else
                                             {
                                                 <div class="controls">
-                                                    @if (sValue.ToLower() == "true")
+                                                    @if (sValue != null && sValue.ToLower() == "true")
                                                     {
                                                         <input type="checkbox" name="@sId" id="@sId" checked="checked" />
                                                     }

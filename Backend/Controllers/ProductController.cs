@@ -45,13 +45,12 @@ namespace SunriseShowroom.Controllers
             if (id != 0)
             {
                 product = rep.GetProductInfo(id);
-                return View(product);
             }
             else //id =0 là thêm mới product
             {
                 product = new Product();
-                return View(product);
             }
+            return View(product);
         }
 
 
@@ -64,12 +63,25 @@ namespace SunriseShowroom.Controllers
         [HttpPost, ValidateInput(false)]
         public ActionResult Edit(Product product)
         {
-            if (ModelState.IsValid)
+            if (product.Id == 0)//Trường hợp thêm mới product
             {
-                // product.CatalogueId = 1;
-                product.NameEn = Code.Utilities.ConvertToUnSign(product.Name);
-                rep.UpdateProducts(product);
-                return RedirectToAction("EditProductProperties", new { product.Id });
+                if (ModelState.IsValid)
+                {
+                    // product.CatalogueId = 1;
+                    product.NameEn = Code.Utilities.ConvertToUnSign(product.Name);
+                  var id=  rep.InsertProduct(product);// Insert và trả về id vừa mới insert xong.
+                  return RedirectToAction("EditProductProperties", new { id });
+                }
+            }
+            else
+            {
+                if (ModelState.IsValid)
+                {
+                    // product.CatalogueId = 1;
+                    product.NameEn = Code.Utilities.ConvertToUnSign(product.Name);
+                    rep.UpdateProducts(product);
+                    return RedirectToAction("EditProductProperties", new { product.Id });
+                }
             }
             return View(product);
         }
@@ -130,7 +142,7 @@ namespace SunriseShowroom.Controllers
             var productFolder = AppDomain.CurrentDomain.BaseDirectory + "Images\\Product\\" + id;
             var producImagePath = "/Images/Product/" + id;
             var dir = new DirectoryInfo(productFolder);
-            if(Directory.Exists(productFolder))
+            if (Directory.Exists(productFolder))
             {
                 FileInfo[] files = dir.GetFiles();
                 foreach (FileInfo file in files)
@@ -184,7 +196,7 @@ namespace SunriseShowroom.Controllers
         {
             //Clone ảnh qua Front End
             var productFolder = AppDomain.CurrentDomain.BaseDirectory + "Images\\Product\\" + id;
-            var productFrontendFolder  = productFolder.Replace("Backend", "Frontend");
+            var productFrontendFolder = productFolder.Replace("Backend", "Frontend");
             var dir = new DirectoryInfo(productFolder);
             if (Directory.Exists(productFolder))
             {
@@ -216,27 +228,38 @@ namespace SunriseShowroom.Controllers
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
-         [Authorize]
+        [Authorize]
         public ActionResult DeleteImage(string image, string producId)
         {
             var imagePath = image.Replace("/", "\\");
             var productImageFolder = AppDomain.CurrentDomain.BaseDirectory + imagePath;
-             if(System.IO.File.Exists(productImageFolder))
-             {
-                 try
-                 {
-                     System.IO.File.Delete(productImageFolder);
-                 }
-                 catch (System.IO.IOException e)
-                 {
-                 }
-             }
-             if (!String.IsNullOrEmpty(producId))
-             {
-                 return RedirectToAction("EditProductImage", new { producId });
-             }
-             return RedirectToAction("Index");
+            if (System.IO.File.Exists(productImageFolder))
+            {
+                try
+                {
+                    System.IO.File.Delete(productImageFolder);
+                }
+                catch (System.IO.IOException e)
+                {
+                }
+            }
+            if (!String.IsNullOrEmpty(producId))
+            {
+                return RedirectToAction("EditProductImage", new { producId });
+            }
+            return RedirectToAction("Index");
         }
-        
+
+        /// <summary>
+        /// Xóa sản phẩm
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        [Authorize]
+        public  ActionResult Delete(int id)
+        {
+            rep.DeleteProducts(id);
+            return RedirectToAction("Index");
+        }
     }
 }
