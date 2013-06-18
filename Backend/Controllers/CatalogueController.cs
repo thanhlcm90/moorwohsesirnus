@@ -70,11 +70,11 @@ namespace SunriseShowroom.Controllers
                     return RedirectToAction("Index");
                 }
             }
-            return View(catalogue); 
+            return View(catalogue);
         }
 
 
-    /// <summary>
+        /// <summary>
         /// Xóa catalogue
         /// </summary>
         /// <param name="id"></param>
