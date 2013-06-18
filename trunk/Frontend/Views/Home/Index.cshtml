@@ -1,5 +1,6 @@
-﻿\@{
-    ViewBag.Title = "Index";
+﻿@using Common
+@{
+    ViewBag.Title = "Sunrise Auto - Việt Nam";
 }
 
 <div class="boderB min-hieght-lg">
@@ -27,6 +28,18 @@
                 </div>
 
                 @foreach (var m in (List<Showroom.Models.Product>)ViewBag.ProductList) {
+                    var imageList = new System.Collections.ArrayList();
+                    imageList = @clsHelper.GetImageProduct(m.Id);
+                    var NoimgPath = "/images/no_image.gif";
+                     var strImage = string.Empty;
+                    if (imageList.Count > 0)
+                    {
+                        strImage = imageList[0].ToString();
+                    }
+                    else
+                    {
+                        strImage = NoimgPath;
+                    }
                     <div class="span3 magrinproduct">
                         <div class="shadow-wrapper">
                             <div class="mosaic-block faded">
@@ -37,11 +50,11 @@
                                     </div>
                                 </div>
                                 <div class="mosaic-backdrop">
-                                    <img class="max-image" src="images/portfolio/kia.jpg" alt="">
+                                    <img class="max-image" src="@strImage" alt="">
                                 </div>
                             </div>
                             <div class="port3-head">
-                                <h3><a href="/Product/Details/@m.Id">@m.Name</a></h3>
+                                <h3><a href="/Product/DetailProduct/@m.Id">@m.Name</a></h3>
                                 <p>Giá:@Convert.ToDouble(m.Price).ToString("N0").Replace(",", ".")</p>
                             </div>
                         </div>
@@ -79,4 +92,29 @@
     </section>
     <!-- END NỘI DUNG TRANG CHỦ-->
 
+    <script type='text/javascript' src='/Scripts/js/jquery.min.js'></script>
+    <script type="text/javascript" src="/Scripts/js/jquery.flexslider.js"></script>
+    <script type="text/javascript" src="/Scripts/js/jcarousel.js"></script>
+    <script type="text/javascript" src="/Scripts/js/jquery.carouFredSel.js"></script>
+    <script type="text/javascript" src="/Scripts/js/jquery.carouFredSel-6.2.1-packed.js"></script>
+    <script type="text/javascript">
+        $(function () {
+            $("#foo2").carouFredSel({
+                circular: false,
+                infinite: true,
+                auto: true,
+                prev: {
+                    button: "#foo2_prev",
+                    key: "left"
+                },
+                next: {
+                    button: "#foo2_next",
+                    key: "right"
+                },
+                pagination: "#foo2_pag"
+            });
+        });
+    </script>
+
 </div>
+
