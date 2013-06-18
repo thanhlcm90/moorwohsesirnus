@@ -1,5 +1,7 @@
-﻿@{
-    ViewBag.Title = "Product";
+﻿@model Showroom.Models.Catalogue
+@{
+
+    ViewBag.Title = "Sunrise Auto - " + Model.Name;
     List<Showroom.Models.PropertyCatalogue> PropertyCatalogueList = ViewBag.PropertyCatalogueList;
     int maxPage = ViewBag.MaxPage;
     int CatalogueId = ViewBag.Id;
@@ -58,12 +60,12 @@
 
                 @for (int i = CurrenPage - 1; (i > 0 && i >= CurrenPage - 2); i--)
                 {
-                    var query = "/Product/Product?id=" + CatalogueId + "&page=" + i;
+                    var query = "/Product/Product/" + CatalogueId + "/" + i;
                     <a href="@query">@i</a>
                 }
                 @for (int i = CurrenPage; (i <= maxPage && i <= CurrenPage + 2); i++)
                 {
-                    var query = "/Product/Product?id=" + CatalogueId + "&page=" + i;
+                    var query = "/Product/Product/" + CatalogueId + "/" + i;
                     <a href="@query">@i</a>
                 }
             </div>
