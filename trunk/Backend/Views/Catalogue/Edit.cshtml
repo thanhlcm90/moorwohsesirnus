@@ -17,7 +17,7 @@
         @using (Html.BeginForm())
         {
             @Html.HiddenFor(item => item.Id)
-            <div class="controls">
+@*<div class="controls" style="display: none">
                 <div class="fileupload fileupload-new" data-provides="fileupload">
                     <div class="fileupload-new thumbnail">
                         @if (Model.Image !=""){<img  src="/Images/Catalogue/@Model.Image"/>}
@@ -29,24 +29,35 @@
                         <a href="#" class="btn fileupload-exists" data-dismiss="fileupload">Remove</a>
                     </div>
                 </div>
-            </div>
+            </div>*@
             <div class="control-group">
                 <label for="" class="control-label">@Html.LabelFor(item => item.Name)</label>
                 <div class="controls">
-                    @Html.TextBoxFor(item => item.Name,new { @class = "input-xlarge"})
+                    @Html.TextBoxFor(item => item.Name, new { @class = "input-xlarge" })
                     @Html.ValidationMessageFor(item => item.Name)
                 </div>
             </div>
             <div class="control-group">
                 <label for="" class="control-label">@Html.LabelFor(item => item.Priority)</label>
                 <div class="controls">
-                    @Html.TextBoxFor(item => item.Priority,new { @class = "input-xlarge"})
+                    @Html.TextBoxFor(item => item.Priority, new { @class = "input-xlarge" })
+                </div>
+            </div>
+            <div class="control-group">
+                <label for="" class="control-label">@Html.LabelFor(item => item.Actflg)</label>
+                <div class="controls">
+                      @Html.CheckBoxFor(item => item.Actflg=='A',  new { id = "test" })
                 </div>
             </div>
             <div class="form-actions">
                 <button type="submit" class="btn btn-primary">Lưu </button>
-                <button type="button" class="btn">Hủy </button>
+                <button type="button" class="btn" id="btnReset">Hủy </button>
             </div>
         }
     </div>
 </div>
+<script type="text/javascript">
+    $('#btnReset').click(function () {
+        $('input:visible, textarea:visible').val('');
+    });
+</script>

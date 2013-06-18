@@ -110,7 +110,6 @@
                                                     {
                                                         <input type="checkbox" name="@sId" id="@sId" />
                                                     }
-
                                                 </div>
                                             }
                                         </div>
@@ -258,6 +257,7 @@
     })(jQuery);
 
     $("#form_submit").submit(function (event) {
+        debugger;
         var jsondata = JSON.stringify($("#form_property").serializeObject());
         $("#jsondata").val(jsondata);
     });
