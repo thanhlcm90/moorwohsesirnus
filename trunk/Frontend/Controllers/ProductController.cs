@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using Showroom.Models.DataAccess;
+using Common;
 
 namespace Frontend.Controllers
 {
@@ -29,6 +30,7 @@ namespace Frontend.Controllers
            var ProSubCate = rep.GetPropertySubCatalogueList();
            ViewBag.PropertySubCatalogueList = ProSubCate;
 
+
             // Lấy danh sách thuộc tính của product theo ID của sản phẩm
            var ProductProperty = rep.GetPropertyProductList(id);
            ViewBag.ProductPropertyList = ProductProperty;
@@ -36,15 +38,38 @@ namespace Frontend.Controllers
            return View(model);
         }
 
-        public ActionResult Product(int id, int page)
+        public ActionResult DetailProduct(int id)
         {
-            var ProductByCatalogue = rep.GetListProductSame(id);
+            var model = rep.GetProductInfo(id);
+            //Lấy danh sách property catalogue
+            var PropertyCatalogue = rep.GetPropertyCatalogueList();
+            ViewBag.PropertyCatalogue = PropertyCatalogue;
+
+            // Lấy danh sách property
+            var PropertyList = rep.GetPropertyList();
+            ViewBag.PropertyList = PropertyList;
+
+            //Get các nhóm thuộc tính
+            var ProSubCate = rep.GetPropertySubCatalogueList();
+            ViewBag.PropertySubCatalogueList = ProSubCate;
+
+            // Lấy danh sách thuộc tính của product theo ID của product
+            var ProductProperty = rep.GetPropertyProductList(id);
+            ViewBag.ProductPropertyList = ProductProperty;
+
+            return View(model);
+        }
+
+        public ActionResult Product(string id1, string id2)
+        {
+            var model = rep.GetProductCatalogueInfo(clsHelper.fncCnvNullToInt(id1));
+            var ProductByCatalogue = rep.GetListProductSame(clsHelper.fncCnvNullToInt(id1));
             ViewBag.MaxPage = ProductByCatalogue.Count() / maxProductInPage +1;
-            ViewBag.Id = id;
-            ViewBag.Curenpage = page;
-            ProductByCatalogue = ProductByCatalogue.Skip(maxProductInPage * (page-1)).Take(maxProductInPage).ToList();
+            ViewBag.Id = clsHelper.fncCnvNullToInt(id1);
+            ViewBag.Curenpage = clsHelper.fncCnvNullToInt(id2); ;
+            ProductByCatalogue = ProductByCatalogue.Skip(maxProductInPage * (clsHelper.fncCnvNullToInt(id2) - 1)).Take(maxProductInPage).ToList();
             ViewBag.ProductByCatalogue = ProductByCatalogue;
-            return View();
+            return View(model);
         }
 
     }
