@@ -15,7 +15,7 @@
                 <li class="arrow-top"><i class="icon-caret-down"></i></li>
                 @foreach(var item in lstCatalogue)
                 {
-                <li><a href="/Product/Product?id=@item.Id&page=1">@item.Name</a></li>
+                <li><a href="/Product/Product/@item.Id/1">@item.Name</a></li>
                 }
             </ul>
         </li>
@@ -24,7 +24,7 @@
                 <li class="arrow-top"><i class="icon-caret-down"></i></li>
                 @foreach (var CNews in lstNewsCatalogue)
                 {
-                <li><a href="/News/NewsbyCatalogue?id=@CNews.Id&page=1">@CNews.Name</a></li>
+                <li><a href="/News/NewsbyCatalogue/@CNews.Id/1">@CNews.Name</a></li>
                 }
             </ul>
         </li>

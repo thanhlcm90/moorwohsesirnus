@@ -4,7 +4,7 @@
     <!-- Basic Page Needs
   ================================================== -->
     <meta charset="utf-8">
-    <title>Infinitus Responsive Theme</title>
+    <title>@ViewBag.Title</title>
     <meta name="description" content="">
     <meta name="author" content="">
     <!-- Mobile Specific Metas
@@ -26,148 +26,6 @@
     <link rel="apple-touch-icon" href="/images/icons/apple-touch-icon.png">
     <link rel="apple-touch-icon" sizes="72x72" href="/images/icons/apple-touch-icon-72x72.png">
     <link rel="apple-touch-icon" sizes="114x114" href="/images/icons/apple-touch-icon-114x114.png">
-
-    <style type="text/css">
-        .image_carousel {
-            padding: 0px 0 15px 40px;
-            position: relative;
-        }
-
-        .image_carousel {
-            padding: 15px 40px;
-            position: relative;
-            width: 870px;
-        }
-
-            .image_carousel img {
-                border: 1px solid #ccc;
-                background-color: white;
-                padding: 9px;
-                margin: 7px;
-                display: block;
-                float: left;
-            }
-
-        a.prev, a.next {
-            background: url(/images/miscellaneous_sprite.png) no-repeat transparent;
-            width: 45px;
-            height: 50px;
-            display: block;
-            position: absolute;
-            top: 45px;
-        }
-
-        a.prev {
-            left: -5px;
-            background-position: 0 0;
-        }
-
-            a.prev:hover {
-                background-position: 0 -50px;
-            }
-
-            a.prev.disabled {
-                background-position: 0 -100px !important;
-            }
-
-        a.next {
-            right: -5px;
-            background-position: -50px 0;
-        }
-
-            a.next:hover {
-                background-position: -50px -50px;
-            }
-
-            a.next.disabled {
-                background-position: -50px -100px !important;
-            }
-
-            a.prev.disabled, a.next.disabled {
-                cursor: default;
-            }
-
-            a.prev span, a.next span {
-                display: none;
-            }
-
-        .paginationCl {
-            text-align: center;
-        }
-
-            .paginationCl a {
-                background: url(/images/miscellaneous_sprite.png) 0 -300px no-repeat transparent;
-                width: 15px;
-                height: 15px;
-                margin: 0 5px 0 0;
-                display: inline-block;
-                padding: 0px;
-            }
-
-                .paginationCl a:hover {
-                    background-position: -25px -300px;
-                }
-
-                .paginationCl a.selected {
-                    background-position: -25px -300px;
-                    cursor: default;
-                }
-
-                .paginationCl a span {
-                    display: none;
-                }
-
-        .clearfix {
-            float: none;
-            clear: both;
-        }
-
-        #foo2 img {
-            height: 80px;
-        }
-
-        .slideTop {margin-bottom:20px; margin-top:-10px;}
-            
-        .boderB {
-            background:url(/images/body-bg.png) repeat;
-            border-left: 1px solid #fff;
-            border-right: 1px solid #fff;
-            box-shadow: 0 0 5px #DFDFDF;
-            width:970px;
-            padding-top:7px;
-            margin:0 auto;
-        }
-
-        .clPadingBody{padding:0px;}
-
-        .blod {
-            font-weight: bold;
-        }
-        .warp-content {
-            padding-top: 10px;
-            padding-bottom: 10px;
-        }
-
-                .wrapTitle {
-            background: #fff;
-            line-height: 40px;
-        }
-
-        .magrinproduct {
-            margin-left:0px;
-            margin-right:13px;
-        }
-
-        .warpPaging {
-            margin-top:10px;
-            margin-bottom:20px;
-        }
-
-        .min-hieght-lg {
-            min-height:780px;
-        }
-
-    </style>
 </head>
 <body>
 
@@ -213,28 +71,10 @@
     <script type="text/javascript" src="/Scripts/js/jcarousel.js"></script>
     <script type="text/javascript" src="/Scripts/js/jquery.carouFredSel.js"></script>
     <script type="text/javascript" src="/Scripts/js/script.js"></script>
-    <script type="text/javascript" src="/Scripts/js/jquery.carouFredSel-6.2.1-packed.js"></script>
-    <script type="text/javascript" src="/Scripts/js/jquery.validate.min.js"></script>
     <script type="text/javascript">
         $('.titleSearchBox').click(function () {
             $('#searchtool').toggle('slow');
             return false;
-        });
-        $(function () {
-            $("#foo2").carouFredSel({
-                circular: false,
-                infinite: true,
-                auto: true,
-                prev: {
-                    button: "#foo2_prev",
-                    key: "left"
-                },
-                next: {
-                    button: "#foo2_next",
-                    key: "right"
-                },
-                pagination: "#foo2_pag"
-            });
         });
     </script>
 </body>
