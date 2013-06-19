@@ -16,6 +16,7 @@ namespace Frontend.Controllers
         {
             // Danh sách dữ liệu sản phẩm
             ViewBag.ProductList = rep.GetProductsList();
+
             return View();
         }
 
