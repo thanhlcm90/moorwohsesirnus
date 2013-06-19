@@ -124,19 +124,6 @@ namespace Showroom.Models.DataAccess
                 var list = from p in _dataContext.News
                            where p.CatelogueId == IdNewsCatalogue
                            select p;
-                           //select new News
-                           //{
-                           //    Id = p.Id,
-                           //    Actflg = p.Actflg,
-                           //    CatelogueId = p.CatelogueId,
-                           //    Detail = p.Detail,
-                           //    PostDate = p.PostDate,
-                           //    Title = p.Title,
-                           //    TitleEn = p.TitleEn,
-                           //    Views = p.Views,
-                           //    ShowSlide = p.ShowSlide,
-                           //    Image = p.Image
-                           //};
                 return list.ToList();
             }
             catch (Exception)
