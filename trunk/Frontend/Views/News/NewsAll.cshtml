@@ -2,7 +2,7 @@
 @using Showroom.Models.DataAccess;
 @{
     ShowroomRepository rep = new ShowroomRepository();
-    ViewBag.Title = "NewsAll";
+    ViewBag.Title = "Sunrise Auto - Tin Tức";
     List<Showroom.Models.News> lstNews = ViewBag.lstNews;
     List<Showroom.Models.News> lstTopNews = ViewBag.lstTopNews;
     List<Showroom.Models.NewsCatalogue> lstCatalogueNews = ViewBag.lstCatalogueNews;
@@ -92,7 +92,7 @@
                         <ul class="sidebar-category">
                             @foreach(var cn in lstCatalogueNews)
                             {
-                                <li><a href="/News/NewsbyCatalogue?id=@cn.Id&page=1"><i class="icon-chevron-right"></i>@cn.Name</a></li>
+                                <li><a href="/News/NewsbyCatalogue/@cn.Id/1"><i class="icon-chevron-right"></i>@cn.Name</a></li>
                             }
                         </ul>
                     </div>

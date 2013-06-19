@@ -1,7 +1,7 @@
 ﻿@using Common
-@model Showroom.Models.News
+@model Showroom.Models.NewsCatalogue
 @{
-    ViewBag.Title = "NewsbyCatalogue";
+    ViewBag.Title = "Sunrise Auto -" + Model.Name;
     List<Showroom.Models.News> lstNews = ViewBag.lstNews;
     List<Showroom.Models.NewsCatalogue> lstCatalogueNews = ViewBag.lstCatalogueNews;
     List<Showroom.Models.News> lstTopNews = ViewBag.lstTopNews;
@@ -43,18 +43,18 @@
                     </section>
                     }
                     <div class="pagination">
-                        <a href="#"><i class="icon-chevron-left"></i></a>
+                        <!--<a href="#"><i class="icon-chevron-left"></i></a>-->
                         @for (int i = CurrenPage - 1; (i > 0 && i >= CurrenPage - 2); i--)
                         {
-                            var query = "/News/NewsbyCatalogue?id=" + CatalogueId + "&page=" + i;
+                            var query = "/News/NewsbyCatalogue/" + CatalogueId + "/" + i;
                             <a href="@query">@i</a>
                         }
                         @for (int i = CurrenPage; (i <= maxPage && i <= CurrenPage + 2); i++)
                         {
-                            var query = "/News/NewsbyCatalogue?id=" + CatalogueId + "&page=" + i;
+                            var query = "/News/NewsbyCatalogue/" + CatalogueId + "/" + i;
                             <a href="@query">@i</a>
                         }
-                        <a href="#"><i class="icon-chevron-right"></i></a>
+                        <!--<a href="#"><i class="icon-chevron-right"></i></a>-->
                     </div>
                 </div>
                 <!--Blog Wrap-->
@@ -92,7 +92,7 @@
                         <ul class="sidebar-category">
                             @foreach(var cn in lstCatalogueNews)
                             {
-                                <li><a href="/News/NewsbyCatalogue?id=@cn.Id&page=1"><i class="icon-chevron-right"></i>@cn.Name</a></li>
+                                <li><a href="/News/NewsbyCatalogue/@cn.Id/1"><i class="icon-chevron-right"></i>@cn.Name</a></li>
                             }
                         </ul>
                     </div>
