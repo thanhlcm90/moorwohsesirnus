@@ -1,0 +1,563 @@
+﻿@model Showroom.Models.Product
+@using Showroom.Models.DataAccess;
+@{
+    ViewBag.Title = "Sunrise Auto" +" " + "-" + " " + Model.Name;
+    ShowroomRepository rep = new ShowroomRepository();
+    List<Showroom.Models.PropertyCatalogue> PropertyCatalogueList = ViewBag.PropertyCatalogue;
+    List<Showroom.Models.ProductProperty> ProductPropertyList = ViewBag.ProductPropertyList;
+    List<Showroom.Models.PropertySubCatalogue> PropertySubCatalogueList = ViewBag.PropertySubCatalogueList;
+    List<Showroom.Models.Property> PropertyList = ViewBag.PropertyList;
+    // Lấy những thuộc tính của sản phẩm được ShowMain
+    var PropertyOnMain = (from n in ProductPropertyList
+                          from p in PropertyList
+                          where p.ShowMain == 'A' && n.ProductId == Model.Id && n.PropertyId == p.Id
+                          select new
+                          {
+                              Name = p.Name,
+                              Value = n.Value
+                          }
+                          ).ToList();
+    var ProductID = Model.Id;                     
+
+}
+
+<section>
+    <div class="boderB">
+        <div class="container warp-content">
+            <div class="row">
+                <!------------ BẮT ĐẦU CHI TIẾT SẢN PHẨM ----------->
+                <div class="span7">
+                    <div class="shadow-wrapper small6">
+                        <div class="flexslider" id="main-slider">
+                            <ul class="slides">
+                                <li>
+                                    <div class="mosaic-block circle">
+                                        <a style="display: inline; opacity: 0;" href="/images/portfolio/kia.jpg" class="mosaic-overlay" data-gal="prettyPhoto[portfolio]">&nbsp;</a>
+                                        <div style="display: block;" class="mosaic-backdrop">
+                                            <img src="/images/portfolio/kia.jpg" class="max-image" />
+                                        </div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="mosaic-block circle">
+                                        <a style="display: inline; opacity: 0;" href="/images/portfolio/kia.jpg" class="mosaic-overlay" data-gal="prettyPhoto[portfolio]">&nbsp;</a>
+                                        <div style="display: block;" class="mosaic-backdrop">
+                                            <img src="/images/portfolio/kia.jpg" class="max-image" />
+                                        </div>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="span5">
+                    <h3>@Model.Name</h3>
+                    <ul class="sidebar-post">
+                        <li>
+                            <div class="row">
+                                <div class="span2 blod">Giá:</div>
+                                <div class="span3">@Convert.ToDouble(Model.Price).ToString("N0").Replace(",", ".")</div>
+                            </div>
+                        </li>
+                        @foreach (var sm in PropertyOnMain)
+                        {
+                            <li>
+                                <div class="row">
+                                    <div class="span2 blod">@sm.Name</div>
+                                    <div class="span3">@sm.Value</div>
+                                </div>
+                            </li>
+                        }
+
+                        <li></li>
+                    </ul>
+                </div>
+                <!------------ KẾT THÚC CHI TIẾT SẢN PHẨM ----------->
+
+                <!------------ BẮT ĐẦU TAB CHI TIẾT SẢN PHẨM ----------->
+                <div class="span12">
+                    <div class="service-wrap">
+                        <!-- TAB CATALOGUE PROPERTY -->
+                        <ul class="tab-menu tab-blue round">
+                            @for (int i = 0; i < PropertyCatalogueList.Count; i++)
+                            {
+                                string strClassActive = "";
+                                if (i == 0)
+                                {
+                                    strClassActive = "active";
+                                }
+                                var tabId = "#tab" + PropertyCatalogueList[i].Id;
+                                var ID = PropertyCatalogueList[i].Id;
+                                string StrName = PropertyCatalogueList[i].Name.ToString();
+                                <li class="@strClassActive"><a href="@tabId"><i class="icon-tag"></i>@StrName</a></li>
+                            }
+                        </ul>
+                        <!-- END TAB CATALOGUE PROPERTY -->
+                        <div class="shadow-wrapper">
+                            @for (int i = 0; i < PropertyCatalogueList.Count; i++)
+                            {
+
+                                var tabId = "tab" + PropertyCatalogueList[i].Id;
+                                var ID = PropertyCatalogueList[i].Id;
+                                string StrName = PropertyCatalogueList[i].Name.ToString();
+                                var GroupPropertyList = (from n in PropertySubCatalogueList
+                                                         from p in PropertyList
+
+                                                         where p.CatelogueId == ID && p.SubCatelogueId == n.Id
+                                                         select new
+                                                         {
+                                                             Id = n.Id,
+                                                             Name = n.Name
+                                                         }
+                               ).Distinct().ToList();
+
+                                <div style="display: block;" class="tab-content-1 span11" id="@tabId">
+                                    @foreach (var subitem in GroupPropertyList)
+                                    {
+                                        var lst = (from p in PropertyList
+                                                   where p.SubCatelogueId == subitem.Id && p.CatelogueId == ID
+                                                   select new
+                                                   {
+                                                       Id = p.Id,
+                                                       PropertyType = p.PropertyType,
+                                                       Name = p.Name,
+                                                   }).Distinct().ToList();                                        
+                                        <div class="span5">
+                                            <h3>@subitem.Name</h3>
+                                            <ul class="sidebar-post">
+                                                @foreach (var s in lst)
+                                                {
+                                                    var sValue = (from p in ProductPropertyList where p.ProductId == ProductID && p.PropertyId == s.Id select p.Value).SingleOrDefault();
+                                                    <li>
+                                                        <div class="row">
+                                                            <div class="span3 blod" style="font-size: 13px;">@s.Name</div>
+                                                            @if (sValue == "false")
+                                                            {
+                                                                <div class="span2" style="text-align: right">
+                                                                    <img src="/img/False.png" /></div>
+                                                            }
+                                                            else if (sValue == "true")
+                                                            {
+                                                                <div class="span2" style="text-align: right">
+                                                                    <img src="/img/True.png" /></div>
+                                                            }
+                                                            else
+                                                            {
+                                                                <div class="span2">@sValue</div>
+                                                            }
+                                                        </div>
+                                                    </li>
+                                                }
+                                            </ul>
+                                        </div>
+                                    }
+                                </div>
+                                
+                            }
+                            @*     <div style="display: block;" class="tab-content-1 span11" id="tab1">
+                                <div class="span5">
+                                    <h3>Các thông số cơ bản</h3>
+                                    <ul class="sidebar-post">
+                                        <li>
+                                            <div class="row">
+                                                <div class="span2 blod">Màu xe:</div>
+                                                <div class="span3">Trong nước</div>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="row">
+                                                <div class="span2 blod">Màu nội thất:</div>
+                                                <div class="span3">Trong nước</div>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="row">
+                                                <div class="span2 blod">Số cửa:</div>
+                                                <div class="span3">Trong nước</div>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="row">
+                                                <div class="span2 blod">Số chỗ ngồi:</div>
+                                                <div class="span3">Trong nước</div>
+                                            </div>
+                                        </li>
+                                        <li></li>
+                                    </ul>
+                                </div>
+                                <div class="span5">
+                                    <h3>Nhiên liệu</h3>
+                                    <ul class="sidebar-post">
+                                        <li>
+                                            <div class="row">
+                                                <div class="span2 blod">Màu xe:</div>
+                                                <div class="span3">Trong nước</div>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="row">
+                                                <div class="span2 blod">Màu nội thất:</div>
+                                                <div class="span3">Trong nước</div>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="row">
+                                                <div class="span2 blod">Số cửa:</div>
+                                                <div class="span3">Trong nước</div>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="row">
+                                                <div class="span2 blod">Số chỗ ngồi:</div>
+                                                <div class="span3">Trong nước</div>
+                                            </div>
+                                        </li>
+                                        <li></li>
+                                    </ul>
+                                </div>
+                                <div class="span5">
+                                    <h3>Hộp số chuyển động</h3>
+                                    <ul class="sidebar-post">
+                                        <li>
+                                            <div class="row">
+                                                <div class="span2 blod">Xuất xứ:</div>
+                                                <div class="span3">Trong nước</div>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="row">
+                                                <div class="span2 blod">Xuất xứ:</div>
+                                                <div class="span3">Trong nước</div>
+                                            </div>
+                                        </li>
+                                        <li></li>
+                                    </ul>
+                                </div>
+                            </div>
+                                                        <div style="display: none;" class="tab-content-1 span11" id="tab2">
+                                    <div class="span5">
+                                        <h3>Túi khí an toàn</h3>
+                                        <ul class="sidebar-post">
+                                            <li>
+                                                <div class="row">
+                                                    <div class="span4 blod">Túi khí cho người lái:</div>
+                                                    <div class="span1">
+                                                        <img src="img/True.png" />
+                                                    </div>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div class="row">
+                                                    <div class="span4 blod">Túi khí cho hành khách phía trước:</div>
+                                                    <div class="span1">
+                                                        <img src="img/False.png" />
+                                                    </div>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div class="row">
+                                                    <div class="span4 blod">Túi khí cho hành khách phía trước:</div>
+                                                    <div class="span1">
+                                                        <img src="img/False.png" />
+                                                    </div>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div class="row">
+                                                    <div class="span4 blod">Túi khí cho hành khách phía trước:</div>
+                                                    <div class="span1">
+                                                        <img src="img/False.png" />
+                                                    </div>
+                                                </div>
+                                            </li>
+                                            <li></li>
+                                        </ul>
+                                    </div>
+                                    <div class="span5">
+                                        <h3>Nhiên liệu</h3>
+                                        <ul class="sidebar-post">
+                                            <li>
+                                                <div class="row">
+                                                    <div class="span2 blod">Xuất xứ:</div>
+                                                    <div class="span3">Trong nước</div>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div class="row">
+                                                    <div class="span2 blod">Xuất xứ:</div>
+                                                    <div class="span3">Trong nước</div>
+                                                </div>
+                                            </li>
+                                            <li></li>
+                                        </ul>
+                                    </div>
+                                    <div class="span5">
+                                        <h3>Hộp số chuyển động</h3>
+                                        <ul class="sidebar-post">
+                                            <li>
+                                                <div class="row">
+                                                    <div class="span2 blod">Xuất xứ:</div>
+                                                    <div class="span3">Trong nước</div>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div class="row">
+                                                    <div class="span2 blod">Xuất xứ:</div>
+                                                    <div class="span3">Trong nước</div>
+                                                </div>
+                                            </li>
+                                            <li></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div style="display: none;" class="tab-content-1 span11" id="tab3">
+                                    <div class="span5">
+                                        <h3>Các thông số cơ bản</h3>
+                                        <ul class="sidebar-post">
+                                            <li>
+                                                <div class="row">
+                                                    <div class="span2 blod">Màu xe:</div>
+                                                    <div class="span3">Trong nước</div>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div class="row">
+                                                    <div class="span2 blod">Màu nội thất:</div>
+                                                    <div class="span3">Trong nước</div>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div class="row">
+                                                    <div class="span2 blod">Số cửa:</div>
+                                                    <div class="span3">Trong nước</div>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div class="row">
+                                                    <div class="span2 blod">Số chỗ ngồi:</div>
+                                                    <div class="span3">Trong nước</div>
+                                                </div>
+                                            </li>
+                                            <li></li>
+                                        </ul>
+                                    </div>
+                                    <div class="span5">
+                                        <h3>Nhiên liệu</h3>
+                                        <ul class="sidebar-post">
+                                            <li>
+                                                <div class="row">
+                                                    <div class="span2 blod">Xuất xứ:</div>
+                                                    <div class="span3">Trong nước</div>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div class="row">
+                                                    <div class="span2 blod">Xuất xứ:</div>
+                                                    <div class="span3">Trong nước</div>
+                                                </div>
+                                            </li>
+                                            <li></li>
+                                        </ul>
+                                    </div>
+                                    <div class="span5">
+                                        <h3>Hộp số chuyển động</h3>
+                                        <ul class="sidebar-post">
+                                            <li>
+                                                <div class="row">
+                                                    <div class="span2 blod">Xuất xứ:</div>
+                                                    <div class="span3">Trong nước</div>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div class="row">
+                                                    <div class="span2 blod">Xuất xứ:</div>
+                                                    <div class="span3">Trong nước</div>
+                                                </div>
+                                            </li>
+                                            <li></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div style="display: none;" class="tab-content-1 span11" id="tab4">
+                                    <div class="span5">
+                                        <h3>Các thông số cơ bản</h3>
+                                        <ul class="sidebar-post">
+                                            <li>
+                                                <div class="row">
+                                                    <div class="span2 blod">Màu xe:</div>
+                                                    <div class="span3">Trong nước</div>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div class="row">
+                                                    <div class="span2 blod">Màu nội thất:</div>
+                                                    <div class="span3">Trong nước</div>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div class="row">
+                                                    <div class="span2 blod">Số cửa:</div>
+                                                    <div class="span3">Trong nước</div>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div class="row">
+                                                    <div class="span2 blod">Số chỗ ngồi:</div>
+                                                    <div class="span3">Trong nước</div>
+                                                </div>
+                                            </li>
+                                            <li></li>
+                                        </ul>
+                                    </div>
+                                    <div class="span5">
+                                        <h3>Nhiên liệu</h3>
+                                        <ul class="sidebar-post">
+                                            <li>
+                                                <div class="row">
+                                                    <div class="span2 blod">Xuất xứ:</div>
+                                                    <div class="span3">Trong nước</div>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div class="row">
+                                                    <div class="span2 blod">Xuất xứ:</div>
+                                                    <div class="span3">Trong nước</div>
+                                                </div>
+                                            </li>
+                                            <li></li>
+                                        </ul>
+                                    </div>
+                                    <div class="span5">
+                                        <h3>Hộp số chuyển động</h3>
+                                        <ul class="sidebar-post">
+                                            <li>
+                                                <div class="row">
+                                                    <div class="span2 blod">Xuất xứ:</div>
+                                                    <div class="span3">Trong nước</div>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div class="row">
+                                                    <div class="span2 blod">Xuất xứ:</div>
+                                                    <div class="span3">Trong nước</div>
+                                                </div>
+                                            </li>
+                                            <li></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div style="display: none;" class="tab-content-1 span11" id="tab5">
+                                    <div class="span5">
+                                        <h3>Các thông số cơ bản</h3>
+                                        <ul class="sidebar-post">
+                                            <li>
+                                                <div class="row">
+                                                    <div class="span2 blod">Màu xe:</div>
+                                                    <div class="span3">Trong nước</div>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div class="row">
+                                                    <div class="span2 blod">Màu nội thất:</div>
+                                                    <div class="span3">Trong nước</div>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div class="row">
+                                                    <div class="span2 blod">Số cửa:</div>
+                                                    <div class="span3">Trong nước</div>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div class="row">
+                                                    <div class="span2 blod">Số chỗ ngồi:</div>
+                                                    <div class="span3">Trong nước</div>
+                                                </div>
+                                            </li>
+                                            <li></li>
+                                        </ul>
+                                    </div>
+                                    <div class="span5">
+                                        <h3>Nhiên liệu</h3>
+                                        <ul class="sidebar-post">
+                                            <li>
+                                                <div class="row">
+                                                    <div class="span2 blod">Xuất xứ:</div>
+                                                    <div class="span3">Trong nước</div>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div class="row">
+                                                    <div class="span2 blod">Xuất xứ:</div>
+                                                    <div class="span3">Trong nước</div>
+                                                </div>
+                                            </li>
+                                            <li></li>
+                                        </ul>
+                                    </div>
+                                    <div class="span5">
+                                        <h3>Hộp số chuyển động</h3>
+                                        <ul class="sidebar-post">
+                                            <li>
+                                                <div class="row">
+                                                    <div class="span2 blod">Xuất xứ:</div>
+                                                    <div class="span3">Trong nước</div>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div class="row">
+                                                    <div class="span2 blod">Xuất xứ:</div>
+                                                    <div class="span3">Trong nước</div>
+                                                </div>
+                                            </li>
+                                            <li></li>
+                                        </ul>
+                                    </div>
+                                </div>*@
+                        </div>
+                        <div class="clearfix"></div>
+                    </div>
+                </div>
+                <!------------ KẾT THÚC TAB CHI TIẾT SẢN PHẨM ----------->
+            
+
+            <div class="span12">
+                <div class="titleSearchBox">
+                    <span>SẢN PHẨN CÙNG LOẠI</span>
+                </div>
+                <div class="row" id="boxNewProduct">
+                    @foreach (var productS in rep.GetListProductSame(@Model.CatalogueId).Take(9))
+                    {
+                        if (productS.Id != Model.Id)
+                        {
+                        <div class="span3">
+                            <div class="shadow-wrapper">
+                                <div class="mosaic-block faded">
+                                    <div class="mosaic-overlay" style="display: block; opacity: 0;">
+                                        <div class="zoom-icons">
+                                            <a class="zoom-img" href="/images/portfolio/kia.jpg" data-gal="prettyPhoto[portfolio]"><i class="icon-search"></i></a>
+                                            <a class="link-img" href="/Product/Details/@Model.Id"><i class="icon-link"></i></a>
+                                        </div>
+                                    </div>
+                                    <div class="mosaic-backdrop">
+                                        <img class="max-image" src="/images/portfolio/kia.jpg" alt="">
+                                    </div>
+                                </div>
+                                <div class="port3-head">
+                                    <h3><a href="/Product/Details/@Model.Id">@productS.Name</a></h3>
+                                    <p>Giá: @Convert.ToDouble(productS.Price).ToString("N0").Replace(",", ".")</p>
+                                </div>
+                            </div>
+                        </div>
+                        }
+                    }
+                </div>
+            </div>
+
+            <div class="span12">
+                <div class="divider2">&nbsp;</div>
+            </div>
+        </div>
+            </div>
+    </div>
+</section>
