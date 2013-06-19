@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using Showroom.Models.DataAccess;
+using Common;
 
 namespace Frontend.Controllers
 {
@@ -27,17 +28,18 @@ namespace Frontend.Controllers
             return View();
         }
 
-        public ActionResult NewsbyCatalogue(int id, int page)
+        public ActionResult NewsbyCatalogue(string id1, string id2)
         {
-            var lstNews = rep.GetListNewsByCATAID(id);
+            var model = rep.GetNewsCatalogueInfo(clsHelper.fncCnvNullToInt(id1));
+            var lstNews = rep.GetListNewsByCATAID(clsHelper.fncCnvNullToInt(id1));
             ViewBag.lstTopNews = rep.GetNewsList();
             ViewBag.lstCatalogueNews = rep.GetNewsCatalogueList();
             ViewBag.MaxPage = lstNews.Count() / maxNewInPage + 1;
-            ViewBag.Id = id;
-            ViewBag.Curenpage = page;
-            lstNews = lstNews.Skip(maxNewInPage * (page - 1)).Take(maxNewInPage).ToList();
+            ViewBag.Id = clsHelper.fncCnvNullToInt(id1);
+            ViewBag.Curenpage = clsHelper.fncCnvNullToInt(id2);
+            lstNews = lstNews.Skip(maxNewInPage * (clsHelper.fncCnvNullToInt(id2) - 1)).Take(maxNewInPage).ToList();
             ViewBag.lstNews = lstNews;
-            return View();
+            return View(model);
         }
 
         public ActionResult NewsDetails(int id)
