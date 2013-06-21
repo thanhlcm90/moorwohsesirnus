@@ -42,6 +42,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="App_Code\Helper.cs" />
     <Compile Include="DataAccess\News.cs" />
     <Compile Include="DataAccess\SystemInfo.cs" />
     <Compile Include="DataAccess\Product.cs" />
@@ -56,6 +57,7 @@
     <Compile Include="ExtensionMethod.cs" />
     <Compile Include="Models\CatalogueModel.cs" />
     <Compile Include="Models\ContactModel.cs" />
+    <Compile Include="Models\News.cs" />
     <Compile Include="Models\ProductModel.cs" />
     <Compile Include="Models\PropertyModel.cs" />
     <Compile Include="Models\SystemInfoModel.cs" />
@@ -73,9 +75,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
-    <None Include="bin\Debug\DataAccess.dll.config" />
-    <None Include="obj\Debug\DataAccess.csprojResolveAssemblyReference.cache" />
-    <None Include="obj\Debug\DesignTimeResolveAssemblyReferencesInput.cache" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -94,17 +93,7 @@
       <DependentUpon>ShowroomDataContext.dbml</DependentUpon>
     </None>
   </ItemGroup>
-  <ItemGroup>
-    <Content Include="bin\Debug\DataAccess.dll" />
-    <Content Include="bin\Debug\DataAccess.pdb" />
-    <Content Include="obj\Debug\DataAccess.csproj.FileListAbsolute.txt" />
-    <Content Include="obj\Debug\DataAccess.dll" />
-    <Content Include="obj\Debug\DataAccess.pdb" />
-    <Content Include="obj\Debug\TempPE\ShowroomDataContext.designer.cs.dll" />
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="bin\Release\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
