@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 11.75, 13.125" name="SunriseShowroom">
+<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 11.75, 10.625" name="SunriseShowroom">
   <DataContextMoniker Name="/ShowroomDataContext" />
   <nestedChildShapes>
     <classShape Id="07f75a85-b452-4dea-9717-478ff7c3da12" absoluteBounds="0.75, 8.125, 2, 1.9631982421874987">
@@ -98,10 +98,10 @@
         <classShapeMoniker Id="439c5579-781f-4b74-8460-8c7c1716f423" />
       </nodes>
     </associationConnector>
-    <classShape Id="866a55a7-b841-47ee-953c-ce522ab41bec" absoluteBounds="3, 11.625, 2, 1.1939925130208333">
+    <classShape Id="866a55a7-b841-47ee-953c-ce522ab41bec" absoluteBounds="9.125, 1.375, 2, 1.1939925130208333">
       <DataClassMoniker Name="/ShowroomDataContext/SystemInfo" />
       <nestedChildShapes>
-        <elementListCompartment Id="6cb2324b-b0fd-4336-ad97-8950ae89ebca" absoluteBounds="3.0149999999999997, 12.085, 1.9700000000000002, 0.63399251302083326" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+        <elementListCompartment Id="6cb2324b-b0fd-4336-ad97-8950ae89ebca" absoluteBounds="9.14, 1.8350000000000009, 1.9700000000000002, 0.63399251302083326" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
   </nestedChildShapes>
