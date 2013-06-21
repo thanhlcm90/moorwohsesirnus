@@ -79,6 +79,7 @@ namespace Showroom.Models.DataAccess
 
                 // Copy toàn bộ giá trị từ item sang itemUpdate. Submit thay đổi
                 item.CopyProperties(itemUpdate);
+               // itemUpdate.CatalogueId = item.CatalogueId; //nó ko copy được thằng relationship
                 _dataContext.SubmitChanges();
                 return true;
             }
@@ -88,6 +89,44 @@ namespace Showroom.Models.DataAccess
             }
         }
 
+        public int InsertProduct(Product product)
+        {
+            try
+            {
+                _dataContext.Products.InsertOnSubmit(product);
+                _dataContext.SubmitChanges();
+                return product.Id;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
 
+        public bool DeleteProducts(int id)
+        {
+            try
+            {
+                // Tìm kiếm đối tượng có Id cần sửa đổi
+                Product itemDelete = (from p in _dataContext.Products where p.Id == id select p).SingleOrDefault();
+
+                // Nếu không tìm thấy thì trả về False
+                if (itemDelete == null) return false;
+                //Xóa các thuộc tính của sản phẩm.
+                var properties =(from p in _dataContext.ProductProperties where p.ProductId == itemDelete.Id select p).ToList();
+                foreach (var prop in properties)
+                {
+                    _dataContext.ProductProperties.DeleteOnSubmit(prop);
+                }
+                // Xóa và Submit thay đổi
+                _dataContext.Products.DeleteOnSubmit(itemDelete);
+                _dataContext.SubmitChanges();
+                return true;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
     }
 }
