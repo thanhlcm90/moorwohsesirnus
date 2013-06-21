@@ -108,6 +108,7 @@
     <Compile Include="Controllers\ContactController.cs" />
     <Compile Include="Controllers\ConfigurationController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\ImageSlideController.cs" />
     <Compile Include="Controllers\ProductController.cs" />
     <Compile Include="Controllers\PropertyCatalogueController.cs" />
     <Compile Include="Global.asax.cs">
@@ -1100,6 +1101,7 @@
     <Content Include="Views\PropertyCatalogue\Index.cshtml" />
     <Content Include="Views\Product\EditProductImage.cshtml" />
     <Content Include="Views\Configuration\Info.cshtml" />
+    <Content Include="Views\ImageSlide\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
