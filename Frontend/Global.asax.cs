@@ -22,8 +22,33 @@ namespace Frontend
         public static void RegisterRoutes(RouteCollection routes)
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
+
             routes.MapRoute(
-                "DefaultProduct", // Route name
+            "DefaultListNews", // URL LISTNEWS
+                "{tin-tuc}/{danh-sach}/{chuyen-muc}/{id1}-{id2}",
+                new { controller = "News", action = "NewsbyCatalogue", id = UrlParameter.Optional }
+            );
+
+            routes.MapRoute(
+            "DefaultListProduct", // URL LISTPRODUCT
+                "{san-pham}/{hang-sp}/{id1}/{id2}",
+                new { controller = "Product", action = "Product", id = UrlParameter.Optional }
+            );
+
+            routes.MapRoute(
+                "DefaultDetailsProduct", // URL DETAILSPRODUCT
+                "{chuyen-muc}/{chi-tiet}/{tieu-de-khong-dau}-{id}", 
+                new { controller = "Product", action = "DetailProduct", id = UrlParameter.Optional } 
+            );
+
+            routes.MapRoute(
+                "DefaultDetailsNew", // URL DETAILSNEWS
+                "{chuyen-muc}/{tieu-de-khong-dau}-{id}", 
+                new { controller = "News", action = "NewsDetails", id = UrlParameter.Optional } 
+            );
+
+            routes.MapRoute(
+                "DefaultProduct", // URL DETAILSPRODUCT
                 "{controller}/{action}/{id1}/{id2}", // URL with parameters
                 new { controller = "Home", action = "Index", id = UrlParameter.Optional } // Parameter defaults
             );
