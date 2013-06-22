@@ -190,9 +190,9 @@
                                 LimageList = @clsHelper.GetImageProduct(productS.Id);
                                 var NoimgPathN = "/images/no_image.gif";
                                 var strImage = string.Empty;
-                                if (imageList.Count > 0)
+                                if (LimageList.Count > 0)
                                 {
-                                    strImage = imageList[0].ToString();
+                                    strImage = LimageList[0].ToString();
                                 }
                                 else
                                 {
@@ -204,7 +204,7 @@
                                         <div class="mosaic-overlay" style="display: block; opacity: 0;">
                                             <div class="zoom-icons">
                                                 <a class="zoom-img" href="@strImage" data-gal="prettyPhoto[portfolio]"><i class="icon-search"></i></a>
-                                                <a class="link-img" href="/san-pham/chi-tiet/@Model.NameEn-@Model.Id"><i class="icon-link"></i></a>
+                                                <a class="link-img" href="/san-pham/chi-tiet/@Model.NameEn-@productS.Id"><i class="icon-link"></i></a>
                                             </div>
                                         </div>
                                         <div class="mosaic-backdrop">
@@ -212,7 +212,7 @@
                                         </div>
                                     </div>
                                     <div class="port3-head">
-                                        <h3><a href="/san-pham/chi-tiet/@Model.NameEn-@Model.Id">@productS.Name</a></h3>
+                                        <h3><a href="/san-pham/chi-tiet/@Model.NameEn-@productS.Id">@productS.Name</a></h3>
                                         <p>Giá: @Convert.ToDouble(productS.Price).ToString("N0").Replace(",", ".")</p>
                                     </div>
                                 </div>
