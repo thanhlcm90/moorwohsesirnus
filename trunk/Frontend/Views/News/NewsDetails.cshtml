@@ -34,7 +34,7 @@
                                 {
                                     if (same.Id != Model.Id)
                                     {                                    
-                                    <li><a href="/News/NewsDetails/@same.Id">@same.Title</a> - @same.PostDate.ToString("dd/MM/yyyy")</li>
+                                    <li><a href="/tin-tuc/@same.TitleEn-@same.Id">@same.Title</a> - @same.PostDate.ToString("dd/MM/yyyy")</li>
                                     }
                                 }
                             </ul>
@@ -72,7 +72,7 @@
                                         <img src="/images/recent-post.png" alt=""></a>
                                 </div>
                                 <div class="recent_txt">
-                                    <a href="#">@clsHelper.CatChuoi(topN.Title, 50)</a>
+                                    <a href="/tin-tuc/@topN.TitleEn-@topN.Id">@clsHelper.CatChuoi(topN.Title, 50)</a>
                                     <p>@clsHelper.CatChuoi(topN.Detail, 80)</p>
                                     <p class="date"><i class="icon-calendar"></i>@topN.PostDate.ToString("dd/MM/yyyy")</p>
                                 </div>
