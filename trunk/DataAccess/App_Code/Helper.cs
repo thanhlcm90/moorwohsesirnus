@@ -35,12 +35,11 @@ namespace Common
 
         public static ArrayList GetImageProduct(int id)
         {
+            var list = new ArrayList();
+            var product = id;
             var productFolder = AppDomain.CurrentDomain.BaseDirectory + "Images\\Product\\" + id;
-            var productFrontendFolder = productFolder;
-            productFolder = productFolder.Replace("Frontend", "Backend");
-            var ProducImagePath = "/Images/Product/" + id;
-            DirectoryInfo dir = new DirectoryInfo(productFolder);
-            ArrayList list = new ArrayList();
+            var producImagePath = "/Images/Product/" + id;
+            var dir = new DirectoryInfo(productFolder);
             if (Directory.Exists(productFolder))
             {
                 FileInfo[] files = dir.GetFiles();
@@ -48,13 +47,7 @@ namespace Common
                 {
                     if (file.Extension == ".jpg" || file.Extension == ".jpeg" || file.Extension == ".gif" || file.Extension == ".png")
                     {
-                        //Kiểm tra có thư mục Images/Product ở frontend chưa.
-                        if (!Directory.Exists(productFrontendFolder))
-                            Directory.CreateDirectory(productFrontendFolder);
-
-                        //Save ảnh từ backend qua frontend.
-                        file.CopyTo(Path.Combine(productFrontendFolder.ToString(), file.Name), true);
-                        list.Add(ProducImagePath + "/" + file.Name);
+                        list.Add(producImagePath + "/" + file.Name);
                     }
                 }
             }
@@ -187,7 +180,7 @@ namespace Common
             }
             catch (Exception ex)
             {
-                
+
             }
 
             return intValue;
