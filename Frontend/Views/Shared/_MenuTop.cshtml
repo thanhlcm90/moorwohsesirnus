@@ -15,16 +15,16 @@
                 <li class="arrow-top"><i class="icon-caret-down"></i></li>
                 @foreach(var item in lstCatalogue)
                 {
-                <li><a href="/Product/Product/@item.Id/1">@item.Name</a></li>
+                <li><a href="/san-pham/@item.NameEn/@item.Id/1">@item.Name</a></li>
                 }
             </ul>
         </li>
-        <li><a href="/News/NewsAll?page=1"><i class="icon-comments"></i>Tin tức</a>
+        <li><a href="#"><i class="icon-comments"></i>Tin tức</a>
                         <ul>
                 <li class="arrow-top"><i class="icon-caret-down"></i></li>
                 @foreach (var CNews in lstNewsCatalogue)
                 {
-                <li><a href="/News/NewsbyCatalogue/@CNews.Id/1">@CNews.Name</a></li>
+                <li><a href="/tin-tuc/danh-sach/@CNews.NameEn/@CNews.Id-1">@CNews.Name</a></li>
                 }
             </ul>
         </li>
