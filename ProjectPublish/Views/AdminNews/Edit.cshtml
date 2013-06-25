@@ -1,0 +1,112 @@
+﻿@{
+    ViewBag.Title = "Đăng tin tức";
+     Layout = "../Shared/_AdminLayout.cshtml";
+}
+@model Showroom.Models.News
+<!-- chosen -->
+<link rel="stylesheet" href="@Url.Content("~/Content/Admin/css/plugins/chosen/chosen.css")">
+<!-- Chosen -->
+<script src="@Url.Content("~/Scripts/Admin/Scripts/plugins/chosen/chosen.jquery.min.js")"></script>
+<script src="@Url.Content("~/Scripts/Admin/Scripts/fckeditor/fckeditor.js")"></script>
+<script src="@Url.Content("~/Scripts/Admin/Scripts/jquery-1.2.6.pack.js")"></script>
+<script src="@Url.Content("~/Scripts/Admin/Scripts/fckeditorapi.js")"></script>
+
+<div class="box box-color box-bordered">
+    <div class="box-title">
+        <h3><i class="icon-edit"></i>Đăng tin tức</h3>
+    </div>
+    <div class="box-content">
+        @using (Html.BeginForm("Edit", "AdminNews", FormMethod.Post,new { enctype = "multipart/form-data", @class = "form-horizontal" }))
+        {
+           
+            <div class="span12">
+                @Html.HiddenFor(item => item.Id)
+                <div class="control-group">
+                    <label for="" class="control-label">@Html.LabelFor(item => item.NewsCatalogue.Name)</label>
+                    <div class="controls">
+                        <div class="input-xlarge">
+                            @Html.DropDownListFor( item => item.CatelogueId,(IList<SelectListItem>)ViewBag.CatelogueList,"Chọn chuyên mục", new { @class = "chosen-select" })
+                        </div>
+                    </div>
+                </div>
+                <div class="control-group">
+                    <label for="" class="control-label">@Html.LabelFor(item => item.Title)</label>
+                    <div class="controls">
+                        @Html.TextBoxFor(item => item.Title, new { @class = "input-xlarge" })
+                        @Html.ValidationMessageFor(item => item.Title)
+                    </div>
+                </div>
+                <div class="control-group">
+                    <label for="" class="control-label">@Html.LabelFor(item => item.Views)</label>
+                    <div class="controls">
+                        @Html.TextBoxFor(item => item.Views, new { @class = "input-xlarge" })
+                    </div>
+                </div>
+            </div>
+            <div class="span12">
+                @*                <div class="control-group">
+                    <label for="" class="control-label">@Html.LabelFor(item => item.ShowSlide)</label>
+                    <div class="controls">
+                        @Html.TextBoxFor(item => item.ShowSlide, new { @class = "input-xlarge" })
+                    </div>
+                </div>*@
+                <div class="control-group">
+                    <label for="" class="control-label">@Html.LabelFor(item => item.PostDate)</label>
+                    <div class="controls">
+                        @Html.EditorFor(item => item.PostDate,new { @class = "input-xlarge" })
+                    </div>
+                </div>
+                <div class="control-group">
+                    <label for="" class="control-label">@Html.LabelFor(item => item.Image)</label>
+                    <div class="controls">
+                        @if(String.IsNullOrEmpty(Model.Image))
+                        {
+                            <image src="/Images/no_image.jpg" id="thumbImage" />
+                        }else
+                        {
+                            <img src="/Images/News/@Model.Id/@Model.Image" id="thumbImage"/>
+                        }
+                        <div class="clearfix"></div>
+                        <input type="file" name="Image" id="Image" value="" />
+                        @Html.ValidationMessageFor(item => item.Image)
+                    </div>
+                </div>
+                <div class="control-group">
+                    <label for="" class="control-label">@Html.LabelFor(item => item.Actflg)</label>
+                    <div class="controls">
+                        @if(Model.Actflg =='A')
+                        {
+                            <input type="checkbox" id="Actflg" name="Actflg" checked="checked" value="A" />
+                        }else
+                        {
+                            <input type="checkbox" id="Actflg" name="Actflg" value="I" />
+                        }
+                    </div>
+                </div>
+            </div>
+            <div class="span12">
+                <div class="control-group">
+                    <label for="" class="control-label">@Html.LabelFor(item => item.Detail)</label>
+                    <div class="controls">
+                        @Html.TextAreaFor(item => item.Detail, new { @class = "input-block-level" })
+                        @Html.ValidationMessageFor(item => item.Detail)
+                    </div>
+                </div>
+                <div class="form-actions">
+                    <button type="submit" class="btn btn-primary">Lưu </button>
+                    <button type="button" class="btn">Hủy </button>
+                </div>
+            </div>
+        }
+
+    </div>
+</div>
+<script type="text/javascript">
+    window.onload = function () {
+        var oFCKeditor = new FCKeditor('Detail');
+        oFCKeditor.BasePath = "/Scripts/Admin/Scripts/fckeditor/";
+        oFCKeditor.Height = 600;
+        oFCKeditor.Width = 800;
+        oFCKeditor.ReplaceTextarea();
+    };
+</script>

@@ -1,0 +1,43 @@
+﻿@{
+    ViewBag.Title = "Chi tiết liên hệ của khách hàng";
+     Layout = "../Shared/_AdminLayout.cshtml";
+}
+@model Showroom.Models.Contact
+<div class="box">
+    <div class="box-title">
+        <h3><i class="icon-edit"></i>Chi tiết liên hệ của khách hàng</h3>
+    </div>
+    <div class="box-content">
+        @using (Html.BeginForm())
+        {
+            @Html.HiddenFor(item => item.Id)
+            <div class="control-group">
+                <label for="" class="control-label">@Html.LabelFor(item => item.Email)</label>
+                <div class="controls">
+                   @Html.TextBoxFor(item =>item.Email,new { @class = "input-xlarge"})
+                </div>
+            </div>
+            <div class="control-group">
+                <label for="" class="control-label">@Html.LabelFor(item => item.Mobile)</label>
+                <div class="controls">
+                    @Html.TextBoxFor(item =>item.Mobile,new { @class = "input-xlarge"})
+                </div>
+            </div>
+            <div class="control-group">
+                <label for="" class="control-label">@Html.LabelFor(item => item.PostDate)</label>
+                <div class="controls">
+                     @Html.TextBoxFor(item =>item.PostDate,new { @class = "input-xlarge"})
+                </div>
+            </div>
+            <div class="control-group">
+                 <label for="" class="control-label">@Html.LabelFor(item => item.Detail)</label>
+                <div class="controls">
+                      @Html.TextAreaFor(item => item.Detail, new { @class = "input-xxlarge",@rows="5" })
+                </div>
+            </div>
+            <div class="form-actions">
+                <a href="/Contact">Quay lại danh sách</a>
+            </div>
+        }
+    </div>
+</div>
