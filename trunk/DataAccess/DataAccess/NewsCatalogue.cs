@@ -97,7 +97,12 @@ namespace Showroom.Models.DataAccess
             {
                 // Tìm kiếm đối tượng có Id cần sửa đổi
                 NewsCatalogue itemDelete = (from p in _dataContext.NewsCatalogues where p.Id == Id select p).SingleOrDefault();
-
+                //Xóa các tin tức trong chuyên mục đó
+                var news = (from p in _dataContext.News where p.CatelogueId == itemDelete.Id select p).ToList();
+                foreach (var n in news)
+                {
+                    _dataContext.News.DeleteOnSubmit(n);
+                }
                 // Nếu không tìm thấy thì trả về False
                 if (itemDelete == null) return false;
 
