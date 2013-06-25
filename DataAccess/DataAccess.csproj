@@ -57,6 +57,8 @@
     <Compile Include="ExtensionMethod.cs" />
     <Compile Include="Models\CatalogueModel.cs" />
     <Compile Include="Models\ContactModel.cs" />
+    <Compile Include="Models\News.cs" />
+    <Compile Include="Models\NewsCatalogue.cs" />
     <Compile Include="Models\ProductModel.cs" />
     <Compile Include="Models\PropertyModel.cs" />
     <Compile Include="Models\SystemInfoModel.cs" />

@@ -23,7 +23,6 @@ namespace Showroom.Models
             [StringLength(255)]
             public string NameEn { get; set; }
 
-            [Required(ErrorMessage = "Bạn phải chọn logo.")]
             [Display(Name = "Logo")]
             public int Image { get; set; }
 
