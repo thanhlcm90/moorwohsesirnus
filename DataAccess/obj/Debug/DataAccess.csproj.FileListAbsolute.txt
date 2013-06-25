@@ -8,4 +8,3 @@ D:\PHUHAIGIA\2013\SunRiseShowRoom\moorwohsesirnus\DataAccess\bin\Debug\DataAcces
 D:\PHUHAIGIA\2013\SunRiseShowRoom\moorwohsesirnus\DataAccess\bin\Debug\DataAccess.pdb
 D:\PHUHAIGIA\2013\SunRiseShowRoom\moorwohsesirnus\DataAccess\obj\Debug\DataAccess.dll
 D:\PHUHAIGIA\2013\SunRiseShowRoom\moorwohsesirnus\DataAccess\obj\Debug\DataAccess.pdb
-D:\PHUHAIGIA\2013\SunRiseShowRoom\moorwohsesirnus\DataAccess\obj\Debug\DataAccess.csprojResolveAssemblyReference.cache
