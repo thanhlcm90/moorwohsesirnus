@@ -1,0 +1,55 @@
+﻿@using Showroom.Models.DataAccess;
+@{
+    ShowroomRepository rep = new ShowroomRepository();
+
+    var lstCatalogue = rep.GetProductCatalogueList();
+
+    var listCatalogueDrop = (from p in lstCatalogue
+                             select new SelectListItem
+                             {
+                                 Value = p.Id.ToString(),
+                                 Text = p.Name,
+                             }).ToList();
+    
+}
+
+<div class="shadow-wrapper searchtitle" id="searchbox">
+    <div class="titleSearchBox">
+        <span>TÌM KIẾM XE GIÁ TỐT</span>
+    </div>
+    @using (Html.BeginForm())
+    {
+        <ul class="searchtool hide" id="searchtool">
+            <li>
+                @Html.DropDownList("listCatalogue", (IList<SelectListItem>)listCatalogueDrop)
+            </li>
+@*            <li>
+                <select>
+                    <option>-Model-</option>
+                    <option>A4  </option>
+                    <option>A5</option>
+                    <option>A6</option>
+                </select>
+            </li>*@
+            <li>
+                <input type="text" value="Giá từ" name="priceFrom" id="priceFrom" /></li>
+            <li>
+                <input type="text" value="Giá đến" name="priceTo" id="priceTo" /></li>
+            <li>
+                <input type="submit" value=" Tìm kiếm " class="button-green btn fright">
+                <div class="clearfix"></div>
+            </li>
+        </ul>
+    }
+</div>
+<div class="shadow-wrapper">
+    <div class="titleBox">
+        <span>SIÊU THỊ XE</span>
+    </div>
+    <ul class="leftnav bullets-style blue  arrow-list">
+        @foreach (var c in lstCatalogue)
+        {
+            <li><a href="/san-pham/@c.NameEn/@c.Id/1">@c.Name</a></li>
+        }
+    </ul>
+</div>

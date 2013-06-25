@@ -1,0 +1,54 @@
+﻿@model List<Showroom.Models.PropertyCatalogue>
+
+@{
+    ViewBag.Title = "Danh sách bộ thông số";
+     Layout = "../Shared/_AdminLayout.cshtml";
+}
+
+<!-- dataTables -->
+<script src="@Url.Content("~/Scripts/Admin/Scripts/plugins/datatable/jquery.dataTables.min.js")"></script>
+<script src="@Url.Content("~/Scripts/Admin/Scripts/plugins/datatable/TableTools.min.js")"></script>
+<script src="@Url.Content("~/Scripts/Admin/Scripts/plugins/datatable/ColReorder.min.js")"></script>
+<script src="@Url.Content("~/Scripts/Admin/Scripts/plugins/datatable/ColVis.min.js")"></script>
+<!-- Chosen -->
+<script src="@Url.Content("~/Scripts/Admin/Scripts/plugins/chosen/chosen.jquery.min.js")"></script>
+<!--Style-->
+<!-- dataTables -->
+<link rel="stylesheet" href="@Url.Content("~/Content/Admin/css/plugins/datatable/TableTools.css")">
+<!-- chosen -->
+<link rel="stylesheet" href="@Url.Content("~/Content/Admin/css/plugins/chosen/chosen.css")">
+<!-- End Style-->
+<div class="box box-bordered">
+    <a class="btn btn-primary">Thêm mới </a>
+    <div class="box-content nopadding">
+        <table class="table table-nomargin dataTable table-bordered">
+            <thead>
+                <tr>
+                    <th>@Html.DisplayNameFor(Model,p => p.Id)</th>
+                    <th>@Html.DisplayNameFor(Model,p => p.Name)</th>
+                    <th>@Html.DisplayNameFor(Model,p => p.Actflg)</th>
+                    <th>Công cụ</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                <tr>
+                    <td>@item.Id</td>
+                    <td>@item.Name</td> 
+                    <td>@((item.Actflg =='A')? "Đang dùng": "Đã khóa")</td>
+                    <td>@Html.ActionLink("Sửa","Edit", new {Id=item.Id} )  - <a href="javascript:void(0);" onclick="Delete(@item.Id)" >Xóa</a></td>
+                </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+<script type="text/javascript">
+    function Delete(id) {
+        if (confirm('Bạn có chắc chắn muốn xóa bản ghi này ?')) {
+            window.location = '/AdminPropertyCatalogue/Delete?id=' + id;
+        }
+    };
+
+</script>

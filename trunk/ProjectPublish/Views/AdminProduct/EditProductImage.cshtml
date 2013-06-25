@@ -1,0 +1,73 @@
+﻿@{
+    ViewBag.Title = "Cập nhật ảnh của sản phẩm";
+    Layout = "../Shared/_AdminLayout.cshtml";
+}
+@model Showroom.Models.Product
+@{
+    System.Collections.ArrayList list = ViewBag.ImageList;
+    var id = Model.Id;
+    
+}
+<link rel="stylesheet" href="@Url.Content("~/Content/Admin/css/plugins/colorbox/colorbox.css")">
+<div class="box box-color box-bordered">
+    @using (Html.BeginForm("EditProductImage", "AdminProduct", FormMethod.Post, new { enctype = "multipart/form-data", @class = "form-horizontal" }))
+    {
+        <div class="box box-color box-bordered">
+            <div class="box-title">
+                <h3><i class="icon-edit"></i>Cập nhật ảnh của sản phẩm</h3>
+            </div>
+            <div class="box-content">
+                <div class="span12">
+                    <div class="control-group">
+                        <label for="textfield" class="control-label">Chọn ảnh</label>
+                        <div class="controls">
+                            <input type="file" name="file" multiple="multiple" value="" />
+                            <div class="form-actions no-padding">
+                                <button type="submit" class="btn btn-primary">Lưu và Next </button>
+                                @Html.ActionLink("PublishImage", "PublishImage", new { Id = id }, new { @class = "btn btn-success" })
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+    @if (list.Count > 0)
+    {
+        <div class="box-content">
+            <ul class="gallery">
+                @for (int i = 0; i < list.Count; i++)
+                {
+                    <li>
+                        <a href="#">
+                            <img src="@list[i]" alt="" class="ProductThumb">
+                        </a>
+                        <div class="extras">
+                            <div class="extras-inner">
+                                <a href="@list[i]" class='colorbox-image' rel="group-1"><i class="icon-search"></i></a>
+                                <a href="#" class='del-gallery-pic' id="@list[i]"><i class="icon-trash"></i></a>
+                                
+                            </div>
+                        </div>
+                    </li>
+                }
+            </ul>
+        </div>
+    }
+</div>
+
+<script src="@Url.Content("~/Scripts/Admin/Scripts/plugins/colorbox/jquery.colorbox-min.js")"></script>
+<script type="text/javascript">
+    $('.del-gallery-pic').click(function () {
+        var myData = "{'image':'" + $(this).attr('id') + "','producId':'"+ @id +"'}";
+        $.ajax({
+            url: '/AdminProduct/DeleteImage',
+            type: 'POST',
+            data: myData,
+            dataType: 'json',
+            contentType: 'application/json; charset=utf-8',
+            success: function(data) {
+            }
+        });
+    });
+</script>

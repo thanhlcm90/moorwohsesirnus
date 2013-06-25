@@ -1,0 +1,90 @@
+﻿@model Showroom.Models.News
+@{
+    ViewBag.Title = "Sunrise Auto" + " " + "-" + " " + Model.Title; ;
+    List<Showroom.Models.NewsCatalogue> lstCatalogueNews = ViewBag.lstCatalogueNews;
+    List<Showroom.Models.News> lstTopNews = ViewBag.lstTopNews;
+    List<Showroom.Models.News> lstNewsSame = ViewBag.lstNewsSame;
+}
+
+
+<div class="boderB">
+    <div class="container warp-content">
+        <div class="row">
+            <!--Blog Wrap-->
+            <div class="span8">
+                <section class="blog-wrap">
+                    <div class="shadow-wrapper">
+                        <div class="blog-head">
+                            <h3 class="top-mar"><a href="blog-single.html">@Model.Title</a></h3>
+                        </div>
+                        <div class="blog-txt">
+                            <div style="float: left;">@Model.PostDate.ToString("dd/MM/yyyy")</div>
+                            <span><i class="icon-comment"></i><a>@Model.Views</a></span>
+                        </div>
+                        <p>
+                            @Model.Detail
+                        </p>
+                    </div>
+
+                    <section>
+                        <div class="comments-wrap">
+                            <h4><i class="icon-comments"></i>Bài viết liên quan</h4>
+                            <ul>
+                                @foreach (var same in lstNewsSame.OrderByDescending(item => item.PostDate).Take(5))
+                                {
+                                    if (same.Id != Model.Id)
+                                    {                                    
+                                    <li><a href="/tin-tuc/@same.TitleEn-@same.Id">@same.Title</a> - @same.PostDate.ToString("dd/MM/yyyy")</li>
+                                    }
+                                }
+                            </ul>
+                        </div>
+                    </section>
+
+                </section>
+            </div>
+            <!--Blog Wrap-->
+            <!--Sidebar Wrap-->
+            <div class="span4">
+                <h2 class="head-two green">
+                    <span>Chuyên mục tin tức</span>
+                </h2>
+                <div class="service-wrap">
+                    <ul class="sidebar-category">
+                        @foreach (var cn in lstCatalogueNews)
+                        {
+                            <li><a href="/News/NewsbyCatalogue?id=@cn.Id&page=1"><i class="icon-chevron-right"></i>@cn.Name</a></li>
+                        }
+                    </ul>
+                </div>
+                <div class="divider3">&nbsp;</div>
+
+                <h2 class="head-two green">
+                    <span>Bài mới đăng</span>
+                </h2>
+                <div class="service-wrap">
+                    <ul class="sidebar-post">
+                        @foreach (var topN in lstTopNews.OrderByDescending(topN => topN.PostDate).Take(3))
+                        {
+                            <li>
+                                <div class="imgborder">
+                                    <a href="#">
+                                        <img src="/images/recent-post.png" alt=""></a>
+                                </div>
+                                <div class="recent_txt">
+                                    <a href="/tin-tuc/@topN.TitleEn-@topN.Id">@clsHelper.CatChuoi(topN.Title, 50)</a>
+                                    <p>@clsHelper.CatChuoi(topN.Detail, 80)</p>
+                                    <p class="date"><i class="icon-calendar"></i>@topN.PostDate.ToString("dd/MM/yyyy")</p>
+                                </div>
+                                <div class="clearfix"></div>
+                            </li>
+                        }
+                    </ul>
+                </div>
+                <div class="divider3">&nbsp;</div>
+            </div>
+            <!--Sidebar Wrap-->
+
+        </div>
+    </div>
+</div>

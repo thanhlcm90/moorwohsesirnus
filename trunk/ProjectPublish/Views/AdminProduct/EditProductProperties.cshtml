@@ -1,0 +1,265 @@
+﻿@{
+    ViewBag.Title = "Cập nhật sản phẩm";
+    Layout = "../Shared/_AdminLayout.cshtml";
+}
+@model Showroom.Models.Product
+@{
+    List<Showroom.Models.PropertyCatalogue> PropertyCatalogueList = ViewBag.PropertyCatalogueList;
+    List<Showroom.Models.PropertySubCatalogue> PropertySubCatalogueList = ViewBag.PropertySubCatalogueList;
+    List<Showroom.Models.ProductProperty> ProductProperty = ViewBag.ProductPropertyList;
+    List<Showroom.Models.Property> PropertyList = ViewBag.PropertyList;
+    int ProductId = ViewBag.ProductId;
+}
+<!-- chosen -->
+<link rel="stylesheet" href="@Url.Content("~/Content/Admin/css/plugins/chosen/chosen.css")">
+<!-- Chosen -->
+<script src="@Url.Content("~/Scripts/Admin/Scripts/plugins/chosen/chosen.jquery.min.js")"></script>
+<div class="box box-color box-bordered">
+    <div class="box-title">
+        <h3><i class="icon-edit"></i>Cập nhật thông tin sản phẩm</h3>
+    </div>
+    <div class="box-content nopadding">
+        <div class="form-wizard">
+            <div class="span12">
+                <div class="step" id="firstStep">
+                    <ul class="wizard-steps steps-3">
+                        <li>
+                            <div class="single-step">
+                                <span class="title">1</span>
+                                <span class="circle">
+                                    <span class="active"></span>
+                                </span>
+                                <span class="description">Thông tin cơ bản của sản phẩm
+                                </span>
+                            </div>
+                        </li>
+                        <li class='active'>
+                            <div class="single-step">
+                                <span class="title">2</span>
+                                <span class="circle"></span>
+                                <span class="description">Các thông số của sản phẩm
+                                </span>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="single-step">
+                                <span class="title">3</span>
+                                <span class="circle"></span>
+                                <span class="description">Galary ảnh của sản phẩm
+                                </span>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div>
+        <form id="form_property" class="form-horizontal form-column">
+            <div class="span12">
+                @for (int i = 0; i < PropertyCatalogueList.Count; i++)
+                {
+                    string StrName = PropertyCatalogueList[i].Name.ToString();
+                    var ID = PropertyCatalogueList[i].Id;
+                    var GroupPropertyList = (from n in PropertySubCatalogueList
+                                             from p in PropertyList
+
+                                             where p.CatelogueId == ID && p.SubCatelogueId == n.Id
+                                             select new
+                                             {
+                                                 Id = n.Id,
+                                                 Name = n.Name
+                                             }
+                                                 ).Distinct().ToList();
+                    <div class="box ">
+                        <div class="box-title">
+                            <h3><i class="icon-tag"></i>@StrName</h3>
+                        </div>
+                        <div class="box-content">
+                            @foreach (var subitem in GroupPropertyList)
+                            {
+                                var lst = (from p in PropertyList
+                                           where p.SubCatelogueId == subitem.Id && p.CatelogueId == ID
+                                           select new
+                                           {
+                                               Id = p.Id,
+                                               PropertyType = p.PropertyType,
+                                               Name = p.Name,
+                                           }).Distinct().ToList();
+                                <div class="span6">
+                                    <h3>@subitem.Name</h3>
+                                    @foreach (var s in lst)
+                                    {
+                                        var sId = "p" + s.Id;
+                                        var sValue = (from p in ProductProperty where p.ProductId == ProductId && p.PropertyId == s.Id select p.Value).SingleOrDefault();
+                                        <div class="control-group">
+                                            <label class="control-label" for="@sId">@s.Name</label>
+                                            @if (s.PropertyType.Trim().Equals(Showroom.Models.Property.TYPE_TEXTBOX))
+                                            {
+                                                <div class="controls">
+                                                    @Html.TextBox(sId, sValue, new { @class = "input-xlarge" })
+                                                </div>
+                                            }
+                                            else
+                                            {
+                                                <div class="controls">
+                                                    @if (sValue != null && sValue.ToLower() == "true")
+                                                    {
+                                                        <input type="checkbox" name="@sId" id="@sId" checked="checked" />
+                                                    }
+                                                    else
+                                                    {
+                                                        <input type="checkbox" name="@sId" id="@sId" />
+                                                    }
+                                                </div>
+                                            }
+                                        </div>
+                                    }
+                                </div>
+                            }
+                        </div>
+                    </div>
+                }
+            </div>
+        </form>
+        @using (Html.BeginForm("EditProductProperties", "AdminProduct", FormMethod.Post, new { @id = "form_submit" }))
+        {
+            <div class="span12">
+                @Html.Hidden("jsondata")
+                <div class="form-actions">
+                    <button type="submit" class="btn btn-primary">Lưu và Next </button>
+                    <button type="button" class="btn">Hủy </button>
+                </div>
+            </div>
+        }
+    </div>
+</div>
+
+<script>
+    (function ($) {
+        var rCRLF = /\r?\n/g,
+            rinput = /^(?:color|date|datetime|email|hidden|month|number|password|range|search|tel|text|time|url|week)$/i,
+            rselectTextarea = /^(?:select|textarea)/i,
+            rcheckbox = /^(?:checkbox)/i;
+
+        $.fn.extend({
+            serializeObjectArray: function () {
+
+                return this.map(function () {
+                    return this.elements ? $.makeArray(this.elements) : this;
+                })
+					.filter(function () {
+					    return this.name && !this.disabled
+							&& (rselectTextarea.test(this.nodeName) || rinput.test(this.type) || rcheckbox.test(this.type));
+					})
+					.map(function (i, elem) {
+					    var val = $(this).val();
+					    return val == null ? null : $.isArray(val) ? $.map(val, function (val, i) {
+					        return { elem: elem, name: elem.name, value: val.replace(rCRLF, "\r\n") };
+					    }) : { elem: elem, name: elem.name, value: val.replace(rCRLF, "\r\n") };
+					})
+					.get();
+            },
+
+            serializeObject: function (opts) {
+                // options: delimiter, prefix
+
+                var options = opts || {},
+					delimiter = options.delimiter || '.',
+					jform = $(this),
+					form = jform.serializeObjectArray(),
+					result = {},
+					arrays = [],
+					i, len;
+
+                for (i = 0, len = form.length; i < len; i++) {
+                    var field = form[i];
+                    var currResult = result,
+						name = options.prefix ? getAfterFirstDelimiter(field.name) : field.name,
+						nameParts = name.split(delimiter),
+						isCheckbox = rcheckbox.test(field.elem.type),
+						j, namePartsLen, value;
+
+                    for (j = 0, namePartsLen = nameParts.length; j < namePartsLen; j++) {
+                        var namePart = nameParts[j],
+							bracketPos = namePart.indexOf('['),
+							arrName;
+                        if (namePart.indexOf('[]') > -1 && j == namePartsLen - 1) {
+                            arrName = namePart.substr(0, namePart.indexOf('['));
+                            if (!currResult[arrName]) currResult[arrName] = [];
+                            if (!isCheckbox || (isCheckbox && field.elem.checked)) currResult[arrName].push(field.value);
+                        } else {
+                            if (namePart.indexOf('[') > -1) {
+                                var arrIdx = namePart.replace(/^[a-z]+\[|\]$/gi, '');
+                                arrName = namePart.substr(0, bracketPos);
+                                arrays[arrName] = arrays[arrName] || {};
+                                currResult[arrName] = currResult[arrName] || [];
+
+                                if (j == namePartsLen - 1) {
+                                    currResult[arrName].push(field.value);
+                                } else {
+                                    if (!arrays[arrName][arrIdx]) {
+                                        currResult[arrName].push({});
+                                        if (!isCheckbox || (isCheckbox && field.elem.checked))
+                                            arrays[arrName][arrIdx] = currResult[arrName][currResult[arrName].length - 1];
+                                    }
+                                }
+                                currResult = arrays[arrName][arrIdx];
+
+                            } else {
+
+                                if (j < namePartsLen - 1) {
+                                    if (!currResult[namePart]) currResult[namePart] = {};
+                                    currResult = currResult[namePart];
+                                } else {
+                                    setValue(currResult, field, namePart);
+                                }
+
+                            }
+                        }
+                    }
+                }
+
+
+
+                return result;
+            }
+        });
+
+        function getAfterFirstDelimiter(text) {
+            return text.slice(text.indexOf(delimiter) + 1);
+        }
+
+        function setValue(obj, field, name) {
+            switch (field.elem.type) {
+                case 'checkbox':
+                    return obj[name] = field.elem.checked;
+                default:
+                    var val = field.value;
+                    if (isNumberable(val)) val = parseFloat(val);
+                    return obj[name] = val;
+            }
+        }
+
+        function getValue(field) {
+            switch (field.elem.type) {
+                case 'checkbox':
+                    return field.elem.checked;
+                default:
+                    return field.value;
+            }
+        }
+
+        function isNumberable(strng) {
+            return /^[0-9]+$/g.test(strng);
+        }
+
+
+    })(jQuery);
+
+    $("#form_submit").submit(function (event) {
+        debugger;
+        var jsondata = JSON.stringify($("#form_property").serializeObject());
+        $("#jsondata").val(jsondata);
+    });
+</script>
