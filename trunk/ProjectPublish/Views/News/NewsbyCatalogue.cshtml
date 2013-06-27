@@ -19,16 +19,26 @@
 
                     @foreach (var item in lstNews.OrderByDescending(item => item.PostDate))
                     {
+                        var NoimgPathN = "/images/noImage.jpg";
+                        var strImage = string.Empty;
+                        if (item.Image.IsEmpty())
+                        {
+                            strImage = NoimgPathN;
+                        }
+                        else
+                        {
+                            strImage = item.Image;
+                        } 
                 	<section class="blog-wrap">
                         <div class="shadow-wrapper">
                             <div class="mosaic-block faded">
                                 <div class="mosaic-overlay" style="display: block; opacity: 0;">
                                     <div class="zoom-icons">
-                                        <a data-gal="prettyPhoto[portfolio]" class="zoom-img" href="/images/sliders/slider_img.png"><i class="icon-search"></i></a>
+                                        <a data-gal="prettyPhoto[portfolio]" class="zoom-img" href="@strImage"><i class="icon-search"></i></a>
                                         <a class="link-img" href="/tin-tuc/@item.TitleEn-@item.Id"><i class="icon-link"></i></a>
                                     </div>
                                 </div>
-                                <div class="mosaic-backdrop" style="display: block;"><img class="max-image" src="/images/sliders/slider_img.png" alt="" /></div>    
+                                <div class="mosaic-backdrop" style="display: block;"><img class="max-image" src="@strImage" alt="" /></div>    
                             </div>
                             <div class="blog-head">                	
                                 <h3 class="top-mar"><a href="/tin-tuc/@item.TitleEn-@item.Id">@clsHelper.CatChuoi(item.Title, 70)</a></h3>
@@ -37,7 +47,7 @@
                                 <div style="float:left;">@item.PostDate.ToString("dd/MM/yyyy")</div>
                                 <span><i class="icon-comment"></i> <a>@item.Views</a></span>
                             </div>
-                            <p>@clsHelper.CatChuoi(item.Detail, 120)</p>
+                            <p>@Html.Raw(clsHelper.CatChuoi(item.Detail, 120))</p>
                             <p><a href="/tin-tuc/@item.TitleEn-@item.Id" class="button-dark btn">Chi tiết</a></p>
                         </div>	
                     </section>
@@ -68,13 +78,23 @@
                         <ul class="sidebar-post">
                             @foreach (var topN in lstTopNews.OrderByDescending(topN => topN.PostDate).Take(3))
                             {
+                                var NoimgPathN = "/images/no_image.gif";
+                                var strImage = string.Empty;
+                                if (topN.Image.IsEmpty())
+                                {
+                                    strImage = NoimgPathN;
+                                }
+                                else
+                                {
+                                    strImage = topN.Image;
+                                }                                 
                             <li>
                                 <div class="imgborder">
-                                    <a href="/tin-tuc/@topN.TitleEn-@topN.Id"><img src="/images/recent-post.png" alt=""></a>
+                                    <a href="/tin-tuc/@topN.TitleEn-@topN.Id"><img src="@strImage" alt=""></a>
                                 </div>
                                 <div class="recent_txt">
                                     <a href="/tin-tuc/@topN.TitleEn-@topN.Id">@clsHelper.CatChuoi(topN.Title,50)</a>
-                                    <p>@clsHelper.CatChuoi(topN.Detail, 80)</p>
+                                    <p>@Html.Raw(clsHelper.CatChuoi(topN.Detail, 80))</p>
                                     <p class="date"><i class="icon-calendar"></i>@topN.PostDate.ToString("dd/MM/yyyy")</p>
                                 </div>
                                 <div class="clearfix"></div>
