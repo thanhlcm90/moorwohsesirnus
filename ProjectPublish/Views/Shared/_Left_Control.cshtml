@@ -17,24 +17,38 @@
     <div class="titleSearchBox">
         <span>TÌM KIẾM XE GIÁ TỐT</span>
     </div>
-    @using (Html.BeginForm())
+    @using (Html.BeginForm("SearchResault", "Home", FormMethod.Get))
     {
         <ul class="searchtool hide" id="searchtool">
             <li>
-                @Html.DropDownList("listCatalogue", (IList<SelectListItem>)listCatalogueDrop)
+                @Html.DropDownList("CID", (IList<SelectListItem>)listCatalogueDrop)
             </li>
-@*            <li>
-                <select>
-                    <option>-Model-</option>
-                    <option>A4  </option>
-                    <option>A5</option>
-                    <option>A6</option>
+            <li>
+                <input type="text" name="keyword" id="keyword" onfocus="if (this.value == 'Từ Khóa') {this.value = '';}" onblur="if (this.value == '')  {this.value = 'Từ Khóa';}"  value="Từ khóa"/>
+            </li>
+            <li>
+            <li>
+                <select id="priceFrom" name="priceFrom">
+                    <option value="0">----Giá từ----</option>
+                    <option value="200000000">200 triệu</option>
+                    <option value="300000000">300 triệu</option>
+                    <option value="400000000">400 triệu</option>
+                    <option value="500000000">500 triệu</option>
+                    <option value="600000000">600 triệu</option>
+                    <option value="700000000">700 triệu</option>
                 </select>
-            </li>*@
+            </li>
             <li>
-                <input type="text" value="Giá từ" name="priceFrom" id="priceFrom" /></li>
-            <li>
-                <input type="text" value="Giá đến" name="priceTo" id="priceTo" /></li>
+                <select id="priceTo" name="priceTo">
+                    <option value="0">----Giá đến----</option>
+                    <option value="200000000">200 triệu</option>
+                    <option value="300000000">300 triệu</option>
+                    <option value="400000000">400 triệu</option>
+                    <option value="500000000">500 triệu</option>
+                    <option value="600000000">600 triệu</option>
+                    <option value="700000000">700 triệu</option>
+                </select>
+            </li>
             <li>
                 <input type="submit" value=" Tìm kiếm " class="button-green btn fright">
                 <div class="clearfix"></div>
