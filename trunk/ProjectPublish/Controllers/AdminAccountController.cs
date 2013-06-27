@@ -12,6 +12,13 @@ namespace SunriseShowroom.Controllers
     public class AdminAccountController : Controller
     {
 
+        [Authorize(Roles = "Account")]
+        public ActionResult Index()
+        {
+            var list = Membership.GetAllUsers();
+            return View(list);
+        }
+
         //
         // GET: /Account/LogOn
 
@@ -74,6 +81,7 @@ namespace SunriseShowroom.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Account")]
         public ActionResult Register(RegisterModel model)
         {
             if (ModelState.IsValid)
@@ -146,6 +154,11 @@ namespace SunriseShowroom.Controllers
         // GET: /Account/ChangePasswordSuccess
 
         public ActionResult ChangePasswordSuccess()
+        {
+            return View();
+        }
+
+        public ActionResult ErrorPermission()
         {
             return View();
         }

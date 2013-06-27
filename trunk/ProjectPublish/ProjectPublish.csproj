@@ -1348,6 +1348,8 @@
     <Content Include="Views\AdminProduct\EditProductProperties.cshtml" />
     <Content Include="Views\AdminProduct\Index.cshtml" />
     <Content Include="Scripts\js\Descr.WD3" />
+    <Content Include="Views\AdminAccount\ErrorPermission.cshtml" />
+    <Content Include="Views\AdminAccount\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
