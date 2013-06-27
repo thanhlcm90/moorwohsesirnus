@@ -4,7 +4,7 @@
 			<a href="#" class="toggle-nav" rel="tooltip" data-placement="bottom" title="Toggle navigation"><i class="icon-reorder"></i></a>
 			<ul class='main-nav'>
 				<li id="menu_home">
-					<a href="/">
+					<a href="/Admin">
 						<i class="icon-home"></i>
 						<span>Trang chủ</span>
 					</a>
@@ -20,7 +20,7 @@
 							<a href="/AdminProduct">Quản lý xe</a>
 						</li>
 						<li>
-							<a href="forms-extended.html">Quản lý người dùng</a>
+							<a href="/AdminAccount">Quản lý người dùng</a>
 						</li>
                         <li>
 							<a href="/AdminImageSlide">Quản lý slide ảnh</a>
@@ -126,13 +126,13 @@
 					</li>
 				</ul>
 				<div class="dropdown">
-					<a href="#" class='dropdown-toggle' data-toggle="dropdown">@User.Identity.Name <img src="Content/img/demo/user-avatar.jpg" alt=""></a>
+					<a href="#" class='dropdown-toggle' data-toggle="dropdown">@User.Identity.Name <img src="Content/Admin/img/demo/user-avatar.jpg" alt=""></a>
 					<ul class="dropdown-menu pull-right">
 						<li>
-							<a href="more-userprofile.html">Edit profile</a>
+                            @Html.ActionLink("Thay đổi mật khẩu", "ChangePassword", "Account")
 						</li>
 						<li>
-							@Html.ActionLink("Log Off", "LogOff", "AdminAccount")
+							@Html.ActionLink("Đăng xuất", "LogOff", "Account")
 						</li>
 					</ul>
 				</div>

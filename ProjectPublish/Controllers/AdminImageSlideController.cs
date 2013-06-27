@@ -17,9 +17,6 @@ namespace SunriseShowroom.Controllers
         [Authorize]
         public ActionResult Index()
         {
-            var list = Membership.GetAllUsers();
-            string controller = ControllerContext.RouteData.GetRequiredString("controller");
-            if (!User.IsInRole("admin")) return RedirectToAction("ErrorPermission", "Account", null);
             var listTop = new ArrayList();
             var imageFolder = AppDomain.CurrentDomain.BaseDirectory + "Images\\Slide\\Top";
             var producImagePath = "/Images/Slide/Top";
@@ -56,7 +53,6 @@ namespace SunriseShowroom.Controllers
             return View();
         }
 
-        [Authorize(Roles = "ImageSlide")]
         [HttpPost]
         public ActionResult AddTop()
         {
@@ -80,7 +76,6 @@ namespace SunriseShowroom.Controllers
             return RedirectToAction("Index");
         }
 
-        [Authorize(Roles = "ImageSlide")]
         [HttpPost]
         public ActionResult AddBottom()
         {
@@ -104,7 +99,6 @@ namespace SunriseShowroom.Controllers
             return RedirectToAction("Index");
         }
 
-        [Authorize(Roles = "ImageSlide")]
         [HttpPost]
         public ActionResult DeleteImage(string image)
         {

@@ -11,7 +11,7 @@ namespace SunriseShowroom.Controllers
         [Authorize]
         public ActionResult Index()
         {
-            ViewBag.Message = "Welcome to ASP.NET MVC!";
+            ViewBag.Message = "Chào mừng đến với trang quản lý của hệ thống xe Showromm Sunrise!";
 
             return View();
         }
