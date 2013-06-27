@@ -20,12 +20,30 @@ namespace Frontend.Controllers
             return View();
         }
 
-        [HttpPost]
-        public ActionResult Index(string strOlala)
+        public ActionResult SearchResault(int CID, string keyword, int priceFrom, int priceTo)
         {
-            HttpContext.Response.Write("Olala");
+            List<Product> lstProduct = rep.GetProductsList();
+            List<Product> lstProductSearch = new List<Product>();
+            lstProductSearch = (from n in lstProduct
+                                where n.Name.Contains(keyword) && n.CatalogueId == CID && n.Price >= priceFrom && n.Price <= priceTo
+                                select n
+                                  ).ToList();
+            ViewBag.ProductSearchList = lstProductSearch;
             return View();
         }
+
+        //[HttpPost]
+        //public ActionResult SearchResault(int idCatalogue, string keyword, int priceFrom, int priceTo)
+        //{
+        //    List<Product> lstProduct = rep.GetProductsList();
+        //    List<Product> lstProductSearch = new List<Product>();
+        //    lstProductSearch = (from n in lstProduct
+        //                          where n.Name.Contains(keyword) && n.CatalogueId == idCatalogue && n.Price > priceFrom && n.Price < priceTo
+        //                          select n
+        //                          ).ToList();
+        //    ViewBag.ProductSearchList = lstProductSearch;
+        //    return View();
+        //}
 
         public ActionResult Contact()
         {
