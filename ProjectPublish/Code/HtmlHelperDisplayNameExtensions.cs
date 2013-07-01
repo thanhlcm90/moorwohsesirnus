@@ -79,8 +79,15 @@ namespace System.Web.Mvc.Html
 
         private static MvcHtmlString GetDisplayNameForProperty<TClass>(string propertyName)
         {
-            var metadata = ModelMetadataProviders.Current.GetMetadataForProperty(() => Activator.CreateInstance<TClass>(), typeof(TClass), propertyName);
-            return new MvcHtmlString(metadata.DisplayName ?? typeof(TClass).Name);
+            try
+            {
+                var metadata = ModelMetadataProviders.Current.GetMetadataForProperty(() => Activator.CreateInstance<TClass>(), typeof(TClass), propertyName);
+                return new MvcHtmlString(metadata.DisplayName ?? typeof(TClass).Name);
+            }
+            catch (Exception)
+            {
+            }
+            return null;
         }
     }
 }

@@ -139,9 +139,9 @@ namespace SunriseShowroom.Controllers
             var list = new ArrayList();
             var product = new Product();
             product.Id = id;
-            var productFolder = AppDomain.CurrentDomain.BaseDirectory + "Images\\Product\\" + id;
-            var producImagePath = "/Images/Product/" + id;
-            var dir = new DirectoryInfo(productFolder);
+
+          var productFolder = Server.MapPath(@"~/Images/Product/" + id);
+          var dir = new DirectoryInfo(productFolder);
             if (Directory.Exists(productFolder))
             {
                 FileInfo[] files = dir.GetFiles();
@@ -149,7 +149,7 @@ namespace SunriseShowroom.Controllers
                 {
                     if (file.Extension == ".jpg" || file.Extension == ".jpeg" || file.Extension == ".gif" || file.Extension == ".png")
                     {
-                        list.Add(producImagePath + "/" + file.Name);
+                        list.Add("/Images/Product/"+ id +"/" + file.Name);
                     }
                 }
             }
@@ -166,7 +166,8 @@ namespace SunriseShowroom.Controllers
         [HttpPost]
         public ActionResult EditProductImage(Product product)
         {
-            var productFolder = AppDomain.CurrentDomain.BaseDirectory + "Images\\Product\\" + product.Id;
+           // var productFolder = Server.MapPath("Images/Product/" + product.Id);
+            var productFolder = Server.MapPath(@"~/Images/Product/"+product.Id);
 
             // If directory does not exist, don't even try 
             if (!Directory.Exists(productFolder))

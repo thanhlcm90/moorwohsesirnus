@@ -14,7 +14,7 @@ namespace Showroom.Models
             [Display(Name = "Mã")]
             public int Id { get; set; }
 
-            [Required(ErrorMessage = "Bạn phải nhập tên danh mục.")]
+            [Required(ErrorMessage = "Bạn phải nhập tên chuyên mục.")]
             [Display(Name = "Tên")]
             [StringLength(100)]
             public string Name { get; set; }
