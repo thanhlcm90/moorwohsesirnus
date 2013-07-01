@@ -11,6 +11,7 @@
         @using (Html.BeginForm())
         {
             @Html.HiddenFor(item => item.Id)
+            @Html.HiddenFor(item => item.PropertyType)
             <div class="control-group">
                 <label for="" class="control-label">@Html.LabelFor(item => item.Name)</label>
                 <div class="controls">

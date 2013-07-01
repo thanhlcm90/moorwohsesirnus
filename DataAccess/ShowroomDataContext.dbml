@@ -79,21 +79,6 @@
       <Association Name="Property_ProductProperty" Member="Property" ThisKey="PropertyId" OtherKey="Id" Type="Property" IsForeignKey="true" />
     </Type>
   </Table>
-  <Table Name="sunrise_admin.Property" Member="Properties">
-    <Type Name="Property">
-      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
-      <Column Name="Name" Type="System.String" DbType="NVarChar(255) NOT NULL" CanBeNull="false" />
-      <Column Name="NameEn" Type="System.String" DbType="NVarChar(255) NOT NULL" CanBeNull="false" />
-      <Column Name="CatelogueId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="SubCatelogueId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="ShowMain" Type="System.Char" DbType="NChar(1) NOT NULL" CanBeNull="false" />
-      <Column Name="PropertyType" Type="System.String" DbType="NChar(10) NOT NULL" CanBeNull="false" />
-      <Column Name="Actflg" Type="System.Char" DbType="NChar(1) NOT NULL" CanBeNull="false" />
-      <Association Name="Property_ProductProperty" Member="ProductProperties" ThisKey="Id" OtherKey="PropertyId" Type="ProductProperty" />
-      <Association Name="PropertySubCatalogue_Property" Member="PropertySubCatalogue" Storage="_PropertySubCatelogue" ThisKey="SubCatelogueId" OtherKey="Id" Type="PropertySubCatalogue" IsForeignKey="true" />
-      <Association Name="PropertyCatalogue_Property" Member="PropertyCatalogue" Storage="_PropertyCatelogue" ThisKey="CatelogueId" OtherKey="Id" Type="PropertyCatalogue" IsForeignKey="true" />
-    </Type>
-  </Table>
   <Table Name="sunrise_admin.PropertyCatalogue" Member="PropertyCatalogues">
     <Type Name="PropertyCatalogue">
       <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
@@ -107,6 +92,21 @@
     <Type Name="SystemInfo">
       <Column Name="Code" Type="System.String" DbType="NVarChar(50) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
       <Column Name="Value" Type="System.String" DbType="NVarChar(MAX) NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="sunrise_admin.Property" Member="Properties">
+    <Type Name="Property">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(255) NOT NULL" CanBeNull="false" />
+      <Column Name="NameEn" Type="System.String" DbType="NVarChar(255) NOT NULL" CanBeNull="false" />
+      <Column Name="CatelogueId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="SubCatelogueId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ShowMain" Type="System.Char" DbType="NChar(1) NOT NULL" CanBeNull="false" />
+      <Column Name="PropertyType" Type="System.String" DbType="NChar(10) NOT NULL" CanBeNull="false" />
+      <Column Name="Actflg" Type="System.Char" DbType="NChar(1) NOT NULL" CanBeNull="false" />
+      <Association Name="Property_ProductProperty" Member="ProductProperties" ThisKey="Id" OtherKey="PropertyId" Type="ProductProperty" />
+      <Association Name="PropertyCatalogue_Property" Member="PropertyCatalogue" ThisKey="CatelogueId" OtherKey="Id" Type="PropertyCatalogue" IsForeignKey="true" />
+      <Association Name="PropertySubCatalogue_Property" Member="PropertySubCatalogue" ThisKey="SubCatelogueId" OtherKey="Id" Type="PropertySubCatalogue" IsForeignKey="true" />
     </Type>
   </Table>
 </Database>
