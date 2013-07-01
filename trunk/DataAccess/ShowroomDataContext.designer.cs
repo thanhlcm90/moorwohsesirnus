@@ -51,15 +51,15 @@ namespace Showroom.Models
     partial void InsertProductProperty(ProductProperty instance);
     partial void UpdateProductProperty(ProductProperty instance);
     partial void DeleteProductProperty(ProductProperty instance);
-    partial void InsertProperty(Property instance);
-    partial void UpdateProperty(Property instance);
-    partial void DeleteProperty(Property instance);
     partial void InsertPropertyCatalogue(PropertyCatalogue instance);
     partial void UpdatePropertyCatalogue(PropertyCatalogue instance);
     partial void DeletePropertyCatalogue(PropertyCatalogue instance);
     partial void InsertSystemInfo(SystemInfo instance);
     partial void UpdateSystemInfo(SystemInfo instance);
     partial void DeleteSystemInfo(SystemInfo instance);
+    partial void InsertProperty(Property instance);
+    partial void UpdateProperty(Property instance);
+    partial void DeleteProperty(Property instance);
     #endregion
 		
 		public ShowroomDataContext() : 
@@ -148,14 +148,6 @@ namespace Showroom.Models
 			}
 		}
 		
-		public System.Data.Linq.Table<Property> Properties
-		{
-			get
-			{
-				return this.GetTable<Property>();
-			}
-		}
-		
 		public System.Data.Linq.Table<PropertyCatalogue> PropertyCatalogues
 		{
 			get
@@ -169,6 +161,14 @@ namespace Showroom.Models
 			get
 			{
 				return this.GetTable<SystemInfo>();
+			}
+		}
+		
+		public System.Data.Linq.Table<Property> Properties
+		{
+			get
+			{
+				return this.GetTable<Property>();
 			}
 		}
 	}
@@ -1747,346 +1747,6 @@ namespace Showroom.Models
 		}
 	}
 	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="sunrise_admin.Property")]
-	public partial class Property : INotifyPropertyChanging, INotifyPropertyChanged
-	{
-		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
-		private int _Id;
-		
-		private string _Name;
-		
-		private string _NameEn;
-		
-		private int _CatelogueId;
-		
-		private int _SubCatelogueId;
-		
-		private char _ShowMain;
-		
-		private string _PropertyType;
-		
-		private char _Actflg;
-		
-		private EntitySet<ProductProperty> _ProductProperties;
-		
-		private EntityRef<PropertySubCatalogue> _PropertySubCatelogue;
-		
-		private EntityRef<PropertyCatalogue> _PropertyCatelogue;
-		
-    #region Extensibility Method Definitions
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void OnIdChanging(int value);
-    partial void OnIdChanged();
-    partial void OnNameChanging(string value);
-    partial void OnNameChanged();
-    partial void OnNameEnChanging(string value);
-    partial void OnNameEnChanged();
-    partial void OnCatelogueIdChanging(int value);
-    partial void OnCatelogueIdChanged();
-    partial void OnSubCatelogueIdChanging(int value);
-    partial void OnSubCatelogueIdChanged();
-    partial void OnShowMainChanging(char value);
-    partial void OnShowMainChanged();
-    partial void OnPropertyTypeChanging(string value);
-    partial void OnPropertyTypeChanged();
-    partial void OnActflgChanging(char value);
-    partial void OnActflgChanged();
-    #endregion
-		
-		public Property()
-		{
-			this._ProductProperties = new EntitySet<ProductProperty>(new Action<ProductProperty>(this.attach_ProductProperties), new Action<ProductProperty>(this.detach_ProductProperties));
-			this._PropertySubCatelogue = default(EntityRef<PropertySubCatalogue>);
-			this._PropertyCatelogue = default(EntityRef<PropertyCatalogue>);
-			OnCreated();
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Id", DbType="Int NOT NULL", IsPrimaryKey=true)]
-		public int Id
-		{
-			get
-			{
-				return this._Id;
-			}
-			set
-			{
-				if ((this._Id != value))
-				{
-					this.OnIdChanging(value);
-					this.SendPropertyChanging();
-					this._Id = value;
-					this.SendPropertyChanged("Id");
-					this.OnIdChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Name", DbType="NVarChar(255) NOT NULL", CanBeNull=false)]
-		public string Name
-		{
-			get
-			{
-				return this._Name;
-			}
-			set
-			{
-				if ((this._Name != value))
-				{
-					this.OnNameChanging(value);
-					this.SendPropertyChanging();
-					this._Name = value;
-					this.SendPropertyChanged("Name");
-					this.OnNameChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_NameEn", DbType="NVarChar(255) NOT NULL", CanBeNull=false)]
-		public string NameEn
-		{
-			get
-			{
-				return this._NameEn;
-			}
-			set
-			{
-				if ((this._NameEn != value))
-				{
-					this.OnNameEnChanging(value);
-					this.SendPropertyChanging();
-					this._NameEn = value;
-					this.SendPropertyChanged("NameEn");
-					this.OnNameEnChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CatelogueId", DbType="Int NOT NULL")]
-		public int CatelogueId
-		{
-			get
-			{
-				return this._CatelogueId;
-			}
-			set
-			{
-				if ((this._CatelogueId != value))
-				{
-					if (this._PropertyCatelogue.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
-					this.OnCatelogueIdChanging(value);
-					this.SendPropertyChanging();
-					this._CatelogueId = value;
-					this.SendPropertyChanged("CatelogueId");
-					this.OnCatelogueIdChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SubCatelogueId", DbType="Int NOT NULL")]
-		public int SubCatelogueId
-		{
-			get
-			{
-				return this._SubCatelogueId;
-			}
-			set
-			{
-				if ((this._SubCatelogueId != value))
-				{
-					if (this._PropertySubCatelogue.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
-					this.OnSubCatelogueIdChanging(value);
-					this.SendPropertyChanging();
-					this._SubCatelogueId = value;
-					this.SendPropertyChanged("SubCatelogueId");
-					this.OnSubCatelogueIdChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ShowMain", DbType="NChar(1) NOT NULL")]
-		public char ShowMain
-		{
-			get
-			{
-				return this._ShowMain;
-			}
-			set
-			{
-				if ((this._ShowMain != value))
-				{
-					this.OnShowMainChanging(value);
-					this.SendPropertyChanging();
-					this._ShowMain = value;
-					this.SendPropertyChanged("ShowMain");
-					this.OnShowMainChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PropertyType", DbType="NChar(10) NOT NULL", CanBeNull=false)]
-		public string PropertyType
-		{
-			get
-			{
-				return this._PropertyType;
-			}
-			set
-			{
-				if ((this._PropertyType != value))
-				{
-					this.OnPropertyTypeChanging(value);
-					this.SendPropertyChanging();
-					this._PropertyType = value;
-					this.SendPropertyChanged("PropertyType");
-					this.OnPropertyTypeChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Actflg", DbType="NChar(1) NOT NULL")]
-		public char Actflg
-		{
-			get
-			{
-				return this._Actflg;
-			}
-			set
-			{
-				if ((this._Actflg != value))
-				{
-					this.OnActflgChanging(value);
-					this.SendPropertyChanging();
-					this._Actflg = value;
-					this.SendPropertyChanged("Actflg");
-					this.OnActflgChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Property_ProductProperty", Storage="_ProductProperties", ThisKey="Id", OtherKey="PropertyId")]
-		public EntitySet<ProductProperty> ProductProperties
-		{
-			get
-			{
-				return this._ProductProperties;
-			}
-			set
-			{
-				this._ProductProperties.Assign(value);
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="PropertySubCatalogue_Property", Storage="_PropertySubCatelogue", ThisKey="SubCatelogueId", OtherKey="Id", IsForeignKey=true)]
-		public PropertySubCatalogue PropertySubCatalogue
-		{
-			get
-			{
-				return this._PropertySubCatelogue.Entity;
-			}
-			set
-			{
-				PropertySubCatalogue previousValue = this._PropertySubCatelogue.Entity;
-				if (((previousValue != value) 
-							|| (this._PropertySubCatelogue.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._PropertySubCatelogue.Entity = null;
-						previousValue.Properties.Remove(this);
-					}
-					this._PropertySubCatelogue.Entity = value;
-					if ((value != null))
-					{
-						value.Properties.Add(this);
-						this._SubCatelogueId = value.Id;
-					}
-					else
-					{
-						this._SubCatelogueId = default(int);
-					}
-					this.SendPropertyChanged("PropertySubCatalogue");
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="PropertyCatalogue_Property", Storage="_PropertyCatelogue", ThisKey="CatelogueId", OtherKey="Id", IsForeignKey=true)]
-		public PropertyCatalogue PropertyCatalogue
-		{
-			get
-			{
-				return this._PropertyCatelogue.Entity;
-			}
-			set
-			{
-				PropertyCatalogue previousValue = this._PropertyCatelogue.Entity;
-				if (((previousValue != value) 
-							|| (this._PropertyCatelogue.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._PropertyCatelogue.Entity = null;
-						previousValue.Properties.Remove(this);
-					}
-					this._PropertyCatelogue.Entity = value;
-					if ((value != null))
-					{
-						value.Properties.Add(this);
-						this._CatelogueId = value.Id;
-					}
-					else
-					{
-						this._CatelogueId = default(int);
-					}
-					this.SendPropertyChanged("PropertyCatalogue");
-				}
-			}
-		}
-		
-		public event PropertyChangingEventHandler PropertyChanging;
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		
-		protected virtual void SendPropertyChanging()
-		{
-			if ((this.PropertyChanging != null))
-			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
-			}
-		}
-		
-		protected virtual void SendPropertyChanged(String propertyName)
-		{
-			if ((this.PropertyChanged != null))
-			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-			}
-		}
-		
-		private void attach_ProductProperties(ProductProperty entity)
-		{
-			this.SendPropertyChanging();
-			entity.Property = this;
-		}
-		
-		private void detach_ProductProperties(ProductProperty entity)
-		{
-			this.SendPropertyChanging();
-			entity.Property = null;
-		}
-	}
-	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="sunrise_admin.PropertyCatalogue")]
 	public partial class PropertyCatalogue : INotifyPropertyChanging, INotifyPropertyChanged
 	{
@@ -2332,6 +1992,346 @@ namespace Showroom.Models
 			{
 				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
 			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="sunrise_admin.Property")]
+	public partial class Property : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _Id;
+		
+		private string _Name;
+		
+		private string _NameEn;
+		
+		private int _CatelogueId;
+		
+		private int _SubCatelogueId;
+		
+		private char _ShowMain;
+		
+		private string _PropertyType;
+		
+		private char _Actflg;
+		
+		private EntitySet<ProductProperty> _ProductProperties;
+		
+		private EntityRef<PropertyCatalogue> _PropertyCatalogue;
+		
+		private EntityRef<PropertySubCatalogue> _PropertySubCatalogue;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnIdChanging(int value);
+    partial void OnIdChanged();
+    partial void OnNameChanging(string value);
+    partial void OnNameChanged();
+    partial void OnNameEnChanging(string value);
+    partial void OnNameEnChanged();
+    partial void OnCatelogueIdChanging(int value);
+    partial void OnCatelogueIdChanged();
+    partial void OnSubCatelogueIdChanging(int value);
+    partial void OnSubCatelogueIdChanged();
+    partial void OnShowMainChanging(char value);
+    partial void OnShowMainChanged();
+    partial void OnPropertyTypeChanging(string value);
+    partial void OnPropertyTypeChanged();
+    partial void OnActflgChanging(char value);
+    partial void OnActflgChanged();
+    #endregion
+		
+		public Property()
+		{
+			this._ProductProperties = new EntitySet<ProductProperty>(new Action<ProductProperty>(this.attach_ProductProperties), new Action<ProductProperty>(this.detach_ProductProperties));
+			this._PropertyCatalogue = default(EntityRef<PropertyCatalogue>);
+			this._PropertySubCatalogue = default(EntityRef<PropertySubCatalogue>);
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Id", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int Id
+		{
+			get
+			{
+				return this._Id;
+			}
+			set
+			{
+				if ((this._Id != value))
+				{
+					this.OnIdChanging(value);
+					this.SendPropertyChanging();
+					this._Id = value;
+					this.SendPropertyChanged("Id");
+					this.OnIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Name", DbType="NVarChar(255) NOT NULL", CanBeNull=false)]
+		public string Name
+		{
+			get
+			{
+				return this._Name;
+			}
+			set
+			{
+				if ((this._Name != value))
+				{
+					this.OnNameChanging(value);
+					this.SendPropertyChanging();
+					this._Name = value;
+					this.SendPropertyChanged("Name");
+					this.OnNameChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_NameEn", DbType="NVarChar(255) NOT NULL", CanBeNull=false)]
+		public string NameEn
+		{
+			get
+			{
+				return this._NameEn;
+			}
+			set
+			{
+				if ((this._NameEn != value))
+				{
+					this.OnNameEnChanging(value);
+					this.SendPropertyChanging();
+					this._NameEn = value;
+					this.SendPropertyChanged("NameEn");
+					this.OnNameEnChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CatelogueId", DbType="Int NOT NULL")]
+		public int CatelogueId
+		{
+			get
+			{
+				return this._CatelogueId;
+			}
+			set
+			{
+				if ((this._CatelogueId != value))
+				{
+					if (this._PropertyCatalogue.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnCatelogueIdChanging(value);
+					this.SendPropertyChanging();
+					this._CatelogueId = value;
+					this.SendPropertyChanged("CatelogueId");
+					this.OnCatelogueIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SubCatelogueId", DbType="Int NOT NULL")]
+		public int SubCatelogueId
+		{
+			get
+			{
+				return this._SubCatelogueId;
+			}
+			set
+			{
+				if ((this._SubCatelogueId != value))
+				{
+					if (this._PropertySubCatalogue.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnSubCatelogueIdChanging(value);
+					this.SendPropertyChanging();
+					this._SubCatelogueId = value;
+					this.SendPropertyChanged("SubCatelogueId");
+					this.OnSubCatelogueIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ShowMain", DbType="NChar(1) NOT NULL")]
+		public char ShowMain
+		{
+			get
+			{
+				return this._ShowMain;
+			}
+			set
+			{
+				if ((this._ShowMain != value))
+				{
+					this.OnShowMainChanging(value);
+					this.SendPropertyChanging();
+					this._ShowMain = value;
+					this.SendPropertyChanged("ShowMain");
+					this.OnShowMainChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PropertyType", DbType="NChar(10) NOT NULL", CanBeNull=false)]
+		public string PropertyType
+		{
+			get
+			{
+				return this._PropertyType;
+			}
+			set
+			{
+				if ((this._PropertyType != value))
+				{
+					this.OnPropertyTypeChanging(value);
+					this.SendPropertyChanging();
+					this._PropertyType = value;
+					this.SendPropertyChanged("PropertyType");
+					this.OnPropertyTypeChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Actflg", DbType="NChar(1) NOT NULL")]
+		public char Actflg
+		{
+			get
+			{
+				return this._Actflg;
+			}
+			set
+			{
+				if ((this._Actflg != value))
+				{
+					this.OnActflgChanging(value);
+					this.SendPropertyChanging();
+					this._Actflg = value;
+					this.SendPropertyChanged("Actflg");
+					this.OnActflgChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Property_ProductProperty", Storage="_ProductProperties", ThisKey="Id", OtherKey="PropertyId")]
+		public EntitySet<ProductProperty> ProductProperties
+		{
+			get
+			{
+				return this._ProductProperties;
+			}
+			set
+			{
+				this._ProductProperties.Assign(value);
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="PropertyCatalogue_Property", Storage="_PropertyCatalogue", ThisKey="CatelogueId", OtherKey="Id", IsForeignKey=true)]
+		public PropertyCatalogue PropertyCatalogue
+		{
+			get
+			{
+				return this._PropertyCatalogue.Entity;
+			}
+			set
+			{
+				PropertyCatalogue previousValue = this._PropertyCatalogue.Entity;
+				if (((previousValue != value) 
+							|| (this._PropertyCatalogue.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._PropertyCatalogue.Entity = null;
+						previousValue.Properties.Remove(this);
+					}
+					this._PropertyCatalogue.Entity = value;
+					if ((value != null))
+					{
+						value.Properties.Add(this);
+						this._CatelogueId = value.Id;
+					}
+					else
+					{
+						this._CatelogueId = default(int);
+					}
+					this.SendPropertyChanged("PropertyCatalogue");
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="PropertySubCatalogue_Property", Storage="_PropertySubCatalogue", ThisKey="SubCatelogueId", OtherKey="Id", IsForeignKey=true)]
+		public PropertySubCatalogue PropertySubCatalogue
+		{
+			get
+			{
+				return this._PropertySubCatalogue.Entity;
+			}
+			set
+			{
+				PropertySubCatalogue previousValue = this._PropertySubCatalogue.Entity;
+				if (((previousValue != value) 
+							|| (this._PropertySubCatalogue.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._PropertySubCatalogue.Entity = null;
+						previousValue.Properties.Remove(this);
+					}
+					this._PropertySubCatalogue.Entity = value;
+					if ((value != null))
+					{
+						value.Properties.Add(this);
+						this._SubCatelogueId = value.Id;
+					}
+					else
+					{
+						this._SubCatelogueId = default(int);
+					}
+					this.SendPropertyChanged("PropertySubCatalogue");
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+		
+		private void attach_ProductProperties(ProductProperty entity)
+		{
+			this.SendPropertyChanging();
+			entity.Property = this;
+		}
+		
+		private void detach_ProductProperties(ProductProperty entity)
+		{
+			this.SendPropertyChanging();
+			entity.Property = null;
 		}
 	}
 }
