@@ -1,0 +1,50 @@
+﻿@{
+    ViewBag.Title = "Cập nhật thông số";
+     Layout = "../Shared/_AdminLayout.cshtml";
+}
+@model Showroom.Models.Property
+<div class="box">
+    <div class="box-title">
+        <h3><i class="icon-edit"></i>Cập nhật thông số</h3>
+    </div>
+    <div class="box-content">
+        @using (Html.BeginForm())
+        {
+            @Html.HiddenFor(item => item.Id)
+            <div class="control-group">
+                <label for="" class="control-label">@Html.LabelFor(item => item.Name)</label>
+                <div class="controls">
+                    @Html.TextBoxFor(item => item.Name, new { @class = "input-xlarge" })
+                    @Html.ValidationMessageFor(item => item.Name)
+                </div>
+            </div>
+            <div class="control-group">
+                <label for="" class="control-label">@Html.LabelFor(item => item.PropertyCatalogue.Name)</label>
+                <div class="controls">
+                    <div class="input-xlarge">
+                        @Html.DropDownListFor( item => item.CatelogueId,(IList<SelectListItem>)ViewBag.PropertyCatalogueList,"Chọn bộ thông số", new { @class = "chosen-select" })
+                    </div>
+                </div>
+            </div>
+            <div class="control-group">
+                    <label for="" class="control-label">@Html.LabelFor(item => item.PropertySubCatalogue.Name)</label>
+                    <div class="controls">
+                        <div class="input-xlarge">
+                            @Html.DropDownListFor( item => item.SubCatelogueId,(IList<SelectListItem>)ViewBag.PropertySubCatalogueList,"Chọn nhóm thông số", new { @class = "chosen-select" })
+                        </div>
+                    </div>
+             </div>
+             <div class="control-group">
+                <label for="" class="control-label">@Html.LabelFor(item => item.Actflg)</label>
+                <div class="controls">
+                   @Html.RadioButtonFor(item => item.Actflg, 'A',new { @checked = "checked", @group="gActflg"}) Hiển thị  
+                   @Html.RadioButtonFor(item => item.Actflg, 'I',"gActflg") Ẩn
+                </div>
+            </div>
+            <div class="form-actions">
+                <button type="submit" class="btn btn-primary">Lưu </button>
+                <button type="button" class="btn">Hủy </button>
+            </div>
+        }
+    </div>
+</div>

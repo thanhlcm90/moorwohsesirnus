@@ -1,7 +1,7 @@
-﻿@model List<Showroom.Models.NewsCatalogue>
+﻿@model List<Showroom.Models.PropertySubCatalogue>
 
 @{
-    ViewBag.Title = "Danh mục chuyên mục tin tức";
+    ViewBag.Title = "Danh sách bộ thông số";
      Layout = "../Shared/_AdminLayout.cshtml";
 }
 
@@ -19,39 +19,35 @@
 <link rel="stylesheet" href="@Url.Content("~/Content/Admin/css/plugins/chosen/chosen.css")">
 <!-- End Style-->
 <div class="box box-bordered">
-    @Html.ActionLink("Thêm mới","Edit",new {Id=0},new {@class="btn btn-primary"})
+     @Html.ActionLink("Thêm mới","Edit",new {Id=0},new {@class="btn btn-primary"})
     <div class="box-content nopadding">
         <table class="table table-nomargin dataTable table-bordered">
             <thead>
                 <tr>
                     <th>@Html.DisplayNameFor(Model,p => p.Id)</th>
                     <th>@Html.DisplayNameFor(Model,p => p.Name)</th>
-                    <th>@Html.DisplayNameFor(Model,p => p.NameEn)</th>
-                   @* <th>@Html.DisplayNameFor(Model,p => p.Image)</th>*@
-                    <th>@Html.DisplayNameFor(Model,p => p.Atcflg)</th>
+                    <th>@Html.DisplayNameFor(Model,p => p.Actflg)</th>
                     <th>Công cụ</th>
                 </tr>
             </thead>
             <tbody>
                 @foreach (var item in Model)
                 {
-                    <tr>
-                        <td>@item.Id</td>
-                        <td>@item.Name</td> 
-                        <td>@item.NameEn</td>
-                       @* <td>@item.Image</td>*@
-                        <td>@item.Atcflg</td>
-                        <td>@Html.ActionLink("Sửa","Edit", new {Id=item.Id} )  - <a href="javascript:void(0);" onclick="DeleteCatalogue(@item.Id)" >Xóa</a></td>
-                    </tr>
+                <tr>
+                    <td>@item.Id</td>
+                    <td>@item.Name</td> 
+                    <td>@((item.Actflg =='A')? "Đang dùng": "Đã khóa")</td>
+                    <td>@Html.ActionLink("Sửa","Edit", new {Id=item.Id} )  - <a href="javascript:void(0);" onclick="Delete(@item.Id)" >Xóa</a></td>
+                </tr>
                 }
             </tbody>
         </table>
     </div>
 </div>
 <script type="text/javascript">
-    function DeleteCatalogue(id) {
+    function Delete(id) {
         if (confirm('Bạn có chắc chắn muốn xóa bản ghi này ?')) {
-            window.location = '/AdminNewsCatalogue/Delete?id=' + id ;
+            window.location = '/AdminPropertySubCatalogue/Delete?id=' + id;
         }
     };
 

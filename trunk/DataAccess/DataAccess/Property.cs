@@ -25,6 +25,22 @@ namespace Showroom.Models.DataAccess
             }
         }
 
+        public Property GetPropertyInfo(int id)
+        {
+            try
+            {
+                var item = from p in _dataContext.Properties
+                           where p.Id == id
+                           select p;
+                // Trả về 1 giá trị hoặc mặc định (null)
+                return item.SingleOrDefault();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
 
         public List<Property> GetPropertyOFProduct(int ProductID)
         {
@@ -117,7 +133,12 @@ namespace Showroom.Models.DataAccess
 
                 // Nếu không tìm thấy thì trả về False
                 if (itemDelete == null) return false;
-
+                //Xóa các thông số đã được sử dụng
+                var productProperties = (from p in _dataContext.ProductProperties where p.PropertyId == itemDelete.Id select p).ToList();
+                foreach (var n in productProperties)
+                {
+                    _dataContext.ProductProperties.DeleteOnSubmit(n);
+                }
                 // Xóa và Submit thay đổi
                 _dataContext.Properties.DeleteOnSubmit(itemDelete);
                 _dataContext.SubmitChanges();

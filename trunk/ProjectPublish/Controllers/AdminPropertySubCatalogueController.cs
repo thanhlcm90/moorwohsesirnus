@@ -5,46 +5,46 @@ using Showroom.Models.DataAccess;
 using Showroom.Models;
 namespace SunriseShowroom.Controllers
 {
-    public class AdminPropertyCatalogueController : Controller
+    public class AdminPropertySubCatalogueController : Controller
     {
         private ShowroomRepository rep = new ShowroomRepository();
         //
-        // GET: /PropertyCatalogue/
+        // GET: /propertySubCatalogue/
         [Authorize]
         public ActionResult Index()
         {
             // Action GetList, dùng cho Grid load danh sách dữ liệu
-            var propertyCatalogueList = rep.GetPropertyCatalogueList();
-            return View(propertyCatalogueList);
+            var propertySubCatalogueList = rep.GetPropertySubCatalogueList();
+            return View(propertySubCatalogueList);
         }
 
         [Authorize]
         public ActionResult Edit(int id)
         {
-            PropertyCatalogue propertyCatalogueInfo;
+            PropertySubCatalogue propertySubCatalogueInfo;
             //sửa product
             if (id != 0)
             {
-                propertyCatalogueInfo =rep.GetPropertyCatalogueInfo(id);
+                propertySubCatalogueInfo = rep.GetPropertySubCatalogueInfo(id);
             }
             else //id =0 là thêm mới product
             {
-                propertyCatalogueInfo = new PropertyCatalogue();
+                propertySubCatalogueInfo = new PropertySubCatalogue();
             }
-            return View(propertyCatalogueInfo);
+            return View(propertySubCatalogueInfo);
         }
 
         [Authorize]
         [HttpPost]
-        public ActionResult Edit(PropertyCatalogue propertyCatalogue)
+        public ActionResult Edit(PropertySubCatalogue propertySubCatalogue)
         {
             if (ModelState.IsValid)
             {
-                propertyCatalogue.NameEn = Code.Utilities.ConvertToUnSign(propertyCatalogue.Name);
-                rep.UpdatePropertyCatalogue(propertyCatalogue);
+                propertySubCatalogue.NameEn = Code.Utilities.ConvertToUnSign(propertySubCatalogue.Name);
+                rep.UpdatePropertySubCatalogue(propertySubCatalogue);
                 return RedirectToAction("Index");
             }
-            return View(propertyCatalogue);
+            return View(propertySubCatalogue);
         }
 
         [Authorize]
@@ -52,7 +52,7 @@ namespace SunriseShowroom.Controllers
         {
             try
             {
-                rep.DeletePropertyCatalogue(id);
+                rep.DeletePropertySubCatalogue(id);
                 return RedirectToAction("Index");
             }
             catch
