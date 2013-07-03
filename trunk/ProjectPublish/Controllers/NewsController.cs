@@ -11,7 +11,7 @@ namespace Frontend.Controllers
     public class NewsController : Controller
     {
         ShowroomRepository rep = new ShowroomRepository();
-        int maxNewInPage = 2;
+        int maxNewInPage = 20;
         //
         // GET: /News/
 
