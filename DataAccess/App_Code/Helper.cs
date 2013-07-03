@@ -32,22 +32,25 @@ namespace Common
             }
             return string.Format("{0}...", sb.ToString().TrimEnd(' '));
         }
-
-        public static ArrayList GetImageProduct(int id)
+        
+        /// <summary>
+        /// Đường dẫn thư mục cần lấy ảnh
+        /// </summary>
+        /// <param name="strPath"></param>
+        /// <returns></returns>
+        public static ArrayList GetImageInFolder(string strPath,string returnFolder)
         {
             var list = new ArrayList();
-            var product = id;
-            var productFolder = AppDomain.CurrentDomain.BaseDirectory + "Images\\Product\\" + id;
-            var producImagePath = "/Images/Product/" + id;
-            var dir = new DirectoryInfo(productFolder);
-            if (Directory.Exists(productFolder))
+
+            var dir = new DirectoryInfo(strPath);
+            if (Directory.Exists(strPath))
             {
                 FileInfo[] files = dir.GetFiles();
                 foreach (FileInfo file in files)
                 {
                     if (file.Extension == ".jpg" || file.Extension == ".jpeg" || file.Extension == ".gif" || file.Extension == ".png")
                     {
-                        list.Add(producImagePath + "/" + file.Name);
+                        list.Add(returnFolder + "/" + file.Name);
                     }
                 }
             }
