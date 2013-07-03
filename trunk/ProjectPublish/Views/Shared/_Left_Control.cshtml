@@ -19,7 +19,7 @@
     </div>
     @using (Html.BeginForm("SearchResault", "Home", FormMethod.Get))
     {
-        <ul class="searchtool hide" id="searchtool">
+        <ul class="searchtool" id="searchtool">
             <li>
                 @Html.DropDownList("CID", (IList<SelectListItem>)listCatalogueDrop)
             </li>

@@ -59,6 +59,7 @@
                         <div class="controls">
                             <input type="file" name="file" multiple="multiple" value="" />
                             <div class="form-actions no-padding">
+                                  @Html.ActionLink("Quay lại","EditProductProperties",new {Id=id},new {@class="btn btn-primary"})
                                 <button type="submit" class="btn btn-primary">Hoàn tất</button>
                             </div>
                         </div>
@@ -94,7 +95,7 @@
 <script src="@Url.Content("~/Scripts/Admin/Scripts/plugins/colorbox/jquery.colorbox-min.js")"></script>
 <script type="text/javascript">
     $('.del-gallery-pic').click(function () {
-        var myData = "{'image':'" + $(this).attr('id') + "','producId':'"+ @id +"'}";
+        var myData = "{'image':'" + $(this).attr('id') + "','productId':'" + @id +"'}";
         $.ajax({
             url: '/AdminProduct/DeleteImage',
             type: 'POST',
