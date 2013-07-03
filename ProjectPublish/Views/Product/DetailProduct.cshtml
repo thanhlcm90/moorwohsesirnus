@@ -33,7 +33,8 @@
                             <ul class="slides">
                                 @{
                                     var imageList = new System.Collections.ArrayList();
-                                    imageList = @clsHelper.GetImageProduct(Model.Id);
+                                    var imagePath = Server.MapPath(@"~/Images/Product/" + Model.Id + "");
+                                    imageList = @clsHelper.GetImageInFolder(imagePath,"/Images/Product/"+Model.Id);
                                     var NoimgPath = "/images/no_image.gif";
                                     if (imageList.Count > 1)
                                     {
@@ -187,7 +188,8 @@
                             if (productS.Id != Model.Id)
                             {
                                 var LimageList = new System.Collections.ArrayList();
-                                LimageList = @clsHelper.GetImageProduct(productS.Id);
+                                var imagePath1 = Server.MapPath(@"~/Images/Product/" + productS.Id + "");
+                                LimageList = @clsHelper.GetImageInFolder(imagePath1, "/Images/Product/" + productS.Id);
                                 var NoimgPathN = "/images/no_image.gif";
                                 var strImage = string.Empty;
                                 if (LimageList.Count > 0)

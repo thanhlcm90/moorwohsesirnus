@@ -29,7 +29,8 @@
 
                 @foreach (var m in (List<Showroom.Models.Product>)ViewBag.ProductList) {
                     var imageList = new System.Collections.ArrayList();
-                    imageList = @clsHelper.GetImageProduct(m.Id);
+                    var imagePath= Server.MapPath(@"~/Images/Product/" + m.Id +"");
+                    imageList = @clsHelper.GetImageInFolder(imagePath,"Images/Product/"+m.Id);
                     var NoimgPath = "/images/no_image.gif";
                      var strImage = string.Empty;
                     if (imageList.Count > 0)
@@ -45,7 +46,7 @@
                             <div class="mosaic-block faded">
                                 <div class="mosaic-overlay" style="display: block; opacity: 0;">
                                     <div class="zoom-icons">
-                                        <a class="zoom-img" href="images/portfolio/kia.jpg" data-gal="prettyPhoto[portfolio]"><i class="icon-search"></i></a>
+                                        <a class="zoom-img" href="@strImage" data-gal="prettyPhoto[portfolio]"><i class="icon-search"></i></a>
                                         <a class="link-img" href="/san-pham/chi-tiet/@m.NameEn-@m.Id"><i class="icon-link"></i></a>
                                     </div>
                                 </div>
@@ -67,18 +68,15 @@
             <div id="Partner" class="span12" style="margin-left:0px;">
                 <div class="image_carousel">
                     <div id="foo2">
-                        <img src="images/partner/basketball.jpg" alt="basketball" width="140" height="140" />
-                        <img src="images/partner/beachtree.jpg" alt="beachtree" width="140" height="140" />
-                        <img src="images/partner/cupcackes.jpg" alt="cupcackes" width="140" height="140" />
-                        <img src="images/partner/hangmat.jpg" alt="hangmat" width="140" height="140" />
-                        <img src="images/partner/new_york.jpg" alt="new york" width="140" height="140" />
-                        <img src="images/partner/laundry.jpg" alt="laundry" width="140" height="140" />
-                        <img src="images/partner/mom_son.jpg" alt="mom son" width="140" height="140" />
-                        <img src="images/partner/picknick.jpg" alt="picknick" width="140" height="140" />
-                        <img src="images/partner/shoes.jpg" alt="shoes" width="140" height="140" />
-                        <img src="images/partner/paris.jpg" alt="paris" width="140" height="140" />
-                        <img src="images/partner/sunbading.jpg" alt="sunbading" width="140" height="140" />
-                        <img src="images/partner/yellow_couple.jpg" alt="yellow couple" width="140" height="140" />
+                       @{
+                           var imagePartnerPath = Server.MapPath(@"~/Images/Slide/Bottom");
+                           var imagePartnerList = new System.Collections.ArrayList();
+                           imagePartnerList = clsHelper.GetImageInFolder(imagePartnerPath, "Images/Slide/Bottom");
+                           for (var k = 0; k < imagePartnerList.Count;k++)
+                           {
+                               <img src="@imagePartnerList[k]" alt="basketball" width="140" height="140" />
+                           }
+                       }
                     </div>
                     <div class="clearfix"></div>
                     <a class="prev" id="foo2_prev" href="#"><span>prev</span></a>
