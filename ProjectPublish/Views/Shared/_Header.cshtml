@@ -35,8 +35,21 @@
                     <div class="span3">
                         <div class="row show-grid">
                             <div class="search-box">
-                                <input class="search-text span3" type="text" name="s" value="Search this site" onfocus="if (this.value == this.defaultValue) this.value = '';" onblur="if (this.value == '') this.value = this.defaultValue;">
-                                <input class="search-submit" type="submit" name="submit" value="">
+@*                                <input class="search-text span3" type="text" name="s" value="Search this site" onfocus="if (this.value == this.defaultValue) this.value = '';" onblur="if (this.value == '') this.value = this.defaultValue;">
+                                <input class="search-submit" type="submit" name="submit" value="">*@
+                                <script>
+                                    (function () {
+                                        var cx = '001878825490984196327:ahkgm1jqywe';
+                                        var gcse = document.createElement('script');
+                                        gcse.type = 'text/javascript';
+                                        gcse.async = true;
+                                        gcse.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') +
+                                            '//www.google.com/cse/cse.js?cx=' + cx;
+                                        var s = document.getElementsByTagName('script')[0];
+                                        s.parentNode.insertBefore(gcse, s);
+                                    })();
+</script>
+<gcse:search></gcse:search>
                             </div>
                         </div>
                     </div>
