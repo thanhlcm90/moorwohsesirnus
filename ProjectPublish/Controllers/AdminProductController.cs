@@ -83,6 +83,16 @@ namespace SunriseShowroom.Controllers
                     return RedirectToAction("EditProductProperties", new { product.Id });
                 }
             }
+
+            //Lấy danh mục nhóm sản phẩm
+            var list = rep.GetProductCatalogueList();
+            ViewBag.CatalogueList = (from p in list
+                                     where p.Actflg == 'A'
+                                     select new SelectListItem
+                                     {
+                                         Value = p.Id.ToString(),
+                                         Text = p.Name,
+                                     }).ToList();
             return View(product);
         }
 
