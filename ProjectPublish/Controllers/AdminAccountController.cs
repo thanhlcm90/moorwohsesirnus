@@ -13,7 +13,7 @@ namespace SunriseShowroom.Controllers
     public class AdminAccountController : Controller
     {
 
-        [MyActionAuthorize]
+        [Authorize]
         public ActionResult Index()
         {
             var list = Membership.GetAllUsers();
@@ -32,7 +32,6 @@ namespace SunriseShowroom.Controllers
         // POST: /Account/LogOn
 
         [HttpPost]
-        [Authorize]
         public ActionResult LogOn(LogOnModel model, string returnUrl)
         {
             if (ModelState.IsValid)
@@ -47,7 +46,7 @@ namespace SunriseShowroom.Controllers
                     }
                     else
                     {
-                        return RedirectToAction("Index", "Home");
+                        return RedirectToAction("Index", "Admin");
                     }
                 }
                 else
@@ -68,7 +67,7 @@ namespace SunriseShowroom.Controllers
         {
             FormsAuthentication.SignOut();
 
-            return RedirectToAction("LogOn", "Account");
+            return RedirectToAction("LogOn", "AdminAccount");
         }
 
         //
@@ -98,11 +97,11 @@ namespace SunriseShowroom.Controllers
                 if (createStatus == MembershipCreateStatus.Success)
                 {
                     FormsAuthentication.SetAuthCookie(model.UserName, false /* createPersistentCookie */);
-                    return RedirectToAction("Index", "Home");
+                    return RedirectToAction("Index", "Admin");
                 }
                 else
                 {
-                    ModelState.AddModelError("", ErrorCodeToString(createStatus));
+                    ModelState.AddModelError("", ErrorCodeToString(createStatus));  
                 }
             }
 

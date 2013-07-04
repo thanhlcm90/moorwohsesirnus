@@ -59,9 +59,15 @@ namespace Frontend.Controllers
         [HttpPost]
         public ActionResult Contact(Contact models)
         {
-            models.PostDate = DateTime.Now;
-            models.Actflg = '1';
-            rep.InsertContacts(models);
+            if (ModelState.IsValid)
+            {
+                models.PostDate = DateTime.Now;
+                models.Actflg = '1';
+                rep.InsertContacts(models);
+            } else
+            {
+                ModelState.AddModelError("", "Bạn phải nhập đầy đủ các thông tin.");
+            }
             return View();
         }
     }
