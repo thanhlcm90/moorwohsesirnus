@@ -24,12 +24,12 @@
                 @Html.DropDownList("CID", (IList<SelectListItem>)listCatalogueDrop)
             </li>
             <li>
-                <input type="text" name="keyword" id="keyword" onfocus="if (this.value == 'Từ Khóa') {this.value = '';}" onblur="if (this.value == '')  {this.value = 'Từ Khóa';}"  value="Từ khóa"/>
+                <input type="text" name="keyword" id="keyword" placeholder="Từ khóa"   value=""/>
             </li>
             <li>
             <li>
                 <select id="priceFrom" name="priceFrom">
-                    <option value="0">----Giá từ----</option>
+                    <option value="-1">----Giá từ----</option>
                     <option value="200000000">200 triệu</option>
                     <option value="300000000">300 triệu</option>
                     <option value="400000000">400 triệu</option>
@@ -40,7 +40,7 @@
             </li>
             <li>
                 <select id="priceTo" name="priceTo">
-                    <option value="0">----Giá đến----</option>
+                    <option value="-1">----Giá đến----</option>
                     <option value="200000000">200 triệu</option>
                     <option value="300000000">300 triệu</option>
                     <option value="400000000">400 triệu</option>
