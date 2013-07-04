@@ -25,7 +25,7 @@ namespace Frontend.Controllers
             List<Product> lstProduct = rep.GetProductsList();
             List<Product> lstProductSearch = new List<Product>();
             lstProductSearch = (from n in lstProduct
-                                where n.Name.Contains(keyword) && n.CatalogueId == CID && n.Price >= priceFrom && n.Price <= priceTo
+                                where n.CatalogueId == CID && (keyword.Trim() == "" || n.Name.Contains(keyword)) && (priceFrom == -1 || n.Price >= priceFrom) && (priceTo == -1 || n.Price <= priceTo)
                                 select n
                                   ).ToList();
             ViewBag.ProductSearchList = lstProductSearch;
