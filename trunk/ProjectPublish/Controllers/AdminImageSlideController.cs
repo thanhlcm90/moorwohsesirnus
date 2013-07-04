@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ProjectPublish.ActionFilters;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
@@ -9,12 +10,12 @@ using System.Web.Security;
 
 namespace SunriseShowroom.Controllers
 {
+    [MyControllerAuthorize]
     public class AdminImageSlideController : Controller
     {
         //
         // GET: /ImageSlide/
 
-        [Authorize]
         public ActionResult Index()
         {
             var listTop = new ArrayList();

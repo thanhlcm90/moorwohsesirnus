@@ -39,12 +39,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="FredCK.FCKeditorV2">
-      <HintPath>C:\Users\Ku Hun\Downloads\Compressed\MvcFCKEditorDemo\MvcFCKEditorDemo\MvcFCKEditorDemo\bin\FredCK.FCKeditorV2.dll</HintPath>
-    </Reference>
-    <Reference Include="MvcExtensions">
-      <HintPath>C:\Users\Ku Hun\Downloads\Compressed\MvcFCKEditorDemo\MvcFCKEditorDemo\MvcFCKEditorDemo\bin\MvcExtensions.dll</HintPath>
-    </Reference>
     <Reference Include="System.Data.Entity" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System" />
@@ -99,10 +93,16 @@
       <Private>True</Private>
       <HintPath>..\packages\Microsoft.AspNet.WebPages.1.0.20105.408\lib\net40\System.Web.WebPages.Razor.dll</HintPath>
     </Reference>
+    <Reference Include="WebActivator">
+      <HintPath>..\packages\WebActivator.1.4.4\lib\net40\WebActivator.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Code\MyControllerAuthorizeAttribute.cs" />
     <Compile Include="Code\HtmlHelperDisplayNameExtensions.cs" />
+    <Compile Include="Code\MyActionAuthorizeAttribute.cs" />
     <Compile Include="Code\Utilities.cs" />
+    <Compile Include="Controllers\AccessDeniedController.cs" />
     <Compile Include="Controllers\AdminAccountController.cs" />
     <Compile Include="Controllers\AdminCatalogueController.cs" />
     <Compile Include="Controllers\AdminConfigurationController.cs" />
@@ -1382,6 +1382,7 @@
     <Content Include="Views\AdminProperties\Index.cshtml" />
     <Content Include="Views\AdminPropertySubCatalogue\Edit.cshtml" />
     <Content Include="Views\AdminPropertySubCatalogue\Index.cshtml" />
+    <Content Include="Views\AccessDenied\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
