@@ -6,13 +6,14 @@ using System.Web.Mvc;
 using System.Web.Routing;
 using System.Web.Security;
 using SunriseShowroom.Models;
+using ProjectPublish.ActionFilters;
 
 namespace SunriseShowroom.Controllers
 {
     public class AdminAccountController : Controller
     {
 
-        [Authorize(Roles = "Account")]
+        [MyActionAuthorize]
         public ActionResult Index()
         {
             var list = Membership.GetAllUsers();
@@ -31,6 +32,7 @@ namespace SunriseShowroom.Controllers
         // POST: /Account/LogOn
 
         [HttpPost]
+        [Authorize]
         public ActionResult LogOn(LogOnModel model, string returnUrl)
         {
             if (ModelState.IsValid)
@@ -61,6 +63,7 @@ namespace SunriseShowroom.Controllers
         //
         // GET: /Account/LogOff
 
+        [Authorize]
         public ActionResult LogOff()
         {
             FormsAuthentication.SignOut();
@@ -71,8 +74,11 @@ namespace SunriseShowroom.Controllers
         //
         // GET: /Account/Register
 
+        [MyActionAuthorize]
         public ActionResult Register()
         {
+            var listRole = Roles.GetAllRoles();
+            ViewBag.ListRoles = listRole;
             return View();
         }
 
@@ -81,7 +87,7 @@ namespace SunriseShowroom.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        [Authorize(Roles = "Account")]
+        [MyActionAuthorize]
         public ActionResult Register(RegisterModel model)
         {
             if (ModelState.IsValid)
