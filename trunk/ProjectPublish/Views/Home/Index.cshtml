@@ -30,7 +30,7 @@
                 @foreach (var m in (List<Showroom.Models.Product>)ViewBag.ProductList) {
                     var imageList = new System.Collections.ArrayList();
                     var imagePath= Server.MapPath(@"~/Images/Product/" + m.Id +"");
-                    imageList = @clsHelper.GetImageInFolder(imagePath,"Images/Product/"+m.Id);
+                    imageList = @clsHelper.GetImageInFolder(imagePath,"/Images/Product/"+m.Id);
                     var NoimgPath = "/images/no_image.gif";
                      var strImage = string.Empty;
                     if (imageList.Count > 0)
