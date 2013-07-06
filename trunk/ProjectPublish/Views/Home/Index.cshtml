@@ -44,10 +44,10 @@
                     <div class="span3 magrinproduct">
                         <div class="shadow-wrapper">
                             <div class="mosaic-block faded">
-                                <div class="mosaic-overlay" style="display: block; opacity: 0;">
+                                <div class="mosaic-overlay" style="display: block;">
                                     <div class="zoom-icons">
-                                        <a class="zoom-img" href="@strImage" data-gal="prettyPhoto[portfolio]"><i class="icon-search"></i></a>
-                                        <a class="link-img" href="/san-pham/chi-tiet/@m.NameEn-@m.Id"><i class="icon-link"></i></a>
+                                        <a class="zoom-img" href="@strImage" data-gal="prettyPhoto[portfolio]" title="Xem ảnh lớn"><i class="icon-search"></i></a>
+                                        <a class="link-img" href="/san-pham/chi-tiet/@m.NameEn-@m.Id" title="Xem chi tiết"><i class="icon-link"></i></a>
                                     </div>
                                 </div>
                                 <div class="mosaic-backdrop">
@@ -55,8 +55,7 @@
                                 </div>
                             </div>
                             <div class="port3-head">
-                                <h3><a href="/san-pham/chi-tiet/@m.NameEn-@m.Id">@m.Name</a></h3>
-                                <p>Giá:@Convert.ToDouble(m.Price).ToString("N0").Replace(",", ".")</p>
+                                <h5><a href="/san-pham/chi-tiet/@m.NameEn-@m.Id">@m.Name</a></h5>
                             </div>
                         </div>
                     </div>

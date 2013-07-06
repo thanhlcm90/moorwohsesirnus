@@ -44,6 +44,6 @@ a.prev span, a.next span { display: none;}
 .blod {font-weight: bold;}
 .warp-content { padding-top: 10px; padding-bottom: 10px;}
 .wrapTitle {background: #fff;line-height: 40px;}
-.magrinproduct { margin-left: 0px; margin-right: 13px;}
+.magrinproduct { width: 233px;margin: 0px; }
 .warpPaging { margin-top: 10px; margin-bottom: 20px;}
 .min-hieght-lg { min-height: 780px;}
