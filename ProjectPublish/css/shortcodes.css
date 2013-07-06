@@ -87,7 +87,7 @@ h5, h6{
 	padding:5px;
 	background:#FFF;
 	border:1px solid #FFF;
-	margin:0 0 18px 0;	
+	margin:0 0 10px 0;	
 	-webkit-box-shadow: 0 2px 2px rgba(0, 0, 0, 0.1);
 	-moz-box-shadow: 0 2px 2px rgba(0, 0, 0, 0.1);
 	box-shadow: 0 2px 2px rgba(0, 0, 0, 0.1);
@@ -167,10 +167,11 @@ h5, h6{
 	text-shadow:0 1px 0 rgba(0, 0, 0, 0.3);
 	color:#FFF;
 }
-.port3-head h3, .details h2, .port3-head p, .details p, .port3-head h3 a{
+.port3-head h3, .details h2, .port3-head p, .details p, .port3-head h3 a,.port3-head h5 a{
 	color:#fff;
 	margin:3px;
 }
+
 .port3-head:before {
 	position: absolute;
 	width: 0; 

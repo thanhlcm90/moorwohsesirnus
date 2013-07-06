@@ -1,24 +1,34 @@
-﻿<div class="container slideTop">
-    <div class="row">
-        <div class="span12">
-            <div class="home-slider">
-                <div class="flexslider">
-                    <ul class="slides">
-                        <li>
-                            <img src="images/sliders/hyundai.jpg" alt="" />
-                        </li>
-                        <li>
-                            <img src="images/sliders/mazda.png" alt="" />
-                        </li>
-                        <li>
-                            <img src="images/sliders/kia.jpg" alt="" />
-                        </li>
-                        <li>
-                            <img src="images/sliders/mazda.png" alt="" />
-                        </li>
-                    </ul>
-                </div>
+﻿<div class="slider-wrap">
+    <div class="container">
+        <div id="iview" class="slideTop">
+            <div data-iview:thumbnail="images/sliders/hyundai.jpg" data-iview:image="images/sliders/hyundai.jpg">
+                @* <div class="iview-caption caption1" data-x="100" data-y="300" data-transition="expandDown">FINE TUNED, SLEEK & SMOOTH, THIS SLIDER WILL IMPRESS YOUR VISITORS</div>*@
+            </div>
+
+            <div data-iview:thumbnail="images/sliders/mazda.png" data-iview:image="images/sliders/mazda.png" data-iview:transition="block-drop-random" data-iview:pausetime="2000">
+                @* <div class="iview-caption caption2" data-x="50" data-y="320" data-transition="expandRight">SUPPORTS ANIMATED CAPTIONS, VIDEO & IFRAME, SINGLE PAGE MULTI-USE</div>*@
+            </div>
+
+            <div data-iview:thumbnail="images/sliders/kia.jpg" data-iview:image="images/sliders/kia.jpg">
+                @* <div class="iview-caption caption3" data-x="350" data-y="300" data-transition="expandLeft">GORGEOUS ANIMATED TIMERS WITH HIGH CUSTOMIZABLE OPTIONS</div>*@
             </div>
         </div>
     </div>
 </div>
+<script type='text/javascript' src='/Scripts/js/jquery.min.js'></script>
+<script>
+    $(document).ready(function () {
+        $('#iview').iView({
+            pauseTime: 1000,
+            pauseOnHover: true,
+            directionNavHoverOpacity: 0,
+            timer: "Bar",
+            timerDiameter: "50%",
+            timerPadding: 0,
+            timerStroke: 1,
+            timerBarStroke: 0,
+            timerColor: "#FFF",
+            timerPosition: "bottom-right"
+        });
+    });
+</script>
