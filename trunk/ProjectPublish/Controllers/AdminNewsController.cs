@@ -63,9 +63,28 @@ namespace SunriseShowroom.Controllers
                 if (ModelState.IsValid)
                 {
                     objNews.TitleEn = Code.Utilities.ConvertToUnSign(objNews.Title);
+                    HttpPostedFileBase file = Request.Files[0];
+                    if (file.ContentLength > 0)
+                    {
+                        objNews.Image = file.FileName;
+                    }
                     var id = rep.InsertNews(objNews); // Insert và trả về id vừa mới insert xong.
-                    //Save image vào hệ thống
-                    return RedirectToAction("Edit", new { id });
+
+                    var imageFolder = Server.MapPath(@"~/Images/News/" + objNews.Id);
+                    // If directory does not exist, don't even try 
+                    if (!Directory.Exists(imageFolder))
+                    {
+                        Directory.CreateDirectory(imageFolder);
+                    }
+                    string path = System.IO.Path.Combine(imageFolder, System.IO.Path.GetFileName(file.FileName));
+                    if (!System.IO.File.Exists(path) && file.ContentLength > 0)
+                    {
+                        //Xóa ảnh cũ
+                        Code.Utilities.DeleteFiles(imageFolder);
+                        file.SaveAs(path);
+                        objNews.Image = file.FileName;
+                    }
+                    return RedirectToAction("Index");
                 }
             }
             else
@@ -73,53 +92,37 @@ namespace SunriseShowroom.Controllers
                 if (ModelState.IsValid)
                 {
                     objNews.TitleEn = Code.Utilities.ConvertToUnSign(objNews.Title);
-                    if (Request.Files.Count > 0)// ko chọn file upload nhưng Request.File vẫn trả về 1 item
+                    var imageFolder = Server.MapPath(@"~/Images/News/" + objNews.Id);
+                    HttpPostedFileBase file = Request.Files[0];
+                    // If directory does not exist, don't even try 
+                    if (!Directory.Exists(imageFolder))
                     {
-                        HttpPostedFileBase file = Request.Files[0];
-                        if (file.ContentLength > 0)
-                        {
-                            //Xử lý thêm ảnh
-                            var newImageFolder = AppDomain.CurrentDomain.BaseDirectory + "Images\\News\\" + objNews.Id;
-                            // If directory does not exist, don't even try 
-                            if (!Directory.Exists(newImageFolder))
-                            {
-                                Directory.CreateDirectory(newImageFolder);
-                            }
-                            //Save ảnh vào thư mục
-
-                            string path = System.IO.Path.Combine(newImageFolder,
-                                                                 System.IO.Path.GetFileName(file.FileName));
-                            try
-                            {
-                                //check file.ContentLength >0 vì người ta ko chọn file nhưng Request.File vẫn trả về 1 item.
-
-                                //Xóa ảnh cũ
-                                Code.Utilities.DeleteFiles(newImageFolder);
-                                file.SaveAs(path);
-                                objNews.Image = file.FileName;
-                                // Copy ảnh qua front end;
-                                var newsImageFolder = AppDomain.CurrentDomain.BaseDirectory + "Images\\News\\" + objNews.Id;
-                                var newsImageFrontEndFolder = newsImageFolder.Replace("Backend", "Frontend");
-                                //Lưu ảnh cũ đồng thời xóa ảnh mới.
-                                Code.Utilities.PublishImages(newImageFolder, newsImageFrontEndFolder, true);
-
-                            }
-                            catch (Exception)
-                            {
-                            }
-                        }
-                        else
-                        {
-                            //Nếu ko có ảnh upload thì lấy ảnh cũ;
-                            objNews.Image = newsImage;
-                        }
-
+                        Directory.CreateDirectory(imageFolder);
                     }
-
+                    string path = System.IO.Path.Combine(imageFolder, System.IO.Path.GetFileName(file.FileName));
+                    if (!System.IO.File.Exists(path) && file.ContentLength > 0)
+                    {
+                        //Xóa ảnh cũ
+                        Code.Utilities.DeleteFiles(imageFolder);
+                        file.SaveAs(path);
+                        objNews.Image = file.FileName;
+                    }else
+                    {
+                        objNews.Image = newsImage;
+                    }
                     rep.UpdateNews(objNews);
                     return RedirectToAction("Index");
                 }
             }
+            //Lấy danh mục nhóm sản phẩm
+            var list = rep.GetNewsCatalogueList();
+            ViewBag.CatelogueList = (from p in list
+                                     where p.Atcflg.Trim() == "A"
+                                     select new SelectListItem
+                                     {
+                                         Value = p.Id.ToString(),
+                                         Text = p.Name,
+                                     }).ToList();
             return View(objNews);
         }
 

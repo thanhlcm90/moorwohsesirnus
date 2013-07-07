@@ -1,6 +1,6 @@
 ﻿@{
     ViewBag.Title = "Đăng tin tức";
-     Layout = "../Shared/_AdminLayout.cshtml";
+    Layout = "../Shared/_AdminLayout.cshtml";
 }
 @model Showroom.Models.News
 <!-- chosen -->
@@ -16,7 +16,7 @@
         <h3><i class="icon-edit"></i>Đăng tin tức</h3>
     </div>
     <div class="box-content">
-        @using (Html.BeginForm("Edit", "AdminNews", FormMethod.Post,new { enctype = "multipart/form-data", @class = "form-horizontal" }))
+        @using (Html.BeginForm("Edit", "AdminNews", FormMethod.Post, new { enctype = "multipart/form-data", @class = "form-horizontal" }))
         {
            
             <div class="span12">
@@ -25,7 +25,7 @@
                     <label for="" class="control-label">@Html.LabelFor(item => item.NewsCatalogue.Name)</label>
                     <div class="controls">
                         <div class="input-xlarge">
-                            @Html.DropDownListFor( item => item.CatelogueId,(IList<SelectListItem>)ViewBag.CatelogueList,"Chọn chuyên mục", new { @class = "chosen-select" })
+                            @Html.DropDownListFor(item => item.CatelogueId, (IList<SelectListItem>)ViewBag.CatelogueList, "Chọn chuyên mục", new { @class = "chosen-select" })
                         </div>
                     </div>
                 </div>
@@ -53,16 +53,17 @@
                 <div class="control-group">
                     <label for="" class="control-label">@Html.LabelFor(item => item.PostDate)</label>
                     <div class="controls">
-                        @Html.EditorFor(item => item.PostDate,new { @class = "input-xlarge" })
+                        @Html.EditorFor(item => item.PostDate, new { @class = "input-xlarge" })
                     </div>
                 </div>
                 <div class="control-group">
                     <label for="" class="control-label">@Html.LabelFor(item => item.Image)</label>
                     <div class="controls">
-                        @if(String.IsNullOrEmpty(Model.Image))
+                        @if (String.IsNullOrEmpty(Model.Image))
                         {
                             <image src="/Images/no_image.jpg" id="thumbImage" />
-                        }else
+                        }
+                        else
                         {
                             <img src="/Images/News/@Model.Id/@Model.Image" id="thumbImage"/>
                         }
@@ -74,13 +75,8 @@
                 <div class="control-group">
                     <label for="" class="control-label">@Html.LabelFor(item => item.Actflg)</label>
                     <div class="controls">
-                        @if(Model.Actflg =='A')
-                        {
-                            <input type="checkbox" id="Actflg" name="Actflg" checked="checked" value="A" />
-                        }else
-                        {
-                            <input type="checkbox" id="Actflg" name="Actflg" value="I" />
-                        }
+                        @Html.RadioButtonFor(item => item.Actflg, 'A', new { @checked = "checked", @group = "gActflg" }) Hiển thị  
+                            @Html.RadioButtonFor(item => item.Actflg, 'I', "gActflg") Ẩn
                     </div>
                 </div>
             </div>
