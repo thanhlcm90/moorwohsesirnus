@@ -1,6 +1,7 @@
 ﻿@using Common
 @{
     ViewBag.Title = "Sunrise Auto - Việt Nam";
+    var lstProduct = (List<Showroom.Models.Product>)ViewBag.ProductList;
 }
 
 <div class="boderB min-hieght-lg">
@@ -27,7 +28,7 @@
                     </div>
                 </div>
 
-                @foreach (var m in (List<Showroom.Models.Product>)ViewBag.ProductList) {
+                @foreach (var m in lstProduct.Take(9)) {
                     var imageList = new System.Collections.ArrayList();
                     var imagePath= Server.MapPath(@"~/Images/Product/" + m.Id +"");
                     imageList = @clsHelper.GetImageInFolder(imagePath,"/Images/Product/"+m.Id);
