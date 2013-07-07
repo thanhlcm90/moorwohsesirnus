@@ -1,17 +1,17 @@
-﻿<div class="slider-wrap">
+﻿@using Common;
+<div class="slider-wrap">
     <div class="container">
         <div id="iview" class="slideTop">
-            <div data-iview:thumbnail="images/sliders/hyundai.jpg" data-iview:image="images/sliders/hyundai.jpg">
-                @* <div class="iview-caption caption1" data-x="100" data-y="300" data-transition="expandDown">FINE TUNED, SLEEK & SMOOTH, THIS SLIDER WILL IMPRESS YOUR VISITORS</div>*@
-            </div>
-
-            <div data-iview:thumbnail="images/sliders/mazda.png" data-iview:image="images/sliders/mazda.png" data-iview:transition="block-drop-random" data-iview:pausetime="2000">
-                @* <div class="iview-caption caption2" data-x="50" data-y="320" data-transition="expandRight">SUPPORTS ANIMATED CAPTIONS, VIDEO & IFRAME, SINGLE PAGE MULTI-USE</div>*@
-            </div>
-
-            <div data-iview:thumbnail="images/sliders/kia.jpg" data-iview:image="images/sliders/kia.jpg">
-                @* <div class="iview-caption caption3" data-x="350" data-y="300" data-transition="expandLeft">GORGEOUS ANIMATED TIMERS WITH HIGH CUSTOMIZABLE OPTIONS</div>*@
-            </div>
+            @{
+                var imageList = new System.Collections.ArrayList();
+                var imagePath = Server.MapPath(@"~/Images/Slide/Top/");
+                imageList = @clsHelper.GetImageInFolder(imagePath, "/Images/Slide/Top/");
+                var NoimgPath = "/images/no_image.gif";
+                foreach (var strImage in imageList)
+                {
+                <div data-iview:thumbnail="@strImage" data-iview:image="@strImage"></div>
+                }
+            }
         </div>
     </div>
 </div>
@@ -19,7 +19,7 @@
 <script>
     $(document).ready(function () {
         $('#iview').iView({
-            pauseTime: 1000,
+            pauseTime: 2000,
             pauseOnHover: true,
             directionNavHoverOpacity: 0,
             timer: "Bar",
