@@ -5,11 +5,13 @@ using System.Web;
 using System.Web.Mvc;
 using Showroom.Models.DataAccess;
 using Showroom.Models;
+using System.IO;
 namespace SunriseShowroom.Controllers
 {
     public class AdminCatalogueController : Controller
     {
         private ShowroomRepository rep = new ShowroomRepository();
+        private static string catalogueLogo = "";
         //
         // GET: /Catalogue/
         [Authorize]
@@ -33,6 +35,7 @@ namespace SunriseShowroom.Controllers
             if (id != 0)
             {
                 catalogue = rep.GetProductCatalogueInfo(id);
+                catalogueLogo = catalogue.Image;//Lưu ảnh cũ vào biến
             }
             else //id =0 là thêm mới product
             {
@@ -57,7 +60,29 @@ namespace SunriseShowroom.Controllers
                 {
                     // product.CatalogueId = 1;
                     catalogue.NameEn = Code.Utilities.ConvertToUnSign(catalogue.Name);
-                    var id = rep.InsertProductCatalogue(catalogue); // Insert và trả về id vừa mới insert xong.
+                   
+
+                    HttpPostedFileBase file = Request.Files[0];
+                    if (file.ContentLength > 0)
+                    {
+                        catalogue.Image = file.FileName;
+                    }
+                    rep.InsertProductCatalogue(catalogue);  
+                    //Lưu ảnh
+                    var imageFolder = Server.MapPath(@"~/Images/Catalogue/" + catalogue.Id);
+                    // If directory does not exist, don't even try 
+                    if (!Directory.Exists(imageFolder))
+                    {
+                        Directory.CreateDirectory(imageFolder);
+                    }
+                    string path = System.IO.Path.Combine(imageFolder, System.IO.Path.GetFileName(file.FileName));
+                    if (file.ContentLength > 0)
+                    {
+                        //Xóa ảnh cũ
+                        Code.Utilities.DeleteFiles(imageFolder);
+                        file.SaveAs(path);
+                        catalogue.Image = file.FileName;
+                    }
                     return RedirectToAction("Index");
                 }
             }
@@ -66,6 +91,25 @@ namespace SunriseShowroom.Controllers
                 if (ModelState.IsValid)
                 {
                     catalogue.NameEn = Code.Utilities.ConvertToUnSign(catalogue.Name);
+                    var imageFolder = Server.MapPath(@"~/Images/Catalogue/" + catalogue.Id);
+                    HttpPostedFileBase file = Request.Files[0];
+                    // If directory does not exist, don't even try 
+                    if (!Directory.Exists(imageFolder))
+                    {
+                        Directory.CreateDirectory(imageFolder);
+                    }
+                    string path = System.IO.Path.Combine(imageFolder, System.IO.Path.GetFileName(file.FileName));
+                    if ( file.ContentLength > 0)
+                    {
+                        //Xóa ảnh cũ
+                        Code.Utilities.DeleteFiles(imageFolder);
+                        file.SaveAs(path);
+                        catalogue.Image = file.FileName;
+                    }
+                    else
+                    {
+                        catalogue.Image = catalogueLogo;//gán lại ảnh cũ.
+                    }
                     rep.UpdateProductCatalogue(catalogue);
                     return RedirectToAction("Index");
                 }
