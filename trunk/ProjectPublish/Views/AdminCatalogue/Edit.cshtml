@@ -1,6 +1,6 @@
 ﻿@{
     ViewBag.Title = "Cập nhật hãng sản xuất";
-     Layout = "../Shared/_AdminLayout.cshtml";
+    Layout = "../Shared/_AdminLayout.cshtml";
 }
 @model Showroom.Models.Catalogue
 <!-- Plupload -->
@@ -15,22 +15,28 @@
         <h3><i class="icon-edit"></i>Cập nhật hãng sản xuất</h3>
     </div>
     <div class="box-content">
-        @using (Html.BeginForm())
+        @using (Html.BeginForm("Edit", "AdminCatalogue", FormMethod.Post, new { enctype = "multipart/form-data", @class = "form-horizontal" }))
         {
             @Html.HiddenFor(item => item.Id)
-@*<div class="controls" style="display: none">
-                <div class="fileupload fileupload-new" data-provides="fileupload">
-                    <div class="fileupload-new thumbnail">
-                        @if (Model.Image !=""){<img  src="/Images/Catalogue/@Model.Image"/>}
-                        else{<img src="http://www.placehold.it/200x150/EFEFEF/AAAAAA&amp;text=no+image" />}
+            <div class="control-group">
+                <label for="" class="control-label">@Html.LabelFor(item => item.Image)<span class="red">(140 X 140)</span></label>
+                <div class="controls">
+                    @if (String.IsNullOrEmpty(Model.Image))
+                    {   <div class="box_image">
+                        <image src="/Images/no_image.jpg" id="logoCatalogue" />
                     </div>
-                    <div class="fileupload-preview fileupload-exists thumbnail" style="max-width: 200px; max-height: 150px; line-height: 20px;"></div>
-                    <div>
-                        <span class="btn btn-file"><span class="fileupload-new">Select image</span><span class="fileupload-exists">Change</span><input type="file" name="Image"/></span>
-                        <a href="#" class="btn fileupload-exists" data-dismiss="fileupload">Remove</a>
-                    </div>
+                    }
+                    else
+                    {
+                        <div class="box_image">
+                            <img src="/Images/Catalogue/@Model.Id/@Model.Image" id="logoCatalogue" />
+                        </div>
+                    }
+                    <div class="clearfix"></div>
+                    <input type="file" name="Image" id="Image" value="" />
+                    @Html.ValidationMessageFor(item => item.Image)
                 </div>
-            </div>*@
+            </div>
             <div class="control-group">
                 <label for="" class="control-label">@Html.LabelFor(item => item.Name)</label>
                 <div class="controls">
@@ -39,7 +45,7 @@
                 </div>
             </div>
             <div class="control-group">
-                <label for="" class="control-label">@Html.LabelFor(item => item.Priority)</label>
+                <label for="" class="control-label">@Html.LabelFor(item => item.Priority)<span class="red">(Nhập số)</span></label>
                 <div class="controls">
                     @Html.TextBoxFor(item => item.Priority, new { @class = "input-xlarge" })
                 </div>
@@ -47,13 +53,13 @@
             <div class="control-group">
                 <label for="" class="control-label">@Html.LabelFor(item => item.Actflg)</label>
                 <div class="controls">
-                   @Html.RadioButtonFor(item => item.Actflg, 'A',new { @checked = "checked", @group="gActflg"}) Hiển thị  
-                   @Html.RadioButtonFor(item => item.Actflg, 'I',"gActflg") Ẩn
+                    @Html.RadioButtonFor(item => item.Actflg, 'A', new { @checked = "checked", @group = "gActflg" }) Hiển thị  
+                   @Html.RadioButtonFor(item => item.Actflg, 'I', "gActflg") Ẩn
                 </div>
             </div>
             <div class="form-actions">
                 <button type="submit" class="btn btn-primary">Lưu </button>
-                <button type="button" class="btn" id="btnReset">Hủy </button>
+                @Html.ActionLink("Hủy", "Index", new { Id = 0 }, new { @class = "btn" })
             </div>
         }
     </div>

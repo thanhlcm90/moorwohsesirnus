@@ -4147,7 +4147,7 @@ ul > li.satgreen {
         }
 
             .gallery > li > a img {
-                float:left;
+                float: left;
                 width: 148px;
                 height: 150px;
             }
@@ -10237,12 +10237,15 @@ body.error {
                 body.error .wrapper .input-append .btn:hover {
                     background: #1b67af;
                 }
+
 .no-padding {
-    padding:0px !important;
+    padding: 0px !important;
 }
+
 h1, h2, h3, h4, h5, h6 {
     font-family: Arial, sans-serif;
 }
+
 #thumbImage {
     max-width: 200px;
     max-height: 150px;
@@ -10250,11 +10253,30 @@ h1, h2, h3, h4, h5, h6 {
     border: 1px solid #cccccc;
     clear: both;
 }
+
 .field-validation-error {
     font-weight: bold;
     color: #B94A48;
 }
+
 .input-validation-error {
     border-color: #B94A48 !important;
     box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset !important;
+}
+
+.box_image {
+    border: 2px solid #c0c0c0;
+    width: 160px;
+    height: 80px;
+    margin-bottom: 3px;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+}
+.box_image img {
+     width: 160px;
+    height: 80px;
+}
+.red {
+    color: red;
 }

@@ -39,7 +39,7 @@
                 <div class="control-group">
                     <label for="" class="control-label">@Html.LabelFor(item => item.Views)</label>
                     <div class="controls">
-                        @Html.TextBoxFor(item => item.Views, new { @class = "input-xlarge" , @readonly="readonly" })
+                        @Html.TextBoxFor(item => item.Views, new { @class = "input-xlarge", @readonly = "readonly" })
                     </div>
                 </div>
             </div>
@@ -61,11 +61,15 @@
                     <div class="controls">
                         @if (String.IsNullOrEmpty(Model.Image))
                         {
-                            <image src="/Images/no_image.jpg" id="thumbImage" />
+                            <div class="box_image">
+                                <image src="/Images/no_image.jpg" id="thumbImage" width="160" height="140" />
+                            </div>
                         }
                         else
                         {
-                            <img src="/Images/News/@Model.Id/@Model.Image" id="thumbImage"/>
+                            <div class="box_image">
+                                <img src="/Images/News/@Model.Id/@Model.Image" id="thumbImage" width="160" height="140"/>
+                            </div>
                         }
                         <div class="clearfix"></div>
                         <input type="file" name="Image" id="Image" value="" />
@@ -90,7 +94,7 @@
                 </div>
                 <div class="form-actions">
                     <button type="submit" class="btn btn-primary">Lưu </button>
-                    <button type="button" class="btn">Hủy </button>
+                     @Html.ActionLink("Hủy", "Index", new { Id = 0 }, new { @class = "btn" })
                 </div>
             </div>
         }

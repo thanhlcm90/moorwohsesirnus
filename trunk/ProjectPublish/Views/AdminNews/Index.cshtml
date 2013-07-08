@@ -1,7 +1,7 @@
 ﻿@model List<Showroom.Models.News>
 @{
     ViewBag.Title = "Danh sách tin tức";
-     Layout = "../Shared/_AdminLayout.cshtml";
+    Layout = "../Shared/_AdminLayout.cshtml";
 }
 
 <!-- dataTables -->
@@ -35,11 +35,17 @@
                 {
                     <tr>
                         <td>
-                            @if (!string.IsNullOrEmpty(@item.Image)){
-                                <img src="/Images/News/@item.Id/@item.Image" width="90" height="90" alt="@item.TitleEn" />
-                                }
-                            else{
-                                <img src="/Images/no_image.jpg" width="90" height="90" alt="@item.TitleEn" />
+                            @if (!string.IsNullOrEmpty(@item.Image))
+                            {
+                                <div class="box_image">
+                                    <img src="/Images/News/@item.Id/@item.Image" width="90" height="90" alt="@item.TitleEn" />
+                                </div>
+                            }
+                            else
+                            {
+                                <div class="box_image">
+                                    <img src="/Images/no_image.jpg" width="90" height="90" alt="@item.TitleEn" />
+                                </div>
                             }
                         </td>
                         <td>@item.Title</td>

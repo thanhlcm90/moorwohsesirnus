@@ -78,7 +78,7 @@ namespace SunriseShowroom.Controllers
                         Directory.CreateDirectory(imageFolder);
                     }
                     string path = System.IO.Path.Combine(imageFolder, System.IO.Path.GetFileName(file.FileName));
-                    if (!System.IO.File.Exists(path) && file.ContentLength > 0)
+                    if (file.ContentLength > 0)
                     {
                         //Xóa ảnh cũ
                         Code.Utilities.DeleteFiles(imageFolder);
@@ -101,7 +101,7 @@ namespace SunriseShowroom.Controllers
                         Directory.CreateDirectory(imageFolder);
                     }
                     string path = System.IO.Path.Combine(imageFolder, System.IO.Path.GetFileName(file.FileName));
-                    if (!System.IO.File.Exists(path) && file.ContentLength > 0)
+                    if (file.ContentLength > 0)
                     {
                         //Xóa ảnh cũ
                         Code.Utilities.DeleteFiles(imageFolder);
