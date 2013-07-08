@@ -45,6 +45,7 @@ namespace SunriseShowroom.Controllers
             else //id =0 là thêm mới product
             {
                 news = new News();
+                news.PostDate = DateTime.Now;
             }
             return View(news);
         }
