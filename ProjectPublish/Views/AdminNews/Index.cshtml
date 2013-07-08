@@ -34,7 +34,14 @@
                 @foreach (var item in Model)
                 {
                     <tr>
-                        <td>@item.Image</td>
+                        <td>
+                            @if (!string.IsNullOrEmpty(@item.Image)){
+                                <img src="/Images/News/@item.Id/@item.Image" width="90" height="90" alt="@item.TitleEn" />
+                                }
+                            else{
+                                <img src="/Images/no_image.jpg" width="90" height="90" alt="@item.TitleEn" />
+                            }
+                        </td>
                         <td>@item.Title</td>
                         <td>@item.PostDate</td>
                         <td>@if (item.Actflg == 'A')
