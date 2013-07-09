@@ -31,7 +31,7 @@
                         <div class="comments-wrap">
                             <h4><i class="icon-comments"></i>Bài viết liên quan</h4>
                             <ul>
-                                @foreach (var same in lstNewsSame.OrderByDescending(item => item.PostDate).Take(5))
+                                @foreach (var same in lstNewsSame.OrderByDescending(item => item.PostDate).Take(5).Where(same => same.Actflg == 'A'))
                                 {
                                     if (same.Id != Model.Id)
                                     {                                    
@@ -65,7 +65,7 @@
                 </h2>
                 <div class="service-wrap">
                     <ul class="sidebar-post">
-                        @foreach (var topN in lstTopNews.OrderByDescending(topN => topN.PostDate).Take(3))
+                        @foreach (var topN in lstTopNews.OrderByDescending(topN => topN.PostDate).Take(3).Where(topN => topN.Actflg == 'A'))
                         {
                             var NoimgPathN = "/images/no_image.gif";
                             var strImage = string.Empty;
