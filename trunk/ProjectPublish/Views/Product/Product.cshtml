@@ -73,13 +73,12 @@
             </div>
             <!-----------------------END XE MỚI CẬP NHẬT----------------------->
             <div class="pagination warpPaging">
-
-                @for (int i = CurrenPage - 1; (i > 0 && i >= CurrenPage - 2); i--)
+                @for (int i = CurrenPage - 1; (i > 0 && i >= CurrenPage - 1); i--)
                 {
                     var query = "/san-pham/"+ @Model.NameEn + "/" + CatalogueId + "/" + i;
                     <a href="@query">@i</a>
                 }
-                @for (int i = CurrenPage; (i <= maxPage && i <= CurrenPage + 2); i++)
+                @for (int i = CurrenPage; (i <= maxPage && i <= CurrenPage + 1); i++)
                 {
                     var query = "/san-pham/" + @Model.NameEn + "/" + CatalogueId + "/" + i;
                     <a href="@query">@i</a>
