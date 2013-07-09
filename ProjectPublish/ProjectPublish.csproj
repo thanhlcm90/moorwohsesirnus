@@ -1269,6 +1269,9 @@
     <Content Include="css\font\fontawesome-webfont.eot%40" />
     <Content Include="css\font\fontawesome-webfont.ttf" />
     <Content Include="css\font\fontawesome-webfont.woff" />
+    <Content Include="Scripts\Admin\Scripts\eakroko.min.js.map">
+      <DependentUpon>eakroko.js</DependentUpon>
+    </Content>
     <None Include="Scripts\Admin\Scripts\jquery.validate-vsdoc.js" />
     <Content Include="Scripts\Admin\Scripts\jquery.validate.js" />
     <Content Include="Scripts\Admin\Scripts\jquery.validate.min.js" />
@@ -1432,7 +1435,6 @@
     <Content Include="Views\AdminProduct\EditProductProperties.cshtml" />
     <Content Include="Views\AdminProduct\Index.cshtml" />
     <Content Include="Scripts\js\Descr.WD3" />
-    <Content Include="Views\AdminAccount\ErrorPermission.cshtml" />
     <Content Include="Views\AdminAccount\Index.cshtml" />
     <Content Include="Views\Product\DetailProduct.cshtml">
       <SubType>Code</SubType>

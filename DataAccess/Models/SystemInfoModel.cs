@@ -15,5 +15,6 @@ namespace Showroom.Models
         public static String FACEBOOK_INFO = "facebook_info";
         public static String YAHOO_INFO = "yahoo_info";
         public static String SKYPE_INFO = "skype_info";
+        public static String YOUTUBE_INFO = "youtube_info";
     }
 }

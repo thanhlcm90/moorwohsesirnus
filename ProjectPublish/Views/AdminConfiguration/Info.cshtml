@@ -1,7 +1,7 @@
 ﻿@model List<Showroom.Models.SystemInfo>
 @{
     ViewBag.Title = "Thông tin hệ thống";
-     Layout = "../Shared/_AdminLayout.cshtml";
+    Layout = "../Shared/_AdminLayout.cshtml";
     String CONTACT_INFO = (from p in Model where p.Code == Showroom.Models.SystemInfo.CONTACT_INFO select p.Value).SingleOrDefault();
     String EMAIL_INFO = (from p in Model where p.Code == Showroom.Models.SystemInfo.EMAIL_INFO select p.Value).SingleOrDefault();
     String PHONE_INFO = (from p in Model where p.Code == Showroom.Models.SystemInfo.PHONE_INFO select p.Value).SingleOrDefault();
@@ -9,7 +9,13 @@
     String TWITTER_INFO = (from p in Model where p.Code == Showroom.Models.SystemInfo.TWITTER_INFO select p.Value).SingleOrDefault();
     String SKYPE_INFO = (from p in Model where p.Code == Showroom.Models.SystemInfo.SKYPE_INFO select p.Value).SingleOrDefault();
     String YAHOO_INFO = (from p in Model where p.Code == Showroom.Models.SystemInfo.YAHOO_INFO select p.Value).SingleOrDefault();
+    String YOUTUBE_INFO = (from p in Model where p.Code == Showroom.Models.SystemInfo.YOUTUBE_INFO select p.Value).SingleOrDefault();
 }
+
+<!-- TagsInput -->
+<script src="@Url.Content("~/Scripts/Admin/Scripts/plugins/tagsinput/jquery.tagsinput.min.js")"></script>
+<!-- Tagsinput -->
+<link rel="stylesheet" href="@Url.Content("~/Content/Admin/css/plugins/tagsinput/jquery.tagsinput.css")">
 
 <div class="box box-color box-bordered">
     <div class="box-title">
@@ -37,24 +43,30 @@
                         @Html.TextBox("FACEBOOK_INFO", FACEBOOK_INFO, new { @class = "input-xlarge" })
                     </div>
                 </div>
-            </div>
-            <div class="span6">
                 <div class="control-group">
                     <label for="TWITTER_INFO" class="control-label">Twitter: </label>
                     <div class="controls">
                         @Html.TextBox("TWITTER_INFO", TWITTER_INFO, new { @class = "input-xlarge" })
                     </div>
                 </div>
+            </div>
+            <div class="span6">
                 <div class="control-group">
                     <label for="SKYPE_INFO" class="control-label">Skype: </label>
                     <div class="controls">
-                        @Html.TextBox("SKYPE_INFO", SKYPE_INFO, new { @class = "input-xlarge" })
+                        @Html.TextBox("SKYPE_INFO", SKYPE_INFO, new { @class = "tagsinput" })
                     </div>
                 </div>
                 <div class="control-group">
                     <label for="YAHOO_INFO" class="control-label">Yahoo: </label>
                     <div class="controls">
-                        @Html.TextBox("YAHOO_INFO", YAHOO_INFO, new { @class = "input-xlarge" })
+                        @Html.TextBox("YAHOO_INFO", YAHOO_INFO, new { @class = "tagsinput" })
+                    </div>
+                </div>
+                <div class="control-group">
+                    <label for="YOUTUBE_INFO" class="control-label">Youtube: </label>
+                    <div class="controls">
+                        @Html.TextBox("YOUTUBE_INFO", YOUTUBE_INFO, new { @class = "input-xlarge" })
                     </div>
                 </div>
             </div>
