@@ -27,7 +27,8 @@
                         }
                         else
                         {
-                            strImage = item.Image;
+                            strImage = "/images/News/" + item.Id + "/" + item.Image;
+                            //strImage = item.Image;
                         } 
                 	<section class="blog-wrap">
                         <div class="shadow-wrapper">
@@ -38,7 +39,7 @@
                                         <a class="link-img" href="/tin-tuc/@item.TitleEn-@item.Id"><i class="icon-link"></i></a>
                                     </div>
                                 </div>
-                                <div class="mosaic-backdrop" style="display: block;"><img class="max-image" src="@strImage" alt="" /></div>    
+                                <div class="mosaic-backdrop" style="display: block;"><img class="max-image" src="@strImage" alt="@item.TitleEn" width="598" height="200" style="height:200px !important" /></div>    
                             </div>
                             <div class="blog-head">                	
                                 <h3 class="top-mar"><a href="/tin-tuc/@item.TitleEn-@item.Id">@clsHelper.CatChuoi(item.Title, 70)</a></h3>
@@ -47,19 +48,19 @@
                                 <div style="float:left;">@item.PostDate.ToString("dd/MM/yyyy")</div>
                                 <span><i class="icon-comment"></i> <a>@item.Views</a></span>
                             </div>
-                            <p>@Html.Raw(clsHelper.CatChuoi(item.Detail, 120))</p>
+                            <p>@HttpUtility.HtmlDecode(clsHelper.CatChuoi(clsHelper.ClearTagHTML(item.Detail),120))</p>
                             <p><a href="/tin-tuc/@item.TitleEn-@item.Id" class="button-dark btn">Chi tiết</a></p>
                         </div>	
                     </section>
                     }
                     <div class="pagination">
                         <!--<a href="#"><i class="icon-chevron-left"></i></a>-->
-                        @for (int i = CurrenPage - 1; (i > 0 && i >= CurrenPage - 2); i--)
+                        @for (int i = CurrenPage - 1; (i > 0 && i >= CurrenPage - 1); i--)
                         {
                             var query = "/tin-tuc/danh-sach/"+ @Model.NameEn + "/" +CatalogueId + "-" + i;
                             <a href="@query">@i</a>
                         }
-                        @for (int i = CurrenPage; (i <= maxPage && i <= CurrenPage + 2); i++)
+                        @for (int i = CurrenPage; (i <= maxPage && i <= CurrenPage + 1); i++)
                         {
                             var query = "/tin-tuc/danh-sach/" + @Model.NameEn + "/" + CatalogueId + "-" + i;
                             <a href="@query">@i</a>
@@ -86,15 +87,15 @@
                                 }
                                 else
                                 {
-                                    strImage = topN.Image;
+                                    strImage = "/images/News/" + topN.Id + "/" + topN.Image;
                                 }                                 
                             <li>
                                 <div class="imgborder">
                                     <a href="/tin-tuc/@topN.TitleEn-@topN.Id"><img src="@strImage" alt=""></a>
                                 </div>
                                 <div class="recent_txt">
-                                    <a href="/tin-tuc/@topN.TitleEn-@topN.Id">@clsHelper.CatChuoi(topN.Title,50)</a>
-                                    <p>@Html.Raw(clsHelper.CatChuoi(topN.Detail, 80))</p>
+                                    <a href="/tin-tuc/@topN.TitleEn-@topN.Id" style="font-weight:bold;">@clsHelper.CatChuoi(topN.Title,50)</a>
+                                    <p style="font-weight:normal !important;">@HttpUtility.HtmlDecode(clsHelper.CatChuoi(clsHelper.ClearTagHTML(topN.Detail),80))</p>
                                     <p class="date"><i class="icon-calendar"></i>@topN.PostDate.ToString("dd/MM/yyyy")</p>
                                 </div>
                                 <div class="clearfix"></div>
@@ -112,7 +113,7 @@
                         <ul class="sidebar-category">
                             @foreach(var cn in lstCatalogueNews)
                             {
-                                <li><a href="/News/NewsbyCatalogue/@cn.Id/1"><i class="icon-chevron-right"></i>@cn.Name</a></li>
+                                <li><a href="/tin-tuc/danh-sach/@cn.NameEn/@cn.Id-1"><i class="icon-chevron-right"></i>@cn.Name</a></li>
                             }
                         </ul>
                     </div>

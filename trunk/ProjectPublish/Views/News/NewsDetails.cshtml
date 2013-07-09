@@ -54,7 +54,7 @@
                     <ul class="sidebar-category">
                         @foreach (var cn in lstCatalogueNews)
                         {
-                            <li><a href="/News/NewsbyCatalogue?id=@cn.Id&page=1"><i class="icon-chevron-right"></i>@cn.Name</a></li>
+                            <li><a href="/tin-tuc/danh-sach/@cn.NameEn/@cn.Id-1"><i class="icon-chevron-right"></i>@cn.Name</a></li>
                         }
                     </ul>
                 </div>
@@ -75,7 +75,7 @@
                             }
                             else
                             {
-                                strImage = topN.Image;
+                                strImage = "/images/News/" + topN.Id + "/" + topN.Image;
                             }                             
                             <li>
                                 <div class="imgborder">
@@ -83,8 +83,8 @@
                                         <img src="@strImage" alt=""></a>
                                 </div>
                                 <div class="recent_txt">
-                                    <a href="/tin-tuc/@topN.TitleEn-@topN.Id">@Html.Raw(clsHelper.CatChuoi(topN.Title, 50))</a>
-                                    <p>@Html.Raw(clsHelper.CatChuoi(topN.Detail, 80))</p>
+                                    <a href="/tin-tuc/@topN.TitleEn-@topN.Id" style="font-weight:bold;">@Html.Raw(clsHelper.CatChuoi(topN.Title, 50))</a>
+                                    <p>@HttpUtility.HtmlDecode(clsHelper.CatChuoi(clsHelper.ClearTagHTML(topN.Detail),80))</p>
                                     <p class="date"><i class="icon-calendar"></i>@topN.PostDate.ToString("dd/MM/yyyy")</p>
                                 </div>
                                 <div class="clearfix"></div>
