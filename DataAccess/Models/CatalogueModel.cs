@@ -24,9 +24,11 @@ namespace Showroom.Models
             public string NameEn { get; set; }
 
             [Display(Name = "Logo")]
+            [Required(ErrorMessage = "Bạn phải chọn ảnh Logo.")]
             public string Image { get; set; }
 
             [Display(Name = "Độ ưu tiên")]
+            [RegularExpression(@"^\d+$", ErrorMessage = "Bạn phải nhập vào 1 số nguyên.")]
             public int? Priority { get; set; }
 
             [Display(Name = "Trạng thái")]
