@@ -46,12 +46,12 @@ namespace SunriseShowroom.Controllers
                     }
                     else
                     {
-                        return RedirectToAction("Index", "Admin");
+                        return RedirectToAction("Logon", "AdminAccount");
                     }
                 }
                 else
                 {
-                    ModelState.AddModelError("", "The user name or password provided is incorrect.");
+                    ModelState.AddModelError("", "Tên đăng nhập hoặc mật khẩu không chính xác.");
                 }
             }
 
@@ -97,7 +97,7 @@ namespace SunriseShowroom.Controllers
                 if (createStatus == MembershipCreateStatus.Success)
                 {
                     FormsAuthentication.SetAuthCookie(model.UserName, false /* createPersistentCookie */);
-                    return RedirectToAction("Index", "Admin");
+                    return RedirectToAction("Index", "AdminAccount");
                 }
                 else
                 {
@@ -147,7 +147,7 @@ namespace SunriseShowroom.Controllers
                 }
                 else
                 {
-                    ModelState.AddModelError("", "The current password is incorrect or the new password is invalid.");
+                    ModelState.AddModelError("", "Mật khẩu hiện tại không chính xác hoặc mật khẩu mới không phù hợp.");
                 }
             }
 

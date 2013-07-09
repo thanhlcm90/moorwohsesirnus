@@ -20,7 +20,7 @@ namespace SunriseShowroom.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Info(String CONTACT_INFO, String EMAIL_INFO, String FACEBOOK_INFO, String PHONE_INFO, String SKYPE_INFO, String TWITTER_INFO, String YAHOO_INFO)
+        public ActionResult Info(String CONTACT_INFO, String EMAIL_INFO, String FACEBOOK_INFO, String PHONE_INFO, String SKYPE_INFO, String TWITTER_INFO, String YAHOO_INFO, String YOUTUBE_INFO)
         {
             List<SystemInfo> list = new List<SystemInfo>();
             list.Add(new SystemInfo { Code = SystemInfo.CONTACT_INFO, Value = CONTACT_INFO });
@@ -30,6 +30,7 @@ namespace SunriseShowroom.Controllers
             list.Add(new SystemInfo { Code = SystemInfo.SKYPE_INFO, Value = SKYPE_INFO });
             list.Add(new SystemInfo { Code = SystemInfo.TWITTER_INFO, Value = TWITTER_INFO });
             list.Add(new SystemInfo { Code = SystemInfo.YAHOO_INFO, Value = YAHOO_INFO });
+            list.Add(new SystemInfo { Code = SystemInfo.YOUTUBE_INFO, Value = YOUTUBE_INFO });
             rep.UpdateSystemInfo(list);
             return View(list);
         }
