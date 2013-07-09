@@ -4,7 +4,7 @@
 
     var lstCatalogue = rep.GetProductCatalogueList();
     var lstProduct = rep.GetProductsList();
-    
+
 
     var listCatalogueDrop = (from p in lstCatalogue
                              select new SelectListItem
@@ -22,36 +22,22 @@
     <div class="titleSearchBox">
         <span>TÌM KIẾM XE</span>
     </div>
-    @using (Html.BeginForm("SearchResault", "Home", FormMethod.Get))
+    @using (Html.BeginForm("SearchProduct", "Home", FormMethod.Get))
     {
         <ul class="searchtool" id="searchtool">
             <li>
-                @Html.DropDownList("CID", (IList<SelectListItem>)listCatalogueDrop, "----- Hãng xe -----", new { onchange =""})
+                @Html.DropDownList("CID", (IList<SelectListItem>)listCatalogueDrop, "----- Hãng xe -----")
             </li>
             <li>
-                <input type="text" name="keyword" id="keyword" placeholder="Từ khóa"   value=""/>
-            </li>
-            <li>
-            <li>
-                <select id="priceFrom" name="priceFrom">
-                    <option value="-1">----Giá từ----</option>
-                    <option value="200000000">200 triệu</option>
-                    <option value="300000000">300 triệu</option>
-                    <option value="400000000">400 triệu</option>
-                    <option value="500000000">500 triệu</option>
-                    <option value="600000000">600 triệu</option>
-                    <option value="700000000">700 triệu</option>
+                <select id="ModelID" name="ModelID" disabled="disabled">
+                    <option value="tat-ca">------ Model ------</option>
                 </select>
             </li>
             <li>
-                <select id="priceTo" name="priceTo">
-                    <option value="-1">----Giá đến----</option>
-                    <option value="200000000">200 triệu</option>
-                    <option value="300000000">300 triệu</option>
-                    <option value="400000000">400 triệu</option>
-                    <option value="500000000">500 triệu</option>
-                    <option value="600000000">600 triệu</option>
-                    <option value="700000000">700 triệu</option>
+                <select id="TYPEID" name="TYPEID">
+                    <option value="tat-ca">----Tình trạng----</option>
+                    <option value="xe-cu">Xe cũ</option>
+                    <option value="xe-moi">Xe mới</option>
                 </select>
             </li>
             <li>
@@ -60,6 +46,47 @@
             </li>
         </ul>
     }
+    <script type='text/javascript' src='/Scripts/js/jquery.min.js'></script>
+    <script type="text/javascript">
+        $('#CID').change(function () {
+            LoadModelByCatalogue(this.value);
+        });
+
+        function LoadModelByCatalogue(cataID) {
+
+            $.ajax({
+                type: "POST",
+                url: '@Url.Action("LoadModelByCatalogueId", "Home")',
+                data: "{'cataID':'" + cataID + "'}",
+                contentType: "application/json; charset=utf-8",
+                dataType: 'json',
+                cache: false,
+                success: function (data) {
+                    $('#ModelID').get(0).options.length = 0;
+                    $('#ModelID').get(0).options[0] = new Option("------ Model ------", "tat-ca");
+
+                    $.map(data, function (item) {
+                        $('#ModelID').get(0).options[$('#ModelID').get(0).options.length] = new Option(item.Display, item.Value);
+                    });
+                    $('#ModelID').removeAttr("disabled");
+                },
+                error: function () {
+                    alert("Có lỗi trong quá trình xử lý");
+                }
+            });
+        }
+
+        $(document).ready(function () {
+            if ($('#CID').val() != "") {
+                var cataId = $('#CID').val();
+                LoadModelByCatalogue(cataId);
+                $('#ModelID').removeAttr("disabled");
+            } else {
+                $('#ModelID').attr("disabled", "disabled");
+            }
+            console.log($('#ModelID').attr("disabled"));
+        });
+    </script>
 </div>
 <div class="shadow-wrapper">
     <div class="titleBox">
