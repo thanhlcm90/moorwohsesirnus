@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Web;
 namespace Common
 {
@@ -56,6 +57,17 @@ namespace Common
             }
             return list;
         }
+
+        /// <summary>
+        /// Xóa bỏ các thẻ html
+        /// </summary>
+        /// <param name="str"></param>
+        /// <returns></returns>
+        public static string ClearTagHTML(string str)
+        {
+            return Regex.Replace(str, @"<(.|\n)*?>", string.Empty);
+        }
+
 
         /// <summary>
         /// Get Route
