@@ -17,7 +17,7 @@
             	<!--Blog Wrap-->
                 <div class="span8">
 
-                    @foreach (var item in lstNews.OrderByDescending(item => item.PostDate))
+                    @foreach (var item in lstNews.OrderByDescending(item => item.PostDate).Where(item => item.Actflg == 'A'))
                     {
                         var NoimgPathN = "/images/noImage.jpg";
                         var strImage = string.Empty;
@@ -77,7 +77,7 @@
                     </h2>
                     <div class="service-wrap">
                         <ul class="sidebar-post">
-                            @foreach (var topN in lstTopNews.OrderByDescending(topN => topN.PostDate).Take(3))
+                            @foreach (var topN in lstTopNews.OrderByDescending(topN => topN.PostDate).Take(3).Where(topN => topN.Actflg == 'A'))
                             {
                                 var NoimgPathN = "/images/no_image.gif";
                                 var strImage = string.Empty;
