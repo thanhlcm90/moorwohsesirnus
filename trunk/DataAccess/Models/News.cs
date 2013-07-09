@@ -22,6 +22,7 @@ namespace Showroom.Models
             public string TitleEn { get; set; }
 
             [Display(Name = "Ảnh Thumb")]
+            [Required(ErrorMessage = "Bạn chưa chọn ảnh thumb.")]
             [StringLength(255)]
             public string Image { get; set; }
             
@@ -41,6 +42,7 @@ namespace Showroom.Models
             public char? ShowSlide { get; set; }
 
             [Display(Name = "Chuyên mục")]
+            [Required(ErrorMessage = "Bạn phải chọn chuyên mục.")]
             public int? CatelogueId { get; set; }
 
             [Display(Name = "Trạng thái")]
