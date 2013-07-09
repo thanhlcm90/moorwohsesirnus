@@ -1,0 +1,43 @@
+﻿@using Common
+@{
+    ViewBag.Title = "Quản lý thông tin dịch vụ";
+    Layout = "../Shared/_AdminLayout.cshtml";
+
+    var content = clsHelper.ReadFile(ProjectPublish.Controllers.AdminSevirceController.basConst.Linkservices);
+}
+<script src="@Url.Content("~/Scripts/Admin/Scripts/fckeditor/fckeditor.js")"></script>
+<script src="@Url.Content("~/Scripts/Admin/Scripts/jquery-1.2.6.pack.js")"></script>
+<script src="@Url.Content("~/Scripts/Admin/Scripts/fckeditorapi.js")"></script>
+
+<div class="box box-color box-bordered">
+    <div class="box-title">
+        <h3><i class="icon-edit"></i>Cập nhật nội dung Dịch Vụ</h3>
+    </div>
+    @using (Html.BeginForm("Index", "AdminSevirce", FormMethod.Post))
+    {
+            
+        <div class="span12">
+            <div class="control-group">
+                <label for="" class="control-label">Nội Dung:</label>
+                <div class="controls">
+                    @Html.TextArea("Detail",@content, new { @class = "input-block-level" })
+                </div>
+            </div>
+            <div class="form-actions">
+                <button type="submit" class="btn btn-primary">Lưu </button>
+                @*@Html.ActionLink("Hủy", "Index", new { Id = 0 }, new { @class = "btn" })*@
+            </div>
+        </div>
+    }
+</div>
+
+<script type="text/javascript">
+    window.onload = function () {
+        var oFCKeditor = new FCKeditor('Detail');
+        oFCKeditor.BasePath = "/Scripts/Admin/Scripts/fckeditor/";
+        oFCKeditor.Height = 600;
+        oFCKeditor.Width = 940;
+        oFCKeditor.ReplaceTextarea();
+    };
+  
+</script>
