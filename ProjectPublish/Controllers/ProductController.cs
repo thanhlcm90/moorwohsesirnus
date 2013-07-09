@@ -11,7 +11,7 @@ namespace Frontend.Controllers
     public class ProductController : Controller
     {
         ShowroomRepository rep = new ShowroomRepository();
-        int maxProductInPage = 20;
+        int maxProductInPage = 21;
         //
         // GET: /Product/
 
