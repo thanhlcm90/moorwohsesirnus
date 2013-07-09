@@ -3,6 +3,8 @@
     ShowroomRepository rep = new ShowroomRepository();
 
     var lstCatalogue = rep.GetProductCatalogueList();
+    var lstProduct = rep.GetProductsList();
+    
 
     var listCatalogueDrop = (from p in lstCatalogue
                              select new SelectListItem
@@ -10,7 +12,10 @@
                                  Value = p.Id.ToString(),
                                  Text = p.Name,
                              }).ToList();
+                             
+                             
     
+
 }
 
 <div class="shadow-wrapper searchtitle" id="searchbox">
@@ -21,7 +26,7 @@
     {
         <ul class="searchtool" id="searchtool">
             <li>
-                @Html.DropDownList("CID", (IList<SelectListItem>)listCatalogueDrop)
+                @Html.DropDownList("CID", (IList<SelectListItem>)listCatalogueDrop, "----- Hãng xe -----", new { onchange =""})
             </li>
             <li>
                 <input type="text" name="keyword" id="keyword" placeholder="Từ khóa"   value=""/>
