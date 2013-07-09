@@ -1,4 +1,5 @@
 ﻿@using Common
+@using Showroom.Models.DataAccess;
 @{
     ViewBag.Title = "Sunrise Auto - Việt Nam";
     var lstProduct = (List<Showroom.Models.Product>)ViewBag.ProductList;
@@ -68,15 +69,15 @@
             <div id="Partner" class="span12" style="margin-left:0px;">
                 <div class="image_carousel">
                     <div id="foo2">
-                       @{
-                           var imagePartnerPath = Server.MapPath(@"~/Images/Slide/Bottom");
-                           var imagePartnerList = new System.Collections.ArrayList();
-                           imagePartnerList = clsHelper.GetImageInFolder(imagePartnerPath, "Images/Slide/Bottom");
-                           for (var k = 0; k < imagePartnerList.Count;k++)
+                        @{
+                            ShowroomRepository rep = new ShowroomRepository();
+                            var lstCatalogue = rep.GetProductCatalogueList();
+                            for (var k = 0; k < lstCatalogue.Count(); k++)
                            {
-                               <img src="@imagePartnerList[k]" alt="basketball" width="140" height="140" />
+                               <a href="/san-pham/@lstCatalogue[k].NameEn/@lstCatalogue[k].Id/1" title="Xem xe @lstCatalogue[k].Name"><img src="/Images/Catalogue/@lstCatalogue[k].Id/@lstCatalogue[k].Image" alt="basketball" width="140" height="140" /></a>
                            }
-                       }
+                            
+                        }
                     </div>
                     <div class="clearfix"></div>
                     <a class="prev" id="foo2_prev" href="#"><span>prev</span></a>
