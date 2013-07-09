@@ -59,8 +59,7 @@
                                 </div>
                             </div>
                             <div class="port3-head">
-                                <h3><a href="/san-pham/chi-tiet/@m.NameEn-@m.Id">@m.Name</a></h3>
-                                <p>Giá:@Convert.ToDouble(m.Price).ToString("N0").Replace(",", ".")</p>
+                               <h5><a href="/san-pham/chi-tiet/@m.NameEn-@m.Id">@m.Name</a></h5>
                             </div>
                         </div>
                     </div>
@@ -73,6 +72,11 @@
 
             </div>
             <!-----------------------END XE MỚI CẬP NHẬT----------------------->
+            <!-----------------------------PRODUCT CATALOGUE----------------------------->
+            <div id="Partner" class="span12" style="margin-left: 0px;">
+                 @Html.Partial("~/Views/Shared/_CatalogueSlide.cshtml")
+            </div>
+            <!----------------------------- END PRODUCT CATALOGUE----------------------------->
         </div>
     </section>
     <!-- END NỘI DUNG TRANG CHỦ-->

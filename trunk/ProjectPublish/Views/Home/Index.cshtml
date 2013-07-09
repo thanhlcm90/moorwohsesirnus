@@ -13,15 +13,15 @@
     <!-- NỘI DUNG TRANG CHỦ-->
     <section>
         <div class="container">
-            
+
             <!-----------------------MENU LEFT--------------------------------->
             <div class="colLeft span3 fleft">
-                    @Html.Partial("~/Views/Shared/_Left_Control.cshtml")
+                @Html.Partial("~/Views/Shared/_Left_Control.cshtml")
             </div>
             <!-----------------------END MENU LEFT----------------------------->
 
             <!-----------------------XE MỚI CẬP NHẬT--------------------------->
-            <div class="span9" id="boxNewProduct" style="margin-left:10px;">
+            <div class="span9" id="boxNewProduct" style="margin-left: 10px;">
 
                 <div class="shadow-wrapper searchtitle">
                     <div class="titleSearchBox">
@@ -29,12 +29,13 @@
                     </div>
                 </div>
 
-                @foreach (var m in lstProduct.Take(9)) {
+                @foreach (var m in lstProduct.Take(9))
+                {
                     var imageList = new System.Collections.ArrayList();
-                    var imagePath= Server.MapPath(@"~/Images/Product/" + m.Id +"");
-                    imageList = @clsHelper.GetImageInFolder(imagePath,"/Images/Product/"+m.Id);
+                    var imagePath = Server.MapPath(@"~/Images/Product/" + m.Id + "");
+                    imageList = @clsHelper.GetImageInFolder(imagePath, "/Images/Product/" + m.Id);
                     var NoimgPath = "/images/no_image.gif";
-                     var strImage = string.Empty;
+                    var strImage = string.Empty;
                     if (imageList.Count > 0)
                     {
                         strImage = imageList[0].ToString();
@@ -65,27 +66,11 @@
             </div>
             <!-----------------------END XE MỚI CẬP NHẬT----------------------->
 
-            <!-----------------------------PARTNER----------------------------->
-            <div id="Partner" class="span12" style="margin-left:0px;">
-                <div class="image_carousel">
-                    <div id="foo2">
-                        @{
-                            ShowroomRepository rep = new ShowroomRepository();
-                            var lstCatalogue = rep.GetProductCatalogueList();
-                            for (var k = 0; k < lstCatalogue.Count(); k++)
-                           {
-                               <a href="/san-pham/@lstCatalogue[k].NameEn/@lstCatalogue[k].Id/1" title="Xem xe @lstCatalogue[k].Name"><img src="/Images/Catalogue/@lstCatalogue[k].Id/@lstCatalogue[k].Image" alt="basketball" width="140" height="140" /></a>
-                           }
-                            
-                        }
-                    </div>
-                    <div class="clearfix"></div>
-                    <a class="prev" id="foo2_prev" href="#"><span>prev</span></a>
-                    <a class="next" id="foo2_next" href="#"><span>next</span></a>
-                    <div class="paginationCl" id="foo2_pag"></div>
-                </div>
+            <!-----------------------------PRODUCT CATALOGUE----------------------------->
+            <div id="Partner" class="span12" style="margin-left: 0px;">
+                 @Html.Partial("~/Views/Shared/_CatalogueSlide.cshtml")
             </div>
-            <!----------------------------- END PARTNER----------------------------->
+            <!----------------------------- END PRODUCT CATALOGUE----------------------------->
 
         </div>
     </section>
@@ -93,27 +78,6 @@
 
     <script type='text/javascript' src='/Scripts/js/jquery.min.js'></script>
     <script type="text/javascript" src="/Scripts/js/jquery.flexslider.js"></script>
-    <script type="text/javascript" src="/Scripts/js/jcarousel.js"></script>
-    <script type="text/javascript" src="/Scripts/js/jquery.carouFredSel.js"></script>
-    <script type="text/javascript" src="/Scripts/js/jquery.carouFredSel-6.2.1-packed.js"></script>
-    <script type="text/javascript">
-        $(function () {
-            $("#foo2").carouFredSel({
-                circular: false,
-                infinite: true,
-                auto: true,
-                prev: {
-                    button: "#foo2_prev",
-                    key: "left"
-                },
-                next: {
-                    button: "#foo2_next",
-                    key: "right"
-                },
-                pagination: "#foo2_pag"
-            });
-        });
-    </script>
-
+    
 </div>
 

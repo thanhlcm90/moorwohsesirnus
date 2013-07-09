@@ -20,8 +20,8 @@ Import Basic Files
 @import url("../images/nivo-slider/light/light.css"); /* Nivo Slider Light Style */
 
 .image_carousel { padding: 0px 0 15px 40px; position: relative;}
-.image_carousel {padding: 15px 40px; position: relative; width: 870px;}
-.image_carousel img { border: 1px solid #ccc; background-color: white; padding: 9px;  margin: 7px; display: block; float: left;}
+.image_carousel {padding: 15px 40px; position: relative; width: 860px;}
+.image_carousel img { border: 1px solid #ccc; background-color: white; padding: 6px;  margin: 8px; display: block; float: left;}
 a.prev, a.next { background: url(/images/miscellaneous_sprite.png) no-repeat transparent; width: 45px; height: 50px;display: block; position: absolute; top: 45px;}
 a.prev { left: -5px; background-position: 0 0;}
 a.prev:hover {background-position: 0 -50px;}
