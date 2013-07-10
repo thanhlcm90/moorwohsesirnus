@@ -50,6 +50,12 @@ namespace Frontend.Controllers
             return View();
         }
 
+
+        public ActionResult Services()
+        {
+            return View();
+        }
+
         /// <summary>
         /// Insert New Contact
         /// Author: ThuanNH
