@@ -6,6 +6,8 @@ using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Web;
+using System;
+
 namespace Common
 {
     public static class clsHelper
@@ -56,6 +58,50 @@ namespace Common
                 }
             }
             return list;
+        }
+
+        /// <summary>
+        /// Đọc nội dung của file
+        /// </summary>
+        /// <param name="strPath">đ</param>
+        /// <returns></returns>
+        public static string ReadFile(string strPath)
+        {
+
+            string strReturn = "";
+            try
+            {
+                // create reader & open file
+                using (StreamReader tr = new StreamReader(HttpContext.Current.Server.MapPath(strPath)))
+                {
+                    // read a line of text
+                    strReturn = tr.ReadToEnd();
+                    // close the stream
+                    tr.Close();
+                }
+            }
+            catch (Exception ex)
+            {
+                //string strContentLog = DateTime.Now.ToString() + "OSPortal\\ReadFile " + ex.ToString();
+            }
+            return strReturn;
+        }
+
+        /// <summary>
+        /// Ghi file txt
+        /// </summary>
+        /// <param name="strContent">Nội dung cần ghi</param>
+        /// <param name="strPath">Đường dẫn lưu file</param>
+        public static void WriteFile(string strContent, string strPath)
+        {
+            // create a writer and open the file
+            using (TextWriter tw = new StreamWriter(HttpContext.Current.Server.MapPath(strPath)))
+            {
+                // write a line of text to the file
+                tw.WriteLine(strContent);
+                // close the stream
+                tw.Close();
+            }
         }
 
         /// <summary>
