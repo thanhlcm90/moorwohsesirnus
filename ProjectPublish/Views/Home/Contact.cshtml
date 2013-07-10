@@ -1,7 +1,18 @@
 ﻿@{
-    ViewBag.Title = "Contact";
+    ViewBag.Title = "Thông tin liên hệ";
     Layout = "~/Views/Shared/_Layout.cshtml";
+    ShowroomRepository rep = new ShowroomRepository();
+    var systemConfig = rep.GetSystemInfoList();
+     var contact_info = (from sy in systemConfig where sy.Code == "contact_info" select sy.Value).FirstOrDefault();
+    var youtube_info = (from sy in systemConfig where sy.Code == "youtube_info" select sy.Value).FirstOrDefault();
+    var twitter_info = (from sy in systemConfig where sy.Code == "twitter_info" select sy.Value).FirstOrDefault();
+    var facebook_info = (from sy in systemConfig where sy.Code == "facebook_info" select sy.Value).FirstOrDefault();
+    var skype_info = (from sy in systemConfig where sy.Code == "skype_info" select sy.Value).FirstOrDefault();
+    var yahoo_info = (from sy in systemConfig where sy.Code == "yahoo_info" select sy.Value).FirstOrDefault();
+    var email_info = (from sy in systemConfig where sy.Code == "email_info" select sy.Value).FirstOrDefault();
+    var phone_info = (from sy in systemConfig where sy.Code == "phone_info" select sy.Value).FirstOrDefault();
 }
+@using Showroom.Models.DataAccess
 @model Frontend.Models.Contact
 <!--Bodycontent Start-->
 <div id="body-content clPadingBody">
@@ -30,7 +41,7 @@
                         </div>
                     </div>
                     <div class="span5 fleft nomargin">
-                        <iframe width="100%" height="265" src="http://www.youtube.com/embed/raGVvGDNqaY" frameborder="0" allowfullscreen></iframe>
+                        <iframe width="100%" height="265" src="@youtube_info" frameborder="0" allowfullscreen></iframe>
                     </div>
 
                     <!-- FORM LIỆN HỆ-->
@@ -76,21 +87,45 @@
                         &nbsp;
                     </div>
                     <div class="suport-online">
-                        <script type="text/javascript" src="http://cdn.dev.skype.com/uri/skype-uri.js"></script>
-                        <div id="supporter01" style="height: 30px; float: left;">
-                            <span class="fleft" style="margin-right: 15px;">Skype:</span><script type="text/javascript">
-                                Skype.ui({
-                                    "name": "chat",
-                                    "element": "supporter01",
-                                    "participants": ["nguyentv91"],
-                                    "imageSize": 24
-                                });
-                            </script>
+                        <div style="float: left;">
+                            <ul style="list-style: none; margin: 3px 0px;">
+                                @{
+                                    var arrSkype = skype_info.Split(',');
+                                    var k = 1;
+                                    foreach (var s1 in arrSkype)
+                                    {
+                                        if (s1 != ",")
+                                        {
+                                    <li style="line-height: 30px !important;">
+                                        <span class="fleft" style="margin-right: 15px;">Skype @k:</span>
+                                        <a href="skype:@s1?chat">
+                                            <img src="http://mystatus.skype.com/smallicon/@s1" alt="@s1">
+                                        </a>
+                                    </li>
+                                        }
+                                        k++;
+                                    }
+                                }
+                            </ul>
                         </div>
                         <div style="float: left;">
-                             <span class="fleft" style="margin-right: 15px;">Yahoo:</span><a href="ymsgr:sendIM?nguyentv91">
-                                <img src="http://opi.yahoo.com/online?u=nguyentv91&m=g&t=2" border="0" alt="" />
-                            </a>
+                            <ul style="list-style: none; margin: 3px 0px;">
+                                @{
+                                    var arr = yahoo_info.Split(',');
+                                    var i = 1;
+                                    foreach (var s in arr)
+                                    {
+                                        if (s != ",")
+                                        {
+                                    <li style="line-height: 30px !important;">
+                                        <span class="fleft" style="margin-right: 15px;">Yahoo @i:</span><a href="ymsgr:sendIM?@s">
+                                            <img src="http://opi.yahoo.com/online?u=@s&m=g&t=2" border="0" alt="" />
+                                        </a></li>
+                                        }
+                                        i++;
+                                    }
+                                }
+                            </ul>
                         </div>
                     </div>
                     <div class="clearfix"></div>
@@ -98,35 +133,31 @@
                     <div class="divider1">
                         &nbsp;
                     </div>
-                   <p class="foot-address">
-                        <strong>Show room Sunrise</strong><br />
-                        Số 38 - Phạm Hùng - Từ Liêm
-                        <br />
-                        Hà Nội
-                        <br />
+                    <p class="foot-address">
+                        @contact_info
                     </p>
                     <div class="contact-icon">
                         <i class="icon-envelope-alt"></i><strong>Email: </strong>
                         <p>
-                            <a href="#">contact@sunriseauto.com</a>
+                            <a href="mailto:@email_info">@email_info</a>
                         </p>
                     </div>
                     <div class="contact-icon">
-                        <i class="icon-phone"></i><strong>Phone: A Tùng </strong>
+                        <i class="icon-phone"></i><strong>Phone:</strong>
                         <p>
-                            +84 0983.748.168
+                            @phone_info
                         </p>
                     </div>
                     <div class="contact-icon">
-                        <i class="icon-twitter"></i><strong>Follow Us on Twitter: </strong>
+                        <i class="icon-twitter"></i><strong>Twitter: </strong>
                         <p>
-                            <a href="https://twitter.com/mannatstudio">sunriseauto</a>
+                            <a href="https://twitter.com/@twitter_info">@twitter_info</a>
                         </p>
                     </div>
                     <div class="contact-icon">
-                        <i class="icon-facebook"></i><strong>Like Us on Facebook: </strong>
+                        <i class="icon-facebook"></i><strong>Facebook: </strong>
                         <p>
-                            <a href="#">sunriseauto</a>
+                            <a href="https://www.facebook.com/@facebook_info">@facebook_info</a>
                         </p>
                     </div>
                 </div>
