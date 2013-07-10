@@ -1,0 +1,47 @@
+﻿@using Common
+@{
+    ViewBag.Title = "Sunrise Auto - Dịch Vụ";
+    var content = clsHelper.ReadFile(ProjectPublish.Controllers.AdminSevirceController.basConst.Linkservices);
+}
+
+<div class="boderB min-hieght-lg">
+
+    <!-- NỘI DUNG TRANG CHỦ-->
+    <section>
+        <div class="container">
+
+            <!-----------------------MENU LEFT--------------------------------->
+            <div class="colLeft span3 fleft">
+                    @Html.Partial("~/Views/Shared/_Left_Control.cshtml")
+            </div>
+            <!-----------------------END MENU LEFT----------------------------->
+
+            <!-----------------------XE THEO CATEGORIES--------------------------->
+            <div class="span9" id="boxNewProduct" style="margin-left: 10px;">
+
+                <div class="shadow-wrapper searchtitle">
+                    <div class="titleSearchBox">
+                        <span>Dịch Vụ</span>
+                    </div>
+                </div>
+
+                <div class="shadow-wrapper" style="padding:10px !important;">
+                    @Html.Raw(content)
+                </div>
+
+            </div>
+
+
+            
+            <!-----------------------------PRODUCT CATALOGUE----------------------------->
+            <div id="Partner" class="span12" style="margin-left: 0px;">
+                 @Html.Partial("~/Views/Shared/_CatalogueSlide.cshtml")
+            </div>
+            <!----------------------------- END PRODUCT CATALOGUE----------------------------->
+        </div>
+    </section>
+    <!-- END NỘI DUNG TRANG CHỦ-->
+
+</div>
+
+
