@@ -364,6 +364,20 @@
     <Content Include="css\prettyPhoto.css" />
     <Content Include="css\shortcodes.css" />
     <Content Include="css\superfish.css" />
+    <Content Include="images\Catalogue\12\hyundai.jpg" />
+    <Content Include="images\Catalogue\15\daewoo.jpg" />
+    <Content Include="images\Catalogue\16\hyundai.jpg" />
+    <Content Include="images\Catalogue\17\daewoo.jpg" />
+    <Content Include="images\Catalogue\18\hyundai.jpg" />
+    <Content Include="images\Catalogue\19\hyundai.jpg" />
+    <Content Include="images\Catalogue\1\daewoo.jpg" />
+    <Content Include="images\Catalogue\20\bmw-4-series-convert-1-800x0w-1372817029_500x0.jpg" />
+    <Content Include="images\Catalogue\21\Kia-Ray-13.jpg" />
+    <Content Include="images\Catalogue\22\kia.jpg" />
+    <Content Include="images\Catalogue\23\Kia-Ray-13.jpg" />
+    <Content Include="images\Catalogue\24\bmw-4-series-convert-1-800x0w-1372817029_500x0.jpg" />
+    <Content Include="images\Catalogue\25\kia.jpg" />
+    <Content Include="images\Catalogue\2\daewoo.jpg" />
     <Content Include="images\css\bootstrap.css" />
     <Content Include="images\css\camera.css" />
     <Content Include="images\css\flexslider.css" />
@@ -458,6 +472,7 @@
     <Content Include="images\News\10\anhthe.jpg" />
     <Content Include="images\News\12\anhthe.jpg" />
     <Content Include="images\News\13\daewoo.jpg" />
+    <Content Include="images\News\16\bmw-4-series-convert-1-800x0w-1372817029_500x0.jpg" />
     <Content Include="images\News\3\anhthe.jpg" />
     <Content Include="images\News\9\12.jpg" />
     <Content Include="images\nivo-slider\bar\bar.css" />
@@ -1442,12 +1457,13 @@
     <Content Include="Views\Product\Product.cshtml" />
     <Content Include="Views\News\NewsbyCatalogue.cshtml" />
     <Content Include="Views\News\NewsDetails.cshtml" />
-    <Content Include="Views\Home\SearchResault.cshtml" />
+    <Content Include="Views\Home\SearchProduct.cshtml" />
     <Content Include="Views\AdminProperties\Edit.cshtml" />
     <Content Include="Views\AdminProperties\Index.cshtml" />
     <Content Include="Views\AdminPropertySubCatalogue\Edit.cshtml" />
     <Content Include="Views\AdminPropertySubCatalogue\Index.cshtml" />
     <Content Include="Views\AccessDenied\Index.cshtml" />
+    <Content Include="Views\Shared\_CatalogueSlide.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
