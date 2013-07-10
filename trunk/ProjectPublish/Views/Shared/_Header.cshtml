@@ -1,4 +1,11 @@
-﻿<div class="boderB">
+﻿@using Showroom.Models.DataAccess
+@{
+    ShowroomRepository rep = new ShowroomRepository();
+    var systemConfig = rep.GetSystemInfoList();
+    var email_info = (from sy in systemConfig where sy.Code == "email_info" select sy.Value).FirstOrDefault();
+    var phone_info = (from sy in systemConfig where sy.Code == "phone_info" select sy.Value).FirstOrDefault();
+}
+<div class="boderB">
     <div class="container">
         <div class="row">
             <div class="span3 logo">
@@ -11,7 +18,7 @@
                 <div class="row show-grid">
                     <div class="span6">
                         <div class="top-contact">
-                            <a href="#"><i class="icon-envelope-alt"></i>contact@sunriseauto.com</a> <i class="icon-phone"></i>+ 04 836 2335<br />
+                            <a href="mailto:@email_info"><i class="icon-envelope-alt"></i>@email_info</a> <i class="icon-phone"></i>@phone_info<br />
                         </div>
                     </div>
                     <div class="span3">
