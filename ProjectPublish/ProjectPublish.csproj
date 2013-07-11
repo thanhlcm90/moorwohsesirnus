@@ -112,6 +112,7 @@
     <Compile Include="Controllers\AdminPropertiesController.cs" />
     <Compile Include="Controllers\AdminPropertyCatalogueController.cs" />
     <Compile Include="Controllers\AdminPropertySubCatalogueController.cs" />
+    <Compile Include="Controllers\AdminSevirceController.cs" />
     <Compile Include="Controllers\ContactController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\NewsController.cs" />
@@ -1464,6 +1465,10 @@
     <Content Include="Views\AdminPropertySubCatalogue\Index.cshtml" />
     <Content Include="Views\AccessDenied\Index.cshtml" />
     <Content Include="Views\Shared\_CatalogueSlide.cshtml" />
+    <Content Include="Views\Home\SearchResault.cshtml" />
+    <Content Include="Views\Home\Services.cshtml" />
+    <Content Include="Views\AdminSevirce\Index.cshtml" />
+    <Content Include="Views\Contact\Send.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

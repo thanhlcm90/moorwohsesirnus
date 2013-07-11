@@ -35,6 +35,7 @@
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data.Linq" />
+    <Reference Include="System.Web" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -42,7 +43,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="App_Code\Helper.cs" />
+    <Compile Include="App_Code\Dashboard.cs" />
+    <Compile Include="App_Code\Helper.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="DataAccess\News.cs" />
     <Compile Include="DataAccess\SystemInfo.cs" />
     <Compile Include="DataAccess\Product.cs" />

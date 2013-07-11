@@ -29,6 +29,7 @@ namespace Frontend.Controllers
             models.PostDate = DateTime.Now;
             models.Actflg = '1';
             rep.InsertContacts(models);
+            ViewBag.CurrentPage = "contact";
             return View();
         }
     }

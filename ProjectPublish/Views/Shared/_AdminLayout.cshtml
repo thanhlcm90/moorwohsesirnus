@@ -1,4 +1,8 @@
-﻿<!DOCTYPE html>
+﻿@{
+    var productCount = Showroom.Models.DataAccess.Dashboard.ProductCount;
+    var contactCount = Showroom.Models.DataAccess.Dashboard.ContactCount;
+}
+<!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf8">
@@ -63,14 +67,14 @@
                             <li class='blue'>
                                 <i class="icon-shopping-cart"></i>
                                 <div class="details">
-                                    <span class="big">175</span>
+                                    <span class="big">@productCount</span>
                                     <span>Số lượng xe</span>
                                 </div>
                             </li>
                             <li class='green'>
                                 <i class="icon-comments-alt"></i>
                                 <div class="details">
-                                    <span class="big">10</span>
+                                    <span class="big">@contactCount</span>
                                     <span>Số lượng liên hệ</span>
                                 </div>
                             </li>

@@ -47,12 +47,14 @@ namespace Frontend.Controllers
 
         public ActionResult Contact()
         {
+            ViewBag.CurrentPage = "contact";
             return View();
         }
 
 
         public ActionResult Services()
         {
+            ViewBag.CurrentPage = "services";
             return View();
         }
 
