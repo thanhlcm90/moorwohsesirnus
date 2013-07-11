@@ -72,10 +72,11 @@
     <script type="text/javascript" src="/Scripts/js/jquery.carouFredSel.js"></script>
     <script type="text/javascript" src="/Scripts/js/script.js"></script>
     <script type="text/javascript">
-        //$('.titleSearchBox').click(function () {
-        //    $('#searchtool').toggle('slow');
-        //    return false;
-        //});
+        var currentPage = "@ViewBag.CurrentPage";
+        if (currentPage == "") {
+            currentPage = "home";
+        }
+        $("#menu_" + currentPage).addClass("current");
     </script>
 
 </body>

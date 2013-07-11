@@ -25,6 +25,7 @@ namespace Frontend.Controllers
             ViewBag.Curenpage = page;
             lstNews = lstNews.Skip(maxNewInPage * (page - 1)).Take(maxNewInPage).ToList();
             ViewBag.lstNews = lstNews;
+            ViewBag.CurrentPage = "news";
             return View();
         }
 
@@ -39,6 +40,7 @@ namespace Frontend.Controllers
             ViewBag.Curenpage = clsHelper.fncCnvNullToInt(id2);
             lstNews = lstNews.Skip(maxNewInPage * (clsHelper.fncCnvNullToInt(id2) - 1)).Take(maxNewInPage).ToList();
             ViewBag.lstNews = lstNews;
+            ViewBag.CurrentPage = "news";
             return View(model);
         }
 
@@ -48,6 +50,7 @@ namespace Frontend.Controllers
             ViewBag.lstTopNews = rep.GetNewsList();
             ViewBag.lstCatalogueNews = rep.GetNewsCatalogueList();
             ViewBag.lstNewsSame = rep.GetListNewsByCATAID(model.CatelogueId);
+            ViewBag.CurrentPage = "news";
             return View(model);
         }
 

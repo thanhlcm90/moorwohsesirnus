@@ -13,6 +13,8 @@ namespace Showroom.Models.DataAccess
         public ShowroomRepository()
         {
             _dataContext = new ShowroomDataContext();
+            Dashboard.ProductCount = _dataContext.Products.Count();
+            Dashboard.ContactCount = _dataContext.Contacts.Count();
         }
         public void Dispose()
         {

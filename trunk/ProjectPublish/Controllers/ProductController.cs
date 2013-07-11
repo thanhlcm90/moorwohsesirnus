@@ -35,6 +35,7 @@ namespace Frontend.Controllers
            var ProductProperty = rep.GetPropertyProductList(id);
            ViewBag.ProductPropertyList = ProductProperty;
 
+           ViewBag.CurrentPage = "product";
            return View(model);
         }
 
@@ -56,7 +57,7 @@ namespace Frontend.Controllers
             // Lấy danh sách thuộc tính của product theo ID của product
             var ProductProperty = rep.GetPropertyProductList(id);
             ViewBag.ProductPropertyList = ProductProperty;
-
+            ViewBag.CurrentPage = "product";
             return View(model);
         }
 
@@ -69,6 +70,7 @@ namespace Frontend.Controllers
             ViewBag.Curenpage = clsHelper.fncCnvNullToInt(id2); ;
             ProductByCatalogue = ProductByCatalogue.Skip(maxProductInPage * (clsHelper.fncCnvNullToInt(id2) - 1)).Take(maxProductInPage).ToList();
             ViewBag.ProductByCatalogue = ProductByCatalogue;
+            ViewBag.CurrentPage = "product";
             return View(model);
         }
 
