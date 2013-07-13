@@ -17,7 +17,8 @@ body {
     font-size: 14px;
     color: #555;
     background: #000;
-    background-image: url('../img/bg-body.png');
+    background-image: url('../img/FreeVector-Light-Effect.jpg');
+    background-repeat: repeat-x;
 }
 
 a, a:visited { color: #73af4e; text-decoration: none; outline: 0; }
@@ -43,16 +44,16 @@ a, a:visited { color: #73af4e; text-decoration: none; outline: 0; }
 /* #Page Styles
 ================================================== */
 header{
-	/*background:url(../images/body-bg.png) repeat;*/
-	box-shadow:0 0px 3px rgba(0, 0, 0, 0.8);
-	-moz-box-shadow:box-shadow:0 0px 3px rgba(0, 0, 0, 0.8);
+	background:url(../img/FreeVector-Light-Effect.jpg) repeat;
+	/*box-shadow:0 0px 3px rgba(0, 0, 0, 0.8);*/
+	/*-moz-box-shadow:box-shadow:0 0px 3px rgba(0, 0, 0, 0.8);
 	-webkit-box-shadow:box-shadow:0 0px 3px rgba(0, 0, 0, 0.8);
-	-o-box-shadow:box-shadow:0 0px 3px rgba(0, 0, 0, 0.8);
+	-o-box-shadow:box-shadow:0 0px 3px rgba(0, 0, 0, 0.8);*/
 	padding:2px 0 0 0;
 	color:#bec9d5;
 	position:relative;
 	z-index:100000;
-    background:#000;
+    /*background:#000;*/
 }
 .logo{
 	padding:0;
