@@ -374,13 +374,13 @@
 		 */
 		var getViewportMaxWidth = function(){
 			var width = '100%';
-			if(slider.settings.slideWidth > 0){
-				if(slider.settings.mode == 'horizontal'){
-					width = (slider.settings.maxSlides * slider.settings.slideWidth) + ((slider.settings.maxSlides - 1) * slider.settings.slideMargin);
-				}else{
-					width = slider.settings.slideWidth;
-				}
-			}
+			//if(slider.settings.slideWidth > 0){
+			//	if(slider.settings.mode == 'horizontal'){
+			//		width = (slider.settings.maxSlides * slider.settings.slideWidth) + ((slider.settings.maxSlides - 1) * slider.settings.slideMargin);
+			//	}else{
+			//		width = slider.settings.slideWidth;
+			//	}
+			//}
 			return width;
 		}
 		
