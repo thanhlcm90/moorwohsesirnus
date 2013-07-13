@@ -1,6 +1,41 @@
 ﻿@using Showroom.Models.DataAccess
 
-<div class="image_carousel">
+
+<link href="/css/jquery.bxslider.css" rel="stylesheet" />
+<script src="/Scripts/jquery.min.js"></script>
+<script src="/Scripts/jquery.bxslider.js"></script>
+
+
+<div class="slider">
+    <ul class="bxslider">
+        @{
+            ShowroomRepository rep = new ShowroomRepository();
+            var lstCatalogue = rep.GetProductCatalogueList();
+            for (var k = 0; k < lstCatalogue.Count(); k++)
+            {
+                string Name = lstCatalogue[k].Name.ToString();
+                string NameEn = lstCatalogue[k].NameEn.ToString();
+                Int32 Id = Convert.ToInt32(lstCatalogue[k].Id.ToString());
+            <li>
+                <a href="/san-pham/@NameEn/@Id/1" title="Sản phẩm hãng @Name"><img src="/Images/Catalogue/@lstCatalogue[k].Id/@lstCatalogue[k].Image" alt="basketball" width="140" height="140" /></a>
+            </li>
+            }
+        }
+    </ul>
+</div>
+
+<script type="text/javascript">
+        $('.bxslider').bxSlider({
+            minSlides: 3,
+            maxSlides: 4,
+            slideWidth: 170,
+            slideMargin: 10,
+            auto: true
+        });
+</script>
+
+
+@*<div class="image_carousel">
     <div id="foo2">
         @{
             ShowroomRepository rep = new ShowroomRepository();
@@ -38,4 +73,4 @@
             pagination: "#foo2_pag"
         });
     });
-</script>
+</script>*@
