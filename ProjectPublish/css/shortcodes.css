@@ -182,9 +182,12 @@ h5, h6{
 	border-top: 5px solid #FFF;
 	content: ' ';
 	left: 50%;
-	top: 105px;
+	top: 155px;
 	background: transparent;
 	z-index:1000;
+}
+port3-head h5 {
+    line-height:3px !important;
 }
 /* ========= End =========== */	
 
