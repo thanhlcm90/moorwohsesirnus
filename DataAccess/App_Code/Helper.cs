@@ -51,7 +51,8 @@ namespace Common
                 FileInfo[] files = dir.GetFiles();
                 foreach (FileInfo file in files)
                 {
-                    if (file.Extension == ".jpg" || file.Extension == ".jpeg" || file.Extension == ".gif" || file.Extension == ".png")
+                    var extension = file.Extension.ToLower();
+                    if (extension == ".jpg" || extension == ".jpeg" || extension == ".gif" || extension == ".png")
                     {
                         list.Add(returnFolder + "/" + file.Name);
                     }
