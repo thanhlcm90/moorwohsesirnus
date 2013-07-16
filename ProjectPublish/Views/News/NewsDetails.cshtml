@@ -1,10 +1,26 @@
-﻿@model Showroom.Models.News
+﻿@using Showroom.Models.DataAccess;
+@model Showroom.Models.News
 @using Common
 @{
     ViewBag.Title = "Sunrise Auto" + " " + "-" + " " + Model.Title; ;
     List<Showroom.Models.NewsCatalogue> lstCatalogueNews = ViewBag.lstCatalogueNews;
     List<Showroom.Models.News> lstTopNews = ViewBag.lstTopNews;
     List<Showroom.Models.News> lstNewsSame = ViewBag.lstNewsSame;
+
+    ShowroomRepository rep = new ShowroomRepository();
+
+    Showroom.Models.News objnew = new Showroom.Models.News();
+    objnew.Id = Model.Id;
+    objnew.Title = Model.Title;
+    objnew.TitleEn = Model.TitleEn;
+    objnew.CatelogueId = Model.CatelogueId;
+    objnew.Actflg = Model.Actflg;
+    objnew.PostDate = Model.PostDate;
+    objnew.Image = Model.Image;
+    objnew.Detail = Model.Detail;
+    objnew.Views = Model.Views + 1;
+    rep.UpdateNews(objnew);
+    
 }
 
 
@@ -20,7 +36,7 @@
                         </div>
                         <div class="blog-txt">
                             <div style="float: left;">@Model.PostDate.ToString("dd/MM/yyyy")</div>
-                            <span><i class="icon-comment"></i><a>@Model.Views</a></span>
+                            <span><i class="icon-comment"></i><a style="margin-left:3px;">@Model.Views</a></span>
                         </div>
                         <p class="span18">
                             @Html.Raw(Model.Detail)
