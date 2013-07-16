@@ -1,9 +1,11 @@
 ﻿@using Showroom.Models.DataAccess;
+@using Common;
 @{
     ShowroomRepository rep = new ShowroomRepository();
 
     var lstCatalogue = rep.GetProductCatalogueList();
     var lstProduct = rep.GetProductsList();
+    var lstNews = rep.GetNewsList();
 
 
     var listCatalogueDrop = (from p in lstCatalogue
@@ -88,7 +90,7 @@
         });
     </script>
 </div>
-<div class="shadow-wrapper">
+@*<div class="shadow-wrapper">
     <div class="titleBox">
         <span>SIÊU THỊ XE</span>
     </div>
@@ -98,4 +100,74 @@
             <li><a href="/san-pham/@c.NameEn/@c.Id/1">@c.Name</a></li>
         }
     </ul>
+</div>*@
+
+<div class="shadow-wrapper">
+    <div class="titleBox">
+        <span>Tin Tức</span>
+    </div>
+			<div id="ca-container" class="ca-container">
+				<div class="ca-wrapper">
+                    @foreach(var n in lstNews.OrderByDescending(n => n.PostDate).Where(n => n.Actflg == 'A').Take(5))
+                    {
+
+                        var NoimgPathN = "/images/noImage.jpg";
+                        var strImage = string.Empty;
+                        if (n.Image.IsEmpty())
+                        {
+                            strImage = NoimgPathN;
+                        }
+                        else
+                        {
+                            strImage = "/images/News/" + n.Id + "/" + n.Image;
+                        }                        
+                        
+					<div class="ca-item ca-item-1">
+						<div class="ca-item-main">
+							<div class="ca-icon">
+                                <img src="@strImage" alt="@n.Title" />
+							</div>
+							<h3 class="top-mar">
+                               <a href="/tin-tuc/@n.TitleEn-@n.Id"> @clsHelper.CatChuoi(n.Title, 50)</a>
+							</h3>
+							<h4>
+								<span class="ca-quote">&ldquo;</span>
+								<span>@HttpUtility.HtmlDecode(clsHelper.CatChuoi(clsHelper.ClearTagHTML(n.Detail),120))</span>
+							</h4>
+								<a href="/tin-tuc/@n.TitleEn-@n.Id" class="ca-moreLink" style="color:#000;">chi tiết...</a>
+						</div>
+					</div>
+
+                    }
+				</div>
+			</div>
 </div>
+
+
+        <link href="/css/demo.css" rel="stylesheet" />
+        <link href="/css/style.css" rel="stylesheet" />
+        <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
+        <script src="/Scripts/jquery.easing.1.3.js"></script>
+		<!-- the jScrollPane script -->
+        <script src="/Scripts/jquery.mousewheel.js"></script>
+        <script src="/Scripts/jquery.contentcarousel.js"></script>
+
+		<script type="text/javascript">
+		    //$('#ca-container').contentcarousel();
+
+
+		    $('#ca-container').contentcarousel();
+		    var int = setInterval("$('.ca-nav-next').trigger('click');", 5000);
+		    $('.ca-item').hover(function () {
+		        clearInterval(int);
+		    }, function () {
+		        int = setInterval("$('.ca-nav-next').trigger('click');", 5000);
+		    });
+		    $('.ca-nav').hover(function () {
+		        clearInterval(int);
+		    }, function () {
+		        int = setInterval("$('.ca-nav-next').trigger('click');", 5000);
+		    });
+
+
+		</script>
