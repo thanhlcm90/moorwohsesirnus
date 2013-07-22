@@ -27,7 +27,8 @@ namespace SunriseShowroom.Controllers
                 FileInfo[] files = dir.GetFiles();
                 foreach (FileInfo file in files)
                 {
-                    if (file.Extension == ".jpg" || file.Extension == ".jpeg" || file.Extension == ".gif" || file.Extension == ".png")
+                    var extension = file.Extension.ToString().ToLower();
+                    if (extension == ".jpg" || extension == ".jpeg" || extension == ".gif" || extension == ".png")
                     {
                         listTop.Add(producImagePath + "/" + file.Name);
                     }
@@ -44,7 +45,8 @@ namespace SunriseShowroom.Controllers
                 FileInfo[] files = dir.GetFiles();
                 foreach (FileInfo file in files)
                 {
-                    if (file.Extension == ".jpg" || file.Extension == ".jpeg" || file.Extension == ".gif" || file.Extension == ".png")
+                    var extension = file.Extension.ToString().ToLower();
+                    if (extension == ".jpg" || extension == ".jpeg" || extension == ".gif" || extension == ".png")
                     {
                         listBottom.Add(producImagePath + "/" + file.Name);
                     }

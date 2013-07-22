@@ -157,7 +157,8 @@ namespace SunriseShowroom.Controllers
                 FileInfo[] files = dir.GetFiles();
                 foreach (FileInfo file in files)
                 {
-                    if (file.Extension == ".jpg" || file.Extension == ".jpeg" || file.Extension == ".gif" || file.Extension == ".png")
+                    var extension = file.Extension.ToString().ToLower();
+                    if (extension == ".jpg" || extension == ".jpeg" || extension == ".gif" || extension == ".png")
                     {
                         list.Add("/Images/Product/"+ id +"/" + file.Name);
                     }
@@ -195,43 +196,6 @@ namespace SunriseShowroom.Controllers
                 }
             }
             return RedirectToAction("EditProductImage", new { product.Id });
-        }
-
-        /// <summary>
-        /// Copy ảnh của product và write sang frontend
-        /// </summary>
-        /// <param name="id">ProductId</param>
-        /// <returns></returns>
-        [Authorize]
-        public ActionResult PublishImage(string id)
-        {
-            //Clone ảnh qua Front End
-            var productFolder = AppDomain.CurrentDomain.BaseDirectory + "Images\\Product\\" + id;
-            var productFrontendFolder = productFolder.Replace("Backend", "Frontend");
-            var dir = new DirectoryInfo(productFolder);
-            if (Directory.Exists(productFolder))
-            {
-                FileInfo[] files = dir.GetFiles();
-                foreach (FileInfo file in files)
-                {
-                    if (file.Extension == ".jpg" || file.Extension == ".jpeg" || file.Extension == ".gif" || file.Extension == ".png")
-                    {
-                        //Kiểm tra có thư mục Images/Product ở frontend chưa.
-                        if (!Directory.Exists(productFrontendFolder))
-                            Directory.CreateDirectory(productFrontendFolder);
-
-                        //Save ảnh từ backend qua frontend.
-                        try
-                        {
-                            file.CopyTo(Path.Combine(productFrontendFolder, file.Name), true);
-                        }
-                        catch (Exception)
-                        {
-                        }
-                    }
-                }
-            }
-            return RedirectToAction("EditProductImage", new { id });
         }
 
         /// <summary>
