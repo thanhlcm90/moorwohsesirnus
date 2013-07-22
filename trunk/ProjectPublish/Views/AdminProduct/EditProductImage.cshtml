@@ -93,8 +93,10 @@
 </div>
 
 <script src="@Url.Content("~/Scripts/Admin/Scripts/plugins/colorbox/jquery.colorbox-min.js")"></script>
+<script src="@Url.Content("~/Scripts/Admin/Scripts/plugins/wizard/jquery.form.wizard.min.js")"></script>
 <script type="text/javascript">
     $('.del-gallery-pic').click(function () {
+        console.log("Test");
         var myData = "{'image':'" + $(this).attr('id') + "','productId':'" + @id +"'}";
         $.ajax({
             url: '/AdminProduct/DeleteImage',
