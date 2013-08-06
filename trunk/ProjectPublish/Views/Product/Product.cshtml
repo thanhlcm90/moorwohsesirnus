@@ -10,6 +10,10 @@
     int CurrenPage = ViewBag.Curenpage;
  
 }
+<style>
+    .titleH1{color:#fff; font-size:14px; padding:0px; margin:0px; font-weight:bold; line-height:18px;}
+    .pnameH3{font-size: 15px;line-height: 18px;margin: 10px 0 !important; font-weight:normal !important;}
+</style>
 
 <div class="boderB min-hieght-lg">
 
@@ -35,7 +39,7 @@
 
                 <div class="shadow-wrapper searchtitle">
                     <div class="titleSearchBox">
-                        <span>Sản phẩm</span>
+                        <h1 class="titleH1">Sản phẩm xe @Model.Name</h1>
                     </div>
                 </div>
 
@@ -70,7 +74,7 @@
                                 </div>
                             </div>
                             <div class="port3-head">
-                                <h5><a href="/san-pham/chi-tiet/@m.NameEn-@m.Id">@m.Name</a></h5>
+                                <h3 class="pnameH3"><a href="/san-pham/chi-tiet/@m.NameEn-@m.Id">@m.Name</a></h3>
                             </div>
                         </div>
                     </div>
