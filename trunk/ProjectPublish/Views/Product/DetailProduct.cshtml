@@ -18,13 +18,21 @@
                               Value = n.Value
                           }
                           ).ToList();
-    var ProductID = Model.Id;                     
+    var ProductID = Model.Id;
+    var infoCata = rep.GetProductCatalogueInfo(@Model.CatalogueId);         
 
 }
 
 <section>
     <div class="boderB">
         <div class="container warp-content">
+
+                 <div class="breacrumbs" style="background: #DDE; padding: 12px 0; color: #000; font-weight:normal;">
+                 <span><a href="/">Trang chủ</a></span>
+                 <span><a href="/san-pham/@infoCata.NameEn/@infoCata.Id/1">@infoCata.Name</a></span>
+                 @Model.Name
+            </div>
+
             <div class="row">
                 <!------------ BẮT ĐẦU CHI TIẾT SẢN PHẨM ----------->
                 <div class="span7">
