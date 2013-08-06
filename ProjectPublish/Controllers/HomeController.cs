@@ -8,6 +8,8 @@ using System.Web.Services;
 using Common;
 using Showroom.Models.DataAccess;
 using Showroom.Models;
+using System.Web.UI;
+using System.Web.SessionState;
 
 namespace Frontend.Controllers
 {
@@ -17,6 +19,15 @@ namespace Frontend.Controllers
 
         public ActionResult Index()
         {
+
+            //Remove www
+            string strFullPath = HttpContext.Request.Url.ToString();
+            if (strFullPath.ToLower().Contains("http://www."))
+            {
+                string strUrl = strFullPath.ToLower().Replace("http://www.", "http://");
+                HttpContext.Response.Status = "301 Moved Permanently";
+                HttpContext.Response.AddHeader("Location", strUrl);
+            }
             // Danh sách dữ liệu sản phẩm
             ViewBag.ProductList = rep.GetProductsList();
 
