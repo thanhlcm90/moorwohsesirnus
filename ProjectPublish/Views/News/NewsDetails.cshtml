@@ -20,7 +20,7 @@
     objnew.Detail = Model.Detail;
     objnew.Views = Model.Views + 1;
     rep.UpdateNews(objnew);
-    
+    var infoCata = rep.GetNewsCatalogueInfo(@Model.CatelogueId);   
 }
 
 
@@ -29,6 +29,11 @@
         <div class="row">
             <!--Blog Wrap-->
             <div class="span8">
+                <div class="breacrumbs" style="background: #DDE; padding: 12px 0; color: #000; font-weight:normal;">
+                    <span><a href="/">Trang chủ</a></span>
+                    <span><a href="/tin-tuc/danh-sach/@infoCata.NameEn/@infoCata.Id-1">@infoCata.Name</a></span>
+                    @Model.Title
+                </div>
                 <section class="blog-wrap">
                     <div class="shadow-wrapper">
                         <div class="blog-head">
@@ -36,7 +41,7 @@
                         </div>
                         <div class="blog-txt">
                             <div style="float: left;">@Model.PostDate.ToString("dd/MM/yyyy")</div>
-                            <span><i class="icon-comment"></i><a style="margin-left:3px;">@Model.Views</a></span>
+                            <span><i class="icon-comment"></i><a style="margin-left: 3px;">@Model.Views</a></span>
                         </div>
                         <p class="span18">
                             @Html.Raw(Model.Detail)
@@ -100,7 +105,7 @@
                                 </div>
                                 <div class="recent_txt">
                                     <a href="/tin-tuc/@topN.TitleEn-@topN.Id" style="font-weight:bold;">@Html.Raw(clsHelper.CatChuoi(topN.Title, 50))</a>
-                                    <p>@HttpUtility.HtmlDecode(clsHelper.CatChuoi(clsHelper.ClearTagHTML(topN.Detail),80))</p>
+                                    <p>@HttpUtility.HtmlDecode(clsHelper.CatChuoi(clsHelper.ClearTagHTML(topN.Detail), 80))</p>
                                     <p class="date"><i class="icon-calendar"></i>@topN.PostDate.ToString("dd/MM/yyyy")</p>
                                 </div>
                                 <div class="clearfix"></div>
