@@ -12,25 +12,30 @@
 
 <div class="boderB">
 
-<div class="container warp-content">
-        	<div class="row">
-            	<!--Blog Wrap-->
-                <div class="span8">
+    <div class="container warp-content">
 
-                    @foreach (var item in lstNews.OrderByDescending(item => item.PostDate).Where(item => item.Actflg == 'A'))
+        <div class="row">
+            <!--Blog Wrap-->
+            <div class="span8">
+                <div class="breacrumbs" style="background: #DDE; padding: 12px 0; color: #000; font-weight:normal;">
+                    <span><a href="/">Trang chủ</a></span>
+                    @Model.Name
+                </div>
+
+                @foreach (var item in lstNews.OrderByDescending(item => item.PostDate).Where(item => item.Actflg == 'A'))
+                {
+                    var NoimgPathN = "/images/noImage.jpg";
+                    var strImage = string.Empty;
+                    if (item.Image.IsEmpty())
                     {
-                        var NoimgPathN = "/images/noImage.jpg";
-                        var strImage = string.Empty;
-                        if (item.Image.IsEmpty())
-                        {
-                            strImage = NoimgPathN;
-                        }
-                        else
-                        {
-                            strImage = "/images/News/" + item.Id + "/" + item.Image;
-                            //strImage = item.Image;
-                        } 
-                	<section class="blog-wrap">
+                        strImage = NoimgPathN;
+                    }
+                    else
+                    {
+                        strImage = "/images/News/" + item.Id + "/" + item.Image;
+                        //strImage = item.Image;
+                    } 
+                    <section class="blog-wrap">
                         <div class="shadow-wrapper">
                             <div class="mosaic-block faded">
                                 <div class="mosaic-overlay" style="display: block; opacity: 0;">
@@ -39,89 +44,91 @@
                                         <a class="link-img" href="/tin-tuc/@item.TitleEn-@item.Id"><i class="icon-link"></i></a>
                                     </div>
                                 </div>
-                                <div class="mosaic-backdrop" style="display: block;"><img class="max-image" src="@strImage" alt="@item.TitleEn" width="598" height="200" style="height:200px !important" /></div>    
+                                <div class="mosaic-backdrop" style="display: block;">
+                                    <img class="max-image" src="@strImage" alt="@item.TitleEn" width="598" height="200" style="height:200px !important" /></div>
                             </div>
-                            <div class="blog-head">                	
+                            <div class="blog-head">
                                 <h3 class="top-mar"><a href="/tin-tuc/@item.TitleEn-@item.Id">@clsHelper.CatChuoi(item.Title, 70)</a></h3>
                             </div>
                             <div class="blog-txt">
-                                <div style="float:left;">@item.PostDate.ToString("dd/MM/yyyy")</div>
-                                <span><i class="icon-comment"></i> <a>@item.Views</a></span>
+                                <div style="float: left;">@item.PostDate.ToString("dd/MM/yyyy")</div>
+                                <span><i class="icon-comment"></i><a>@item.Views</a></span>
                             </div>
-                            <p>@HttpUtility.HtmlDecode(clsHelper.CatChuoi(clsHelper.ClearTagHTML(item.Detail),120))</p>
+                            <p>@HttpUtility.HtmlDecode(clsHelper.CatChuoi(clsHelper.ClearTagHTML(item.Detail), 120))</p>
                             <p><a href="/tin-tuc/@item.TitleEn-@item.Id" class="button-dark btn">Chi tiết</a></p>
-                        </div>	
+                        </div>
                     </section>
+                }
+                <div class="pagination">
+                    <!--<a href="#"><i class="icon-chevron-left"></i></a>-->
+                    @for (int i = CurrenPage - 1; (i > 0 && i >= CurrenPage - 1); i--)
+                    {
+                        var query = "/tin-tuc/danh-sach/" + @Model.NameEn + "/" + CatalogueId + "-" + i;
+                        <a href="@query">@i</a>
                     }
-                    <div class="pagination">
-                        <!--<a href="#"><i class="icon-chevron-left"></i></a>-->
-                        @for (int i = CurrenPage - 1; (i > 0 && i >= CurrenPage - 1); i--)
-                        {
-                            var query = "/tin-tuc/danh-sach/"+ @Model.NameEn + "/" +CatalogueId + "-" + i;
-                            <a href="@query">@i</a>
-                        }
-                        @for (int i = CurrenPage; (i <= maxPage && i <= CurrenPage + 1); i++)
-                        {
-                            var query = "/tin-tuc/danh-sach/" + @Model.NameEn + "/" + CatalogueId + "-" + i;
-                            <a href="@query">@i</a>
-                        }
-                        <!--<a href="#"><i class="icon-chevron-right"></i></a>-->
-                    </div>
+                    @for (int i = CurrenPage; (i <= maxPage && i <= CurrenPage + 1); i++)
+                    {
+                        var query = "/tin-tuc/danh-sach/" + @Model.NameEn + "/" + CatalogueId + "-" + i;
+                        <a href="@query">@i</a>
+                    }
+                    <!--<a href="#"><i class="icon-chevron-right"></i></a>-->
                 </div>
-                <!--Blog Wrap-->
-                
-                <!--Sidebar Wrap-->
-                <div class="span4">
-                    <h2 class="head-two green">
-                        <span>Bài mới đăng</span>
-                    </h2>
-                    <div class="service-wrap">
-                        <ul class="sidebar-post">
-                            @foreach (var topN in lstTopNews.OrderByDescending(topN => topN.PostDate).Take(3).Where(topN => topN.Actflg == 'A'))
+            </div>
+            <!--Blog Wrap-->
+
+            <!--Sidebar Wrap-->
+            <div class="span4">
+                <h2 class="head-two green">
+                    <span>Bài mới đăng</span>
+                </h2>
+                <div class="service-wrap">
+                    <ul class="sidebar-post">
+                        @foreach (var topN in lstTopNews.OrderByDescending(topN => topN.PostDate).Take(3).Where(topN => topN.Actflg == 'A'))
+                        {
+                            var NoimgPathN = "/images/no_image.gif";
+                            var strImage = string.Empty;
+                            if (topN.Image.IsEmpty())
                             {
-                                var NoimgPathN = "/images/no_image.gif";
-                                var strImage = string.Empty;
-                                if (topN.Image.IsEmpty())
-                                {
-                                    strImage = NoimgPathN;
-                                }
-                                else
-                                {
-                                    strImage = "/images/News/" + topN.Id + "/" + topN.Image;
-                                }                                 
+                                strImage = NoimgPathN;
+                            }
+                            else
+                            {
+                                strImage = "/images/News/" + topN.Id + "/" + topN.Image;
+                            }                                 
                             <li>
                                 <div class="imgborder">
-                                    <a href="/tin-tuc/@topN.TitleEn-@topN.Id"><img src="@strImage" alt="@topN.TitleEn"></a>
+                                    <a href="/tin-tuc/@topN.TitleEn-@topN.Id">
+                                        <img src="@strImage" alt="@topN.TitleEn"></a>
                                 </div>
                                 <div class="recent_txt">
-                                    <a href="/tin-tuc/@topN.TitleEn-@topN.Id" style="font-weight:bold;">@clsHelper.CatChuoi(topN.Title,50)</a>
-                                    <p style="font-weight:normal !important;">@HttpUtility.HtmlDecode(clsHelper.CatChuoi(clsHelper.ClearTagHTML(topN.Detail),80))</p>
+                                    <a href="/tin-tuc/@topN.TitleEn-@topN.Id" style="font-weight:bold;">@clsHelper.CatChuoi(topN.Title, 50)</a>
+                                    <p style="font-weight: normal !important;">@HttpUtility.HtmlDecode(clsHelper.CatChuoi(clsHelper.ClearTagHTML(topN.Detail), 80))</p>
                                     <p class="date"><i class="icon-calendar"></i>@topN.PostDate.ToString("dd/MM/yyyy")</p>
                                 </div>
                                 <div class="clearfix"></div>
                             </li>
-                            }
-                        </ul>
-                    </div>
-                    <div class="divider3">&nbsp;</div>
-
-                    
-                    <h2 class="head-two green">
-                        <span>Chuyên mục tin tức</span>
-                    </h2>
-                    <div class="service-wrap">
-                        <ul class="sidebar-category">
-                            @foreach(var cn in lstCatalogueNews)
-                            {
-                                <li><a href="/tin-tuc/danh-sach/@cn.NameEn/@cn.Id-1"><i class="icon-chevron-right"></i>@cn.Name</a></li>
-                            }
-                        </ul>
-                    </div>
-                    <div class="divider3">&nbsp;</div>
-
+                        }
+                    </ul>
                 </div>
-                <!--Sidebar Wrap-->
-          	</div>
+                <div class="divider3">&nbsp;</div>
+
+
+                <h2 class="head-two green">
+                    <span>Chuyên mục tin tức</span>
+                </h2>
+                <div class="service-wrap">
+                    <ul class="sidebar-category">
+                        @foreach (var cn in lstCatalogueNews)
+                        {
+                            <li><a href="/tin-tuc/danh-sach/@cn.NameEn/@cn.Id-1"><i class="icon-chevron-right"></i>@cn.Name</a></li>
+                        }
+                    </ul>
+                </div>
+                <div class="divider3">&nbsp;</div>
+
+            </div>
+            <!--Sidebar Wrap-->
         </div>
+    </div>
 
 </div>
