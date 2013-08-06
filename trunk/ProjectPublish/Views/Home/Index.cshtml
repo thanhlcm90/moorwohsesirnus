@@ -5,6 +5,11 @@
     var lstProduct = (List<Showroom.Models.Product>)ViewBag.ProductList;
 }
 
+<style>
+    .titleH1{color:#fff; font-size:14px; padding:0px; margin:0px; font-weight:bold; line-height:18px;}
+    .pnameH3{font-size: 15px;line-height: 18px;margin: 10px 0 !important; font-weight:normal !important;}
+</style>
+
 <div class="boderB min-hieght-lg">
     <!-- SLIDE -->
     @Html.Partial("~/Views/Shared/_Slide.cshtml")
@@ -58,7 +63,7 @@
                                 </div>
                             </div>
                             <div class="port3-head">
-                                <h5><a href="/san-pham/chi-tiet/@m.NameEn-@m.Id">@m.Name</a></h5>
+                                <h3 class="pnameH3"><a href="/san-pham/chi-tiet/@m.NameEn-@m.Id">@m.Name</a></h3>
                             </div>
                         </div>
                     </div>
