@@ -441,6 +441,7 @@
     <Content Include="images\icons\social_icons_blue.png" />
     <Content Include="images\icons\social_icons_green.png" />
     <Content Include="images\icons\twitter_icon.png" />
+    <Content Include="images\icon_fone_footer.png" />
     <Content Include="images\iview\bg_direction_nav.png" />
     <Content Include="images\iview\caption-bg.png" />
     <Content Include="images\kia.jpg" />
