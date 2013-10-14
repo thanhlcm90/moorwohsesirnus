@@ -1,0 +1,49 @@
+/* --------------------------------------------------------
+Import Basic Files
+-------------------------------------------------------- */
+@import url("normalize.css"); /* CSS Resets */
+@import url("bootstrap.css"); /* Bootstrap v2.2.2 Grid Styles */
+@import url("layout.css"); /* Main layout */
+@import url("shortcodes.css"); /* Shortcodes */
+@import url("superfish.css"); /* Main Menu Style */
+@import url("font-awesome.css"); /* Custom Icons Font Awesome 3.0 */
+@import url("mosaic.css"); /* Overlay Effect */
+@import url("flexslider.css"); /* Flexslider Style */
+@import url("mediaqueries.css"); /* Smart Devices */
+@import url("prettyPhoto.css"); /* Lightbox Style */
+@import url("iview.css"); /* iView Slider Style */
+@import url("camera.css"); /* Camera Slider Style */
+@import url("../images/nivo-slider/nivo-slider.css"); /* Nivo Slider Main Style */
+@import url("../images/nivo-slider/default/default.css"); /* Nivo Slider Default Style */
+@import url("../images/nivo-slider/dark/dark.css"); /* Nivo Slider Dark Style */
+@import url("../images/nivo-slider/bar/bar.css"); /* Nivo Slider Bar Style */
+@import url("../images/nivo-slider/light/light.css"); /* Nivo Slider Light Style */
+
+.image_carousel { padding: 0px 0 15px 40px; position: relative;}
+.image_carousel {padding: 15px 40px; position: relative; width: 860px;}
+.image_carousel img { border: 1px solid #ccc; background-color: white; padding: 6px;  margin: 8px; display: block; float: left;}
+a.prev, a.next { background: url(/images/miscellaneous_sprite.png) no-repeat transparent; width: 45px; height: 50px;display: block; position: absolute; top: 45px;}
+a.prev { left: -5px; background-position: 0 0;}
+a.prev:hover {background-position: 0 -50px;}
+a.prev.disabled {background-position: 0 -100px !important;}
+a.next {right: -5px; background-position: -50px 0;}
+a.next:hover {background-position: -50px -50px;}
+a.next.disabled {background-position: -50px -100px !important;}
+a.prev.disabled, a.next.disabled { cursor: default;}
+a.prev span, a.next span { display: none;}
+.paginationCl { text-align: center;}
+.paginationCl a {background: url(/images/miscellaneous_sprite.png) 0 -300px no-repeat transparent;width: 15px;height: 15px; margin: 0 5px 0 0; display: inline-block; padding: 0px;}
+.paginationCl a:hover { background-position: -25px -300px;}
+.paginationCl a.selected { background-position: -25px -300px; cursor: default;}
+.paginationCl a span { display: none;}
+.clearfix {float: none; clear: both;}
+#foo2 img { height: 80px;}
+.slideTop { margin-bottom: 20px; margin-top: -10px;}
+.boderB { background: url(/images/body-bg.png) repeat; border-left: 1px solid #fff; border-right: 1px solid #fff; box-shadow: 0 0 5px #808080; width: 970px; padding-top: 7px;margin: 0 auto;}
+.clPadingBody {padding: 0px;}
+.blod {font-weight: bold;}
+.warp-content { padding-top: 10px; padding-bottom: 10px;}
+.wrapTitle {background: #fff;line-height: 40px;}
+.magrinproduct { width: 233px;margin: 0px; }
+.warpPaging { margin-top: 10px; margin-bottom: 20px;}
+.min-hieght-lg { min-height: 780px;}
